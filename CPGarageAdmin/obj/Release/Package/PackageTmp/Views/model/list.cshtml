@@ -1,0 +1,91 @@
+﻿@model IEnumerable<DAL.DBEntities.Model>
+
+@{
+    ViewBag.Title = "list";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="card">
+    <div class="card-body">
+        <div class="row form-group">
+            <div class="col-8">
+                <h4 class="card-title">Models</h4>
+            </div>
+            <div class="col-4 text-right">
+                <a href="~/model/add" class="btn btn-sm btn-secondary"><i class="mdi mdi-plus-circle"></i> Add</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="table-responsive">
+                    <table id="order-listing1" class="table">
+                        <thead>
+                            <tr>
+                                <th>Image</th>
+                                <th>Name</th>
+                                <th>Arabic Name</th>
+                                <th>Year</th>
+                                <th>Make Name</th>
+                                <th>Engine No</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach(DAL.DBEntities.Model item in Model)
+                            {
+                            <tr>
+                                <td>
+                                    @if (item.ImagePath == null || item.ImagePath == "")
+                                    {
+                                        <img src="~/assets/images/no_image.jpg" style=" height:60px;width:60px; border-radius:20px 20px 20px 20px" />
+                                    }
+                                    else
+                                    {
+                                        <img src="@Url.Content(item.ImagePath)" style=" height:60px;width:60px; border-radius:20px 20px 20px 20px" />
+                                    }
+                                </td>
+                                <td> @item.Name</td>
+                                <td> @item.ArabicName</td>
+                                <td> @item.Year</td>
+                               <td>@item.Make.Name</td>
+                                <td> @item.EngineNo</td>
+                                @if (item.StatusID == 1)
+                                {
+                                    <td class="bg-success">Active</td>
+                                }
+                                else
+                                {
+                                    <td class="bg-danger"> De Active</td>
+
+                                }
+
+
+                                <td class="text-center">
+                                    <a href="~/model/add?id=@item.ModelID"><i class="mdi mdi-pencil" style="font-size:18px !important;"></i></a>
+                                    <a href="~/model/Delete?id=@item.ModelID"><i class="mdi mdi-delete" style="font-size:18px !important;"></i></a>
+                                </td>
+                            </tr>
+                            }
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        $('#order-listing1').DataTable();
+    });
+
+    function Delete(_id)
+    {
+        $.post("@Url.Action("Delete", "Model")", { id: _id}, function (data) {
+                if (data.success) {
+
+                    alert("Deleted Successfully");
+                }
+            });
+    }
+</script>

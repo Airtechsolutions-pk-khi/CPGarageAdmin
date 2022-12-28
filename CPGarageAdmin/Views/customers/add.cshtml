@@ -1,0 +1,111 @@
+﻿@model DAL.Models.CustomerViewModel
+@using System.Web.Configuration;
+@{
+    ViewBag.Title = "add";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script type="text/javascript">
+    function UserSuccess(result) {
+        if (result.success) {
+            window.location.href = "/customers/list";
+        }
+        else {
+            alert("CUSTOMER CANNOT CREATED SUCCESSFULLY")
+        }
+    }
+
+</script>
+@using (Ajax.BeginForm("Save", "Customers", new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "ModalUser", OnSuccess = "UserSuccess" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    <div class="row">
+        <div class="col-6 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Customer Details</h4>
+
+                    <div class="forms-sample">
+                        <div class="form-group">
+                            <label for="exampleInputName1">First name</label>
+                            @Html.TextBoxFor(model => model.FirstName, new { @class = "form-control", placeholder = "" })
+                            @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail3">Last Name</label>
+                            @Html.TextBoxFor(model => model.LastName, new { @class = "form-control", placeholder = "" })
+                            @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword4">Email</label>
+                            @Html.TextBoxFor(model => model.Email, new { @class = "form-control", placeholder = "" })
+                            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword4">Password</label>
+                            @Html.TextBoxFor(model => model.Password, new { @class = "form-control", placeholder = "" })
+                            @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword4">Company Name</label>
+                            @Html.TextBoxFor(model => model.Company, new { @class = "form-control", placeholder = "" })
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword4">Contact</label>
+                            @Html.TextBoxFor(model => model.ContactNo, new { @class = "form-control", placeholder = "" })
+                        </div>
+
+
+                        <button type="submit" class="btn btn-primary mr-2">Save</button>
+                        <a href="~/customers/list" class="btn btn-light">Cancel</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-6 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Location Details</h4>
+                    @Html.HiddenFor(model => model.UserID, new Dictionary<string, object> { { "data-val", false } })
+                    <div class="forms-sample">
+                        <div class="form-group">
+                            <label for="exampleInputName1">Location Name</label>
+                            @Html.TextBoxFor(model => model.LocationName, new { @class = "form-control", placeholder = "" })
+                            @Html.ValidationMessageFor(model => model.LocationName, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail3">Location Email</label>
+                            @Html.TextBoxFor(model => model.LocationEmail, new { @class = "form-control", placeholder = "" })
+                            @Html.ValidationMessageFor(model => model.LocationEmail, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword4">Location Contact</label>
+                            @Html.TextBoxFor(model => model.LocationContactNo, new { @class = "form-control", placeholder = "" })
+                        </div>
+
+                        <div class="form-group">
+                            <label for="exampleInputPassword4">Location Address</label>
+                            @Html.TextBoxFor(model => model.LocationAddress, new { @class = "form-control", placeholder = "" })
+                        </div>
+                    </div>
+                    <div class="forms-sample">
+                        <h4 class="card-title">SMS Activation</h4>
+                        <div class="form-check" style="margin-left:20px">
+                            @Html.CheckBoxFor(model => model.IsSMSActivate, new { @class = "form-check-input", placeholder = "" ,@for= "exampleCheck1" })
+                            <label class="form-check-label" for="exampleCheck1" >SMS Activation</label>
+                        </div>
+                       
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+}
+
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+<script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>

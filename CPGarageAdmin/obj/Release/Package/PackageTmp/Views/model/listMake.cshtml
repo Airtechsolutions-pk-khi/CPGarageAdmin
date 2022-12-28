@@ -1,0 +1,117 @@
+﻿@model IEnumerable<DAL.DBEntities.Make>
+
+@{
+    ViewBag.Title = "list";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<head>
+    <style>
+        .swal-button {
+            background-color: #ffb509 !important;
+        }
+    </style>
+    @*<link href="~/assets/css/sweetalert.css" rel="stylesheet" />*@
+</head>
+<div class="card">
+    <div class="card-body">
+        <div class="row form-group">
+            <div class="col-8">
+                <h4 class="card-title">Make</h4>
+            </div>
+            <div class="col-4 text-right">
+                <a href="~/model/addMake" class="btn btn-sm btn-secondary"><i class="mdi mdi-plus-circle"></i> Add</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="table-responsive">
+                    <table id="order-listing1" class="table">
+                        <thead>
+                            <tr>
+                                <th>Image</th>
+                                <th>Name</th>
+                                <th>Arabic Name</th>
+                                <th>Display Order</th>
+                                <th>Status</th>
+                                <th class="text-center">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+
+                            @foreach (var item in ViewBag.MakeList)
+                            {
+                            <tr>
+                                <td>
+                                    @if (item.ImagePath == null || item.ImagePath == "")
+                                    {
+                                        <img src="~/assets/images/no_image.jpg" style=" height:60px;width:60px; border-radius:20px 20px 20px 20px" />
+                                    }
+                                    else
+                                    {
+                                        <img src="@Url.Content(item.ImagePath)" style=" height:60px;width:60px; border-radius:20px 20px 20px 20px" />
+                                    }
+
+                                </td>
+                                <td> @item.Name</td>
+                                <td> @item.ArabicName</td>
+                                <td> @item.DisplayOrder</td>
+                                @if (item.StatusID == 1)
+                                {
+                                    <td class="bg-success">Active</td>
+                                }
+                                @if (item.StatusID == 2)
+                                {
+                                    <td class="bg-danger"> De Active</td>
+
+                                }
+
+
+                                @*<td class="text-center">
+            <a href="~/model/addMake?id=@item.MakeID"><i class="mdi mdi-pencil" style="font-size:18px !important;"></i></a>
+            <a href="~/model/DeleteMake?id=@item.MakeID" onclick = "return
+            confirm('Are you sure you wish to delete this?');
+            "style="border:none;"><i class="mdi mdi-delete" style="font-size:18px !important;"></i></a>
+        </td>*@
+                                <td class="text-center">
+                                    <a href="~/model/addMake?id=@item.MakeID"><i class="mdi mdi-pencil" style="font-size:18px !important;"></i></a>
+                                    <a href="~/model/DeleteMake?id=@item.MakeID" onclick = "return confirm('Are you sure you wish to delete?');" style="border:none;"><i class="mdi mdi-delete" style="font-size:18px !important;"></i></a>
+                                </td>
+                            </tr>
+                            }
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@*<script src="~/assets/css/sweetalert.min.js"></script>*@
+<script>
+    $(document).ready(function () {
+        $('#order-listing1').DataTable();
+    });
+
+    function DeleteMake(_id)
+    {
+        $.post("@Url.Action("DeleteMake", "Model")", { id: _id}, function (data) {
+                if (data.success) {
+
+                    alert("Deleted Successfully");
+                }
+            });
+    }
+
+   //function confirm()
+   // {
+
+   //    swal({
+   //        title: "Confirm !",
+   //        text: "Are you sure you wish to delete this !",
+   //        type: "success"
+   //    });
+   // }
+</script>
