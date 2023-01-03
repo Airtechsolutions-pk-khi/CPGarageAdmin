@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Services.Description;
 
 namespace CPGarageAdmin.Controllers
 {
@@ -85,6 +86,21 @@ namespace CPGarageAdmin.Controllers
             if (ModelState.IsValid)
             {
                 var data = customerRepo.delete(id, 0);
+
+                return RedirectToAction("list", data);
+            }
+            else
+            {
+
+                return View();
+            }
+        }
+        [HttpGet]
+        public ActionResult Status(int id)
+        {
+            if (ModelState.IsValid)
+            {
+                var data = customerRepo.status(id);
 
                 return RedirectToAction("list", data);
             }

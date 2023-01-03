@@ -1,6 +1,6 @@
 ﻿@model DAL.Models.DasboardViewModel
 @{
-    ViewBag.Title = "dasboard";
+    ViewBag.Title = "Dashboard";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <style>
@@ -38,6 +38,24 @@
             <div class="card-body">
                 <h6 class="font-weight-normal">Total Subusers</h6>
                 <h2 class="mb-0">@Model.TotalSubusers</h2>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6 col-lg-3 grid-margin stretch-card">
+        <div class="card bg-gradient-success text-white text-center card-shadow-primary">
+            <div class="card-body">
+                <h6 class="font-weight-normal">Total Cars</h6>
+                <h2 class="mb-0">@Model.TotalCars</h2>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 col-lg-3 grid-margin stretch-card">
+        <div class="card bg-gradient-secondary text-white text-center card-shadow-primary">
+            <div class="card-body">
+                <h6 class="font-weight-normal">Total Products</h6>
+                <h2 class="mb-0">@Model.TotalProducts</h2>
             </div>
         </div>
     </div>

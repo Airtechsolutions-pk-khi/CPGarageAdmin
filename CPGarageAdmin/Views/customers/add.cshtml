@@ -4,7 +4,55 @@
     ViewBag.Title = "add";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<style>
+    .custom-radio .custom-control-label::before {
+        border-radius: 50%;
+    }
 
+    .custom-radio .custom-control-input:checked ~ .custom-control-label::after {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%23fff'/%3e%3c/svg%3e");
+    }
+
+    .custom-radio .custom-control-input:disabled:checked ~ .custom-control-label::before {
+        background-color: rgba(78, 115, 223, 0.5);
+    }
+
+    .custom-switch {
+        padding-left: 2.25rem;
+    }
+
+        .custom-switch .custom-control-label::before {
+            left: -2.25rem;
+            width: 1.75rem;
+            pointer-events: all;
+            border-radius: 0.5rem;
+        }
+
+        .custom-switch .custom-control-label::after {
+            top: calc(0.25rem + 2px);
+            left: calc(-2.25rem + 2px);
+            width: calc(1rem - 4px);
+            height: calc(1rem - 4px);
+            background-color: #b7b9cc;
+            border-radius: 0.5rem;
+            transition: transform 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+        }
+
+    @@media (prefers-reduced-motion: reduce) {
+        .custom-switch .custom-control-label::after {
+            transition: none;
+        }
+    }
+
+    .custom-switch .custom-control-input:checked ~ .custom-control-label::after {
+        background-color: #fff;
+        transform: translateX(0.75rem);
+    }
+
+    .custom-switch .custom-control-input:disabled:checked ~ .custom-control-label::before {
+        background-color: rgba(78, 115, 223, 0.5);
+    }
+</style>
 <script type="text/javascript">
     function UserSuccess(result) {
         if (result.success) {
@@ -91,12 +139,20 @@
                         </div>
                     </div>
                     <div class="forms-sample">
-                        <h4 class="card-title">SMS Activation</h4>
-                        <div class="form-check" style="margin-left:20px">
-                            @Html.CheckBoxFor(model => model.IsSMSActivate, new { @class = "form-check-input", placeholder = "" ,@for= "exampleCheck1" })
-                            <label class="form-check-label" for="exampleCheck1" >SMS Activation</label>
+                        <div class="form-group">
+                            <h4 class="card-title">SMS Activation</h4>
+                            <div class="form-check" style="margin-left:20px">
+                                @Html.CheckBoxFor(model => model.IsSMSActivate, new { @class = "form-check-input", placeholder = "", @for = "exampleCheck1" })
+                                <label class="form-check-label" for="exampleCheck1">SMS Activation</label>
+                            </div>
                         </div>
-                       
+                        <div class="form-group">
+                            <h4 class="card-title">Activation Status</h4>
+                            <div class="custom-control custom-switch custom-switch-md">
+                                @Html.CheckBoxFor(model => model.StatusID, new { @class = "custom-control-input", placeholder = "", @for = "StatusID", @checked= "checked" })
+                                <label class="custom-control-label form-check-label" for="StatusID" style=" padding-top: 4px !important; padding-left: 14px;"> Activation Status</label>
+                            </div>
+                        </div>
 
                     </div>
                 </div>

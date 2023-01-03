@@ -27,11 +27,12 @@ namespace BAL.Repositories
             try
             {
                 DasboardViewModel obj = new DasboardViewModel();
-                obj.TotalCustomers = DBContext.Users.Where(x=>x.StatusID==1).Count().ToString();
+                obj.TotalCustomers = DBContext.Users.Where(x => x.StatusID == 1).Count().ToString();
                 obj.TotalLocations = DBContext.Locations.Where(x => x.StatusID == 1).Count().ToString();
-                obj.TotalSubusers= DBContext.SubUsers.Where(x => x.StatusID == 1).Count().ToString();
-                obj.TotalTransactions= DBContext.OrderCheckouts.Where(x => x.OrderStatus == 103).Count().ToString();
-                
+                obj.TotalSubusers = DBContext.SubUsers.Where(x => x.StatusID == 1).Count().ToString();
+                obj.TotalTransactions = DBContext.OrderCheckouts.Where(x => x.OrderStatus == 103).Count().ToString();
+                obj.TotalCars = DBContext.Cars.Where(x => x.StatusID == 1).Count().ToString();
+                obj.TotalProducts = DBContext.Items.Where(x => x.StatusID == 1).Count().ToString();
                 return obj;
             }
             catch (Exception ex)

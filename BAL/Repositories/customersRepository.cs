@@ -1,41 +1,102 @@
 ﻿
 using DAL.DBEntities;
-
-using BAL.Repositories;
 using DAL.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Data.Entity;
 using Twilio.Rest.Api.V2010.Account;
 using Twilio;
 using System.Web;
 using System.IO;
 using System.Configuration;
+using Newtonsoft.Json.Linq;
+using System.Data.SqlClient;
+using System.Data;
 
 namespace BAL.Repositories
 {
     public class customersRepository : BaseRepository
     {
-        
-
         public customersRepository()
              : base()
         {
             DBContext = new Garage_LiveEntities();
         }
-
         public customersRepository(Garage_LiveEntities contextDB)
             : base(contextDB)
         {
             DBContext = contextDB;
         }
+
+        public List<User> GetCustomers()
+        {
+            try
+            {
+                var data = DBContext.Users.Where(x => x.StatusID != 3).ToList();
+                return data;
+            }
+            catch (Exception ex)
+            {
+                return new List<User>();
+            }
+        }
+        public CustomerViewModel GetCustomerbyid(int id)
+        {
+            try
+            {
+                var data = DBContext.Users.Where(x => x.UserID == id)
+                    .AsEnumerable().Select(r => new CustomerViewModel
+                    {
+                        FirstName = r.FirstName,
+                        UserID = r.UserID,
+                        UserName = r.UserName,
+                        LastName = r.LastName,
+                        ImagePath = r.ImagePath,
+                        Password = new clsCryption().EncryptDecrypt(r.Password, "decrypt"),
+                        Company = r.Company,
+                        BusinessType = r.BusinessType,
+                        Email = r.Email,
+                        ContactNo = r.ContactNo,
+                        CityID = r.CityID,
+                        CountryID = r.CountryID,
+                        Website = r.Website,
+                        Subscribe = r.Subscribe,
+                        RoleID = r.RoleID,
+                        TimeZoneID = r.TimeZoneID,
+                        LastUpdatedBy = r.LastUpdatedBy,
+                        LastUpdatedDate = r.LastUpdatedDate,
+                        StatusID = r.StatusID == 1 ? true : false,
+                        CompanyCode = r.CompanyCode,
+                        CreatedDate = r.CreatedDate,
+                        States = r.States,
+                        Zipcode = r.Zipcode,
+                        VATNO = r.VATNO,
+                        Address = r.Address,
+                        IsSMSActivate = r.IsSMSCheckoutAddOn == null ? false : Convert.ToBoolean(r.IsSMSCheckoutAddOn.ToString()),
+
+                        LocationID = r.Locations.FirstOrDefault().LocationID,
+                        LocationName = r.Locations.FirstOrDefault().Name,
+                        LocationAddress = r.Locations.FirstOrDefault().Address,
+                        LocationContactNo = r.Locations.FirstOrDefault().ContactNo,
+                        LocationEmail = r.Locations.FirstOrDefault().Email,
+                        Tax = r.Tax
+                    })
+                  .FirstOrDefault();
+                return data;
+            }
+            catch (Exception ex)
+            {
+                //_baseRepo.ErrorLog(ex, "loginRepository/GetLoginInfo", "Exception");
+                return new CustomerViewModel();
+            }
+        }
+
         public int edit(CustomerViewModel modal)
         {
             using (var dbContextTransaction = DBContext.Database.BeginTransaction())
             {
+
                 try
                 {
                     if (modal.UserID > 0)
@@ -49,6 +110,7 @@ namespace BAL.Repositories
                         _user.Company = modal.Company;
                         _user.Password = new clsCryption().EncryptDecrypt(modal.Password, "encrypt");
                         _user.IsSMSCheckoutAddOn = modal.IsSMSActivate;
+                        _user.StatusID = modal.StatusID == true ? 1 : 2;
                         DBContext.Entry(_user).State = EntityState.Modified;
                         DBContext.UpdateOnly<User>(_user, x =>
                        x.FirstName,
@@ -58,8 +120,8 @@ namespace BAL.Repositories
                         x => x.Password,
                         x => x.UserName,
                         x => x.ContactNo,
-                        x => x.IsSMSCheckoutAddOn
-
+                        x => x.IsSMSCheckoutAddOn,
+                        x => x.StatusID
                         );
                         DBContext.SaveChanges();
 
@@ -79,7 +141,6 @@ namespace BAL.Repositories
         {
             using (var dbContextTransaction = DBContext.Database.BeginTransaction())
             {
-
                 try
                 {
                     User _user = new User();
@@ -102,9 +163,9 @@ namespace BAL.Repositories
                     _user.Subscribe = false;
                     _user.TimeZoneID = 54;
                     _user.Tax = 0;
-                    _user.StatusID = 1;
+                    _user.StatusID = modal.StatusID == true ? 1 : 2;
                     _user.IsSMSCheckoutAddOn = false;
-                    _user.CompanyCode = "POS-" + randomstring(6); ;
+                    _user.CompanyCode = "POS-" + randomstring(6);
                     _user.Address = modal.LocationAddress;
                     _user.LastUpdatedDate = DateTime.UtcNow.AddMinutes(180);
                     User data = DBContext.Users.Add(_user);
@@ -127,11 +188,9 @@ namespace BAL.Repositories
                         if (dataLocation.LocationID > 0)
                         {
                             _subuser.FirstName = modal.FirstName;
-                            _subuser.FirstName = modal.LastName;
-                            _subuser.UserName = modal.Email;
+                            _subuser.LastName = modal.LastName;
                             _subuser.UserName = modal.Email;
                             _subuser.Password = modal.Password;
-                            _subuser.Email = modal.Email;
                             _subuser.LocationID = dataLocation.LocationID;
                             _subuser.CityID = 4020;
                             _subuser.CountryID = "SA";
@@ -206,7 +265,7 @@ namespace BAL.Repositories
                 Enumerable.Repeat(chars, length)
                           .Select(s => s[random.Next(s.Length)])
                           .ToArray());
-           
+
 
 
             return result;
@@ -218,69 +277,7 @@ namespace BAL.Repositories
             Random _rdm = new Random();
             return _rdm.Next(_min, _max);
         }
-        public List<User> GetCustomers()
-        {
-            try
-            {
-                var data = DBContext.Users.Where(x => x.StatusID == 1).ToList();
-                return data;
-            }
-            catch (Exception ex)
-            {
-                //_baseRepo.ErrorLog(ex, "loginRepository/GetLoginInfo", "Exception");
-                return new List<User>();
-            }
-        }
-        public CustomerViewModel GetCustomerbyid(int id)
-        {
-            try
-            {
-                var data = DBContext.Users.Where(x => x.UserID == id)
-                    .AsEnumerable().Select(r => new CustomerViewModel
-                    {
-                        FirstName = r.FirstName,
-                        UserID = r.UserID,
-                        UserName = r.UserName,
-                        LastName = r.LastName,
-                        ImagePath = r.ImagePath,
-                        Password = new clsCryption().EncryptDecrypt(r.Password, "decrypt"),
-                        Company = r.Company,
-                        BusinessType = r.BusinessType,
-                        Email = r.Email,
-                        ContactNo = r.ContactNo,
-                        CityID = r.CityID,
-                        CountryID = r.CountryID,
-                        Website = r.Website,
-                        Subscribe = r.Subscribe,
-                        RoleID = r.RoleID,
-                        TimeZoneID = r.TimeZoneID,
-                        LastUpdatedBy = r.LastUpdatedBy,
-                        LastUpdatedDate = r.LastUpdatedDate,
-                        StatusID = r.StatusID,
-                        CompanyCode = r.CompanyCode,
-                        CreatedDate = r.CreatedDate,
-                        States = r.States,
-                        Zipcode = r.Zipcode,
-                        VATNO = r.VATNO,
-                        Address = r.Address,
-                        IsSMSActivate = r.IsSMSCheckoutAddOn == null ? false : Convert.ToBoolean(r.IsSMSCheckoutAddOn.ToString()),
 
-                        LocationID = r.Locations.FirstOrDefault().LocationID,
-                        LocationName = r.Locations.FirstOrDefault().Name,
-                        LocationAddress = r.Locations.FirstOrDefault().Address,
-                        LocationContactNo = r.Locations.FirstOrDefault().ContactNo,
-                        LocationEmail = r.Locations.FirstOrDefault().Email,
-                        Tax = r.Tax
-                    })
-                  .FirstOrDefault();
-                return data;
-            }
-            catch (Exception ex)
-            {
-                //_baseRepo.ErrorLog(ex, "loginRepository/GetLoginInfo", "Exception");
-                return new CustomerViewModel();
-            }
-        }
         public List<SmsBilling> GetCustomerSMSBills(int userid, string startDate, string endDate)
         {
             List<SmsBilling> lst = new List<SmsBilling>();
@@ -306,7 +303,7 @@ namespace BAL.Repositories
                                 UserID = i.UserID
                             });
                         }
-                        
+
                     }
                 }
                 return lst;
@@ -315,7 +312,7 @@ namespace BAL.Repositories
             {
                 return new List<SmsBilling>();
             }
-           
+
         }
         public SmsBilling smsReport(string _accountSid, string _authToken, string fDate, string tDate)
         {
@@ -383,7 +380,29 @@ namespace BAL.Repositories
             }
             return GetCustomers();
         }
-
+        public List<User> status(int id)
+        {
+            if (id == 1)
+            {
+                var customer = DBContext.Users.Where(x => x.StatusID == 1).FirstOrDefault();
+                if (customer != null)
+                {
+                    customer.LastUpdatedDate = DateTimeUTC.Now;
+                    customer.StatusID = 2;
+                    DBContext.UpdateOnly<User>(customer, x => x.LastUpdatedDate, x => x.StatusID);
+                    DBContext.SaveChanges();
+                }
+            }
+            else
+            {
+                var customer = DBContext.Users.Where(x => x.StatusID != 1).FirstOrDefault();
+                customer.LastUpdatedDate = DateTimeUTC.Now;
+                customer.StatusID = 1;
+                DBContext.UpdateOnly<User>(customer, x => x.LastUpdatedDate, x => x.StatusID);
+                DBContext.SaveChanges();
+            }
+            return GetCustomers();
+        }
         public string GetInvoicePrint(string companyname, string smscount, string fromdate, string todate, string total, int userid)
         {
             try

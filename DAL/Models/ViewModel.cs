@@ -88,7 +88,7 @@ namespace DAL.Models
         public Nullable<int> TimeZoneID { get; set; }
         public string LastUpdatedBy { get; set; }
         public Nullable<System.DateTime> LastUpdatedDate { get; set; }
-        public Nullable<int> StatusID { get; set; }
+        public bool StatusID { get; set; }
         public string CompanyCode { get; set; }
         public Nullable<System.DateTime> CreatedDate { get; set; }
         public string States { get; set; }
@@ -115,6 +115,8 @@ namespace DAL.Models
         public string TotalTransactions { get; set; }
         public string TotalLocations { get; set; }
         public string TotalSubusers { get; set; }
+        public string TotalCars { get; set; }
+        public string TotalProducts { get; set; }
     }
     public  class SmsBilling
     {
