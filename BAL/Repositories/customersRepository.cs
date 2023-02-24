@@ -80,6 +80,7 @@ namespace BAL.Repositories
                         LocationAddress = r.Locations.FirstOrDefault().Address,
                         LocationContactNo = r.Locations.FirstOrDefault().ContactNo,
                         LocationEmail = r.Locations.FirstOrDefault().Email,
+                        Currency = r.Locations.FirstOrDefault().Currency,
                         Tax = r.Tax
                     })
                   .FirstOrDefault();
@@ -183,6 +184,7 @@ namespace BAL.Repositories
                         _location.Close_Time = TimeSpan.Parse("21:00:00");
                         _location.StatusID = 1;
                         _location.CompanyCode = _user.CompanyCode;
+                        _location.Currency = modal.Currency;
                         Location dataLocation = DBContext.Locations.Add(_location);
                         DBContext.SaveChanges();
                         if (dataLocation.LocationID > 0)

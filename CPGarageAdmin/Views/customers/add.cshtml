@@ -117,27 +117,42 @@
                 <div class="card-body">
                     <h4 class="card-title">Location Details</h4>
                     @Html.HiddenFor(model => model.UserID, new Dictionary<string, object> { { "data-val", false } })
-                    <div class="forms-sample">
-                        <div class="form-group">
-                            <label for="exampleInputName1">Location Name</label>
-                            @Html.TextBoxFor(model => model.LocationName, new { @class = "form-control", placeholder = "" })
-                            @Html.ValidationMessageFor(model => model.LocationName, "", new { @class = "text-danger" })
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputEmail3">Location Email</label>
-                            @Html.TextBoxFor(model => model.LocationEmail, new { @class = "form-control", placeholder = "" })
-                            @Html.ValidationMessageFor(model => model.LocationEmail, "", new { @class = "text-danger" })
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputPassword4">Location Contact</label>
-                            @Html.TextBoxFor(model => model.LocationContactNo, new { @class = "form-control", placeholder = "" })
-                        </div>
-
-                        <div class="form-group">
-                            <label for="exampleInputPassword4">Location Address</label>
-                            @Html.TextBoxFor(model => model.LocationAddress, new { @class = "form-control", placeholder = "" })
-                        </div>
+                <div class="forms-sample">
+                    <div class="form-group">
+                        <label for="exampleInputName1">Location Name</label>
+                        @Html.TextBoxFor(model => model.LocationName, new { @class = "form-control", placeholder = "" })
+                        @Html.ValidationMessageFor(model => model.LocationName, "", new { @class = "text-danger" })
                     </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail3">Location Email</label>
+                        @Html.TextBoxFor(model => model.LocationEmail, new { @class = "form-control", placeholder = "" })
+                        @Html.ValidationMessageFor(model => model.LocationEmail, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword4">Location Contact</label>
+                        @Html.TextBoxFor(model => model.LocationContactNo, new { @class = "form-control", placeholder = "" })
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleInputPassword4">Location Address</label>
+                        @Html.TextBoxFor(model => model.LocationAddress, new { @class = "form-control", placeholder = "" })
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword4">Select Country</label>
+                        
+                            @Html.DropDownListFor(model => model.Currency, new List<SelectListItem>
+                             {
+                           new SelectListItem{ Text = "Saudi", Value = "SA"},
+                              new SelectListItem{ Text = "Bahrain", Value = "BHR"},
+                                new SelectListItem{ Text = "Kuwait", Value = "KWT"},
+                                new SelectListItem{ Text = "Oman", Value = "OMN"},
+                                new SelectListItem{ Text = "Qatar", Value = "QAT"},
+                                new SelectListItem{ Text = "UAE", Value = "ARE"}
+                                
+                             }, new { @class = "form-control" })
+                         
+                    </div>
+                </div>
                     <div class="forms-sample">
                         <div class="form-group">
                             <h4 class="card-title">SMS Activation</h4>

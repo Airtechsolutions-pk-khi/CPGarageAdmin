@@ -21,12 +21,15 @@ namespace CPGarageAdmin.Controllers
         // GET: users
         public ActionResult list()
         {
+            
             return View(customerRepo.GetCustomers());
         }
 
         [HttpGet]
         public ActionResult add(int? id)
         {
+            
+              
             //ViewBag.StateList = customerRepo.getRoleList().Select(x => new { x.ROLEID, x.ROLENAME }).ToList();
             //var user = customerRepo.getCustomerById(id);
             try
@@ -37,7 +40,7 @@ namespace CPGarageAdmin.Controllers
                     return View(data);
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
             }

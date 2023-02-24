@@ -39,6 +39,12 @@ namespace DAL.DBEntities
         public Nullable<System.DateTime> LastUpdatedDate { get; set; }
         public Nullable<int> StatusID { get; set; }
         public string CompanyCode { get; set; }
+        public Nullable<int> LandmarkID { get; set; }
+        public string Gmaplink { get; set; }
+        public string ImageURL { get; set; }
+        public Nullable<bool> IsFeatured { get; set; }
+        public string ArabicName { get; set; }
+        public string Currency { get; set; }
         public string LicenseNo { get; set; }
     }
 }

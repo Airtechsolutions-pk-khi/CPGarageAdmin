@@ -15,6 +15,8 @@ namespace DAL.DBEntities
     {
         public Nullable<int> ItemID { get; set; }
         public string Name { get; set; }
+        public string SubCategoryName { get; set; }
+        public string CategoryName { get; set; }
         public Nullable<double> Tax { get; set; }
         public Nullable<double> Quantity { get; set; }
         public Nullable<double> Price { get; set; }

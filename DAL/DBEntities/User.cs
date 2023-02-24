@@ -17,6 +17,7 @@ namespace DAL.DBEntities
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public User()
         {
+            this.AppSources = new HashSet<AppSource>();
             this.CarInspections = new HashSet<CarInspection>();
             this.Cars = new HashSet<Car>();
             this.CompanyClients = new HashSet<CompanyClient>();
@@ -68,6 +69,8 @@ namespace DAL.DBEntities
         public Nullable<bool> IsSMSCheckoutAddOn { get; set; }
         public Nullable<bool> AllowNegativeInventory { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<AppSource> AppSources { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CarInspection> CarInspections { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

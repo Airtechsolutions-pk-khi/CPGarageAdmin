@@ -104,6 +104,7 @@ namespace DAL.Models
         public string LocationContactNo { get; set; }
         [Required(ErrorMessage = "Input is required")]
         public string LocationEmail { get; set; }
+        public string Currency { get; set; }
 
     }
     #endregion customer

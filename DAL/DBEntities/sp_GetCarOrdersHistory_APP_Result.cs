@@ -68,6 +68,7 @@ namespace DAL.DBEntities
         public Nullable<double> PartialAmountReceived { get; set; }
         public Nullable<bool> IsPartialPaid { get; set; }
         public string DiscountCode { get; set; }
+        public Nullable<int> AppSourceID { get; set; }
         public Nullable<System.DateTime> OrderPunchDate { get; set; }
         public string MechanicName { get; set; }
     }

@@ -20,9 +20,8 @@
       <PropertyRef Name="CarInspectionID" />
     </Key>
     <Property Name="CarInspectionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="RowID" Type="int" Nullable="false" />
-    <Property Name="Name" Type="nvarchar" MaxLength="100" />
-    <Property Name="AlternateName" Type="nvarchar" MaxLength="100" />
+    <Property Name="Name" Type="nvarchar" MaxLength="200" />
+    <Property Name="AlternateName" Type="nvarchar" MaxLength="200" />
     <Property Name="Image" Type="nvarchar(max)" />
     <Property Name="Description" Type="nvarchar(max)" />
     <Property Name="StatusID" Type="int" />
@@ -196,6 +195,7 @@
     <Property Name="LastUpdatedDate" Type="datetime" />
     <Property Name="LastUpdatedBy" Type="nvarchar" MaxLength="50" />
     <Property Name="Notes" Type="nvarchar" MaxLength="250" />
+    <Property Name="Terms" Type="nvarchar(max)" />
   </EntityType>
   <EntityType Name="CompanyInvoiceDetail">
     <Key>
@@ -241,6 +241,7 @@
     <Property Name="LastUpdatedDate" Type="datetime" />
     <Property Name="LastUpdatedBy" Type="nvarchar" MaxLength="50" />
     <Property Name="Notes" Type="nvarchar" MaxLength="250" />
+    <Property Name="Terms" Type="nvarchar(max)" />
   </EntityType>
   <EntityType Name="CompanyQuotationDetail">
     <Key>
@@ -310,7 +311,7 @@
     <Property Name="Email" Type="varchar" MaxLength="50" />
     <Property Name="DOB" Type="varchar" MaxLength="100" />
     <Property Name="Sex" Type="varchar" MaxLength="50" />
-    <Property Name="Mobile" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Mobile" Type="nvarchar" MaxLength="150" Nullable="false" />
     <Property Name="CardNo" Type="varchar" MaxLength="50" />
     <Property Name="LastUpdatedBy" Type="varchar" MaxLength="50" />
     <Property Name="LastUpdatedDate" Type="datetime" />
@@ -327,18 +328,6 @@
     <Property Name="CreatedBy" Type="nvarchar" MaxLength="100" />
     <Property Name="IsSignUp" Type="bit" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6013: The table/view 'Garage_Live.dbo.dataitem' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="dataitem">
-          <Property Name="CategoryName" Type="nvarchar" MaxLength="255" />
-          <Property Name="SubCatName" Type="nvarchar" MaxLength="255" />
-          <Property Name="Name" Type="nvarchar" MaxLength="255" />
-          <Property Name="NameOnReceipt" Type="nvarchar" MaxLength="255" />
-          <Property Name="Price" Type="float" />
-          <Property Name="Cost" Type="float" />
-          <Property Name="ItemType" Type="nvarchar" MaxLength="255" />
-          <Property Name="ItemTypeValue" Type="nvarchar" MaxLength="255" />
-        </EntityType>-->
   <EntityType Name="Discount">
     <Key>
       <PropertyRef Name="DiscountID" />
@@ -379,8 +368,8 @@ warning 6013: The table/view 'Garage_Live.dbo.dataitem' does not have a primary 
     <Property Name="IntegrationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name" Type="nvarchar" MaxLength="200" />
     <Property Name="IntegrationKey" Type="nvarchar(max)" />
-    <Property Name="Value" Type="nvarchar" MaxLength="100" />
     <Property Name="Token" Type="nvarchar(max)" />
+    <Property Name="Value" Type="nvarchar" MaxLength="100" />
     <Property Name="StatusID" Type="int" />
     <Property Name="UserID" Type="int" />
   </EntityType>
@@ -656,20 +645,6 @@ warning 6013: The table/view 'Garage_Live.dbo.dataitem' does not have a primary 
     <Property Name="IsOpenItem" Type="bit" />
     <Property Name="MinOpenPrice" Type="float" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6013: The table/view 'Garage_Live.dbo.itemssheet' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="itemssheet">
-          <Property Name="CategoryName En" Type="nvarchar" MaxLength="255" />
-          <Property Name="CategoryName Ar" Type="nvarchar" MaxLength="255" />
-          <Property Name="SubCatName En" Type="nvarchar" MaxLength="255" />
-          <Property Name="SubCatName Ar" Type="nvarchar" MaxLength="255" />
-          <Property Name="Item Name En" Type="nvarchar" MaxLength="255" />
-          <Property Name="Item Name Ar" Type="nvarchar" MaxLength="255" />
-          <Property Name="Price" Type="nvarchar" MaxLength="255" />
-          <Property Name="Cost" Type="nvarchar" MaxLength="255" />
-          <Property Name="ItemType" Type="nvarchar" MaxLength="255" />
-          <Property Name="ItemTypeValue" Type="nvarchar" MaxLength="255" />
-        </EntityType>-->
   <EntityType Name="Licenses">
     <Key>
       <PropertyRef Name="LicenseID" />
@@ -693,8 +668,8 @@ warning 6013: The table/view 'Garage_Live.dbo.itemssheet' does not have a primar
     </Key>
     <Property Name="LocationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="RowID" Type="int" Nullable="false" />
-    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="Descripiton" Type="nvarchar" MaxLength="100" />
+    <Property Name="Name" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="Descripiton" Type="nvarchar" MaxLength="500" />
     <Property Name="Address" Type="nvarchar" MaxLength="200" />
     <Property Name="ContactNo" Type="nvarchar" MaxLength="50" />
     <Property Name="Email" Type="nvarchar" MaxLength="500" />
@@ -717,6 +692,12 @@ warning 6013: The table/view 'Garage_Live.dbo.itemssheet' does not have a primar
     <Property Name="LastUpdatedDate" Type="datetime" />
     <Property Name="StatusID" Type="int" />
     <Property Name="CompanyCode" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="LandmarkID" Type="int" />
+    <Property Name="Gmaplink" Type="nvarchar" MaxLength="500" />
+    <Property Name="ImageURL" Type="nvarchar(max)" />
+    <Property Name="IsFeatured" Type="bit" />
+    <Property Name="ArabicName" Type="nvarchar" MaxLength="250" />
+    <Property Name="Currency" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="Make">
     <Key>
@@ -733,7 +714,6 @@ warning 6013: The table/view 'Garage_Live.dbo.itemssheet' does not have a primar
     <Property Name="CreatedOn" Type="datetime" />
     <Property Name="CreatedBy" Type="nvarchar" MaxLength="100" />
     <Property Name="DisplayOrder" Type="int" />
-    <Property Name="MakeImage" Type="nvarchar(max)" />
   </EntityType>
   <EntityType Name="Model">
     <Key>
@@ -813,6 +793,7 @@ warning 6013: The table/view 'Garage_Live.dbo.itemssheet' does not have a primar
     <Property Name="PartialAmountReceived" Type="float" />
     <Property Name="IsPartialPaid" Type="bit" />
     <Property Name="DiscountCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="AppSourceID" Type="int" />
   </EntityType>
   <EntityType Name="OrderCheckoutDetails">
     <Key>
@@ -1014,18 +995,14 @@ warning 6013: The table/view 'Garage_Live.dbo.itemssheet' does not have a primar
       <PropertyRef Name="ReceiptID" />
     </Key>
     <Property Name="ReceiptID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="RowID" Type="int" Nullable="false" />
     <Property Name="ReceiptName" Type="nvarchar" MaxLength="200" />
     <Property Name="CompanyTitle" Type="nvarchar" MaxLength="200" />
     <Property Name="CompanyAddress" Type="nvarchar" MaxLength="500" />
     <Property Name="CompanyPhones" Type="nvarchar" MaxLength="20" />
-    <Property Name="CompanyFax" Type="nvarchar" MaxLength="20" />
     <Property Name="CompanyEmail" Type="nvarchar" MaxLength="200" />
     <Property Name="CompanyWebsite" Type="nvarchar" MaxLength="500" />
-    <Property Name="Promotiontagline" Type="nvarchar" MaxLength="500" />
     <Property Name="Companytagline" Type="nvarchar" MaxLength="500" />
-    <Property Name="CompanyLogoURL" Type="nvarchar" MaxLength="500" />
-    <Property Name="ReceiptContent" Type="nvarchar(max)" />
+    <Property Name="CompanyLogoURL" Type="nvarchar(max)" />
     <Property Name="Footer" Type="nvarchar(max)" />
     <Property Name="Facebook" Type="nvarchar" MaxLength="100" />
     <Property Name="Twitter" Type="nvarchar" MaxLength="100" />
@@ -1033,12 +1010,10 @@ warning 6013: The table/view 'Garage_Live.dbo.itemssheet' does not have a primar
     <Property Name="Snapchat" Type="nvarchar" MaxLength="100" />
     <Property Name="LastUpdatedBy" Type="nvarchar" MaxLength="50" />
     <Property Name="LastUpdatedDate" Type="datetime" />
-    <Property Name="StatusID" Type="int" />
-    <Property Name="LocationID" Type="int" Nullable="false" />
-    <Property Name="CreatedOn" Type="datetime" />
-    <Property Name="CreatedBy" Type="nvarchar" MaxLength="100" />
-    <Property Name="IsActive" Type="bit" Nullable="false" />
     <Property Name="IsCompanyTagline" Type="bit" />
+    <Property Name="StatusID" Type="int" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="LocationID" Type="int" Nullable="false" />
     <Property Name="IsA4Spacing" Type="bit" />
   </EntityType>
   <EntityType Name="ReportLogs">
@@ -1215,9 +1190,9 @@ warning 6013: The table/view 'Garage_Live.dbo.itemssheet' does not have a primar
     <Property Name="TimeZoneID" Type="int" />
     <Property Name="LastUpdatedBy" Type="nvarchar" MaxLength="50" />
     <Property Name="LastUpdatedDate" Type="datetime" />
-    <Property Name="StatusID" Type="int" Nullable="false" />
-    <Property Name="LocationID" Type="int" Nullable="false" />
-    <Property Name="CompanyCode" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="StatusID" Type="int" />
+    <Property Name="LocationID" Type="int" />
+    <Property Name="CompanyCode" Type="varchar" MaxLength="10" />
     <Property Name="States" Type="nvarchar" MaxLength="250" />
     <Property Name="Zipcode" Type="nvarchar" MaxLength="10" />
     <Property Name="DateFrom" Type="datetime" />
@@ -1310,6 +1285,7 @@ warning 6013: The table/view 'Garage_Live.dbo.itemssheet' does not have a primar
     <Property Name="account_id" Type="nvarchar" MaxLength="50" />
     <Property Name="account_name" Type="nvarchar" MaxLength="150" />
     <Property Name="account_type" Type="nvarchar" MaxLength="50" />
+    <Property Name="AccountTypeZoho" Type="nvarchar" MaxLength="50" />
     <Property Name="is_active" Type="nvarchar" MaxLength="50" />
     <Property Name="UserID" Type="int" Nullable="false" />
     <Property Name="LastUpdatedBy" Type="nvarchar" MaxLength="50" />
@@ -2065,6 +2041,18 @@ warning 6013: The table/view 'Garage_Live.dbo.itemssheet' does not have a primar
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_Locations_Locations">
+    <End Role="Locations" Type="Self.Locations" Multiplicity="1" />
+    <End Role="Locations1" Type="Self.Locations" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Locations">
+        <PropertyRef Name="LocationID" />
+      </Principal>
+      <Dependent Role="Locations1">
+        <PropertyRef Name="LocationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Locations_Status">
     <End Role="Status" Type="Self.Status" Multiplicity="0..1" />
     <End Role="Locations" Type="Self.Locations" Multiplicity="*" />
@@ -2690,7 +2678,7 @@ warning 6013: The table/view 'Garage_Live.dbo.itemssheet' does not have a primar
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_SubUsers_Locations">
-    <End Role="Locations" Type="Self.Locations" Multiplicity="1" />
+    <End Role="Locations" Type="Self.Locations" Multiplicity="0..1" />
     <End Role="SubUsers" Type="Self.SubUsers" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Locations">
@@ -2714,7 +2702,7 @@ warning 6013: The table/view 'Garage_Live.dbo.itemssheet' does not have a primar
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_SubUsers_Status">
-    <End Role="Status" Type="Self.Status" Multiplicity="1" />
+    <End Role="Status" Type="Self.Status" Multiplicity="0..1" />
     <End Role="SubUsers" Type="Self.SubUsers" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Status">
@@ -2845,8 +2833,8 @@ warning 6013: The table/view 'Garage_Live.dbo.itemssheet' does not have a primar
     <Parameter Name="UserID" Type="int" Mode="In" />
     <Parameter Name="CarID" Type="int" Mode="In" />
     <Parameter Name="Status" Type="nvarchar" Mode="In" />
+    <Parameter Name="LocationID" Type="int" Mode="In" />
   </Function>
-  <Function Name="sp_Getimport" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="sp_GetNotifications" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="LocationID" Type="int" Mode="In" />
     <Parameter Name="RecordCount" Type="int" Mode="In" />
@@ -3355,6 +3343,10 @@ warning 6013: The table/view 'Garage_Live.dbo.itemssheet' does not have a primar
     <AssociationSet Name="FK_Locations_Licenses" Association="Self.FK_Locations_Licenses">
       <End Role="Licenses" EntitySet="Licenses" />
       <End Role="Locations" EntitySet="Locations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Locations_Locations" Association="Self.FK_Locations_Locations">
+      <End Role="Locations" EntitySet="Locations" />
+      <End Role="Locations1" EntitySet="Locations" />
     </AssociationSet>
     <AssociationSet Name="FK_Locations_Status" Association="Self.FK_Locations_Status">
       <End Role="Status" EntitySet="Status" />

@@ -22,6 +22,7 @@ namespace DAL.DBEntities
             this.OrderCheckouts2 = new HashSet<OrderCheckout>();
             this.Orders = new HashSet<Order>();
             this.SessionInfoes = new HashSet<SessionInfo>();
+            this.Locations = new HashSet<Location>();
         }
     
         public int SubUserID { get; set; }
@@ -45,8 +46,8 @@ namespace DAL.DBEntities
         public Nullable<int> TimeZoneID { get; set; }
         public string LastUpdatedBy { get; set; }
         public Nullable<System.DateTime> LastUpdatedDate { get; set; }
-        public int StatusID { get; set; }
-        public int LocationID { get; set; }
+        public Nullable<int> StatusID { get; set; }
+        public Nullable<int> LocationID { get; set; }
         public string CompanyCode { get; set; }
         public string States { get; set; }
         public string Zipcode { get; set; }
@@ -68,5 +69,7 @@ namespace DAL.DBEntities
         public virtual ICollection<SessionInfo> SessionInfoes { get; set; }
         public virtual Status Status { get; set; }
         public virtual User User { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Location> Locations { get; set; }
     }
 }

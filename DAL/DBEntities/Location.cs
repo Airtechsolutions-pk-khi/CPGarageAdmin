@@ -26,6 +26,9 @@ namespace DAL.DBEntities
             this.inv_Reconciliation = new HashSet<inv_Reconciliation>();
             this.inv_StockRequest = new HashSet<inv_StockRequest>();
             this.Inventories = new HashSet<Inventory>();
+            this.LocationAmenitiesJuncs = new HashSet<LocationAmenitiesJunc>();
+            this.LocationImages = new HashSet<LocationImage>();
+            this.LocationServiceJuncs = new HashSet<LocationServiceJunc>();
             this.Modifiers = new HashSet<Modifier>();
             this.OrderCheckouts = new HashSet<OrderCheckout>();
             this.Orders = new HashSet<Order>();
@@ -36,6 +39,7 @@ namespace DAL.DBEntities
             this.SessionInfoes = new HashSet<SessionInfo>();
             this.Stores = new HashSet<Store>();
             this.SubUsers = new HashSet<SubUser>();
+            this.SubUsers1 = new HashSet<SubUser>();
         }
     
         public int LocationID { get; set; }
@@ -64,6 +68,12 @@ namespace DAL.DBEntities
         public Nullable<System.DateTime> LastUpdatedDate { get; set; }
         public Nullable<int> StatusID { get; set; }
         public string CompanyCode { get; set; }
+        public Nullable<int> LandmarkID { get; set; }
+        public string Gmaplink { get; set; }
+        public string ImageURL { get; set; }
+        public Nullable<bool> IsFeatured { get; set; }
+        public string ArabicName { get; set; }
+        public string Currency { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Bay> Bays { get; set; }
@@ -85,9 +95,17 @@ namespace DAL.DBEntities
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Inventory> Inventories { get; set; }
         public virtual License License { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<LocationAmenitiesJunc> LocationAmenitiesJuncs { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<LocationImage> LocationImages { get; set; }
+        public virtual Location Locations1 { get; set; }
+        public virtual Location Location1 { get; set; }
         public virtual Status Status { get; set; }
         public virtual TimeZone TimeZone { get; set; }
         public virtual User User { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<LocationServiceJunc> LocationServiceJuncs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Modifier> Modifiers { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -108,5 +126,7 @@ namespace DAL.DBEntities
         public virtual ICollection<Store> Stores { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SubUser> SubUsers { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SubUser> SubUsers1 { get; set; }
     }
 }

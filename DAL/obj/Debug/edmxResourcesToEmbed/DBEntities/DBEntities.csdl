@@ -17,8 +17,8 @@
     <Property Name="LastUpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="CreatedOn" Type="DateTime" Precision="3" />
     <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="Location" Relationship="Self.FK_Bay_Locations" FromRole="Bay" ToRole="Locations" />
     <NavigationProperty Name="Orders" Relationship="Self.FK_Orders_Bay" FromRole="Bay" ToRole="Orders" />
+    <NavigationProperty Name="Location" Relationship="Garage_LiveModel.FK_Bay_Locations" FromRole="Bay" ToRole="Location" />
   </EntityType>
   <EntityType Name="CarInspection">
     <Key>
@@ -26,16 +26,16 @@
     </Key>
     <Property Name="CarInspectionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="RowID" Type="Int32" Nullable="false" />
-    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="AlternateName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="AlternateName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
     <Property Name="Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="StatusID" Type="Int32" />
     <Property Name="UserID" Type="Int32" Nullable="false" />
     <Property Name="LastUpdatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="LastUpdatedDate" Type="DateTime" Precision="3" />
-    <NavigationProperty Name="User" Relationship="Self.FK_CarInspection_Users" FromRole="CarInspection" ToRole="Users" />
     <NavigationProperty Name="CarInspectionDetails" Relationship="Self.FK_CarInspectionDetails_CarInspection" FromRole="CarInspection" ToRole="CarInspectionDetails" />
+    <NavigationProperty Name="User" Relationship="Garage_LiveModel.FK_CarInspection_Users" FromRole="CarInspection" ToRole="User" />
   </EntityType>
   <EntityType Name="CarInspectionDetail">
     <Key>
@@ -73,9 +73,9 @@
     <Property Name="LocaitonID" Type="Int32" Nullable="false" />
     <Property Name="LastUpdatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="LastUpdatedDate" Type="DateTime" Precision="3" />
-    <NavigationProperty Name="Location" Relationship="Self.FK_CarNotes_Locations" FromRole="CarNotes" ToRole="Locations" />
     <NavigationProperty Name="Order" Relationship="Self.FK_CarNotes_Orders" FromRole="CarNotes" ToRole="Orders" />
     <NavigationProperty Name="CarNotesImages" Relationship="Self.FK_CarNotesImages_CarNotes" FromRole="CarNotes" ToRole="CarNotesImages" />
+    <NavigationProperty Name="Location" Relationship="Garage_LiveModel.FK_CarNotes_Locations" FromRole="CarNote" ToRole="Location" />
   </EntityType>
   <EntityType Name="CarNotesImage">
     <Key>
@@ -122,8 +122,8 @@
     <NavigationProperty Name="Customer" Relationship="Self.FK_Cars_Customers" FromRole="Cars" ToRole="Customers" />
     <NavigationProperty Name="Make" Relationship="Self.FK_Cars_Make" FromRole="Cars" ToRole="Make" />
     <NavigationProperty Name="Model" Relationship="Self.FK_Cars_Model" FromRole="Cars" ToRole="Model" />
-    <NavigationProperty Name="User" Relationship="Self.FK_Cars_Users" FromRole="Cars" ToRole="Users" />
     <NavigationProperty Name="Orders" Relationship="Self.FK_Orders_Cars" FromRole="Cars" ToRole="Orders" />
+    <NavigationProperty Name="User" Relationship="Garage_LiveModel.FK_Cars_Users" FromRole="Car" ToRole="User" />
   </EntityType>
   <EntityType Name="Category">
     <Key>
@@ -141,10 +141,10 @@
     <Property Name="LastUpdatedDate" Type="DateTime" Precision="3" />
     <Property Name="StatusID" Type="Int32" />
     <Property Name="LocationID" Type="Int32" />
-    <NavigationProperty Name="Location" Relationship="Self.FK_Category_Locations" FromRole="Category" ToRole="Locations" />
     <NavigationProperty Name="Status" Relationship="Self.FK_Category_Status" FromRole="Category" ToRole="Status" />
     <NavigationProperty Name="DiscountItems" Relationship="Self.FK_DiscountItems_Category" FromRole="Category" ToRole="DiscountItems" />
     <NavigationProperty Name="SubCategories" Relationship="Self.FK_SubCategory_Category" FromRole="Category" ToRole="SubCategory" />
+    <NavigationProperty Name="Location" Relationship="Garage_LiveModel.FK_Category_Locations" FromRole="Category" ToRole="Location" />
   </EntityType>
   <EntityType Name="City">
     <Key>
@@ -191,7 +191,7 @@
     <Property Name="UserID" Type="Int32" Nullable="false" />
     <Property Name="LastUpdatedDate" Type="DateTime" Precision="3" />
     <Property Name="LastUpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="User" Relationship="Self.FK_CompanyClients_Users" FromRole="CompanyClients" ToRole="Users" />
+    <NavigationProperty Name="User" Relationship="Garage_LiveModel.FK_CompanyClients_Users" FromRole="CompanyClient" ToRole="User" />
   </EntityType>
   <EntityType Name="CompanyInvoice">
     <Key>
@@ -219,8 +219,9 @@
     <Property Name="LastUpdatedDate" Type="DateTime" Precision="3" />
     <Property Name="LastUpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Notes" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="User" Relationship="Self.FK_CompanyInvoice_Users" FromRole="CompanyInvoice" ToRole="Users" />
     <NavigationProperty Name="CompanyInvoiceDetails" Relationship="Self.FK_CompanyInvoiceDetail_CompanyInvoice" FromRole="CompanyInvoice" ToRole="CompanyInvoiceDetail" />
+    <Property Name="Terms" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="User" Relationship="Garage_LiveModel.FK_CompanyInvoice_Users" FromRole="CompanyInvoice" ToRole="User" />
   </EntityType>
   <EntityType Name="CompanyInvoiceDetail">
     <Key>
@@ -267,8 +268,9 @@
     <Property Name="LastUpdatedDate" Type="DateTime" Precision="3" />
     <Property Name="LastUpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Notes" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="User" Relationship="Self.FK_CompanyQuotation_Users" FromRole="CompanyQuotation" ToRole="Users" />
     <NavigationProperty Name="CompanyQuotationDetails" Relationship="Self.FK_CompanyQuotationDetail_CompanyQuotation" FromRole="CompanyQuotation" ToRole="CompanyQuotationDetail" />
+    <Property Name="Terms" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="User" Relationship="Garage_LiveModel.FK_CompanyQuotation_Users" FromRole="CompanyQuotation" ToRole="User" />
   </EntityType>
   <EntityType Name="CompanyQuotationDetail">
     <Key>
@@ -311,9 +313,9 @@
     <Property Name="PhonePrefix" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
     <Property Name="Currency" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="Curr_Code" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="Locations" Relationship="Self.FK_Locations_Country" FromRole="Country" ToRole="Locations" />
-    <NavigationProperty Name="SubUsers" Relationship="Self.FK_SubUsers_Country" FromRole="Country" ToRole="SubUsers" />
-    <NavigationProperty Name="Users" Relationship="Self.FK_Users_Country" FromRole="Country" ToRole="Users" />
+    <NavigationProperty Name="Locations" Relationship="Garage_LiveModel.FK_Locations_Country" FromRole="Country" ToRole="Location" />
+    <NavigationProperty Name="SubUsers" Relationship="Garage_LiveModel.FK_SubUsers_Country" FromRole="Country" ToRole="SubUser" />
+    <NavigationProperty Name="Users" Relationship="Garage_LiveModel.FK_Users_Country" FromRole="Country" ToRole="User" />
   </EntityType>
   <EntityType Name="CreditCustomer">
     <Key>
@@ -328,8 +330,8 @@
     <Property Name="UserID" Type="Int32" />
     <Property Name="LastUpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="LastUpdatedDate" Type="DateTime" Precision="3" />
-    <NavigationProperty Name="User" Relationship="Self.FK_CreditCustomer_Users" FromRole="CreditCustomer" ToRole="Users" />
     <NavigationProperty Name="OrderCheckouts" Relationship="Self.FK_OrderCheckout_CreditCustomer" FromRole="CreditCustomer" ToRole="OrderCheckout" />
+    <NavigationProperty Name="User" Relationship="Garage_LiveModel.FK_CreditCustomer_Users" FromRole="CreditCustomer" ToRole="User" />
   </EntityType>
   <EntityType Name="Customer">
     <Key>
@@ -344,7 +346,7 @@
     <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="DOB" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Name="Sex" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="Mobile" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Mobile" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="CardNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="LastUpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="LastUpdatedDate" Type="DateTime" Precision="3" />
@@ -382,8 +384,8 @@
     <Property Name="IsCouponCode" Type="Boolean" />
     <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="NoOfRedemption" Type="Int32" />
-    <NavigationProperty Name="Location" Relationship="Self.FK_Discount_Locations" FromRole="Discount" ToRole="Locations" />
     <NavigationProperty Name="DiscountItems" Relationship="Self.FK_DiscountItems_Discount" FromRole="Discount" ToRole="DiscountItems" />
+    <NavigationProperty Name="Location" Relationship="Garage_LiveModel.FK_Discount_Locations" FromRole="Discount" ToRole="Location" />
   </EntityType>
   <EntityType Name="DiscountItem">
     <Key>
@@ -412,7 +414,7 @@
     <Property Name="Token" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="StatusID" Type="Int32" />
     <Property Name="UserID" Type="Int32" />
-    <NavigationProperty Name="User" Relationship="Self.FK_Integration_Users" FromRole="Integration" ToRole="Users" />
+    <NavigationProperty Name="User" Relationship="Garage_LiveModel.FK_Integration_Users" FromRole="Integration" ToRole="User" />
   </EntityType>
   <EntityType Name="IntegrationActivation">
     <Key>
@@ -424,7 +426,7 @@
     <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
     <Property Name="IsActivateAdmin" Type="Boolean" />
     <Property Name="IsActivateUser" Type="Boolean" />
-    <NavigationProperty Name="User" Relationship="Self.FK_IntegrationActivation_Users" FromRole="IntegrationActivation" ToRole="Users" />
+    <NavigationProperty Name="User" Relationship="Garage_LiveModel.FK_IntegrationActivation_Users" FromRole="IntegrationActivation" ToRole="User" />
   </EntityType>
   <EntityType Name="inv_Bill">
     <Key>
@@ -450,11 +452,11 @@
     <Property Name="LocationID" Type="Int32" Nullable="false" />
     <Property Name="StoreID" Type="Int32" />
     <Property Name="SupplierID" Type="Int32" />
-    <NavigationProperty Name="Location" Relationship="Self.FK_Bill_Locations" FromRole="inv_Bill" ToRole="Locations" />
     <NavigationProperty Name="inv_PurchaseOrder" Relationship="Self.FK_Bill_PurchaseOrder" FromRole="inv_Bill" ToRole="inv_PurchaseOrder" />
     <NavigationProperty Name="inv_BillDetail" Relationship="Self.FK_BillDetail_Bill" FromRole="inv_Bill" ToRole="inv_BillDetail" />
     <NavigationProperty Name="Store" Relationship="Self.FK_inv_Bill_Stores" FromRole="inv_Bill" ToRole="Stores" />
     <NavigationProperty Name="Supplier" Relationship="Self.FK_inv_Bill_Supplier" FromRole="inv_Bill" ToRole="Supplier" />
+    <NavigationProperty Name="Location" Relationship="Garage_LiveModel.FK_Bill_Locations" FromRole="inv_Bill" ToRole="Location" />
   </EntityType>
   <EntityType Name="inv_BillDetail">
     <Key>
@@ -498,9 +500,9 @@
     <Property Name="StatusID" Type="Int32" />
     <Property Name="LocationID" Type="Int32" Nullable="false" />
     <NavigationProperty Name="inv_Bill" Relationship="Self.FK_Bill_PurchaseOrder" FromRole="inv_PurchaseOrder" ToRole="inv_Bill" />
-    <NavigationProperty Name="Location" Relationship="Self.FK_PurchaseOrder_Locations" FromRole="inv_PurchaseOrder" ToRole="Locations" />
     <NavigationProperty Name="Supplier" Relationship="Self.FK_PurchaseOrder_Supplier" FromRole="inv_PurchaseOrder" ToRole="Supplier" />
     <NavigationProperty Name="inv_PurchaseOrderDetail" Relationship="Self.FK_PurchaseOrderDetail_PurchaseOrder" FromRole="inv_PurchaseOrder" ToRole="inv_PurchaseOrderDetail" />
+    <NavigationProperty Name="Location" Relationship="Garage_LiveModel.FK_PurchaseOrder_Locations" FromRole="inv_PurchaseOrder" ToRole="Location" />
   </EntityType>
   <EntityType Name="inv_PurchaseOrderDetail">
     <Key>
@@ -538,8 +540,8 @@
     <Property Name="StoreID" Type="Int32" />
     <Property Name="UserID" Type="Int32" />
     <NavigationProperty Name="Store" Relationship="Self.FK_inv_Reconciliation_Stores" FromRole="inv_Reconciliation" ToRole="Stores" />
-    <NavigationProperty Name="Location" Relationship="Self.FK_Reconciliation_Locations" FromRole="inv_Reconciliation" ToRole="Locations" />
     <NavigationProperty Name="inv_ReconciliationDetail" Relationship="Self.FK_ReconciliationDetail_Reconciliation" FromRole="inv_Reconciliation" ToRole="inv_ReconciliationDetail" />
+    <NavigationProperty Name="Location" Relationship="Garage_LiveModel.FK_Reconciliation_Locations" FromRole="inv_Reconciliation" ToRole="Location" />
   </EntityType>
   <EntityType Name="inv_ReconciliationDetail">
     <Key>
@@ -578,8 +580,8 @@
     <Property Name="StoreID" Type="Int32" Nullable="false" />
     <Property Name="UserID" Type="Int32" Nullable="false" />
     <NavigationProperty Name="Store" Relationship="Self.FK_inv_Stock_Stores" FromRole="inv_Stock" ToRole="Stores" />
-    <NavigationProperty Name="User" Relationship="Self.FK_inv_Stock_Users" FromRole="inv_Stock" ToRole="Users" />
     <NavigationProperty Name="Item" Relationship="Self.FK_Stock_Items" FromRole="inv_Stock" ToRole="Items" />
+    <NavigationProperty Name="User" Relationship="Garage_LiveModel.FK_inv_Stock_Users" FromRole="inv_Stock" ToRole="User" />
   </EntityType>
   <EntityType Name="inv_StockIssue">
     <Key>
@@ -601,8 +603,8 @@
     <NavigationProperty Name="inv_StockRequest" Relationship="Self.FK_inv_StockIssue_inv_StockRequest" FromRole="inv_StockIssue" ToRole="inv_StockRequest" />
     <NavigationProperty Name="Store" Relationship="Self.FK_inv_StockIssue_Stores" FromRole="inv_StockIssue" ToRole="Stores" />
     <NavigationProperty Name="Store1" Relationship="Self.FK_inv_StockIssue_Stores1" FromRole="inv_StockIssue" ToRole="Stores" />
-    <NavigationProperty Name="User" Relationship="Self.FK_inv_StockIssue_Users" FromRole="inv_StockIssue" ToRole="Users" />
     <NavigationProperty Name="inv_StockIssueDetail" Relationship="Self.FK_inv_StockIssueDetail_inv_StockIssue" FromRole="inv_StockIssue" ToRole="inv_StockIssueDetail" />
+    <NavigationProperty Name="User" Relationship="Garage_LiveModel.FK_inv_StockIssue_Users" FromRole="inv_StockIssue" ToRole="User" />
   </EntityType>
   <EntityType Name="inv_StockIssueDetail">
     <Key>
@@ -640,10 +642,10 @@
     <Property Name="CreatedOn" Type="DateTime" Precision="3" />
     <Property Name="CreatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="inv_StockIssue" Relationship="Self.FK_inv_StockIssue_inv_StockRequest" FromRole="inv_StockRequest" ToRole="inv_StockIssue" />
-    <NavigationProperty Name="Location" Relationship="Self.FK_inv_StockRequest_Locations" FromRole="inv_StockRequest" ToRole="Locations" />
     <NavigationProperty Name="Store" Relationship="Self.FK_inv_StockRequest_Stores" FromRole="inv_StockRequest" ToRole="Stores" />
     <NavigationProperty Name="Store1" Relationship="Self.FK_inv_StockRequest_Stores1" FromRole="inv_StockRequest" ToRole="Stores" />
     <NavigationProperty Name="inv_StockRequestDetail" Relationship="Self.FK_inv_StockRequestDetail_inv_StockRequest" FromRole="inv_StockRequest" ToRole="inv_StockRequestDetail" />
+    <NavigationProperty Name="Location" Relationship="Garage_LiveModel.FK_inv_StockRequest_Locations" FromRole="inv_StockRequest" ToRole="Location" />
   </EntityType>
   <EntityType Name="inv_StockRequestDetail">
     <Key>
@@ -680,7 +682,7 @@
     <Property Name="UserID" Type="Int32" />
     <NavigationProperty Name="Inventory" Relationship="Self.FK_inv_StockStore_Inventory" FromRole="inv_StockStore" ToRole="Inventory" />
     <NavigationProperty Name="Store" Relationship="Self.FK_inv_StockStore_Stores" FromRole="inv_StockStore" ToRole="Stores" />
-    <NavigationProperty Name="User" Relationship="Self.FK_inv_StockStore_Users" FromRole="inv_StockStore" ToRole="Users" />
+    <NavigationProperty Name="User" Relationship="Garage_LiveModel.FK_inv_StockStore_Users" FromRole="inv_StockStore" ToRole="User" />
   </EntityType>
   <EntityType Name="Inventory">
     <Key>
@@ -699,9 +701,9 @@
     <Property Name="LocationID" Type="Int32" Nullable="false" />
     <NavigationProperty Name="inv_StockStore" Relationship="Self.FK_inv_StockStore_Inventory" FromRole="Inventory" ToRole="inv_StockStore" />
     <NavigationProperty Name="Item" Relationship="Self.FK_Inventory_Items" FromRole="Inventory" ToRole="Items" />
-    <NavigationProperty Name="Location" Relationship="Self.FK_Inventory_Locations" FromRole="Inventory" ToRole="Locations" />
     <NavigationProperty Name="Supplier" Relationship="Self.FK_Inventory_Supplier" FromRole="Inventory" ToRole="Supplier" />
     <NavigationProperty Name="Unit" Relationship="Self.FK_Inventory_Units" FromRole="Inventory" ToRole="Units" />
+    <NavigationProperty Name="Location" Relationship="Garage_LiveModel.FK_Inventory_Locations" FromRole="Inventory" ToRole="Location" />
   </EntityType>
   <EntityType Name="Item">
     <Key>
@@ -762,63 +764,8 @@
     <Property Name="LastUpdatedDate" Type="DateTime" Precision="3" />
     <Property Name="StatusID" Type="Int32" />
     <NavigationProperty Name="Status" Relationship="Self.FK_Licenses_Status" FromRole="Licenses" ToRole="Status" />
-    <NavigationProperty Name="User" Relationship="Self.FK_Licenses_Users" FromRole="Licenses" ToRole="Users" />
-    <NavigationProperty Name="Locations" Relationship="Self.FK_Locations_Licenses" FromRole="Licenses" ToRole="Locations" />
-  </EntityType>
-  <EntityType Name="Location">
-    <Key>
-      <PropertyRef Name="LocationID" />
-    </Key>
-    <Property Name="LocationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="RowID" Type="Int32" Nullable="false" />
-    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="Descripiton" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="Address" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-    <Property Name="ContactNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Email" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-    <Property Name="TimeZoneID" Type="Int32" />
-    <Property Name="DateFrom" Type="DateTime" Precision="3" />
-    <Property Name="DateTo" Type="DateTime" Precision="3" />
-    <Property Name="CountryID" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
-    <Property Name="CityID" Type="Int32" />
-    <Property Name="Open_Time" Type="Time" Precision="7" />
-    <Property Name="Close_Time" Type="Time" Precision="7" />
-    <Property Name="UserID" Type="Int32" Nullable="false" />
-    <Property Name="LicenseID" Type="Int32" />
-    <Property Name="DeliveryServices" Type="Boolean" />
-    <Property Name="DeliveryCharges" Type="Double" />
-    <Property Name="DeliveryTime" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-    <Property Name="MinOrderAmount" Type="Double" />
-    <Property Name="Longitude" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-    <Property Name="Latitude" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-    <Property Name="LastUpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="LastUpdatedDate" Type="DateTime" Precision="3" />
-    <Property Name="StatusID" Type="Int32" />
-    <Property Name="CompanyCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-    <NavigationProperty Name="Bays" Relationship="Self.FK_Bay_Locations" FromRole="Locations" ToRole="Bay" />
-    <NavigationProperty Name="CarNotes" Relationship="Self.FK_CarNotes_Locations" FromRole="Locations" ToRole="CarNotes" />
-    <NavigationProperty Name="Categories" Relationship="Self.FK_Category_Locations" FromRole="Locations" ToRole="Category" />
-    <NavigationProperty Name="Country" Relationship="Self.FK_Locations_Country" FromRole="Locations" ToRole="Country" />
-    <NavigationProperty Name="Discounts" Relationship="Self.FK_Discount_Locations" FromRole="Locations" ToRole="Discount" />
-    <NavigationProperty Name="inv_Bill" Relationship="Self.FK_Bill_Locations" FromRole="Locations" ToRole="inv_Bill" />
-    <NavigationProperty Name="inv_PurchaseOrder" Relationship="Self.FK_PurchaseOrder_Locations" FromRole="Locations" ToRole="inv_PurchaseOrder" />
-    <NavigationProperty Name="inv_Reconciliation" Relationship="Self.FK_Reconciliation_Locations" FromRole="Locations" ToRole="inv_Reconciliation" />
-    <NavigationProperty Name="inv_StockRequest" Relationship="Self.FK_inv_StockRequest_Locations" FromRole="Locations" ToRole="inv_StockRequest" />
-    <NavigationProperty Name="Inventories" Relationship="Self.FK_Inventory_Locations" FromRole="Locations" ToRole="Inventory" />
-    <NavigationProperty Name="License" Relationship="Self.FK_Locations_Licenses" FromRole="Locations" ToRole="Licenses" />
-    <NavigationProperty Name="Status" Relationship="Self.FK_Locations_Status" FromRole="Locations" ToRole="Status" />
-    <NavigationProperty Name="TimeZone" Relationship="Self.FK_Locations_TimeZone" FromRole="Locations" ToRole="TimeZone" />
-    <NavigationProperty Name="User" Relationship="Self.FK_Locations_Users" FromRole="Locations" ToRole="Users" />
-    <NavigationProperty Name="Modifiers" Relationship="Self.FK_Modifiers_Locations" FromRole="Locations" ToRole="Modifiers" />
-    <NavigationProperty Name="OrderCheckouts" Relationship="Self.FK_OrderCheckout_Locations" FromRole="Locations" ToRole="OrderCheckout" />
-    <NavigationProperty Name="Orders" Relationship="Self.FK_Orders_Locations" FromRole="Locations" ToRole="Orders" />
-    <NavigationProperty Name="Packages" Relationship="Self.FK_Packages_Locations" FromRole="Locations" ToRole="Packages" />
-    <NavigationProperty Name="Receipts" Relationship="Self.FK_Receipt_Locations" FromRole="Locations" ToRole="Receipt" />
-    <NavigationProperty Name="SalesItems" Relationship="Self.FK_SalesItems_Locations" FromRole="Locations" ToRole="SalesItems" />
-    <NavigationProperty Name="SalesSettings" Relationship="Self.FK_SalesSetting_Locations" FromRole="Locations" ToRole="SalesSetting" />
-    <NavigationProperty Name="SessionInfoes" Relationship="Self.FK_SessionInfo_Locations" FromRole="Locations" ToRole="SessionInfo" />
-    <NavigationProperty Name="Stores" Relationship="Self.FK_Stores_Locations" FromRole="Locations" ToRole="Stores" />
-    <NavigationProperty Name="SubUsers" Relationship="Self.FK_SubUsers_Locations" FromRole="Locations" ToRole="SubUsers" />
+    <NavigationProperty Name="Locations" Relationship="Garage_LiveModel.FK_Locations_Licenses" FromRole="License" ToRole="Location" />
+    <NavigationProperty Name="User" Relationship="Garage_LiveModel.FK_Licenses_Users" FromRole="License" ToRole="User" />
   </EntityType>
   <EntityType Name="Make">
     <Key>
@@ -880,9 +827,9 @@
     <Property Name="LastUpdatedDate" Type="DateTime" Precision="3" />
     <Property Name="StatusID" Type="Int32" />
     <Property Name="LocationID" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="Location" Relationship="Self.FK_Modifiers_Locations" FromRole="Modifiers" ToRole="Locations" />
     <NavigationProperty Name="Unit" Relationship="Self.FK_Modifiers_Units" FromRole="Modifiers" ToRole="Units" />
     <NavigationProperty Name="OrderDetail_FM" Relationship="Self.FK_OrderDetail_FM_Modifiers" FromRole="Modifiers" ToRole="OrderDetail_FM" />
+    <NavigationProperty Name="Location" Relationship="Garage_LiveModel.FK_Modifiers_Locations" FromRole="Modifier" ToRole="Location" />
   </EntityType>
   <EntityType Name="OrderCheckout">
     <Key>
@@ -923,12 +870,13 @@
     <Property Name="IsPartialPaid" Type="Boolean" />
     <Property Name="DiscountCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="CreditCustomer" Relationship="Self.FK_OrderCheckout_CreditCustomer" FromRole="OrderCheckout" ToRole="CreditCustomer" />
-    <NavigationProperty Name="Location" Relationship="Self.FK_OrderCheckout_Locations" FromRole="OrderCheckout" ToRole="Locations" />
     <NavigationProperty Name="Order" Relationship="Self.FK_OrderCheckout_Orders" FromRole="OrderCheckout" ToRole="Orders" />
-    <NavigationProperty Name="SubUser" Relationship="Self.FK_OrderCheckout_SubUsers" FromRole="OrderCheckout" ToRole="SubUsers" />
-    <NavigationProperty Name="SubUser1" Relationship="Self.FK_OrderCheckout_SubUsers1" FromRole="OrderCheckout" ToRole="SubUsers" />
-    <NavigationProperty Name="SubUser2" Relationship="Self.FK_OrderCheckout_SubUsers2" FromRole="OrderCheckout" ToRole="SubUsers" />
     <NavigationProperty Name="OrderCheckoutDetails" Relationship="Self.FK_OrderCheckoutDetails_OrderCheckout" FromRole="OrderCheckout" ToRole="OrderCheckoutDetails" />
+    <Property Name="AppSourceID" Type="Int32" />
+    <NavigationProperty Name="Location" Relationship="Garage_LiveModel.FK_OrderCheckout_Locations" FromRole="OrderCheckout" ToRole="Location" />
+    <NavigationProperty Name="SubUser" Relationship="Garage_LiveModel.FK_OrderCheckout_SubUsers" FromRole="OrderCheckout" ToRole="SubUser" />
+    <NavigationProperty Name="SubUser1" Relationship="Garage_LiveModel.FK_OrderCheckout_SubUsers1" FromRole="OrderCheckout" ToRole="SubUser" />
+    <NavigationProperty Name="SubUser2" Relationship="Garage_LiveModel.FK_OrderCheckout_SubUsers2" FromRole="OrderCheckout" ToRole="SubUser" />
   </EntityType>
   <EntityType Name="OrderCheckoutDetail">
     <Key>
@@ -1062,13 +1010,13 @@
     <NavigationProperty Name="Bay" Relationship="Self.FK_Orders_Bay" FromRole="Orders" ToRole="Bay" />
     <NavigationProperty Name="CarNotes" Relationship="Self.FK_CarNotes_Orders" FromRole="Orders" ToRole="CarNotes" />
     <NavigationProperty Name="Car" Relationship="Self.FK_Orders_Cars" FromRole="Orders" ToRole="Cars" />
-    <NavigationProperty Name="Location" Relationship="Self.FK_Orders_Locations" FromRole="Orders" ToRole="Locations" />
     <NavigationProperty Name="OrderCheckouts" Relationship="Self.FK_OrderCheckout_Orders" FromRole="Orders" ToRole="OrderCheckout" />
     <NavigationProperty Name="OrderDetails" Relationship="Self.FK_OrderDetail_Orders" FromRole="Orders" ToRole="OrderDetail" />
     <NavigationProperty Name="OrderInspectionMappings" Relationship="Self.FK_OrderInspectionMapping_Orders" FromRole="Orders" ToRole="OrderInspectionMapping" />
-    <NavigationProperty Name="SubUser" Relationship="Self.FK_Orders_SubUsers" FromRole="Orders" ToRole="SubUsers" />
     <NavigationProperty Name="OrdersChecklists" Relationship="Self.FK_OrdersChecklist_Orders" FromRole="Orders" ToRole="OrdersChecklist" />
     <NavigationProperty Name="PaymentDetails" Relationship="Self.FK_PaymentDetail_Orders" FromRole="Orders" ToRole="PaymentDetail" />
+    <NavigationProperty Name="Location" Relationship="Garage_LiveModel.FK_Orders_Locations" FromRole="Order" ToRole="Location" />
+    <NavigationProperty Name="SubUser" Relationship="Garage_LiveModel.FK_Orders_SubUsers" FromRole="Order" ToRole="SubUser" />
   </EntityType>
   <EntityType Name="OrdersChecklist">
     <Key>
@@ -1123,11 +1071,11 @@
     <Property Name="LastUpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="LastUpdatedDate" Type="DateTime" Precision="3" />
     <Property Name="LocationID" Type="Int32" />
-    <NavigationProperty Name="Location" Relationship="Self.FK_Packages_Locations" FromRole="Packages" ToRole="Locations" />
     <NavigationProperty Name="OrderDetails" Relationship="Self.FK_OrderDetail_Packages" FromRole="Packages" ToRole="OrderDetail" />
     <NavigationProperty Name="PackageDetails" Relationship="Self.FK_PackageDetails_Packages" FromRole="Packages" ToRole="PackageDetails" />
     <NavigationProperty Name="SubCategory" Relationship="Self.FK_Packages_SubCategory" FromRole="Packages" ToRole="SubCategory" />
-    <NavigationProperty Name="User" Relationship="Self.FK_Packages_Users" FromRole="Packages" ToRole="Users" />
+    <NavigationProperty Name="Location" Relationship="Garage_LiveModel.FK_Packages_Locations" FromRole="Package" ToRole="Location" />
+    <NavigationProperty Name="User" Relationship="Garage_LiveModel.FK_Packages_Users" FromRole="Package" ToRole="User" />
   </EntityType>
   <EntityType Name="PaymentDetail">
     <Key>
@@ -1169,7 +1117,7 @@
     <Property Name="CompanyWebsite" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
     <Property Name="Promotiontagline" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
     <Property Name="Companytagline" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-    <Property Name="CompanyLogoURL" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="CompanyLogoURL" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="ReceiptContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="Footer" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="Facebook" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
@@ -1185,7 +1133,7 @@
     <Property Name="IsActive" Type="Boolean" Nullable="false" />
     <Property Name="IsCompanyTagline" Type="Boolean" />
     <Property Name="IsA4Spacing" Type="Boolean" />
-    <NavigationProperty Name="Location" Relationship="Self.FK_Receipt_Locations" FromRole="Receipt" ToRole="Locations" />
+    <NavigationProperty Name="Location" Relationship="Garage_LiveModel.FK_Receipt_Locations" FromRole="Receipt" ToRole="Location" />
   </EntityType>
   <EntityType Name="ReportLog">
     <Key>
@@ -1237,9 +1185,9 @@
     <Property Name="LastUpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="StatusID" Type="Int32" />
     <Property Name="UserID" Type="Int32" />
-    <NavigationProperty Name="User" Relationship="Self.FK_Role_Group_Users" FromRole="Role_Group" ToRole="Users" />
     <NavigationProperty Name="Role_GroupForms" Relationship="Self.FK_Role_GroupForms_Role_Group" FromRole="Role_Group" ToRole="Role_GroupForms" />
-    <NavigationProperty Name="SubUsers" Relationship="Self.FK_SubUsers_Role_Group" FromRole="Role_Group" ToRole="SubUsers" />
+    <NavigationProperty Name="SubUsers" Relationship="Garage_LiveModel.FK_SubUsers_Role_Group" FromRole="Role_Group" ToRole="SubUser" />
+    <NavigationProperty Name="User" Relationship="Garage_LiveModel.FK_Role_Group_Users" FromRole="Role_Group" ToRole="User" />
   </EntityType>
   <EntityType Name="Role_GroupForms">
     <Key>
@@ -1265,7 +1213,7 @@
     <Property Name="LocationID" Type="Int32" />
     <Property Name="UserID" Type="Int32" />
     <Property Name="LastUpdatedDate" Type="DateTime" Precision="3" />
-    <NavigationProperty Name="Location" Relationship="Self.FK_SalesItems_Locations" FromRole="SalesItems" ToRole="Locations" />
+    <NavigationProperty Name="Location" Relationship="Garage_LiveModel.FK_SalesItems_Locations" FromRole="SalesItem" ToRole="Location" />
   </EntityType>
   <EntityType Name="SalesSetting">
     <Key>
@@ -1280,7 +1228,7 @@
     <Property Name="LocationID" Type="Int32" />
     <Property Name="LastUpdatedDate" Type="DateTime" Precision="3" />
     <Property Name="UserID" Type="Int32" />
-    <NavigationProperty Name="Location" Relationship="Self.FK_SalesSetting_Locations" FromRole="SalesSetting" ToRole="Locations" />
+    <NavigationProperty Name="Location" Relationship="Garage_LiveModel.FK_SalesSetting_Locations" FromRole="SalesSetting" ToRole="Location" />
   </EntityType>
   <EntityType Name="SessionInfo">
     <Key>
@@ -1300,8 +1248,8 @@
     <Property Name="CreatedOn" Type="DateTime" Precision="3" />
     <Property Name="CreatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="LocationID" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="Location" Relationship="Self.FK_SessionInfo_Locations" FromRole="SessionInfo" ToRole="Locations" />
-    <NavigationProperty Name="SubUser" Relationship="Self.FK_SessionInfo_SubUsers" FromRole="SessionInfo" ToRole="SubUsers" />
+    <NavigationProperty Name="Location" Relationship="Garage_LiveModel.FK_SessionInfo_Locations" FromRole="SessionInfo" ToRole="Location" />
+    <NavigationProperty Name="SubUser" Relationship="Garage_LiveModel.FK_SessionInfo_SubUsers" FromRole="SessionInfo" ToRole="SubUser" />
   </EntityType>
   <EntityType Name="Status">
     <Key>
@@ -1315,10 +1263,10 @@
     <NavigationProperty Name="Categories" Relationship="Self.FK_Category_Status" FromRole="Status" ToRole="Category" />
     <NavigationProperty Name="Items" Relationship="Self.FK_Items_Status" FromRole="Status" ToRole="Items" />
     <NavigationProperty Name="Licenses" Relationship="Self.FK_Licenses_Status" FromRole="Status" ToRole="Licenses" />
-    <NavigationProperty Name="Locations" Relationship="Self.FK_Locations_Status" FromRole="Status" ToRole="Locations" />
     <NavigationProperty Name="SubCategories" Relationship="Self.FK_SubCategory_Status" FromRole="Status" ToRole="SubCategory" />
-    <NavigationProperty Name="SubUsers" Relationship="Self.FK_SubUsers_Status" FromRole="Status" ToRole="SubUsers" />
-    <NavigationProperty Name="Users" Relationship="Self.FK_Users_Status" FromRole="Status" ToRole="Users" />
+    <NavigationProperty Name="Locations" Relationship="Garage_LiveModel.FK_Locations_Status" FromRole="Status" ToRole="Location" />
+    <NavigationProperty Name="SubUsers" Relationship="Garage_LiveModel.FK_SubUsers_Status" FromRole="Status" ToRole="SubUser" />
+    <NavigationProperty Name="Users" Relationship="Garage_LiveModel.FK_Users_Status" FromRole="Status" ToRole="User" />
   </EntityType>
   <EntityType Name="Store">
     <Key>
@@ -1342,7 +1290,7 @@
     <NavigationProperty Name="inv_StockRequest" Relationship="Self.FK_inv_StockRequest_Stores" FromRole="Stores" ToRole="inv_StockRequest" />
     <NavigationProperty Name="inv_StockRequest1" Relationship="Self.FK_inv_StockRequest_Stores1" FromRole="Stores" ToRole="inv_StockRequest" />
     <NavigationProperty Name="inv_StockStore" Relationship="Self.FK_inv_StockStore_Stores" FromRole="Stores" ToRole="inv_StockStore" />
-    <NavigationProperty Name="Location" Relationship="Self.FK_Stores_Locations" FromRole="Stores" ToRole="Locations" />
+    <NavigationProperty Name="Location" Relationship="Garage_LiveModel.FK_Stores_Locations" FromRole="Store" ToRole="Location" />
   </EntityType>
   <EntityType Name="SubCategory">
     <Key>
@@ -1367,49 +1315,6 @@
     <NavigationProperty Name="Packages" Relationship="Self.FK_Packages_SubCategory" FromRole="SubCategory" ToRole="Packages" />
     <NavigationProperty Name="Status" Relationship="Self.FK_SubCategory_Status" FromRole="SubCategory" ToRole="Status" />
   </EntityType>
-  <EntityType Name="SubUser">
-    <Key>
-      <PropertyRef Name="SubUserID" />
-    </Key>
-    <Property Name="SubUserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="RowID" Type="Int32" Nullable="false" />
-    <Property Name="UserID" Type="Int32" Nullable="false" />
-    <Property Name="UserType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Designation" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-    <Property Name="ImagePath" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-    <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="Email" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-    <Property Name="ContactNo" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
-    <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-    <Property Name="CityID" Type="Int32" />
-    <Property Name="CountryID" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
-    <Property Name="Subscribe" Type="Boolean" />
-    <Property Name="GroupID" Type="Int32" />
-    <Property Name="Passcode" Type="Int32" />
-    <Property Name="TimeZoneID" Type="Int32" />
-    <Property Name="LastUpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="LastUpdatedDate" Type="DateTime" Precision="3" />
-    <Property Name="StatusID" Type="Int32" Nullable="false" />
-    <Property Name="LocationID" Type="Int32" Nullable="false" />
-    <Property Name="CompanyCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="States" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-    <Property Name="Zipcode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-    <Property Name="DateFrom" Type="DateTime" Precision="3" />
-    <Property Name="DateTo" Type="DateTime" Precision="3" />
-    <NavigationProperty Name="Country" Relationship="Self.FK_SubUsers_Country" FromRole="SubUsers" ToRole="Country" />
-    <NavigationProperty Name="Location" Relationship="Self.FK_SubUsers_Locations" FromRole="SubUsers" ToRole="Locations" />
-    <NavigationProperty Name="OrderCheckouts" Relationship="Self.FK_OrderCheckout_SubUsers" FromRole="SubUsers" ToRole="OrderCheckout" />
-    <NavigationProperty Name="OrderCheckouts1" Relationship="Self.FK_OrderCheckout_SubUsers1" FromRole="SubUsers" ToRole="OrderCheckout" />
-    <NavigationProperty Name="OrderCheckouts2" Relationship="Self.FK_OrderCheckout_SubUsers2" FromRole="SubUsers" ToRole="OrderCheckout" />
-    <NavigationProperty Name="Orders" Relationship="Self.FK_Orders_SubUsers" FromRole="SubUsers" ToRole="Orders" />
-    <NavigationProperty Name="Role_Group" Relationship="Self.FK_SubUsers_Role_Group" FromRole="SubUsers" ToRole="Role_Group" />
-    <NavigationProperty Name="SessionInfoes" Relationship="Self.FK_SessionInfo_SubUsers" FromRole="SubUsers" ToRole="SessionInfo" />
-    <NavigationProperty Name="Status" Relationship="Self.FK_SubUsers_Status" FromRole="SubUsers" ToRole="Status" />
-    <NavigationProperty Name="User" Relationship="Self.FK_SubUsers_Users" FromRole="SubUsers" ToRole="Users" />
-  </EntityType>
   <EntityType Name="Supplier">
     <Key>
       <PropertyRef Name="SupplierID" />
@@ -1433,7 +1338,7 @@
     <NavigationProperty Name="inv_Bill" Relationship="Self.FK_inv_Bill_Supplier" FromRole="Supplier" ToRole="inv_Bill" />
     <NavigationProperty Name="inv_PurchaseOrder" Relationship="Self.FK_PurchaseOrder_Supplier" FromRole="Supplier" ToRole="inv_PurchaseOrder" />
     <NavigationProperty Name="Inventories" Relationship="Self.FK_Inventory_Supplier" FromRole="Supplier" ToRole="Inventory" />
-    <NavigationProperty Name="User" Relationship="Self.FK_Supplier_Users" FromRole="Supplier" ToRole="Users" />
+    <NavigationProperty Name="User" Relationship="Garage_LiveModel.FK_Supplier_Users" FromRole="Supplier" ToRole="User" />
   </EntityType>
   <EntityType Name="TimeZone">
     <Key>
@@ -1444,8 +1349,8 @@
     <Property Name="BaseUtc" Type="Int32" />
     <Property Name="DisplayName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
     <Property Name="StatusID" Type="Int32" />
-    <NavigationProperty Name="Locations" Relationship="Self.FK_Locations_TimeZone" FromRole="TimeZone" ToRole="Locations" />
-    <NavigationProperty Name="Users" Relationship="Self.FK_Users_TimeZone" FromRole="TimeZone" ToRole="Users" />
+    <NavigationProperty Name="Locations" Relationship="Garage_LiveModel.FK_Locations_TimeZone" FromRole="TimeZone" ToRole="Location" />
+    <NavigationProperty Name="Users" Relationship="Garage_LiveModel.FK_Users_TimeZone" FromRole="TimeZone" ToRole="User" />
   </EntityType>
   <EntityType Name="Unit">
     <Key>
@@ -1465,62 +1370,6 @@
     <NavigationProperty Name="Items" Relationship="Self.FK_Items_Units" FromRole="Units" ToRole="Items" />
     <NavigationProperty Name="Modifiers" Relationship="Self.FK_Modifiers_Units" FromRole="Units" ToRole="Modifiers" />
   </EntityType>
-  <EntityType Name="User">
-    <Key>
-      <PropertyRef Name="UserID" />
-    </Key>
-    <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="RowID" Type="Int32" Nullable="false" />
-    <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="ImagePath" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-    <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="Company" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-    <Property Name="BusinessType" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-    <Property Name="Email" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-    <Property Name="ContactNo" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
-    <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-    <Property Name="CityID" Type="Int32" />
-    <Property Name="CountryID" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
-    <Property Name="Website" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-    <Property Name="Subscribe" Type="Boolean" />
-    <Property Name="RoleID" Type="Int32" />
-    <Property Name="TimeZoneID" Type="Int32" />
-    <Property Name="LastUpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="LastUpdatedDate" Type="DateTime" Precision="3" />
-    <Property Name="StatusID" Type="Int32" />
-    <Property Name="CompanyCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
-    <Property Name="States" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-    <Property Name="Zipcode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-    <Property Name="VATNO" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-    <Property Name="Tax" Type="Double" />
-    <Property Name="IsSMSCheckoutAddOn" Type="Boolean" />
-    <Property Name="AllowNegativeInventory" Type="Boolean" />
-    <NavigationProperty Name="CarInspections" Relationship="Self.FK_CarInspection_Users" FromRole="Users" ToRole="CarInspection" />
-    <NavigationProperty Name="Cars" Relationship="Self.FK_Cars_Users" FromRole="Users" ToRole="Cars" />
-    <NavigationProperty Name="CompanyClients" Relationship="Self.FK_CompanyClients_Users" FromRole="Users" ToRole="CompanyClients" />
-    <NavigationProperty Name="CompanyInvoices" Relationship="Self.FK_CompanyInvoice_Users" FromRole="Users" ToRole="CompanyInvoice" />
-    <NavigationProperty Name="CompanyQuotations" Relationship="Self.FK_CompanyQuotation_Users" FromRole="Users" ToRole="CompanyQuotation" />
-    <NavigationProperty Name="Country" Relationship="Self.FK_Users_Country" FromRole="Users" ToRole="Country" />
-    <NavigationProperty Name="CreditCustomers" Relationship="Self.FK_CreditCustomer_Users" FromRole="Users" ToRole="CreditCustomer" />
-    <NavigationProperty Name="Integrations" Relationship="Self.FK_Integration_Users" FromRole="Users" ToRole="Integration" />
-    <NavigationProperty Name="IntegrationActivations" Relationship="Self.FK_IntegrationActivation_Users" FromRole="Users" ToRole="IntegrationActivation" />
-    <NavigationProperty Name="inv_Stock" Relationship="Self.FK_inv_Stock_Users" FromRole="Users" ToRole="inv_Stock" />
-    <NavigationProperty Name="inv_StockIssue" Relationship="Self.FK_inv_StockIssue_Users" FromRole="Users" ToRole="inv_StockIssue" />
-    <NavigationProperty Name="inv_StockStore" Relationship="Self.FK_inv_StockStore_Users" FromRole="Users" ToRole="inv_StockStore" />
-    <NavigationProperty Name="Licenses" Relationship="Self.FK_Licenses_Users" FromRole="Users" ToRole="Licenses" />
-    <NavigationProperty Name="Locations" Relationship="Self.FK_Locations_Users" FromRole="Users" ToRole="Locations" />
-    <NavigationProperty Name="Packages" Relationship="Self.FK_Packages_Users" FromRole="Users" ToRole="Packages" />
-    <NavigationProperty Name="Role_Group" Relationship="Self.FK_Role_Group_Users" FromRole="Users" ToRole="Role_Group" />
-    <NavigationProperty Name="Status" Relationship="Self.FK_Users_Status" FromRole="Users" ToRole="Status" />
-    <NavigationProperty Name="SubUsers" Relationship="Self.FK_SubUsers_Users" FromRole="Users" ToRole="SubUsers" />
-    <NavigationProperty Name="Suppliers" Relationship="Self.FK_Supplier_Users" FromRole="Users" ToRole="Supplier" />
-    <NavigationProperty Name="TimeZone" Relationship="Self.FK_Users_TimeZone" FromRole="Users" ToRole="TimeZone" />
-    <NavigationProperty Name="ZohoChartOfAccounts" Relationship="Self.FK_ZohoChartOfAccounts_Users" FromRole="Users" ToRole="ZohoChartOfAccounts" />
-    <NavigationProperty Name="ZohoSettings" Relationship="Self.FK_ZohoSettings_Users" FromRole="Users" ToRole="ZohoSettings" />
-  </EntityType>
   <EntityType Name="ZohoChartOfAccount">
     <Key>
       <PropertyRef Name="ChartOfAccountsID" />
@@ -1533,7 +1382,8 @@
     <Property Name="UserID" Type="Int32" Nullable="false" />
     <Property Name="LastUpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="LastUpdatedDate" Type="DateTime" Precision="3" />
-    <NavigationProperty Name="User" Relationship="Self.FK_ZohoChartOfAccounts_Users" FromRole="ZohoChartOfAccounts" ToRole="Users" />
+    <Property Name="AccountTypeZoho" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="User" Relationship="Garage_LiveModel.FK_ZohoChartOfAccounts_Users" FromRole="ZohoChartOfAccount" ToRole="User" />
   </EntityType>
   <EntityType Name="ZohoCOAMapping">
     <Key>
@@ -1564,20 +1414,8 @@
     <Property Name="LastUpdatedDate" Type="DateTime" Precision="3" />
     <Property Name="LastUpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="CreatedOn" Type="DateTime" Precision="3" />
-    <NavigationProperty Name="User" Relationship="Self.FK_ZohoSettings_Users" FromRole="ZohoSettings" ToRole="Users" />
+    <NavigationProperty Name="User" Relationship="Garage_LiveModel.FK_ZohoSettings_Users" FromRole="ZohoSetting" ToRole="User" />
   </EntityType>
-  <Association Name="FK_Bay_Locations">
-    <End Role="Locations" Type="Self.Location" Multiplicity="1" />
-    <End Role="Bay" Type="Self.Bay" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Locations">
-        <PropertyRef Name="LocationID" />
-      </Principal>
-      <Dependent Role="Bay">
-        <PropertyRef Name="LocationID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_Orders_Bay">
     <End Role="Bay" Type="Self.Bay" Multiplicity="0..1" />
     <End Role="Orders" Type="Self.Order" Multiplicity="*" />
@@ -1587,18 +1425,6 @@
       </Principal>
       <Dependent Role="Orders">
         <PropertyRef Name="BayID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_CarInspection_Users">
-    <End Role="Users" Type="Self.User" Multiplicity="1" />
-    <End Role="CarInspection" Type="Self.CarInspection" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Users">
-        <PropertyRef Name="UserID" />
-      </Principal>
-      <Dependent Role="CarInspection">
-        <PropertyRef Name="UserID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -1623,18 +1449,6 @@
       </Principal>
       <Dependent Role="OrderInspectionMapping">
         <PropertyRef Name="CarInspectionDetailID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_CarNotes_Locations">
-    <End Role="Locations" Type="Self.Location" Multiplicity="1" />
-    <End Role="CarNotes" Type="Self.CarNote" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Locations">
-        <PropertyRef Name="LocationID" />
-      </Principal>
-      <Dependent Role="CarNotes">
-        <PropertyRef Name="LocaitonID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -1698,18 +1512,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Cars_Users">
-    <End Role="Users" Type="Self.User" Multiplicity="1" />
-    <End Role="Cars" Type="Self.Car" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Users">
-        <PropertyRef Name="UserID" />
-      </Principal>
-      <Dependent Role="Cars">
-        <PropertyRef Name="UserID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_Orders_Cars">
     <End Role="Cars" Type="Self.Car" Multiplicity="0..1" />
     <End Role="Orders" Type="Self.Order" Multiplicity="*" />
@@ -1719,18 +1521,6 @@
       </Principal>
       <Dependent Role="Orders">
         <PropertyRef Name="CarID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Category_Locations">
-    <End Role="Locations" Type="Self.Location" Multiplicity="0..1" />
-    <End Role="Category" Type="Self.Category" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Locations">
-        <PropertyRef Name="LocationID" />
-      </Principal>
-      <Dependent Role="Category">
-        <PropertyRef Name="LocationID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -1770,30 +1560,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_CompanyClients_Users">
-    <End Role="Users" Type="Self.User" Multiplicity="1" />
-    <End Role="CompanyClients" Type="Self.CompanyClient" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Users">
-        <PropertyRef Name="UserID" />
-      </Principal>
-      <Dependent Role="CompanyClients">
-        <PropertyRef Name="UserID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_CompanyInvoice_Users">
-    <End Role="Users" Type="Self.User" Multiplicity="0..1" />
-    <End Role="CompanyInvoice" Type="Self.CompanyInvoice" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Users">
-        <PropertyRef Name="UserID" />
-      </Principal>
-      <Dependent Role="CompanyInvoice">
-        <PropertyRef Name="UserID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_CompanyInvoiceDetail_CompanyInvoice">
     <End Role="CompanyInvoice" Type="Self.CompanyInvoice" Multiplicity="0..1" />
     <End Role="CompanyInvoiceDetail" Type="Self.CompanyInvoiceDetail" Multiplicity="*" />
@@ -1803,18 +1569,6 @@
       </Principal>
       <Dependent Role="CompanyInvoiceDetail">
         <PropertyRef Name="CompanyInvoiceID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_CompanyQuotation_Users">
-    <End Role="Users" Type="Self.User" Multiplicity="0..1" />
-    <End Role="CompanyQuotation" Type="Self.CompanyQuotation" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Users">
-        <PropertyRef Name="UserID" />
-      </Principal>
-      <Dependent Role="CompanyQuotation">
-        <PropertyRef Name="UserID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -1830,54 +1584,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Locations_Country">
-    <End Role="Country" Type="Self.Country" Multiplicity="0..1" />
-    <End Role="Locations" Type="Self.Location" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Country">
-        <PropertyRef Name="Code" />
-      </Principal>
-      <Dependent Role="Locations">
-        <PropertyRef Name="CountryID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_SubUsers_Country">
-    <End Role="Country" Type="Self.Country" Multiplicity="0..1" />
-    <End Role="SubUsers" Type="Self.SubUser" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Country">
-        <PropertyRef Name="Code" />
-      </Principal>
-      <Dependent Role="SubUsers">
-        <PropertyRef Name="CountryID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Users_Country">
-    <End Role="Country" Type="Self.Country" Multiplicity="0..1" />
-    <End Role="Users" Type="Self.User" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Country">
-        <PropertyRef Name="Code" />
-      </Principal>
-      <Dependent Role="Users">
-        <PropertyRef Name="CountryID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_CreditCustomer_Users">
-    <End Role="Users" Type="Self.User" Multiplicity="0..1" />
-    <End Role="CreditCustomer" Type="Self.CreditCustomer" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Users">
-        <PropertyRef Name="UserID" />
-      </Principal>
-      <Dependent Role="CreditCustomer">
-        <PropertyRef Name="UserID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_OrderCheckout_CreditCustomer">
     <End Role="CreditCustomer" Type="Self.CreditCustomer" Multiplicity="0..1" />
     <End Role="OrderCheckout" Type="Self.OrderCheckout" Multiplicity="*" />
@@ -1887,18 +1593,6 @@
       </Principal>
       <Dependent Role="OrderCheckout">
         <PropertyRef Name="CreditCustomerID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Discount_Locations">
-    <End Role="Locations" Type="Self.Location" Multiplicity="1" />
-    <End Role="Discount" Type="Self.Discount" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Locations">
-        <PropertyRef Name="LocationID" />
-      </Principal>
-      <Dependent Role="Discount">
-        <PropertyRef Name="LocationID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -1935,42 +1629,6 @@
       </Principal>
       <Dependent Role="DiscountItems">
         <PropertyRef Name="SubCategoryID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Integration_Users">
-    <End Role="Users" Type="Self.User" Multiplicity="0..1" />
-    <End Role="Integration" Type="Self.Integration" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Users">
-        <PropertyRef Name="UserID" />
-      </Principal>
-      <Dependent Role="Integration">
-        <PropertyRef Name="UserID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_IntegrationActivation_Users">
-    <End Role="Users" Type="Self.User" Multiplicity="0..1" />
-    <End Role="IntegrationActivation" Type="Self.IntegrationActivation" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Users">
-        <PropertyRef Name="UserID" />
-      </Principal>
-      <Dependent Role="IntegrationActivation">
-        <PropertyRef Name="UserID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Bill_Locations">
-    <End Role="Locations" Type="Self.Location" Multiplicity="1" />
-    <End Role="inv_Bill" Type="Self.inv_Bill" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Locations">
-        <PropertyRef Name="LocationID" />
-      </Principal>
-      <Dependent Role="inv_Bill">
-        <PropertyRef Name="LocationID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -2034,18 +1692,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_PurchaseOrder_Locations">
-    <End Role="Locations" Type="Self.Location" Multiplicity="1" />
-    <End Role="inv_PurchaseOrder" Type="Self.inv_PurchaseOrder" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Locations">
-        <PropertyRef Name="LocationID" />
-      </Principal>
-      <Dependent Role="inv_PurchaseOrder">
-        <PropertyRef Name="LocationID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_PurchaseOrder_Supplier">
     <End Role="Supplier" Type="Self.Supplier" Multiplicity="0..1" />
     <End Role="inv_PurchaseOrder" Type="Self.inv_PurchaseOrder" Multiplicity="*" />
@@ -2094,18 +1740,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Reconciliation_Locations">
-    <End Role="Locations" Type="Self.Location" Multiplicity="1" />
-    <End Role="inv_Reconciliation" Type="Self.inv_Reconciliation" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Locations">
-        <PropertyRef Name="LocationID" />
-      </Principal>
-      <Dependent Role="inv_Reconciliation">
-        <PropertyRef Name="LocationID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_ReconciliationDetail_Reconciliation">
     <End Role="inv_Reconciliation" Type="Self.inv_Reconciliation" Multiplicity="0..1" />
     <End Role="inv_ReconciliationDetail" Type="Self.inv_ReconciliationDetail" Multiplicity="*" />
@@ -2139,18 +1773,6 @@
       </Principal>
       <Dependent Role="inv_Stock">
         <PropertyRef Name="StoreID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_inv_Stock_Users">
-    <End Role="Users" Type="Self.User" Multiplicity="1" />
-    <End Role="inv_Stock" Type="Self.inv_Stock" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Users">
-        <PropertyRef Name="UserID" />
-      </Principal>
-      <Dependent Role="inv_Stock">
-        <PropertyRef Name="UserID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -2202,18 +1824,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_inv_StockIssue_Users">
-    <End Role="Users" Type="Self.User" Multiplicity="1" />
-    <End Role="inv_StockIssue" Type="Self.inv_StockIssue" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Users">
-        <PropertyRef Name="UserID" />
-      </Principal>
-      <Dependent Role="inv_StockIssue">
-        <PropertyRef Name="UserID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_inv_StockIssueDetail_inv_StockIssue">
     <End Role="inv_StockIssue" Type="Self.inv_StockIssue" Multiplicity="0..1" />
     <End Role="inv_StockIssueDetail" Type="Self.inv_StockIssueDetail" Multiplicity="*" />
@@ -2235,18 +1845,6 @@
       </Principal>
       <Dependent Role="inv_StockIssueDetail">
         <PropertyRef Name="ItemID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_inv_StockRequest_Locations">
-    <End Role="Locations" Type="Self.Location" Multiplicity="0..1" />
-    <End Role="inv_StockRequest" Type="Self.inv_StockRequest" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Locations">
-        <PropertyRef Name="LocationID" />
-      </Principal>
-      <Dependent Role="inv_StockRequest">
-        <PropertyRef Name="LocationID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -2334,18 +1932,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_inv_StockStore_Users">
-    <End Role="Users" Type="Self.User" Multiplicity="0..1" />
-    <End Role="inv_StockStore" Type="Self.inv_StockStore" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Users">
-        <PropertyRef Name="UserID" />
-      </Principal>
-      <Dependent Role="inv_StockStore">
-        <PropertyRef Name="UserID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_Inventory_Items">
     <End Role="Items" Type="Self.Item" Multiplicity="0..1" />
     <End Role="Inventory" Type="Self.Inventory" Multiplicity="*" />
@@ -2355,18 +1941,6 @@
       </Principal>
       <Dependent Role="Inventory">
         <PropertyRef Name="ItemID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Inventory_Locations">
-    <End Role="Locations" Type="Self.Location" Multiplicity="1" />
-    <End Role="Inventory" Type="Self.Inventory" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Locations">
-        <PropertyRef Name="LocationID" />
-      </Principal>
-      <Dependent Role="Inventory">
-        <PropertyRef Name="LocationID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -2478,186 +2052,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Licenses_Users">
-    <End Role="Users" Type="Self.User" Multiplicity="0..1" />
-    <End Role="Licenses" Type="Self.License" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Users">
-        <PropertyRef Name="UserID" />
-      </Principal>
-      <Dependent Role="Licenses">
-        <PropertyRef Name="UserID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Locations_Licenses">
-    <End Role="Licenses" Type="Self.License" Multiplicity="0..1" />
-    <End Role="Locations" Type="Self.Location" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Licenses">
-        <PropertyRef Name="LicenseID" />
-      </Principal>
-      <Dependent Role="Locations">
-        <PropertyRef Name="LicenseID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Locations_Status">
-    <End Role="Status" Type="Self.Status" Multiplicity="0..1" />
-    <End Role="Locations" Type="Self.Location" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Status">
-        <PropertyRef Name="RowID" />
-      </Principal>
-      <Dependent Role="Locations">
-        <PropertyRef Name="StatusID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Locations_TimeZone">
-    <End Role="TimeZone" Type="Self.TimeZone" Multiplicity="0..1" />
-    <End Role="Locations" Type="Self.Location" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="TimeZone">
-        <PropertyRef Name="TimeZoneID" />
-      </Principal>
-      <Dependent Role="Locations">
-        <PropertyRef Name="TimeZoneID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Locations_Users">
-    <End Role="Users" Type="Self.User" Multiplicity="1" />
-    <End Role="Locations" Type="Self.Location" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Users">
-        <PropertyRef Name="UserID" />
-      </Principal>
-      <Dependent Role="Locations">
-        <PropertyRef Name="UserID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Modifiers_Locations">
-    <End Role="Locations" Type="Self.Location" Multiplicity="1" />
-    <End Role="Modifiers" Type="Self.Modifier" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Locations">
-        <PropertyRef Name="LocationID" />
-      </Principal>
-      <Dependent Role="Modifiers">
-        <PropertyRef Name="LocationID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_OrderCheckout_Locations">
-    <End Role="Locations" Type="Self.Location" Multiplicity="1" />
-    <End Role="OrderCheckout" Type="Self.OrderCheckout" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Locations">
-        <PropertyRef Name="LocationID" />
-      </Principal>
-      <Dependent Role="OrderCheckout">
-        <PropertyRef Name="LocationID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Orders_Locations">
-    <End Role="Locations" Type="Self.Location" Multiplicity="1" />
-    <End Role="Orders" Type="Self.Order" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Locations">
-        <PropertyRef Name="LocationID" />
-      </Principal>
-      <Dependent Role="Orders">
-        <PropertyRef Name="LocationID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Packages_Locations">
-    <End Role="Locations" Type="Self.Location" Multiplicity="0..1" />
-    <End Role="Packages" Type="Self.Package" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Locations">
-        <PropertyRef Name="LocationID" />
-      </Principal>
-      <Dependent Role="Packages">
-        <PropertyRef Name="LocationID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Receipt_Locations">
-    <End Role="Locations" Type="Self.Location" Multiplicity="1" />
-    <End Role="Receipt" Type="Self.Receipt" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Locations">
-        <PropertyRef Name="LocationID" />
-      </Principal>
-      <Dependent Role="Receipt">
-        <PropertyRef Name="LocationID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_SalesItems_Locations">
-    <End Role="Locations" Type="Self.Location" Multiplicity="0..1" />
-    <End Role="SalesItems" Type="Self.SalesItem" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Locations">
-        <PropertyRef Name="LocationID" />
-      </Principal>
-      <Dependent Role="SalesItems">
-        <PropertyRef Name="LocationID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_SalesSetting_Locations">
-    <End Role="Locations" Type="Self.Location" Multiplicity="0..1" />
-    <End Role="SalesSetting" Type="Self.SalesSetting" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Locations">
-        <PropertyRef Name="LocationID" />
-      </Principal>
-      <Dependent Role="SalesSetting">
-        <PropertyRef Name="LocationID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_SessionInfo_Locations">
-    <End Role="Locations" Type="Self.Location" Multiplicity="1" />
-    <End Role="SessionInfo" Type="Self.SessionInfo" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Locations">
-        <PropertyRef Name="LocationID" />
-      </Principal>
-      <Dependent Role="SessionInfo">
-        <PropertyRef Name="LocationID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Stores_Locations">
-    <End Role="Locations" Type="Self.Location" Multiplicity="0..1" />
-    <End Role="Stores" Type="Self.Store" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Locations">
-        <PropertyRef Name="LocationID" />
-      </Principal>
-      <Dependent Role="Stores">
-        <PropertyRef Name="StoreLocationID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_SubUsers_Locations">
-    <End Role="Locations" Type="Self.Location" Multiplicity="1" />
-    <End Role="SubUsers" Type="Self.SubUser" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Locations">
-        <PropertyRef Name="LocationID" />
-      </Principal>
-      <Dependent Role="SubUsers">
-        <PropertyRef Name="LocationID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_Model_Make">
     <End Role="Make" Type="Self.Make" Multiplicity="1" />
     <End Role="Model" Type="Self.Model" Multiplicity="*" />
@@ -2703,42 +2097,6 @@
       </Principal>
       <Dependent Role="OrderCheckout">
         <PropertyRef Name="OrderID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_OrderCheckout_SubUsers">
-    <End Role="SubUsers" Type="Self.SubUser" Multiplicity="0..1" />
-    <End Role="OrderCheckout" Type="Self.OrderCheckout" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="SubUsers">
-        <PropertyRef Name="SubUserID" />
-      </Principal>
-      <Dependent Role="OrderCheckout">
-        <PropertyRef Name="WorkerID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_OrderCheckout_SubUsers1">
-    <End Role="SubUsers" Type="Self.SubUser" Multiplicity="0..1" />
-    <End Role="OrderCheckout" Type="Self.OrderCheckout" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="SubUsers">
-        <PropertyRef Name="SubUserID" />
-      </Principal>
-      <Dependent Role="OrderCheckout">
-        <PropertyRef Name="SubUserID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_OrderCheckout_SubUsers2">
-    <End Role="SubUsers" Type="Self.SubUser" Multiplicity="0..1" />
-    <End Role="OrderCheckout" Type="Self.OrderCheckout" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="SubUsers">
-        <PropertyRef Name="SubUserID" />
-      </Principal>
-      <Dependent Role="OrderCheckout">
-        <PropertyRef Name="AssistantID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -2802,18 +2160,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Orders_SubUsers">
-    <End Role="SubUsers" Type="Self.SubUser" Multiplicity="0..1" />
-    <End Role="Orders" Type="Self.Order" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="SubUsers">
-        <PropertyRef Name="SubUserID" />
-      </Principal>
-      <Dependent Role="Orders">
-        <PropertyRef Name="SubUserID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_OrdersChecklist_Orders">
     <End Role="Orders" Type="Self.Order" Multiplicity="1" />
     <End Role="OrdersChecklist" Type="Self.OrdersChecklist" Multiplicity="*" />
@@ -2862,18 +2208,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Packages_Users">
-    <End Role="Users" Type="Self.User" Multiplicity="0..1" />
-    <End Role="Packages" Type="Self.Package" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Users">
-        <PropertyRef Name="UserID" />
-      </Principal>
-      <Dependent Role="Packages">
-        <PropertyRef Name="UserID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_Role_GroupForms_Role_Forms">
     <End Role="Role_Forms" Type="Self.Role_Forms" Multiplicity="0..1" />
     <End Role="Role_GroupForms" Type="Self.Role_GroupForms" Multiplicity="*" />
@@ -2883,18 +2217,6 @@
       </Principal>
       <Dependent Role="Role_GroupForms">
         <PropertyRef Name="FormID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Role_Group_Users">
-    <End Role="Users" Type="Self.User" Multiplicity="0..1" />
-    <End Role="Role_Group" Type="Self.Role_Group" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Users">
-        <PropertyRef Name="UserID" />
-      </Principal>
-      <Dependent Role="Role_Group">
-        <PropertyRef Name="UserID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -2910,30 +2232,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_SubUsers_Role_Group">
-    <End Role="Role_Group" Type="Self.Role_Group" Multiplicity="0..1" />
-    <End Role="SubUsers" Type="Self.SubUser" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Role_Group">
-        <PropertyRef Name="GroupID" />
-      </Principal>
-      <Dependent Role="SubUsers">
-        <PropertyRef Name="GroupID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_SessionInfo_SubUsers">
-    <End Role="SubUsers" Type="Self.SubUser" Multiplicity="1" />
-    <End Role="SessionInfo" Type="Self.SessionInfo" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="SubUsers">
-        <PropertyRef Name="SubUserID" />
-      </Principal>
-      <Dependent Role="SessionInfo">
-        <PropertyRef Name="SubUserId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_SubCategory_Status">
     <End Role="Status" Type="Self.Status" Multiplicity="0..1" />
     <End Role="SubCategory" Type="Self.SubCategory" Multiplicity="*" />
@@ -2943,90 +2241,6 @@
       </Principal>
       <Dependent Role="SubCategory">
         <PropertyRef Name="StatusID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_SubUsers_Status">
-    <End Role="Status" Type="Self.Status" Multiplicity="1" />
-    <End Role="SubUsers" Type="Self.SubUser" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Status">
-        <PropertyRef Name="RowID" />
-      </Principal>
-      <Dependent Role="SubUsers">
-        <PropertyRef Name="StatusID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Users_Status">
-    <End Role="Status" Type="Self.Status" Multiplicity="0..1" />
-    <End Role="Users" Type="Self.User" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Status">
-        <PropertyRef Name="RowID" />
-      </Principal>
-      <Dependent Role="Users">
-        <PropertyRef Name="StatusID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_SubUsers_Users">
-    <End Role="Users" Type="Self.User" Multiplicity="1" />
-    <End Role="SubUsers" Type="Self.SubUser" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Users">
-        <PropertyRef Name="UserID" />
-      </Principal>
-      <Dependent Role="SubUsers">
-        <PropertyRef Name="UserID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Supplier_Users">
-    <End Role="Users" Type="Self.User" Multiplicity="0..1" />
-    <End Role="Supplier" Type="Self.Supplier" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Users">
-        <PropertyRef Name="UserID" />
-      </Principal>
-      <Dependent Role="Supplier">
-        <PropertyRef Name="UserID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Users_TimeZone">
-    <End Role="TimeZone" Type="Self.TimeZone" Multiplicity="0..1" />
-    <End Role="Users" Type="Self.User" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="TimeZone">
-        <PropertyRef Name="TimeZoneID" />
-      </Principal>
-      <Dependent Role="Users">
-        <PropertyRef Name="TimeZoneID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_ZohoChartOfAccounts_Users">
-    <End Role="Users" Type="Self.User" Multiplicity="1" />
-    <End Role="ZohoChartOfAccounts" Type="Self.ZohoChartOfAccount" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Users">
-        <PropertyRef Name="UserID" />
-      </Principal>
-      <Dependent Role="ZohoChartOfAccounts">
-        <PropertyRef Name="UserID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_ZohoSettings_Users">
-    <End Role="Users" Type="Self.User" Multiplicity="1" />
-    <End Role="ZohoSettings" Type="Self.ZohoSetting" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Users">
-        <PropertyRef Name="UserID" />
-      </Principal>
-      <Dependent Role="ZohoSettings">
-        <PropertyRef Name="UserID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -3067,7 +2281,6 @@
     <EntitySet Name="Inventories" EntityType="Self.Inventory" />
     <EntitySet Name="Items" EntityType="Self.Item" />
     <EntitySet Name="Licenses" EntityType="Self.License" />
-    <EntitySet Name="Locations" EntityType="Self.Location" />
     <EntitySet Name="Makes" EntityType="Self.Make" />
     <EntitySet Name="Models" EntityType="Self.Model" />
     <EntitySet Name="Modifiers" EntityType="Self.Modifier" />
@@ -3094,25 +2307,15 @@
     <EntitySet Name="Status" EntityType="Self.Status" />
     <EntitySet Name="Stores" EntityType="Self.Store" />
     <EntitySet Name="SubCategories" EntityType="Self.SubCategory" />
-    <EntitySet Name="SubUsers" EntityType="Self.SubUser" />
     <EntitySet Name="Suppliers" EntityType="Self.Supplier" />
     <EntitySet Name="TimeZones" EntityType="Self.TimeZone" />
     <EntitySet Name="Units" EntityType="Self.Unit" />
-    <EntitySet Name="Users" EntityType="Self.User" />
     <EntitySet Name="ZohoChartOfAccounts" EntityType="Self.ZohoChartOfAccount" />
     <EntitySet Name="ZohoCOAMappings" EntityType="Self.ZohoCOAMapping" />
     <EntitySet Name="ZohoSettings" EntityType="Self.ZohoSetting" />
-    <AssociationSet Name="FK_Bay_Locations" Association="Self.FK_Bay_Locations">
-      <End Role="Locations" EntitySet="Locations" />
-      <End Role="Bay" EntitySet="Bays" />
-    </AssociationSet>
     <AssociationSet Name="FK_Orders_Bay" Association="Self.FK_Orders_Bay">
       <End Role="Bay" EntitySet="Bays" />
       <End Role="Orders" EntitySet="Orders" />
-    </AssociationSet>
-    <AssociationSet Name="FK_CarInspection_Users" Association="Self.FK_CarInspection_Users">
-      <End Role="Users" EntitySet="Users" />
-      <End Role="CarInspection" EntitySet="CarInspections" />
     </AssociationSet>
     <AssociationSet Name="FK_CarInspectionDetails_CarInspection" Association="Self.FK_CarInspectionDetails_CarInspection">
       <End Role="CarInspection" EntitySet="CarInspections" />
@@ -3121,10 +2324,6 @@
     <AssociationSet Name="FK_OrderInspectionMapping_CarInspectionDetails" Association="Self.FK_OrderInspectionMapping_CarInspectionDetails">
       <End Role="CarInspectionDetails" EntitySet="CarInspectionDetails" />
       <End Role="OrderInspectionMapping" EntitySet="OrderInspectionMappings" />
-    </AssociationSet>
-    <AssociationSet Name="FK_CarNotes_Locations" Association="Self.FK_CarNotes_Locations">
-      <End Role="Locations" EntitySet="Locations" />
-      <End Role="CarNotes" EntitySet="CarNotes" />
     </AssociationSet>
     <AssociationSet Name="FK_CarNotes_Orders" Association="Self.FK_CarNotes_Orders">
       <End Role="Orders" EntitySet="Orders" />
@@ -3146,17 +2345,9 @@
       <End Role="Model" EntitySet="Models" />
       <End Role="Cars" EntitySet="Cars" />
     </AssociationSet>
-    <AssociationSet Name="FK_Cars_Users" Association="Self.FK_Cars_Users">
-      <End Role="Users" EntitySet="Users" />
-      <End Role="Cars" EntitySet="Cars" />
-    </AssociationSet>
     <AssociationSet Name="FK_Orders_Cars" Association="Self.FK_Orders_Cars">
       <End Role="Cars" EntitySet="Cars" />
       <End Role="Orders" EntitySet="Orders" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Category_Locations" Association="Self.FK_Category_Locations">
-      <End Role="Locations" EntitySet="Locations" />
-      <End Role="Category" EntitySet="Categories" />
     </AssociationSet>
     <AssociationSet Name="FK_Category_Status" Association="Self.FK_Category_Status">
       <End Role="Status" EntitySet="Status" />
@@ -3170,49 +2361,17 @@
       <End Role="Category" EntitySet="Categories" />
       <End Role="SubCategory" EntitySet="SubCategories" />
     </AssociationSet>
-    <AssociationSet Name="FK_CompanyClients_Users" Association="Self.FK_CompanyClients_Users">
-      <End Role="Users" EntitySet="Users" />
-      <End Role="CompanyClients" EntitySet="CompanyClients" />
-    </AssociationSet>
-    <AssociationSet Name="FK_CompanyInvoice_Users" Association="Self.FK_CompanyInvoice_Users">
-      <End Role="Users" EntitySet="Users" />
-      <End Role="CompanyInvoice" EntitySet="CompanyInvoices" />
-    </AssociationSet>
     <AssociationSet Name="FK_CompanyInvoiceDetail_CompanyInvoice" Association="Self.FK_CompanyInvoiceDetail_CompanyInvoice">
       <End Role="CompanyInvoice" EntitySet="CompanyInvoices" />
       <End Role="CompanyInvoiceDetail" EntitySet="CompanyInvoiceDetails" />
-    </AssociationSet>
-    <AssociationSet Name="FK_CompanyQuotation_Users" Association="Self.FK_CompanyQuotation_Users">
-      <End Role="Users" EntitySet="Users" />
-      <End Role="CompanyQuotation" EntitySet="CompanyQuotations" />
     </AssociationSet>
     <AssociationSet Name="FK_CompanyQuotationDetail_CompanyQuotation" Association="Self.FK_CompanyQuotationDetail_CompanyQuotation">
       <End Role="CompanyQuotation" EntitySet="CompanyQuotations" />
       <End Role="CompanyQuotationDetail" EntitySet="CompanyQuotationDetails" />
     </AssociationSet>
-    <AssociationSet Name="FK_Locations_Country" Association="Self.FK_Locations_Country">
-      <End Role="Country" EntitySet="Countries" />
-      <End Role="Locations" EntitySet="Locations" />
-    </AssociationSet>
-    <AssociationSet Name="FK_SubUsers_Country" Association="Self.FK_SubUsers_Country">
-      <End Role="Country" EntitySet="Countries" />
-      <End Role="SubUsers" EntitySet="SubUsers" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Users_Country" Association="Self.FK_Users_Country">
-      <End Role="Country" EntitySet="Countries" />
-      <End Role="Users" EntitySet="Users" />
-    </AssociationSet>
-    <AssociationSet Name="FK_CreditCustomer_Users" Association="Self.FK_CreditCustomer_Users">
-      <End Role="Users" EntitySet="Users" />
-      <End Role="CreditCustomer" EntitySet="CreditCustomers" />
-    </AssociationSet>
     <AssociationSet Name="FK_OrderCheckout_CreditCustomer" Association="Self.FK_OrderCheckout_CreditCustomer">
       <End Role="CreditCustomer" EntitySet="CreditCustomers" />
       <End Role="OrderCheckout" EntitySet="OrderCheckouts" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Discount_Locations" Association="Self.FK_Discount_Locations">
-      <End Role="Locations" EntitySet="Locations" />
-      <End Role="Discount" EntitySet="Discounts" />
     </AssociationSet>
     <AssociationSet Name="FK_DiscountItems_Discount" Association="Self.FK_DiscountItems_Discount">
       <End Role="Discount" EntitySet="Discounts" />
@@ -3225,18 +2384,6 @@
     <AssociationSet Name="FK_DiscountItems_SubCategory" Association="Self.FK_DiscountItems_SubCategory">
       <End Role="SubCategory" EntitySet="SubCategories" />
       <End Role="DiscountItems" EntitySet="DiscountItems" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Integration_Users" Association="Self.FK_Integration_Users">
-      <End Role="Users" EntitySet="Users" />
-      <End Role="Integration" EntitySet="Integrations" />
-    </AssociationSet>
-    <AssociationSet Name="FK_IntegrationActivation_Users" Association="Self.FK_IntegrationActivation_Users">
-      <End Role="Users" EntitySet="Users" />
-      <End Role="IntegrationActivation" EntitySet="IntegrationActivations" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Bill_Locations" Association="Self.FK_Bill_Locations">
-      <End Role="Locations" EntitySet="Locations" />
-      <End Role="inv_Bill" EntitySet="inv_Bill" />
     </AssociationSet>
     <AssociationSet Name="FK_Bill_PurchaseOrder" Association="Self.FK_Bill_PurchaseOrder">
       <End Role="inv_PurchaseOrder" EntitySet="inv_PurchaseOrder" />
@@ -3258,10 +2405,6 @@
       <End Role="Items" EntitySet="Items" />
       <End Role="inv_BillDetail" EntitySet="inv_BillDetail" />
     </AssociationSet>
-    <AssociationSet Name="FK_PurchaseOrder_Locations" Association="Self.FK_PurchaseOrder_Locations">
-      <End Role="Locations" EntitySet="Locations" />
-      <End Role="inv_PurchaseOrder" EntitySet="inv_PurchaseOrder" />
-    </AssociationSet>
     <AssociationSet Name="FK_PurchaseOrder_Supplier" Association="Self.FK_PurchaseOrder_Supplier">
       <End Role="Supplier" EntitySet="Suppliers" />
       <End Role="inv_PurchaseOrder" EntitySet="inv_PurchaseOrder" />
@@ -3278,10 +2421,6 @@
       <End Role="Stores" EntitySet="Stores" />
       <End Role="inv_Reconciliation" EntitySet="inv_Reconciliation" />
     </AssociationSet>
-    <AssociationSet Name="FK_Reconciliation_Locations" Association="Self.FK_Reconciliation_Locations">
-      <End Role="Locations" EntitySet="Locations" />
-      <End Role="inv_Reconciliation" EntitySet="inv_Reconciliation" />
-    </AssociationSet>
     <AssociationSet Name="FK_ReconciliationDetail_Reconciliation" Association="Self.FK_ReconciliationDetail_Reconciliation">
       <End Role="inv_Reconciliation" EntitySet="inv_Reconciliation" />
       <End Role="inv_ReconciliationDetail" EntitySet="inv_ReconciliationDetail" />
@@ -3292,10 +2431,6 @@
     </AssociationSet>
     <AssociationSet Name="FK_inv_Stock_Stores" Association="Self.FK_inv_Stock_Stores">
       <End Role="Stores" EntitySet="Stores" />
-      <End Role="inv_Stock" EntitySet="inv_Stock" />
-    </AssociationSet>
-    <AssociationSet Name="FK_inv_Stock_Users" Association="Self.FK_inv_Stock_Users">
-      <End Role="Users" EntitySet="Users" />
       <End Role="inv_Stock" EntitySet="inv_Stock" />
     </AssociationSet>
     <AssociationSet Name="FK_Stock_Items" Association="Self.FK_Stock_Items">
@@ -3314,10 +2449,6 @@
       <End Role="Stores" EntitySet="Stores" />
       <End Role="inv_StockIssue" EntitySet="inv_StockIssue" />
     </AssociationSet>
-    <AssociationSet Name="FK_inv_StockIssue_Users" Association="Self.FK_inv_StockIssue_Users">
-      <End Role="Users" EntitySet="Users" />
-      <End Role="inv_StockIssue" EntitySet="inv_StockIssue" />
-    </AssociationSet>
     <AssociationSet Name="FK_inv_StockIssueDetail_inv_StockIssue" Association="Self.FK_inv_StockIssueDetail_inv_StockIssue">
       <End Role="inv_StockIssue" EntitySet="inv_StockIssue" />
       <End Role="inv_StockIssueDetail" EntitySet="inv_StockIssueDetail" />
@@ -3325,10 +2456,6 @@
     <AssociationSet Name="FK_inv_StockIssueDetail_Items" Association="Self.FK_inv_StockIssueDetail_Items">
       <End Role="Items" EntitySet="Items" />
       <End Role="inv_StockIssueDetail" EntitySet="inv_StockIssueDetail" />
-    </AssociationSet>
-    <AssociationSet Name="FK_inv_StockRequest_Locations" Association="Self.FK_inv_StockRequest_Locations">
-      <End Role="Locations" EntitySet="Locations" />
-      <End Role="inv_StockRequest" EntitySet="inv_StockRequest" />
     </AssociationSet>
     <AssociationSet Name="FK_inv_StockRequest_Stores" Association="Self.FK_inv_StockRequest_Stores">
       <End Role="Stores" EntitySet="Stores" />
@@ -3358,16 +2485,8 @@
       <End Role="Stores" EntitySet="Stores" />
       <End Role="inv_StockStore" EntitySet="inv_StockStore" />
     </AssociationSet>
-    <AssociationSet Name="FK_inv_StockStore_Users" Association="Self.FK_inv_StockStore_Users">
-      <End Role="Users" EntitySet="Users" />
-      <End Role="inv_StockStore" EntitySet="inv_StockStore" />
-    </AssociationSet>
     <AssociationSet Name="FK_Inventory_Items" Association="Self.FK_Inventory_Items">
       <End Role="Items" EntitySet="Items" />
-      <End Role="Inventory" EntitySet="Inventories" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Inventory_Locations" Association="Self.FK_Inventory_Locations">
-      <End Role="Locations" EntitySet="Locations" />
       <End Role="Inventory" EntitySet="Inventories" />
     </AssociationSet>
     <AssociationSet Name="FK_Inventory_Supplier" Association="Self.FK_Inventory_Supplier">
@@ -3406,66 +2525,6 @@
       <End Role="Status" EntitySet="Status" />
       <End Role="Licenses" EntitySet="Licenses" />
     </AssociationSet>
-    <AssociationSet Name="FK_Licenses_Users" Association="Self.FK_Licenses_Users">
-      <End Role="Users" EntitySet="Users" />
-      <End Role="Licenses" EntitySet="Licenses" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Locations_Licenses" Association="Self.FK_Locations_Licenses">
-      <End Role="Licenses" EntitySet="Licenses" />
-      <End Role="Locations" EntitySet="Locations" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Locations_Status" Association="Self.FK_Locations_Status">
-      <End Role="Status" EntitySet="Status" />
-      <End Role="Locations" EntitySet="Locations" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Locations_TimeZone" Association="Self.FK_Locations_TimeZone">
-      <End Role="TimeZone" EntitySet="TimeZones" />
-      <End Role="Locations" EntitySet="Locations" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Locations_Users" Association="Self.FK_Locations_Users">
-      <End Role="Users" EntitySet="Users" />
-      <End Role="Locations" EntitySet="Locations" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Modifiers_Locations" Association="Self.FK_Modifiers_Locations">
-      <End Role="Locations" EntitySet="Locations" />
-      <End Role="Modifiers" EntitySet="Modifiers" />
-    </AssociationSet>
-    <AssociationSet Name="FK_OrderCheckout_Locations" Association="Self.FK_OrderCheckout_Locations">
-      <End Role="Locations" EntitySet="Locations" />
-      <End Role="OrderCheckout" EntitySet="OrderCheckouts" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Orders_Locations" Association="Self.FK_Orders_Locations">
-      <End Role="Locations" EntitySet="Locations" />
-      <End Role="Orders" EntitySet="Orders" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Packages_Locations" Association="Self.FK_Packages_Locations">
-      <End Role="Locations" EntitySet="Locations" />
-      <End Role="Packages" EntitySet="Packages" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Receipt_Locations" Association="Self.FK_Receipt_Locations">
-      <End Role="Locations" EntitySet="Locations" />
-      <End Role="Receipt" EntitySet="Receipts" />
-    </AssociationSet>
-    <AssociationSet Name="FK_SalesItems_Locations" Association="Self.FK_SalesItems_Locations">
-      <End Role="Locations" EntitySet="Locations" />
-      <End Role="SalesItems" EntitySet="SalesItems" />
-    </AssociationSet>
-    <AssociationSet Name="FK_SalesSetting_Locations" Association="Self.FK_SalesSetting_Locations">
-      <End Role="Locations" EntitySet="Locations" />
-      <End Role="SalesSetting" EntitySet="SalesSettings" />
-    </AssociationSet>
-    <AssociationSet Name="FK_SessionInfo_Locations" Association="Self.FK_SessionInfo_Locations">
-      <End Role="Locations" EntitySet="Locations" />
-      <End Role="SessionInfo" EntitySet="SessionInfoes" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Stores_Locations" Association="Self.FK_Stores_Locations">
-      <End Role="Locations" EntitySet="Locations" />
-      <End Role="Stores" EntitySet="Stores" />
-    </AssociationSet>
-    <AssociationSet Name="FK_SubUsers_Locations" Association="Self.FK_SubUsers_Locations">
-      <End Role="Locations" EntitySet="Locations" />
-      <End Role="SubUsers" EntitySet="SubUsers" />
-    </AssociationSet>
     <AssociationSet Name="FK_Model_Make" Association="Self.FK_Model_Make">
       <End Role="Make" EntitySet="Makes" />
       <End Role="Model" EntitySet="Models" />
@@ -3480,18 +2539,6 @@
     </AssociationSet>
     <AssociationSet Name="FK_OrderCheckout_Orders" Association="Self.FK_OrderCheckout_Orders">
       <End Role="Orders" EntitySet="Orders" />
-      <End Role="OrderCheckout" EntitySet="OrderCheckouts" />
-    </AssociationSet>
-    <AssociationSet Name="FK_OrderCheckout_SubUsers" Association="Self.FK_OrderCheckout_SubUsers">
-      <End Role="SubUsers" EntitySet="SubUsers" />
-      <End Role="OrderCheckout" EntitySet="OrderCheckouts" />
-    </AssociationSet>
-    <AssociationSet Name="FK_OrderCheckout_SubUsers1" Association="Self.FK_OrderCheckout_SubUsers1">
-      <End Role="SubUsers" EntitySet="SubUsers" />
-      <End Role="OrderCheckout" EntitySet="OrderCheckouts" />
-    </AssociationSet>
-    <AssociationSet Name="FK_OrderCheckout_SubUsers2" Association="Self.FK_OrderCheckout_SubUsers2">
-      <End Role="SubUsers" EntitySet="SubUsers" />
       <End Role="OrderCheckout" EntitySet="OrderCheckouts" />
     </AssociationSet>
     <AssociationSet Name="FK_OrderCheckoutDetails_OrderCheckout" Association="Self.FK_OrderCheckoutDetails_OrderCheckout">
@@ -3514,10 +2561,6 @@
       <End Role="Orders" EntitySet="Orders" />
       <End Role="OrderInspectionMapping" EntitySet="OrderInspectionMappings" />
     </AssociationSet>
-    <AssociationSet Name="FK_Orders_SubUsers" Association="Self.FK_Orders_SubUsers">
-      <End Role="SubUsers" EntitySet="SubUsers" />
-      <End Role="Orders" EntitySet="Orders" />
-    </AssociationSet>
     <AssociationSet Name="FK_OrdersChecklist_Orders" Association="Self.FK_OrdersChecklist_Orders">
       <End Role="Orders" EntitySet="Orders" />
       <End Role="OrdersChecklist" EntitySet="OrdersChecklists" />
@@ -3534,61 +2577,17 @@
       <End Role="SubCategory" EntitySet="SubCategories" />
       <End Role="Packages" EntitySet="Packages" />
     </AssociationSet>
-    <AssociationSet Name="FK_Packages_Users" Association="Self.FK_Packages_Users">
-      <End Role="Users" EntitySet="Users" />
-      <End Role="Packages" EntitySet="Packages" />
-    </AssociationSet>
     <AssociationSet Name="FK_Role_GroupForms_Role_Forms" Association="Self.FK_Role_GroupForms_Role_Forms">
       <End Role="Role_Forms" EntitySet="Role_Forms" />
       <End Role="Role_GroupForms" EntitySet="Role_GroupForms" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Role_Group_Users" Association="Self.FK_Role_Group_Users">
-      <End Role="Users" EntitySet="Users" />
-      <End Role="Role_Group" EntitySet="Role_Group" />
     </AssociationSet>
     <AssociationSet Name="FK_Role_GroupForms_Role_Group" Association="Self.FK_Role_GroupForms_Role_Group">
       <End Role="Role_Group" EntitySet="Role_Group" />
       <End Role="Role_GroupForms" EntitySet="Role_GroupForms" />
     </AssociationSet>
-    <AssociationSet Name="FK_SubUsers_Role_Group" Association="Self.FK_SubUsers_Role_Group">
-      <End Role="Role_Group" EntitySet="Role_Group" />
-      <End Role="SubUsers" EntitySet="SubUsers" />
-    </AssociationSet>
-    <AssociationSet Name="FK_SessionInfo_SubUsers" Association="Self.FK_SessionInfo_SubUsers">
-      <End Role="SubUsers" EntitySet="SubUsers" />
-      <End Role="SessionInfo" EntitySet="SessionInfoes" />
-    </AssociationSet>
     <AssociationSet Name="FK_SubCategory_Status" Association="Self.FK_SubCategory_Status">
       <End Role="Status" EntitySet="Status" />
       <End Role="SubCategory" EntitySet="SubCategories" />
-    </AssociationSet>
-    <AssociationSet Name="FK_SubUsers_Status" Association="Self.FK_SubUsers_Status">
-      <End Role="Status" EntitySet="Status" />
-      <End Role="SubUsers" EntitySet="SubUsers" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Users_Status" Association="Self.FK_Users_Status">
-      <End Role="Status" EntitySet="Status" />
-      <End Role="Users" EntitySet="Users" />
-    </AssociationSet>
-    <AssociationSet Name="FK_SubUsers_Users" Association="Self.FK_SubUsers_Users">
-      <End Role="Users" EntitySet="Users" />
-      <End Role="SubUsers" EntitySet="SubUsers" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Supplier_Users" Association="Self.FK_Supplier_Users">
-      <End Role="Users" EntitySet="Users" />
-      <End Role="Supplier" EntitySet="Suppliers" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Users_TimeZone" Association="Self.FK_Users_TimeZone">
-      <End Role="TimeZone" EntitySet="TimeZones" />
-      <End Role="Users" EntitySet="Users" />
-    </AssociationSet>
-    <AssociationSet Name="FK_ZohoChartOfAccounts_Users" Association="Self.FK_ZohoChartOfAccounts_Users">
-      <End Role="Users" EntitySet="Users" />
-      <End Role="ZohoChartOfAccounts" EntitySet="ZohoChartOfAccounts" />
-    </AssociationSet>
-    <AssociationSet Name="FK_ZohoSettings_Users" Association="Self.FK_ZohoSettings_Users">
-      <End Role="Users" EntitySet="Users" />
-      <End Role="ZohoSettings" EntitySet="ZohoSettings" />
     </AssociationSet>
     <FunctionImport Name="Split" IsComposable="true" ReturnType="Collection(Garage_LiveModel.Split_Result)">
       <Parameter Name="InputString" Mode="In" Type="String" />
@@ -3625,6 +2624,7 @@
       <Parameter Name="UserID" Mode="In" Type="Int32" />
       <Parameter Name="CarID" Mode="In" Type="Int32" />
       <Parameter Name="Status" Mode="In" Type="String" />
+      <Parameter Name="LocationID" Mode="In" Type="Int32" />
     </FunctionImport>
     <FunctionImport Name="sp_Getimport" />
     <FunctionImport Name="sp_GetNotifications" ReturnType="Collection(Garage_LiveModel.sp_GetNotifications_Result)">
@@ -3813,6 +2813,225 @@
       <Parameter Name="Open_Time" Mode="In" Type="DateTime" />
       <Parameter Name="Close_Time" Mode="In" Type="DateTime" />
     </FunctionImport>
+    <EntitySet Name="Locations" EntityType="Garage_LiveModel.Location" />
+    <AssociationSet Name="FK_Bay_Locations" Association="Garage_LiveModel.FK_Bay_Locations">
+      <End Role="Location" EntitySet="Locations" />
+      <End Role="Bay" EntitySet="Bays" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CarNotes_Locations" Association="Garage_LiveModel.FK_CarNotes_Locations">
+      <End Role="Location" EntitySet="Locations" />
+      <End Role="CarNote" EntitySet="CarNotes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Category_Locations" Association="Garage_LiveModel.FK_Category_Locations">
+      <End Role="Location" EntitySet="Locations" />
+      <End Role="Category" EntitySet="Categories" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Locations_Country" Association="Garage_LiveModel.FK_Locations_Country">
+      <End Role="Country" EntitySet="Countries" />
+      <End Role="Location" EntitySet="Locations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Discount_Locations" Association="Garage_LiveModel.FK_Discount_Locations">
+      <End Role="Location" EntitySet="Locations" />
+      <End Role="Discount" EntitySet="Discounts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Bill_Locations" Association="Garage_LiveModel.FK_Bill_Locations">
+      <End Role="Location" EntitySet="Locations" />
+      <End Role="inv_Bill" EntitySet="inv_Bill" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PurchaseOrder_Locations" Association="Garage_LiveModel.FK_PurchaseOrder_Locations">
+      <End Role="Location" EntitySet="Locations" />
+      <End Role="inv_PurchaseOrder" EntitySet="inv_PurchaseOrder" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Reconciliation_Locations" Association="Garage_LiveModel.FK_Reconciliation_Locations">
+      <End Role="Location" EntitySet="Locations" />
+      <End Role="inv_Reconciliation" EntitySet="inv_Reconciliation" />
+    </AssociationSet>
+    <AssociationSet Name="FK_inv_StockRequest_Locations" Association="Garage_LiveModel.FK_inv_StockRequest_Locations">
+      <End Role="Location" EntitySet="Locations" />
+      <End Role="inv_StockRequest" EntitySet="inv_StockRequest" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Inventory_Locations" Association="Garage_LiveModel.FK_Inventory_Locations">
+      <End Role="Location" EntitySet="Locations" />
+      <End Role="Inventory" EntitySet="Inventories" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Locations_Licenses" Association="Garage_LiveModel.FK_Locations_Licenses">
+      <End Role="License" EntitySet="Licenses" />
+      <End Role="Location" EntitySet="Locations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Locations_Locations" Association="Garage_LiveModel.FK_Locations_Locations">
+      <End Role="Location" EntitySet="Locations" />
+      <End Role="Location1" EntitySet="Locations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Locations_Status" Association="Garage_LiveModel.FK_Locations_Status">
+      <End Role="Status" EntitySet="Status" />
+      <End Role="Location" EntitySet="Locations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Locations_TimeZone" Association="Garage_LiveModel.FK_Locations_TimeZone">
+      <End Role="TimeZone" EntitySet="TimeZones" />
+      <End Role="Location" EntitySet="Locations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Modifiers_Locations" Association="Garage_LiveModel.FK_Modifiers_Locations">
+      <End Role="Location" EntitySet="Locations" />
+      <End Role="Modifier" EntitySet="Modifiers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrderCheckout_Locations" Association="Garage_LiveModel.FK_OrderCheckout_Locations">
+      <End Role="Location" EntitySet="Locations" />
+      <End Role="OrderCheckout" EntitySet="OrderCheckouts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Orders_Locations" Association="Garage_LiveModel.FK_Orders_Locations">
+      <End Role="Location" EntitySet="Locations" />
+      <End Role="Order" EntitySet="Orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Packages_Locations" Association="Garage_LiveModel.FK_Packages_Locations">
+      <End Role="Location" EntitySet="Locations" />
+      <End Role="Package" EntitySet="Packages" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Receipt_Locations" Association="Garage_LiveModel.FK_Receipt_Locations">
+      <End Role="Location" EntitySet="Locations" />
+      <End Role="Receipt" EntitySet="Receipts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SalesItems_Locations" Association="Garage_LiveModel.FK_SalesItems_Locations">
+      <End Role="Location" EntitySet="Locations" />
+      <End Role="SalesItem" EntitySet="SalesItems" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SalesSetting_Locations" Association="Garage_LiveModel.FK_SalesSetting_Locations">
+      <End Role="Location" EntitySet="Locations" />
+      <End Role="SalesSetting" EntitySet="SalesSettings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SessionInfo_Locations" Association="Garage_LiveModel.FK_SessionInfo_Locations">
+      <End Role="Location" EntitySet="Locations" />
+      <End Role="SessionInfo" EntitySet="SessionInfoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Stores_Locations" Association="Garage_LiveModel.FK_Stores_Locations">
+      <End Role="Location" EntitySet="Locations" />
+      <End Role="Store" EntitySet="Stores" />
+    </AssociationSet>
+    <EntitySet Name="SubUsers" EntityType="Garage_LiveModel.SubUser" />
+    <AssociationSet Name="FK_SubUsers_Country" Association="Garage_LiveModel.FK_SubUsers_Country">
+      <End Role="Country" EntitySet="Countries" />
+      <End Role="SubUser" EntitySet="SubUsers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SubUsers_Locations" Association="Garage_LiveModel.FK_SubUsers_Locations">
+      <End Role="Location" EntitySet="Locations" />
+      <End Role="SubUser" EntitySet="SubUsers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrderCheckout_SubUsers" Association="Garage_LiveModel.FK_OrderCheckout_SubUsers">
+      <End Role="SubUser" EntitySet="SubUsers" />
+      <End Role="OrderCheckout" EntitySet="OrderCheckouts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrderCheckout_SubUsers1" Association="Garage_LiveModel.FK_OrderCheckout_SubUsers1">
+      <End Role="SubUser" EntitySet="SubUsers" />
+      <End Role="OrderCheckout" EntitySet="OrderCheckouts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrderCheckout_SubUsers2" Association="Garage_LiveModel.FK_OrderCheckout_SubUsers2">
+      <End Role="SubUser" EntitySet="SubUsers" />
+      <End Role="OrderCheckout" EntitySet="OrderCheckouts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Orders_SubUsers" Association="Garage_LiveModel.FK_Orders_SubUsers">
+      <End Role="SubUser" EntitySet="SubUsers" />
+      <End Role="Order" EntitySet="Orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SubUsers_Role_Group" Association="Garage_LiveModel.FK_SubUsers_Role_Group">
+      <End Role="Role_Group" EntitySet="Role_Group" />
+      <End Role="SubUser" EntitySet="SubUsers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SessionInfo_SubUsers" Association="Garage_LiveModel.FK_SessionInfo_SubUsers">
+      <End Role="SubUser" EntitySet="SubUsers" />
+      <End Role="SessionInfo" EntitySet="SessionInfoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SubUsers_Status" Association="Garage_LiveModel.FK_SubUsers_Status">
+      <End Role="Status" EntitySet="Status" />
+      <End Role="SubUser" EntitySet="SubUsers" />
+    </AssociationSet>
+    <EntitySet Name="Users" EntityType="Garage_LiveModel.User" />
+    <AssociationSet Name="FK_CarInspection_Users" Association="Garage_LiveModel.FK_CarInspection_Users">
+      <End Role="User" EntitySet="Users" />
+      <End Role="CarInspection" EntitySet="CarInspections" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Cars_Users" Association="Garage_LiveModel.FK_Cars_Users">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Car" EntitySet="Cars" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CompanyClients_Users" Association="Garage_LiveModel.FK_CompanyClients_Users">
+      <End Role="User" EntitySet="Users" />
+      <End Role="CompanyClient" EntitySet="CompanyClients" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CompanyInvoice_Users" Association="Garage_LiveModel.FK_CompanyInvoice_Users">
+      <End Role="User" EntitySet="Users" />
+      <End Role="CompanyInvoice" EntitySet="CompanyInvoices" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CompanyQuotation_Users" Association="Garage_LiveModel.FK_CompanyQuotation_Users">
+      <End Role="User" EntitySet="Users" />
+      <End Role="CompanyQuotation" EntitySet="CompanyQuotations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Users_Country" Association="Garage_LiveModel.FK_Users_Country">
+      <End Role="Country" EntitySet="Countries" />
+      <End Role="User" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CreditCustomer_Users" Association="Garage_LiveModel.FK_CreditCustomer_Users">
+      <End Role="User" EntitySet="Users" />
+      <End Role="CreditCustomer" EntitySet="CreditCustomers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Integration_Users" Association="Garage_LiveModel.FK_Integration_Users">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Integration" EntitySet="Integrations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_IntegrationActivation_Users" Association="Garage_LiveModel.FK_IntegrationActivation_Users">
+      <End Role="User" EntitySet="Users" />
+      <End Role="IntegrationActivation" EntitySet="IntegrationActivations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_inv_Stock_Users" Association="Garage_LiveModel.FK_inv_Stock_Users">
+      <End Role="User" EntitySet="Users" />
+      <End Role="inv_Stock" EntitySet="inv_Stock" />
+    </AssociationSet>
+    <AssociationSet Name="FK_inv_StockIssue_Users" Association="Garage_LiveModel.FK_inv_StockIssue_Users">
+      <End Role="User" EntitySet="Users" />
+      <End Role="inv_StockIssue" EntitySet="inv_StockIssue" />
+    </AssociationSet>
+    <AssociationSet Name="FK_inv_StockStore_Users" Association="Garage_LiveModel.FK_inv_StockStore_Users">
+      <End Role="User" EntitySet="Users" />
+      <End Role="inv_StockStore" EntitySet="inv_StockStore" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Licenses_Users" Association="Garage_LiveModel.FK_Licenses_Users">
+      <End Role="User" EntitySet="Users" />
+      <End Role="License" EntitySet="Licenses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Locations_Users" Association="Garage_LiveModel.FK_Locations_Users">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Location" EntitySet="Locations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Packages_Users" Association="Garage_LiveModel.FK_Packages_Users">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Package" EntitySet="Packages" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Role_Group_Users" Association="Garage_LiveModel.FK_Role_Group_Users">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Role_Group" EntitySet="Role_Group" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Users_Status" Association="Garage_LiveModel.FK_Users_Status">
+      <End Role="Status" EntitySet="Status" />
+      <End Role="User" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SubUsers_Users" Association="Garage_LiveModel.FK_SubUsers_Users">
+      <End Role="User" EntitySet="Users" />
+      <End Role="SubUser" EntitySet="SubUsers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Supplier_Users" Association="Garage_LiveModel.FK_Supplier_Users">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Supplier" EntitySet="Suppliers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Users_TimeZone" Association="Garage_LiveModel.FK_Users_TimeZone">
+      <End Role="TimeZone" EntitySet="TimeZones" />
+      <End Role="User" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ZohoChartOfAccounts_Users" Association="Garage_LiveModel.FK_ZohoChartOfAccounts_Users">
+      <End Role="User" EntitySet="Users" />
+      <End Role="ZohoChartOfAccount" EntitySet="ZohoChartOfAccounts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ZohoSettings_Users" Association="Garage_LiveModel.FK_ZohoSettings_Users">
+      <End Role="User" EntitySet="Users" />
+      <End Role="ZohoSetting" EntitySet="ZohoSettings" />
+    </AssociationSet>
   </EntityContainer>
   <ComplexType Name="sp_apiGetSuperUserInfo_Result">
     <Property Type="String" Name="BusinessType" Nullable="true" MaxLength="500" />
@@ -4506,4 +3725,814 @@
     <Property Type="Int32" Name="StockSold" Nullable="true" />
     <Property Type="Int32" Name="UserID" Nullable="true" />
   </ComplexType>
+  <EntityType Name="Location">
+    <Key>
+      <PropertyRef Name="LocationID" />
+    </Key>
+    <Property Name="LocationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RowID" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Descripiton" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="ContactNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="TimeZoneID" Type="Int32" />
+    <Property Name="DateFrom" Type="DateTime" Precision="3" />
+    <Property Name="DateTo" Type="DateTime" Precision="3" />
+    <Property Name="CountryID" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+    <Property Name="CityID" Type="Int32" />
+    <Property Name="Open_Time" Type="Time" Precision="7" />
+    <Property Name="Close_Time" Type="Time" Precision="7" />
+    <Property Name="UserID" Type="Int32" Nullable="false" />
+    <Property Name="LicenseID" Type="Int32" />
+    <Property Name="DeliveryServices" Type="Boolean" />
+    <Property Name="DeliveryCharges" Type="Double" />
+    <Property Name="DeliveryTime" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="MinOrderAmount" Type="Double" />
+    <Property Name="Longitude" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Latitude" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="LastUpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LastUpdatedDate" Type="DateTime" Precision="3" />
+    <Property Name="StatusID" Type="Int32" />
+    <Property Name="CompanyCode" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="LandmarkID" Type="Int32" />
+    <Property Name="Gmaplink" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="ImageURL" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="IsFeatured" Type="Boolean" />
+    <Property Name="ArabicName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Currency" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Bays" Relationship="Garage_LiveModel.FK_Bay_Locations" FromRole="Location" ToRole="Bay" />
+    <NavigationProperty Name="CarNotes" Relationship="Garage_LiveModel.FK_CarNotes_Locations" FromRole="Location" ToRole="CarNote" />
+    <NavigationProperty Name="Categories" Relationship="Garage_LiveModel.FK_Category_Locations" FromRole="Location" ToRole="Category" />
+    <NavigationProperty Name="Country" Relationship="Garage_LiveModel.FK_Locations_Country" FromRole="Location" ToRole="Country" />
+    <NavigationProperty Name="Discounts" Relationship="Garage_LiveModel.FK_Discount_Locations" FromRole="Location" ToRole="Discount" />
+    <NavigationProperty Name="inv_Bill" Relationship="Garage_LiveModel.FK_Bill_Locations" FromRole="Location" ToRole="inv_Bill" />
+    <NavigationProperty Name="inv_PurchaseOrder" Relationship="Garage_LiveModel.FK_PurchaseOrder_Locations" FromRole="Location" ToRole="inv_PurchaseOrder" />
+    <NavigationProperty Name="inv_Reconciliation" Relationship="Garage_LiveModel.FK_Reconciliation_Locations" FromRole="Location" ToRole="inv_Reconciliation" />
+    <NavigationProperty Name="inv_StockRequest" Relationship="Garage_LiveModel.FK_inv_StockRequest_Locations" FromRole="Location" ToRole="inv_StockRequest" />
+    <NavigationProperty Name="Inventories" Relationship="Garage_LiveModel.FK_Inventory_Locations" FromRole="Location" ToRole="Inventory" />
+    <NavigationProperty Name="License" Relationship="Garage_LiveModel.FK_Locations_Licenses" FromRole="Location" ToRole="License" />
+    <NavigationProperty Name="Locations1" Relationship="Garage_LiveModel.FK_Locations_Locations" FromRole="Location" ToRole="Location1" />
+    <NavigationProperty Name="Location1" Relationship="Garage_LiveModel.FK_Locations_Locations" FromRole="Location1" ToRole="Location" />
+    <NavigationProperty Name="Status" Relationship="Garage_LiveModel.FK_Locations_Status" FromRole="Location" ToRole="Status" />
+    <NavigationProperty Name="TimeZone" Relationship="Garage_LiveModel.FK_Locations_TimeZone" FromRole="Location" ToRole="TimeZone" />
+    <NavigationProperty Name="Modifiers" Relationship="Garage_LiveModel.FK_Modifiers_Locations" FromRole="Location" ToRole="Modifier" />
+    <NavigationProperty Name="OrderCheckouts" Relationship="Garage_LiveModel.FK_OrderCheckout_Locations" FromRole="Location" ToRole="OrderCheckout" />
+    <NavigationProperty Name="Orders" Relationship="Garage_LiveModel.FK_Orders_Locations" FromRole="Location" ToRole="Order" />
+    <NavigationProperty Name="Packages" Relationship="Garage_LiveModel.FK_Packages_Locations" FromRole="Location" ToRole="Package" />
+    <NavigationProperty Name="Receipts" Relationship="Garage_LiveModel.FK_Receipt_Locations" FromRole="Location" ToRole="Receipt" />
+    <NavigationProperty Name="SalesItems" Relationship="Garage_LiveModel.FK_SalesItems_Locations" FromRole="Location" ToRole="SalesItem" />
+    <NavigationProperty Name="SalesSettings" Relationship="Garage_LiveModel.FK_SalesSetting_Locations" FromRole="Location" ToRole="SalesSetting" />
+    <NavigationProperty Name="SessionInfoes" Relationship="Garage_LiveModel.FK_SessionInfo_Locations" FromRole="Location" ToRole="SessionInfo" />
+    <NavigationProperty Name="Stores" Relationship="Garage_LiveModel.FK_Stores_Locations" FromRole="Location" ToRole="Store" />
+    <NavigationProperty Name="SubUsers" Relationship="Garage_LiveModel.FK_SubUsers_Locations" FromRole="Location" ToRole="SubUser" />
+    <NavigationProperty Name="User" Relationship="Garage_LiveModel.FK_Locations_Users" FromRole="Location" ToRole="User" />
+  </EntityType>
+  <Association Name="FK_Bay_Locations">
+    <End Type="Garage_LiveModel.Location" Role="Location" Multiplicity="1" />
+    <End Type="Garage_LiveModel.Bay" Role="Bay" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Location">
+        <PropertyRef Name="LocationID" />
+      </Principal>
+      <Dependent Role="Bay">
+        <PropertyRef Name="LocationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CarNotes_Locations">
+    <End Type="Garage_LiveModel.Location" Role="Location" Multiplicity="1" />
+    <End Type="Garage_LiveModel.CarNote" Role="CarNote" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Location">
+        <PropertyRef Name="LocationID" />
+      </Principal>
+      <Dependent Role="CarNote">
+        <PropertyRef Name="LocaitonID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Category_Locations">
+    <End Type="Garage_LiveModel.Location" Role="Location" Multiplicity="0..1" />
+    <End Type="Garage_LiveModel.Category" Role="Category" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Location">
+        <PropertyRef Name="LocationID" />
+      </Principal>
+      <Dependent Role="Category">
+        <PropertyRef Name="LocationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Locations_Country">
+    <End Type="Garage_LiveModel.Country" Role="Country" Multiplicity="0..1" />
+    <End Type="Garage_LiveModel.Location" Role="Location" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Country">
+        <PropertyRef Name="Code" />
+      </Principal>
+      <Dependent Role="Location">
+        <PropertyRef Name="CountryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Discount_Locations">
+    <End Type="Garage_LiveModel.Location" Role="Location" Multiplicity="1" />
+    <End Type="Garage_LiveModel.Discount" Role="Discount" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Location">
+        <PropertyRef Name="LocationID" />
+      </Principal>
+      <Dependent Role="Discount">
+        <PropertyRef Name="LocationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Bill_Locations">
+    <End Type="Garage_LiveModel.Location" Role="Location" Multiplicity="1" />
+    <End Type="Garage_LiveModel.inv_Bill" Role="inv_Bill" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Location">
+        <PropertyRef Name="LocationID" />
+      </Principal>
+      <Dependent Role="inv_Bill">
+        <PropertyRef Name="LocationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PurchaseOrder_Locations">
+    <End Type="Garage_LiveModel.Location" Role="Location" Multiplicity="1" />
+    <End Type="Garage_LiveModel.inv_PurchaseOrder" Role="inv_PurchaseOrder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Location">
+        <PropertyRef Name="LocationID" />
+      </Principal>
+      <Dependent Role="inv_PurchaseOrder">
+        <PropertyRef Name="LocationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Reconciliation_Locations">
+    <End Type="Garage_LiveModel.Location" Role="Location" Multiplicity="1" />
+    <End Type="Garage_LiveModel.inv_Reconciliation" Role="inv_Reconciliation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Location">
+        <PropertyRef Name="LocationID" />
+      </Principal>
+      <Dependent Role="inv_Reconciliation">
+        <PropertyRef Name="LocationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_inv_StockRequest_Locations">
+    <End Type="Garage_LiveModel.Location" Role="Location" Multiplicity="0..1" />
+    <End Type="Garage_LiveModel.inv_StockRequest" Role="inv_StockRequest" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Location">
+        <PropertyRef Name="LocationID" />
+      </Principal>
+      <Dependent Role="inv_StockRequest">
+        <PropertyRef Name="LocationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Inventory_Locations">
+    <End Type="Garage_LiveModel.Location" Role="Location" Multiplicity="1" />
+    <End Type="Garage_LiveModel.Inventory" Role="Inventory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Location">
+        <PropertyRef Name="LocationID" />
+      </Principal>
+      <Dependent Role="Inventory">
+        <PropertyRef Name="LocationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Locations_Licenses">
+    <End Type="Garage_LiveModel.License" Role="License" Multiplicity="0..1" />
+    <End Type="Garage_LiveModel.Location" Role="Location" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="License">
+        <PropertyRef Name="LicenseID" />
+      </Principal>
+      <Dependent Role="Location">
+        <PropertyRef Name="LicenseID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Locations_Locations">
+    <End Type="Garage_LiveModel.Location" Role="Location" Multiplicity="1" />
+    <End Type="Garage_LiveModel.Location" Role="Location1" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Location">
+        <PropertyRef Name="LocationID" />
+      </Principal>
+      <Dependent Role="Location1">
+        <PropertyRef Name="LocationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Locations_Status">
+    <End Type="Garage_LiveModel.Status" Role="Status" Multiplicity="0..1" />
+    <End Type="Garage_LiveModel.Location" Role="Location" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Status">
+        <PropertyRef Name="RowID" />
+      </Principal>
+      <Dependent Role="Location">
+        <PropertyRef Name="StatusID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Locations_TimeZone">
+    <End Type="Garage_LiveModel.TimeZone" Role="TimeZone" Multiplicity="0..1" />
+    <End Type="Garage_LiveModel.Location" Role="Location" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TimeZone">
+        <PropertyRef Name="TimeZoneID" />
+      </Principal>
+      <Dependent Role="Location">
+        <PropertyRef Name="TimeZoneID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Modifiers_Locations">
+    <End Type="Garage_LiveModel.Location" Role="Location" Multiplicity="1" />
+    <End Type="Garage_LiveModel.Modifier" Role="Modifier" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Location">
+        <PropertyRef Name="LocationID" />
+      </Principal>
+      <Dependent Role="Modifier">
+        <PropertyRef Name="LocationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrderCheckout_Locations">
+    <End Type="Garage_LiveModel.Location" Role="Location" Multiplicity="1" />
+    <End Type="Garage_LiveModel.OrderCheckout" Role="OrderCheckout" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Location">
+        <PropertyRef Name="LocationID" />
+      </Principal>
+      <Dependent Role="OrderCheckout">
+        <PropertyRef Name="LocationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Orders_Locations">
+    <End Type="Garage_LiveModel.Location" Role="Location" Multiplicity="1" />
+    <End Type="Garage_LiveModel.Order" Role="Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Location">
+        <PropertyRef Name="LocationID" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="LocationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Packages_Locations">
+    <End Type="Garage_LiveModel.Location" Role="Location" Multiplicity="0..1" />
+    <End Type="Garage_LiveModel.Package" Role="Package" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Location">
+        <PropertyRef Name="LocationID" />
+      </Principal>
+      <Dependent Role="Package">
+        <PropertyRef Name="LocationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Receipt_Locations">
+    <End Type="Garage_LiveModel.Location" Role="Location" Multiplicity="1" />
+    <End Type="Garage_LiveModel.Receipt" Role="Receipt" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Location">
+        <PropertyRef Name="LocationID" />
+      </Principal>
+      <Dependent Role="Receipt">
+        <PropertyRef Name="LocationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SalesItems_Locations">
+    <End Type="Garage_LiveModel.Location" Role="Location" Multiplicity="0..1" />
+    <End Type="Garage_LiveModel.SalesItem" Role="SalesItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Location">
+        <PropertyRef Name="LocationID" />
+      </Principal>
+      <Dependent Role="SalesItem">
+        <PropertyRef Name="LocationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SalesSetting_Locations">
+    <End Type="Garage_LiveModel.Location" Role="Location" Multiplicity="0..1" />
+    <End Type="Garage_LiveModel.SalesSetting" Role="SalesSetting" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Location">
+        <PropertyRef Name="LocationID" />
+      </Principal>
+      <Dependent Role="SalesSetting">
+        <PropertyRef Name="LocationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SessionInfo_Locations">
+    <End Type="Garage_LiveModel.Location" Role="Location" Multiplicity="1" />
+    <End Type="Garage_LiveModel.SessionInfo" Role="SessionInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Location">
+        <PropertyRef Name="LocationID" />
+      </Principal>
+      <Dependent Role="SessionInfo">
+        <PropertyRef Name="LocationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Stores_Locations">
+    <End Type="Garage_LiveModel.Location" Role="Location" Multiplicity="0..1" />
+    <End Type="Garage_LiveModel.Store" Role="Store" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Location">
+        <PropertyRef Name="LocationID" />
+      </Principal>
+      <Dependent Role="Store">
+        <PropertyRef Name="StoreLocationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="SubUser">
+    <Key>
+      <PropertyRef Name="SubUserID" />
+    </Key>
+    <Property Name="SubUserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RowID" Type="Int32" Nullable="false" />
+    <Property Name="UserID" Type="Int32" Nullable="false" />
+    <Property Name="UserType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Designation" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="ImagePath" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="ContactNo" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="CityID" Type="Int32" />
+    <Property Name="CountryID" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+    <Property Name="Subscribe" Type="Boolean" />
+    <Property Name="GroupID" Type="Int32" />
+    <Property Name="Passcode" Type="Int32" />
+    <Property Name="TimeZoneID" Type="Int32" />
+    <Property Name="LastUpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LastUpdatedDate" Type="DateTime" Precision="3" />
+    <Property Name="StatusID" Type="Int32" />
+    <Property Name="LocationID" Type="Int32" />
+    <Property Name="CompanyCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="States" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Zipcode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="DateFrom" Type="DateTime" Precision="3" />
+    <Property Name="DateTo" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Country" Relationship="Garage_LiveModel.FK_SubUsers_Country" FromRole="SubUser" ToRole="Country" />
+    <NavigationProperty Name="Location" Relationship="Garage_LiveModel.FK_SubUsers_Locations" FromRole="SubUser" ToRole="Location" />
+    <NavigationProperty Name="OrderCheckouts" Relationship="Garage_LiveModel.FK_OrderCheckout_SubUsers" FromRole="SubUser" ToRole="OrderCheckout" />
+    <NavigationProperty Name="OrderCheckouts1" Relationship="Garage_LiveModel.FK_OrderCheckout_SubUsers1" FromRole="SubUser" ToRole="OrderCheckout" />
+    <NavigationProperty Name="OrderCheckouts2" Relationship="Garage_LiveModel.FK_OrderCheckout_SubUsers2" FromRole="SubUser" ToRole="OrderCheckout" />
+    <NavigationProperty Name="Orders" Relationship="Garage_LiveModel.FK_Orders_SubUsers" FromRole="SubUser" ToRole="Order" />
+    <NavigationProperty Name="Role_Group" Relationship="Garage_LiveModel.FK_SubUsers_Role_Group" FromRole="SubUser" ToRole="Role_Group" />
+    <NavigationProperty Name="SessionInfoes" Relationship="Garage_LiveModel.FK_SessionInfo_SubUsers" FromRole="SubUser" ToRole="SessionInfo" />
+    <NavigationProperty Name="Status" Relationship="Garage_LiveModel.FK_SubUsers_Status" FromRole="SubUser" ToRole="Status" />
+    <NavigationProperty Name="User" Relationship="Garage_LiveModel.FK_SubUsers_Users" FromRole="SubUser" ToRole="User" />
+  </EntityType>
+  <Association Name="FK_SubUsers_Country">
+    <End Type="Garage_LiveModel.Country" Role="Country" Multiplicity="0..1" />
+    <End Type="Garage_LiveModel.SubUser" Role="SubUser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Country">
+        <PropertyRef Name="Code" />
+      </Principal>
+      <Dependent Role="SubUser">
+        <PropertyRef Name="CountryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SubUsers_Locations">
+    <End Type="Garage_LiveModel.Location" Role="Location" Multiplicity="0..1" />
+    <End Type="Garage_LiveModel.SubUser" Role="SubUser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Location">
+        <PropertyRef Name="LocationID" />
+      </Principal>
+      <Dependent Role="SubUser">
+        <PropertyRef Name="LocationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrderCheckout_SubUsers">
+    <End Type="Garage_LiveModel.SubUser" Role="SubUser" Multiplicity="0..1" />
+    <End Type="Garage_LiveModel.OrderCheckout" Role="OrderCheckout" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SubUser">
+        <PropertyRef Name="SubUserID" />
+      </Principal>
+      <Dependent Role="OrderCheckout">
+        <PropertyRef Name="WorkerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrderCheckout_SubUsers1">
+    <End Type="Garage_LiveModel.SubUser" Role="SubUser" Multiplicity="0..1" />
+    <End Type="Garage_LiveModel.OrderCheckout" Role="OrderCheckout" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SubUser">
+        <PropertyRef Name="SubUserID" />
+      </Principal>
+      <Dependent Role="OrderCheckout">
+        <PropertyRef Name="SubUserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrderCheckout_SubUsers2">
+    <End Type="Garage_LiveModel.SubUser" Role="SubUser" Multiplicity="0..1" />
+    <End Type="Garage_LiveModel.OrderCheckout" Role="OrderCheckout" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SubUser">
+        <PropertyRef Name="SubUserID" />
+      </Principal>
+      <Dependent Role="OrderCheckout">
+        <PropertyRef Name="AssistantID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Orders_SubUsers">
+    <End Type="Garage_LiveModel.SubUser" Role="SubUser" Multiplicity="0..1" />
+    <End Type="Garage_LiveModel.Order" Role="Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SubUser">
+        <PropertyRef Name="SubUserID" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="SubUserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SubUsers_Role_Group">
+    <End Type="Garage_LiveModel.Role_Group" Role="Role_Group" Multiplicity="0..1" />
+    <End Type="Garage_LiveModel.SubUser" Role="SubUser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role_Group">
+        <PropertyRef Name="GroupID" />
+      </Principal>
+      <Dependent Role="SubUser">
+        <PropertyRef Name="GroupID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SessionInfo_SubUsers">
+    <End Type="Garage_LiveModel.SubUser" Role="SubUser" Multiplicity="1" />
+    <End Type="Garage_LiveModel.SessionInfo" Role="SessionInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SubUser">
+        <PropertyRef Name="SubUserID" />
+      </Principal>
+      <Dependent Role="SessionInfo">
+        <PropertyRef Name="SubUserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SubUsers_Status">
+    <End Type="Garage_LiveModel.Status" Role="Status" Multiplicity="0..1" />
+    <End Type="Garage_LiveModel.SubUser" Role="SubUser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Status">
+        <PropertyRef Name="RowID" />
+      </Principal>
+      <Dependent Role="SubUser">
+        <PropertyRef Name="StatusID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RowID" Type="Int32" Nullable="false" />
+    <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ImagePath" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Company" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="BusinessType" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="ContactNo" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="CityID" Type="Int32" />
+    <Property Name="CountryID" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+    <Property Name="Website" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Subscribe" Type="Boolean" />
+    <Property Name="RoleID" Type="Int32" />
+    <Property Name="TimeZoneID" Type="Int32" />
+    <Property Name="LastUpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LastUpdatedDate" Type="DateTime" Precision="3" />
+    <Property Name="StatusID" Type="Int32" />
+    <Property Name="CompanyCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="States" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Zipcode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="VATNO" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Tax" Type="Double" />
+    <Property Name="IsSMSCheckoutAddOn" Type="Boolean" />
+    <Property Name="AllowNegativeInventory" Type="Boolean" />
+    <NavigationProperty Name="CarInspections" Relationship="Garage_LiveModel.FK_CarInspection_Users" FromRole="User" ToRole="CarInspection" />
+    <NavigationProperty Name="Cars" Relationship="Garage_LiveModel.FK_Cars_Users" FromRole="User" ToRole="Car" />
+    <NavigationProperty Name="CompanyClients" Relationship="Garage_LiveModel.FK_CompanyClients_Users" FromRole="User" ToRole="CompanyClient" />
+    <NavigationProperty Name="CompanyInvoices" Relationship="Garage_LiveModel.FK_CompanyInvoice_Users" FromRole="User" ToRole="CompanyInvoice" />
+    <NavigationProperty Name="CompanyQuotations" Relationship="Garage_LiveModel.FK_CompanyQuotation_Users" FromRole="User" ToRole="CompanyQuotation" />
+    <NavigationProperty Name="Country" Relationship="Garage_LiveModel.FK_Users_Country" FromRole="User" ToRole="Country" />
+    <NavigationProperty Name="CreditCustomers" Relationship="Garage_LiveModel.FK_CreditCustomer_Users" FromRole="User" ToRole="CreditCustomer" />
+    <NavigationProperty Name="Integrations" Relationship="Garage_LiveModel.FK_Integration_Users" FromRole="User" ToRole="Integration" />
+    <NavigationProperty Name="IntegrationActivations" Relationship="Garage_LiveModel.FK_IntegrationActivation_Users" FromRole="User" ToRole="IntegrationActivation" />
+    <NavigationProperty Name="inv_Stock" Relationship="Garage_LiveModel.FK_inv_Stock_Users" FromRole="User" ToRole="inv_Stock" />
+    <NavigationProperty Name="inv_StockIssue" Relationship="Garage_LiveModel.FK_inv_StockIssue_Users" FromRole="User" ToRole="inv_StockIssue" />
+    <NavigationProperty Name="inv_StockStore" Relationship="Garage_LiveModel.FK_inv_StockStore_Users" FromRole="User" ToRole="inv_StockStore" />
+    <NavigationProperty Name="Licenses" Relationship="Garage_LiveModel.FK_Licenses_Users" FromRole="User" ToRole="License" />
+    <NavigationProperty Name="Locations" Relationship="Garage_LiveModel.FK_Locations_Users" FromRole="User" ToRole="Location" />
+    <NavigationProperty Name="Packages" Relationship="Garage_LiveModel.FK_Packages_Users" FromRole="User" ToRole="Package" />
+    <NavigationProperty Name="Role_Group" Relationship="Garage_LiveModel.FK_Role_Group_Users" FromRole="User" ToRole="Role_Group" />
+    <NavigationProperty Name="Status" Relationship="Garage_LiveModel.FK_Users_Status" FromRole="User" ToRole="Status" />
+    <NavigationProperty Name="SubUsers" Relationship="Garage_LiveModel.FK_SubUsers_Users" FromRole="User" ToRole="SubUser" />
+    <NavigationProperty Name="Suppliers" Relationship="Garage_LiveModel.FK_Supplier_Users" FromRole="User" ToRole="Supplier" />
+    <NavigationProperty Name="TimeZone" Relationship="Garage_LiveModel.FK_Users_TimeZone" FromRole="User" ToRole="TimeZone" />
+    <NavigationProperty Name="ZohoChartOfAccounts" Relationship="Garage_LiveModel.FK_ZohoChartOfAccounts_Users" FromRole="User" ToRole="ZohoChartOfAccount" />
+    <NavigationProperty Name="ZohoSettings" Relationship="Garage_LiveModel.FK_ZohoSettings_Users" FromRole="User" ToRole="ZohoSetting" />
+  </EntityType>
+  <Association Name="FK_CarInspection_Users">
+    <End Type="Garage_LiveModel.User" Role="User" Multiplicity="1" />
+    <End Type="Garage_LiveModel.CarInspection" Role="CarInspection" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="CarInspection">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Cars_Users">
+    <End Type="Garage_LiveModel.User" Role="User" Multiplicity="1" />
+    <End Type="Garage_LiveModel.Car" Role="Car" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="Car">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CompanyClients_Users">
+    <End Type="Garage_LiveModel.User" Role="User" Multiplicity="1" />
+    <End Type="Garage_LiveModel.CompanyClient" Role="CompanyClient" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="CompanyClient">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CompanyInvoice_Users">
+    <End Type="Garage_LiveModel.User" Role="User" Multiplicity="0..1" />
+    <End Type="Garage_LiveModel.CompanyInvoice" Role="CompanyInvoice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="CompanyInvoice">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CompanyQuotation_Users">
+    <End Type="Garage_LiveModel.User" Role="User" Multiplicity="0..1" />
+    <End Type="Garage_LiveModel.CompanyQuotation" Role="CompanyQuotation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="CompanyQuotation">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Users_Country">
+    <End Type="Garage_LiveModel.Country" Role="Country" Multiplicity="0..1" />
+    <End Type="Garage_LiveModel.User" Role="User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Country">
+        <PropertyRef Name="Code" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="CountryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CreditCustomer_Users">
+    <End Type="Garage_LiveModel.User" Role="User" Multiplicity="0..1" />
+    <End Type="Garage_LiveModel.CreditCustomer" Role="CreditCustomer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="CreditCustomer">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Integration_Users">
+    <End Type="Garage_LiveModel.User" Role="User" Multiplicity="0..1" />
+    <End Type="Garage_LiveModel.Integration" Role="Integration" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="Integration">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_IntegrationActivation_Users">
+    <End Type="Garage_LiveModel.User" Role="User" Multiplicity="0..1" />
+    <End Type="Garage_LiveModel.IntegrationActivation" Role="IntegrationActivation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="IntegrationActivation">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_inv_Stock_Users">
+    <End Type="Garage_LiveModel.User" Role="User" Multiplicity="1" />
+    <End Type="Garage_LiveModel.inv_Stock" Role="inv_Stock" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="inv_Stock">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_inv_StockIssue_Users">
+    <End Type="Garage_LiveModel.User" Role="User" Multiplicity="1" />
+    <End Type="Garage_LiveModel.inv_StockIssue" Role="inv_StockIssue" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="inv_StockIssue">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_inv_StockStore_Users">
+    <End Type="Garage_LiveModel.User" Role="User" Multiplicity="0..1" />
+    <End Type="Garage_LiveModel.inv_StockStore" Role="inv_StockStore" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="inv_StockStore">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Licenses_Users">
+    <End Type="Garage_LiveModel.User" Role="User" Multiplicity="0..1" />
+    <End Type="Garage_LiveModel.License" Role="License" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="License">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Locations_Users">
+    <End Type="Garage_LiveModel.User" Role="User" Multiplicity="1" />
+    <End Type="Garage_LiveModel.Location" Role="Location" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="Location">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Packages_Users">
+    <End Type="Garage_LiveModel.User" Role="User" Multiplicity="0..1" />
+    <End Type="Garage_LiveModel.Package" Role="Package" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="Package">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Role_Group_Users">
+    <End Type="Garage_LiveModel.User" Role="User" Multiplicity="0..1" />
+    <End Type="Garage_LiveModel.Role_Group" Role="Role_Group" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="Role_Group">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Users_Status">
+    <End Type="Garage_LiveModel.Status" Role="Status" Multiplicity="0..1" />
+    <End Type="Garage_LiveModel.User" Role="User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Status">
+        <PropertyRef Name="RowID" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="StatusID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SubUsers_Users">
+    <End Type="Garage_LiveModel.User" Role="User" Multiplicity="1" />
+    <End Type="Garage_LiveModel.SubUser" Role="SubUser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="SubUser">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Supplier_Users">
+    <End Type="Garage_LiveModel.User" Role="User" Multiplicity="0..1" />
+    <End Type="Garage_LiveModel.Supplier" Role="Supplier" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="Supplier">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Users_TimeZone">
+    <End Type="Garage_LiveModel.TimeZone" Role="TimeZone" Multiplicity="0..1" />
+    <End Type="Garage_LiveModel.User" Role="User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TimeZone">
+        <PropertyRef Name="TimeZoneID" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="TimeZoneID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ZohoChartOfAccounts_Users">
+    <End Type="Garage_LiveModel.User" Role="User" Multiplicity="1" />
+    <End Type="Garage_LiveModel.ZohoChartOfAccount" Role="ZohoChartOfAccount" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="ZohoChartOfAccount">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ZohoSettings_Users">
+    <End Type="Garage_LiveModel.User" Role="User" Multiplicity="1" />
+    <End Type="Garage_LiveModel.ZohoSetting" Role="ZohoSetting" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="ZohoSetting">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>
