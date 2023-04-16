@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 ﻿// T4 code generation is enabled for model 'D:\Projects\CPGarage_Admin\DAL\DBEntities\Model1.edmx'. 
+=======
+﻿// T4 code generation is enabled for model 'E:\Project\CPGarageAdmin\DAL\DBEntities\Model1.edmx'. 
+>>>>>>> 0bfefcb6d2bc7d796b23e0428d2025af80bd922f
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.
