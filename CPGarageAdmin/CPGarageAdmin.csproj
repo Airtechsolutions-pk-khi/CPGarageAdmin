@@ -14,7 +14,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>CPGarageAdmin</RootNamespace>
     <AssemblyName>CPGarageAdmin</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
     <IISExpressSSLPort />
@@ -1834,6 +1834,7 @@
     <Compile Include="Controllers\dashboardController.cs" />
     <Compile Include="Controllers\homeController.cs" />
     <Compile Include="Controllers\BroadcastController.cs" />
+    <Compile Include="Controllers\packagesController.cs" />
     <Compile Include="Controllers\smsController.cs" />
     <Compile Include="Controllers\itemmovementController.cs" />
     <Compile Include="Controllers\loginController.cs" />
@@ -2228,6 +2229,8 @@
     <Content Include="Views\model\list.cshtml" />
     <Content Include="Views\model\listMake.cshtml" />
     <Content Include="Views\model\addMake.cshtml" />
+    <Content Include="Views\packages\add.cshtml" />
+    <Content Include="Views\packages\list.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

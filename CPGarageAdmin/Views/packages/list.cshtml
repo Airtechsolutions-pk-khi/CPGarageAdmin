@@ -1,0 +1,68 @@
+﻿@{
+    ViewBag.Title = "list";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="card">
+    <div class="card-body">
+        <div class="row form-group">
+            <div class="col-8">
+                <h4 class="card-title">Packages Details</h4>
+            </div>
+            <div class="col-4 text-right">
+                <a href="~/packages/add" class="btn btn-sm btn-secondary"><i class="mdi mdi-plus-circle"></i> Add</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="table-responsive">
+                    <table id="order-listing1" class="table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Package Name</th>
+                                <th>Package Description</th>
+                                <th>Package Price</th>
+                                <th>Device Count</th>
+                                <th>Locations Limit</th>
+                                <th>Is Inventory</th>
+                                <th>Is GarageGo</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (DAL.Models.PackagesInfoViewModel item in Model)
+                            {
+                                <tr>
+                                    <td>@item.PackageInfoID</td>
+                                    <td>@item.PackageName</td>
+                                    <td>@item.PackageDescription</td>
+                                    <td>@item.PackagePrice</td>
+                                    <td>@item.DeviceCount</td>
+                                    <td>@item.LocationsLimit</td>
+                                    <td>@item.IsInventory</td>
+                                    <td>@item.IsGarageGo</td>
+                                    @if (item.StatusID == 1)
+                                    {
+                                        <td class="bg-success">Active</td>
+                                    }
+                                    else
+                                    {
+                                        <td class="bg-danger"> De Active</td>
+
+                                    }
+
+                                    <td class="text-center">
+                                        <a href="~/packages/add?id=@item.PackageInfoID"><i class="mdi mdi-pencil" style="font-size:18px !important;"></i></a>
+                                        @*<a href="~/packages/Delete?id=@item.PackageInfoID"><i class="mdi mdi-delete" style="font-size:18px !important;"></i></a>*@
+                                    </td>
+                                </tr>
+                            }
+                            </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

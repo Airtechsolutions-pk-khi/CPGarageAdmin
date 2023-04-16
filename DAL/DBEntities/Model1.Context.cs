@@ -101,11 +101,13 @@ namespace DAL.DBEntities
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<TimeZone> TimeZones { get; set; }
         public virtual DbSet<Unit> Units { get; set; }
-        public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<ZatcaAuthentication> ZatcaAuthentications { get; set; }
         public virtual DbSet<ZohoChartOfAccount> ZohoChartOfAccounts { get; set; }
         public virtual DbSet<ZohoCOAMapping> ZohoCOAMappings { get; set; }
         public virtual DbSet<ZohoSetting> ZohoSettings { get; set; }
+        public virtual DbSet<PackagesInfo> PackagesInfoes { get; set; }
+        public virtual DbSet<UserPackageDetail> UserPackageDetails { get; set; }
+        public virtual DbSet<User> Users { get; set; }
     
         [DbFunction("Garage_LiveEntities", "Split")]
         public virtual IQueryable<Split_Result> Split(string inputString, string delimiter)
@@ -729,15 +731,23 @@ namespace DAL.DBEntities
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_InsertItems", categoryIDParameter, subCatIDParameter, nameParameter, descriptionParameter, barcodeParameter, sKUParameter, itemImageParameter, displayOrderParameter, sortByAlphaParameter, priceParameter, itemTypeParameter, unitIDParameter, lastUpdatedByParameter, lastUpdatedDateParameter, statusIDParameter, companyCodeParameter, locationIDParameter, retailParameter, nameOnReceiptParameter);
         }
     
-        public virtual ObjectResult<Nullable<int>> sp_InsertLocation(string name, string descripiton, string address, string contactNo, string email, Nullable<int> timeZoneID, string countryID, Nullable<int> cityID, Nullable<int> userID, string licenseNo, string longitude, string latitude, Nullable<bool> deliveryServices, Nullable<double> deliveryCharges, string deliveryTime, Nullable<double> minOrderAmount, string lastUpdatedBy, Nullable<System.DateTime> lastUpdatedDate, Nullable<int> statusID, string companyCode, Nullable<System.DateTime> open_Time, Nullable<System.DateTime> close_Time)
+        public virtual ObjectResult<Nullable<int>> sp_InsertLocation(string name, string arabicName, string descripiton, string arabicDescription, string address, string contactNo, string email, Nullable<int> timeZoneID, string countryID, Nullable<int> cityID, Nullable<int> userID, string licenseNo, string longitude, string latitude, Nullable<bool> deliveryServices, Nullable<double> deliveryCharges, string deliveryTime, Nullable<double> minOrderAmount, string lastUpdatedBy, Nullable<System.DateTime> lastUpdatedDate, Nullable<int> statusID, string companyCode, Nullable<System.DateTime> open_Time, Nullable<System.DateTime> close_Time)
         {
             var nameParameter = name != null ?
                 new ObjectParameter("Name", name) :
                 new ObjectParameter("Name", typeof(string));
     
+            var arabicNameParameter = arabicName != null ?
+                new ObjectParameter("ArabicName", arabicName) :
+                new ObjectParameter("ArabicName", typeof(string));
+    
             var descripitonParameter = descripiton != null ?
                 new ObjectParameter("Descripiton", descripiton) :
                 new ObjectParameter("Descripiton", typeof(string));
+    
+            var arabicDescriptionParameter = arabicDescription != null ?
+                new ObjectParameter("ArabicDescription", arabicDescription) :
+                new ObjectParameter("ArabicDescription", typeof(string));
     
             var addressParameter = address != null ?
                 new ObjectParameter("Address", address) :
@@ -819,7 +829,7 @@ namespace DAL.DBEntities
                 new ObjectParameter("Close_Time", close_Time) :
                 new ObjectParameter("Close_Time", typeof(System.DateTime));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("sp_InsertLocation", nameParameter, descripitonParameter, addressParameter, contactNoParameter, emailParameter, timeZoneIDParameter, countryIDParameter, cityIDParameter, userIDParameter, licenseNoParameter, longitudeParameter, latitudeParameter, deliveryServicesParameter, deliveryChargesParameter, deliveryTimeParameter, minOrderAmountParameter, lastUpdatedByParameter, lastUpdatedDateParameter, statusIDParameter, companyCodeParameter, open_TimeParameter, close_TimeParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("sp_InsertLocation", nameParameter, arabicNameParameter, descripitonParameter, arabicDescriptionParameter, addressParameter, contactNoParameter, emailParameter, timeZoneIDParameter, countryIDParameter, cityIDParameter, userIDParameter, licenseNoParameter, longitudeParameter, latitudeParameter, deliveryServicesParameter, deliveryChargesParameter, deliveryTimeParameter, minOrderAmountParameter, lastUpdatedByParameter, lastUpdatedDateParameter, statusIDParameter, companyCodeParameter, open_TimeParameter, close_TimeParameter);
         }
     
         public virtual int sp_insertLocationAmenities_CAdmin(string amenities, Nullable<int> locationID, Nullable<System.DateTime> lastUpdatedDate)
@@ -1397,7 +1407,7 @@ namespace DAL.DBEntities
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_UpdateCars", carIDParameter, rowIDParameter, customerIDParameter, makeIDParameter, nameParameter, modelIDParameter, descriptionParameter, yearParameter, registrationNoParameter, imagePathParameter, locationIDParameter, statusIDParameter, userIDParameter);
         }
     
-        public virtual ObjectResult<sp_UpdateCustomer_CAPI_Result> sp_UpdateCustomer_CAPI(string fullName, string password, string email, string sex, string mobile, string lastUpdatedBy, Nullable<System.DateTime> lastUpdatedDate, Nullable<double> points, string imagePath, Nullable<int> statusID, Nullable<int> userID, Nullable<int> locationID, Nullable<System.DateTime> createdOn, string createdBy, Nullable<int> customerID)
+        public virtual ObjectResult<sp_UpdateCustomer_CAPI_Result> sp_UpdateCustomer_CAPI(string fullName, string password, string email, string sex, string mobile, string lastUpdatedBy, Nullable<System.DateTime> lastUpdatedDate, Nullable<double> points, string imagePath, Nullable<int> statusID, Nullable<int> userID, Nullable<int> locationID, Nullable<System.DateTime> createdOn, string createdBy, Nullable<int> customerID, string city)
         {
             var fullNameParameter = fullName != null ?
                 new ObjectParameter("FullName", fullName) :
@@ -1459,7 +1469,11 @@ namespace DAL.DBEntities
                 new ObjectParameter("CustomerID", customerID) :
                 new ObjectParameter("CustomerID", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_UpdateCustomer_CAPI_Result>("sp_UpdateCustomer_CAPI", fullNameParameter, passwordParameter, emailParameter, sexParameter, mobileParameter, lastUpdatedByParameter, lastUpdatedDateParameter, pointsParameter, imagePathParameter, statusIDParameter, userIDParameter, locationIDParameter, createdOnParameter, createdByParameter, customerIDParameter);
+            var cityParameter = city != null ?
+                new ObjectParameter("City", city) :
+                new ObjectParameter("City", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_UpdateCustomer_CAPI_Result>("sp_UpdateCustomer_CAPI", fullNameParameter, passwordParameter, emailParameter, sexParameter, mobileParameter, lastUpdatedByParameter, lastUpdatedDateParameter, pointsParameter, imagePathParameter, statusIDParameter, userIDParameter, locationIDParameter, createdOnParameter, createdByParameter, customerIDParameter, cityParameter);
         }
     
         public virtual int sp_UpdateItems(Nullable<int> itemID, Nullable<int> categoryID, Nullable<int> subCatID, string name, string description, string barcode, string sKU, string itemImage, Nullable<int> displayOrder, Nullable<bool> sortByAlpha, Nullable<double> price, string itemType, Nullable<int> unitID, string lastUpdatedBy, Nullable<System.DateTime> lastUpdatedDate, Nullable<int> statusID, string companyCode, Nullable<int> locationID, string nameOnReceipt)
@@ -1640,19 +1654,11 @@ namespace DAL.DBEntities
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_UpdateLocation", locationIDParameter, nameParameter, descripitonParameter, addressParameter, contactNoParameter, emailParameter, timeZoneIDParameter, countryIDParameter, cityIDParameter, userIDParameter, longitudeParameter, latitudeParameter, industryTypeParameter, deliveryServicesParameter, deliveryChargesParameter, deliveryTimeParameter, minOrderAmountParameter, lastUpdatedByParameter, lastUpdatedDateParameter, statusIDParameter, companyCodeParameter, open_TimeParameter, close_TimeParameter);
         }
     
-        public virtual int sp_UpdateLocation_CADMIN(Nullable<int> locationID, string name, string arabicName, string descripiton, string address, string contactNo, string email, string longitude, string latitude, string lastUpdatedBy, Nullable<System.DateTime> lastUpdatedDate, Nullable<int> landmarkID, Nullable<int> statusID, string gmaplink, Nullable<bool> isFeatured)
+        public virtual int sp_UpdateLocation_CADMIN(string name, string descripiton, string address, string contactNo, string email, string longitude, string latitude, string lastUpdatedBy, Nullable<int> landmarkID, Nullable<System.DateTime> lastUpdatedDate, Nullable<int> statusID, Nullable<bool> isFeatured, Nullable<int> locationID, string gmaplink, string arabicName, string arabicDescription, string arabicAddress)
         {
-            var locationIDParameter = locationID.HasValue ?
-                new ObjectParameter("LocationID", locationID) :
-                new ObjectParameter("LocationID", typeof(int));
-    
             var nameParameter = name != null ?
                 new ObjectParameter("Name", name) :
                 new ObjectParameter("Name", typeof(string));
-    
-            var arabicNameParameter = arabicName != null ?
-                new ObjectParameter("ArabicName", arabicName) :
-                new ObjectParameter("ArabicName", typeof(string));
     
             var descripitonParameter = descripiton != null ?
                 new ObjectParameter("Descripiton", descripiton) :
@@ -1682,27 +1688,43 @@ namespace DAL.DBEntities
                 new ObjectParameter("LastUpdatedBy", lastUpdatedBy) :
                 new ObjectParameter("LastUpdatedBy", typeof(string));
     
-            var lastUpdatedDateParameter = lastUpdatedDate.HasValue ?
-                new ObjectParameter("LastUpdatedDate", lastUpdatedDate) :
-                new ObjectParameter("LastUpdatedDate", typeof(System.DateTime));
-    
             var landmarkIDParameter = landmarkID.HasValue ?
                 new ObjectParameter("LandmarkID", landmarkID) :
                 new ObjectParameter("LandmarkID", typeof(int));
+    
+            var lastUpdatedDateParameter = lastUpdatedDate.HasValue ?
+                new ObjectParameter("LastUpdatedDate", lastUpdatedDate) :
+                new ObjectParameter("LastUpdatedDate", typeof(System.DateTime));
     
             var statusIDParameter = statusID.HasValue ?
                 new ObjectParameter("StatusID", statusID) :
                 new ObjectParameter("StatusID", typeof(int));
     
-            var gmaplinkParameter = gmaplink != null ?
-                new ObjectParameter("Gmaplink", gmaplink) :
-                new ObjectParameter("Gmaplink", typeof(string));
-    
             var isFeaturedParameter = isFeatured.HasValue ?
                 new ObjectParameter("IsFeatured", isFeatured) :
                 new ObjectParameter("IsFeatured", typeof(bool));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_UpdateLocation_CADMIN", locationIDParameter, nameParameter, arabicNameParameter, descripitonParameter, addressParameter, contactNoParameter, emailParameter, longitudeParameter, latitudeParameter, lastUpdatedByParameter, lastUpdatedDateParameter, landmarkIDParameter, statusIDParameter, gmaplinkParameter, isFeaturedParameter);
+            var locationIDParameter = locationID.HasValue ?
+                new ObjectParameter("LocationID", locationID) :
+                new ObjectParameter("LocationID", typeof(int));
+    
+            var gmaplinkParameter = gmaplink != null ?
+                new ObjectParameter("Gmaplink", gmaplink) :
+                new ObjectParameter("Gmaplink", typeof(string));
+    
+            var arabicNameParameter = arabicName != null ?
+                new ObjectParameter("ArabicName", arabicName) :
+                new ObjectParameter("ArabicName", typeof(string));
+    
+            var arabicDescriptionParameter = arabicDescription != null ?
+                new ObjectParameter("ArabicDescription", arabicDescription) :
+                new ObjectParameter("ArabicDescription", typeof(string));
+    
+            var arabicAddressParameter = arabicAddress != null ?
+                new ObjectParameter("ArabicAddress", arabicAddress) :
+                new ObjectParameter("ArabicAddress", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_UpdateLocation_CADMIN", nameParameter, descripitonParameter, addressParameter, contactNoParameter, emailParameter, longitudeParameter, latitudeParameter, lastUpdatedByParameter, landmarkIDParameter, lastUpdatedDateParameter, statusIDParameter, isFeaturedParameter, locationIDParameter, gmaplinkParameter, arabicNameParameter, arabicDescriptionParameter, arabicAddressParameter);
         }
     
         public virtual int sp_upgraddiagrams()

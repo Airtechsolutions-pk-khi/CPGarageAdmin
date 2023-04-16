@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DAL.DBEntities;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -37,7 +38,7 @@ namespace DAL.Models
         public Nullable<System.DateTime> CreatedOn { get; set; }
         public string CreatedBy { get; set; }
         public Nullable<int> DisplayOrder { get; set; }
-        
+
     }
     public class ModelsViewModel
     {
@@ -65,6 +66,7 @@ namespace DAL.Models
     public class CustomerViewModel
     {
         public int UserID { get; set; }
+        public int? PackageInfoID { get; set; }
         public int RowID { get; set; }
         public string UserName { get; set; }
         [Required(ErrorMessage = "Input is required")]
@@ -96,7 +98,7 @@ namespace DAL.Models
         public string VATNO { get; set; }
         public Nullable<double> Tax { get; set; }
         public bool IsSMSActivate { get; set; }
-
+        public bool IsAccountingAddons { get; set; }
         public int LocationID { get; set; }
         [Required(ErrorMessage = "Input is required")]
         public string LocationName { get; set; }
@@ -119,18 +121,47 @@ namespace DAL.Models
         public string TotalCars { get; set; }
         public string TotalProducts { get; set; }
     }
-    public  class SmsBilling
+    public class SmsBilling
     {
         public int SmsBillingID { get; set; }
         public string CompanyName { get; set; }
         public Nullable<int> SMSCount { get; set; }
         public string FromDate { get; set; }
-        public string ToDate{ get; set; }
+        public string ToDate { get; set; }
         public Nullable<double> Rate { get; set; }
         public Nullable<double> Total { get; set; }
         public Nullable<System.DateTime> LastUpdatedDate { get; set; }
         public int UserID { get; set; }
         public Nullable<int> Status { get; set; }
-        
+
     }
+    #region Packages
+    public class PackagesInfoViewModel
+    {
+        public int PackageInfoID { get; set; }
+        public string PackageName { get; set; }
+        public Nullable<decimal> PackagePrice { get; set; }
+        public string PackageDescription { get; set; }
+        public Nullable<int> DeviceCount { get; set; }
+        public Nullable<int> LocationsLimit { get; set; }
+        public Nullable<int> StatusID { get; set; }
+        public Nullable<bool> IsInventory { get; set; }
+        public Nullable<bool> IsGarageGo { get; set; }
+        public Nullable<System.DateTime> CreatedDate { get; set; }
+        public Nullable<System.DateTime> LastUpdatedDate { get; set; }
+
+    }
+    public class UserPackageBLL
+    {
+        public int UserPackageDetailID { get; set; }
+        public Nullable<int> PackageInfoID { get; set; }
+        public Nullable<int> UserID { get; set; }
+        public Nullable<int> StatusID { get; set; }
+        public Nullable<System.DateTime> CreatedDate { get; set; }
+        public Nullable<System.DateTime> LastUpdatedDate { get; set; }
+        public string FirstName { get; set; }
+        public string Name { get; set; }
+    }
+    #endregion
 }
+

@@ -343,6 +343,9 @@
     <EntitySetMapping Name="Customers">
       <EntityTypeMapping TypeName="Garage_UATModel.Customer">
         <MappingFragment StoreEntitySet="Customers">
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="IsCustomerLive" ColumnName="IsCustomerLive" />
           <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
           <ScalarProperty Name="RowID" ColumnName="RowID" />
           <ScalarProperty Name="UserName" ColumnName="UserName" />
@@ -757,6 +760,11 @@
     <EntitySetMapping Name="Locations">
       <EntityTypeMapping TypeName="Garage_UATModel.Location">
         <MappingFragment StoreEntitySet="Locations">
+          <ScalarProperty Name="AllowNegativeInventory" ColumnName="AllowNegativeInventory" />
+          <ScalarProperty Name="Tax" ColumnName="Tax" />
+          <ScalarProperty Name="VATNO" ColumnName="VATNO" />
+          <ScalarProperty Name="ArabicAddress" ColumnName="ArabicAddress" />
+          <ScalarProperty Name="ArabicDescription" ColumnName="ArabicDescription" />
           <ScalarProperty Name="LocationID" ColumnName="LocationID" />
           <ScalarProperty Name="RowID" ColumnName="RowID" />
           <ScalarProperty Name="Name" ColumnName="Name" />
@@ -1231,6 +1239,7 @@
     <EntitySetMapping Name="SessionInfoes">
       <EntityTypeMapping TypeName="Garage_UATModel.SessionInfo">
         <MappingFragment StoreEntitySet="SessionInfo">
+          <ScalarProperty Name="Currency" ColumnName="Currency" />
           <ScalarProperty Name="RowId" ColumnName="RowId" />
           <ScalarProperty Name="SessionId" ColumnName="SessionId" />
           <ScalarProperty Name="SubUserId" ColumnName="SubUserId" />
@@ -1384,41 +1393,6 @@
           <ScalarProperty Name="StatusID" ColumnName="StatusID" />
           <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
           <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Users">
-      <EntityTypeMapping TypeName="Garage_UATModel.User">
-        <MappingFragment StoreEntitySet="Users">
-          <ScalarProperty Name="UserID" ColumnName="UserID" />
-          <ScalarProperty Name="RowID" ColumnName="RowID" />
-          <ScalarProperty Name="UserName" ColumnName="UserName" />
-          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-          <ScalarProperty Name="LastName" ColumnName="LastName" />
-          <ScalarProperty Name="ImagePath" ColumnName="ImagePath" />
-          <ScalarProperty Name="Password" ColumnName="Password" />
-          <ScalarProperty Name="Company" ColumnName="Company" />
-          <ScalarProperty Name="BusinessType" ColumnName="BusinessType" />
-          <ScalarProperty Name="Email" ColumnName="Email" />
-          <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
-          <ScalarProperty Name="Address" ColumnName="Address" />
-          <ScalarProperty Name="CityID" ColumnName="CityID" />
-          <ScalarProperty Name="CountryID" ColumnName="CountryID" />
-          <ScalarProperty Name="Website" ColumnName="Website" />
-          <ScalarProperty Name="Subscribe" ColumnName="Subscribe" />
-          <ScalarProperty Name="RoleID" ColumnName="RoleID" />
-          <ScalarProperty Name="TimeZoneID" ColumnName="TimeZoneID" />
-          <ScalarProperty Name="LastUpdatedBy" ColumnName="LastUpdatedBy" />
-          <ScalarProperty Name="LastUpdatedDate" ColumnName="LastUpdatedDate" />
-          <ScalarProperty Name="StatusID" ColumnName="StatusID" />
-          <ScalarProperty Name="CompanyCode" ColumnName="CompanyCode" />
-          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-          <ScalarProperty Name="States" ColumnName="States" />
-          <ScalarProperty Name="Zipcode" ColumnName="Zipcode" />
-          <ScalarProperty Name="VATNO" ColumnName="VATNO" />
-          <ScalarProperty Name="Tax" ColumnName="Tax" />
-          <ScalarProperty Name="IsSMSCheckoutAddOn" ColumnName="IsSMSCheckoutAddOn" />
-          <ScalarProperty Name="AllowNegativeInventory" ColumnName="AllowNegativeInventory" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -2863,5 +2837,72 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
+    <EntitySetMapping Name="PackagesInfoes">
+      <EntityTypeMapping TypeName="Garage_UATModel.PackagesInfo">
+        <MappingFragment StoreEntitySet="PackagesInfo">
+          <ScalarProperty Name="LastUpdatedDate" ColumnName="LastUpdatedDate" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="IsGarageGo" ColumnName="IsGarageGo" />
+          <ScalarProperty Name="IsInventory" ColumnName="IsInventory" />
+          <ScalarProperty Name="StatusID" ColumnName="StatusID" />
+          <ScalarProperty Name="LocationsLimit" ColumnName="LocationsLimit" />
+          <ScalarProperty Name="DeviceCount" ColumnName="DeviceCount" />
+          <ScalarProperty Name="PackageDescription" ColumnName="PackageDescription" />
+          <ScalarProperty Name="PackagePrice" ColumnName="PackagePrice" />
+          <ScalarProperty Name="PackageName" ColumnName="PackageName" />
+          <ScalarProperty Name="PackageInfoID" ColumnName="PackageInfoID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserPackageDetails">
+      <EntityTypeMapping TypeName="Garage_UATModel.UserPackageDetail">
+        <MappingFragment StoreEntitySet="UserPackageDetails">
+          <ScalarProperty Name="LastUpdatedDate" ColumnName="LastUpdatedDate" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="StatusID" ColumnName="StatusID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="PackageInfoID" ColumnName="PackageInfoID" />
+          <ScalarProperty Name="UserPackageDetailID" ColumnName="UserPackageDetailID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="Garage_UATModel.User">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="IsAccountingAddons" ColumnName="IsAccountingAddons" />
+          <ScalarProperty Name="IsOdoo" ColumnName="IsOdoo" />
+          <ScalarProperty Name="AllowNegativeInventory" ColumnName="AllowNegativeInventory" />
+          <ScalarProperty Name="IsSMSCheckoutAddOn" ColumnName="IsSMSCheckoutAddOn" />
+          <ScalarProperty Name="Tax" ColumnName="Tax" />
+          <ScalarProperty Name="VATNO" ColumnName="VATNO" />
+          <ScalarProperty Name="Zipcode" ColumnName="Zipcode" />
+          <ScalarProperty Name="States" ColumnName="States" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="CompanyCode" ColumnName="CompanyCode" />
+          <ScalarProperty Name="StatusID" ColumnName="StatusID" />
+          <ScalarProperty Name="LastUpdatedDate" ColumnName="LastUpdatedDate" />
+          <ScalarProperty Name="LastUpdatedBy" ColumnName="LastUpdatedBy" />
+          <ScalarProperty Name="TimeZoneID" ColumnName="TimeZoneID" />
+          <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+          <ScalarProperty Name="Subscribe" ColumnName="Subscribe" />
+          <ScalarProperty Name="Website" ColumnName="Website" />
+          <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+          <ScalarProperty Name="CityID" ColumnName="CityID" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="BusinessType" ColumnName="BusinessType" />
+          <ScalarProperty Name="Company" ColumnName="Company" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="ImagePath" ColumnName="ImagePath" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="PackageInfoID" ColumnName="PackageInfoID" />
+          <ScalarProperty Name="RowID" ColumnName="RowID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

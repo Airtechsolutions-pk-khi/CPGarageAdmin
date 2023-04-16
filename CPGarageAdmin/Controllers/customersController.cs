@@ -13,29 +13,29 @@ namespace CPGarageAdmin.Controllers
     public class customersController : Controller
     {
         customersRepository customerRepo;
+        packagesRepository packageRepo; 
         public customersController()
         {
             customerRepo = new customersRepository(new Garage_LiveEntities());
-
+            packageRepo = new packagesRepository();
         }
         // GET: users
         public ActionResult list()
         {
-            
             return View(customerRepo.GetCustomers());
         }
-
         [HttpGet]
         public ActionResult add(int? id)
         {
-            
-              
-            //ViewBag.StateList = customerRepo.getRoleList().Select(x => new { x.ROLEID, x.ROLENAME }).ToList();
-            //var user = customerRepo.getCustomerById(id);
+            var packages = packageRepo.GetAll();
+            ViewBag.packages = new SelectList(packages, "PackageInfoID", "PackageName");
+
             try
             {
                 if (id != 0 || id != null)
                 {
+                    //var data = customerRepo.GetCustomerbyid(id);
+                    //return View(data);
                     var data = customerRepo.GetCustomerbyid(int.Parse(id.ToString()));
                     return View(data);
                 }

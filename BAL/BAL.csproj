@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>BAL</RootNamespace>
     <AssemblyName>BAL</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
     <TargetFrameworkProfile />
@@ -101,6 +101,7 @@
     <Compile Include="Repositories\DateTimeUTC.cs" />
     <Compile Include="Repositories\customersRepository.cs" />
     <Compile Include="Repositories\loginRepository.cs" />
+    <Compile Include="Repositories\packagesRepository.cs" />
     <Compile Include="Repositories\uploadRepository.cs" />
   </ItemGroup>
   <ItemGroup>

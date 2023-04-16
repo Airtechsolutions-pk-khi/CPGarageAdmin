@@ -74,6 +74,7 @@ namespace BAL.Repositories
                         VATNO = r.VATNO,
                         Address = r.Address,
                         IsSMSActivate = r.IsSMSCheckoutAddOn == null ? false : Convert.ToBoolean(r.IsSMSCheckoutAddOn.ToString()),
+                        IsAccountingAddons = r.IsAccountingAddons == null ? false : Convert.ToBoolean(r.IsAccountingAddons.ToString()),
 
                         LocationID = r.Locations.FirstOrDefault().LocationID,
                         LocationName = r.Locations.FirstOrDefault().Name,
@@ -81,7 +82,8 @@ namespace BAL.Repositories
                         LocationContactNo = r.Locations.FirstOrDefault().ContactNo,
                         LocationEmail = r.Locations.FirstOrDefault().Email,
                         Currency = r.Locations.FirstOrDefault().Currency,
-                        Tax = r.Tax
+                        Tax = r.Tax,
+                        PackageInfoID = r.PackageInfoID
                     })
                   .FirstOrDefault();
                 return data;
@@ -111,7 +113,9 @@ namespace BAL.Repositories
                         _user.Company = modal.Company;
                         _user.Password = new clsCryption().EncryptDecrypt(modal.Password, "encrypt");
                         _user.IsSMSCheckoutAddOn = modal.IsSMSActivate;
+                        _user.IsAccountingAddons = modal.IsAccountingAddons;
                         _user.StatusID = modal.StatusID == true ? 1 : 2;
+                        _user.PackageInfoID = modal.PackageInfoID;
                         DBContext.Entry(_user).State = EntityState.Modified;
                         DBContext.UpdateOnly<User>(_user, x =>
                        x.FirstName,
@@ -125,7 +129,20 @@ namespace BAL.Repositories
                         x => x.StatusID
                         );
                         DBContext.SaveChanges();
-
+                        if (modal.UserID > 0)
+                        {
+                            UserPackageDetail _package = DBContext.UserPackageDetails.Where(x => x.UserID == modal.UserID).FirstOrDefault();
+                            _package.PackageInfoID = modal.PackageInfoID;
+                            _package.StatusID = modal.StatusID == true ? 1 : 2;
+                            _package.LastUpdatedDate = DateTime.UtcNow.AddMinutes(180);
+                            DBContext.Entry(_package).State = EntityState.Modified;
+                            DBContext.UpdateOnly<UserPackageDetail>(_package, x =>
+                           x.PackageInfoID,
+                            x => x.StatusID,
+                            x => x.LastUpdatedDate
+                            );
+                            DBContext.SaveChanges();
+                        }
                     }
 
                     dbContextTransaction.Commit();
@@ -149,6 +166,8 @@ namespace BAL.Repositories
                     SubUser _subuser = new SubUser();
                     Receipt _receipt = new Receipt();
 
+                    UserPackageBLL _package = new UserPackageBLL();
+
                     _user.FirstName = modal.FirstName;
                     _user.LastName = modal.LastName;
                     _user.Company = modal.Company;
@@ -160,12 +179,14 @@ namespace BAL.Repositories
                     _user.Password = new clsCryption().EncryptDecrypt(modal.Password, "encrypt");
                     _user.Address = modal.LocationAddress;
                     _user.CityID = 4020;
+                    _user.PackageInfoID = modal.PackageInfoID;
                     _user.CountryID = "SA";
                     _user.Subscribe = false;
                     _user.TimeZoneID = 54;
                     _user.Tax = 0;
                     _user.StatusID = modal.StatusID == true ? 1 : 2;
                     _user.IsSMSCheckoutAddOn = false;
+                    _user.IsAccountingAddons = false;
                     _user.CompanyCode = "POS-" + randomstring(6);
                     _user.Address = modal.LocationAddress;
                     _user.LastUpdatedDate = DateTime.UtcNow.AddMinutes(180);
@@ -216,6 +237,14 @@ namespace BAL.Repositories
                             _receipt.LastUpdatedDate = DateTime.UtcNow.AddMinutes(180);
                             Receipt dataSubuser = DBContext.Receipts.Add(_receipt);
                             DBContext.SaveChanges();
+                        }
+                        if (data.PackageInfoID > 0)
+                        {
+                            _package.PackageInfoID = data.PackageInfoID;
+                            _package.UserID = data.UserID;
+                            _package.StatusID = 1;
+                            _package.CreatedDate = DateTime.UtcNow.AddMinutes(180);
+                            _package.LastUpdatedDate = DateTime.UtcNow.AddMinutes(180);
                         }
                     }
 
