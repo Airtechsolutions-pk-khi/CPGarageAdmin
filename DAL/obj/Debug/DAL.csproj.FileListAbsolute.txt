@@ -1,177 +1,25 @@
-D:\Projects\MARN Garage\CPGarageAdmin\DAL\bin\Debug\DAL.dll.config
-D:\Projects\MARN Garage\CPGarageAdmin\DAL\bin\Debug\DAL.dll
-D:\Projects\MARN Garage\CPGarageAdmin\DAL\bin\Debug\DAL.pdb
-D:\Projects\MARN Garage\CPGarageAdmin\DAL\bin\Debug\EntityFramework.dll
-D:\Projects\MARN Garage\CPGarageAdmin\DAL\bin\Debug\EntityFramework.SqlServer.dll
-D:\Projects\MARN Garage\CPGarageAdmin\DAL\bin\Debug\Microsoft.Web.Infrastructure.dll
-D:\Projects\MARN Garage\CPGarageAdmin\DAL\bin\Debug\System.Web.Helpers.dll
-D:\Projects\MARN Garage\CPGarageAdmin\DAL\bin\Debug\System.Web.Mvc.dll
-D:\Projects\MARN Garage\CPGarageAdmin\DAL\bin\Debug\System.Web.Razor.dll
-D:\Projects\MARN Garage\CPGarageAdmin\DAL\bin\Debug\System.Web.WebPages.Deployment.dll
-D:\Projects\MARN Garage\CPGarageAdmin\DAL\bin\Debug\System.Web.WebPages.dll
-D:\Projects\MARN Garage\CPGarageAdmin\DAL\bin\Debug\System.Web.WebPages.Razor.dll
-D:\Projects\MARN Garage\CPGarageAdmin\DAL\bin\Debug\EntityFramework.xml
-D:\Projects\MARN Garage\CPGarageAdmin\DAL\bin\Debug\EntityFramework.SqlServer.xml
-D:\Projects\MARN Garage\CPGarageAdmin\DAL\bin\Debug\System.Web.Helpers.xml
-D:\Projects\MARN Garage\CPGarageAdmin\DAL\bin\Debug\System.Web.Mvc.xml
-D:\Projects\MARN Garage\CPGarageAdmin\DAL\bin\Debug\System.Web.Razor.xml
-D:\Projects\MARN Garage\CPGarageAdmin\DAL\bin\Debug\System.Web.WebPages.xml
-D:\Projects\MARN Garage\CPGarageAdmin\DAL\bin\Debug\System.Web.WebPages.Deployment.xml
-D:\Projects\MARN Garage\CPGarageAdmin\DAL\bin\Debug\System.Web.WebPages.Razor.xml
-D:\Projects\MARN Garage\CPGarageAdmin\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
-D:\Projects\MARN Garage\CPGarageAdmin\DAL\obj\Debug\DAL.csproj.CopyComplete
-D:\Projects\MARN Garage\CPGarageAdmin\DAL\obj\Debug\DAL.dll
-D:\Projects\MARN Garage\CPGarageAdmin\DAL\obj\Debug\DAL.pdb
-D:\Projects\MARN Garage\CPGarageAdmin\DAL\obj\Debug\DAL.csprojAssemblyReference.cache
-D:\Project\CPGarageAdmin\CPGarageAdmin\DAL\bin\Debug\DAL.dll.config
-D:\Project\CPGarageAdmin\CPGarageAdmin\DAL\bin\Debug\DAL.dll
-D:\Project\CPGarageAdmin\CPGarageAdmin\DAL\bin\Debug\DAL.pdb
-D:\Project\CPGarageAdmin\CPGarageAdmin\DAL\bin\Debug\EntityFramework.dll
-D:\Project\CPGarageAdmin\CPGarageAdmin\DAL\bin\Debug\EntityFramework.SqlServer.dll
-D:\Project\CPGarageAdmin\CPGarageAdmin\DAL\bin\Debug\Microsoft.Web.Infrastructure.dll
-D:\Project\CPGarageAdmin\CPGarageAdmin\DAL\bin\Debug\System.Web.Helpers.dll
-D:\Project\CPGarageAdmin\CPGarageAdmin\DAL\bin\Debug\System.Web.Mvc.dll
-D:\Project\CPGarageAdmin\CPGarageAdmin\DAL\bin\Debug\System.Web.Razor.dll
-D:\Project\CPGarageAdmin\CPGarageAdmin\DAL\bin\Debug\System.Web.WebPages.Deployment.dll
-D:\Project\CPGarageAdmin\CPGarageAdmin\DAL\bin\Debug\System.Web.WebPages.dll
-D:\Project\CPGarageAdmin\CPGarageAdmin\DAL\bin\Debug\System.Web.WebPages.Razor.dll
-D:\Project\CPGarageAdmin\CPGarageAdmin\DAL\bin\Debug\EntityFramework.xml
-D:\Project\CPGarageAdmin\CPGarageAdmin\DAL\bin\Debug\EntityFramework.SqlServer.xml
-D:\Project\CPGarageAdmin\CPGarageAdmin\DAL\bin\Debug\System.Web.Helpers.xml
-D:\Project\CPGarageAdmin\CPGarageAdmin\DAL\bin\Debug\System.Web.Mvc.xml
-D:\Project\CPGarageAdmin\CPGarageAdmin\DAL\bin\Debug\System.Web.Razor.xml
-D:\Project\CPGarageAdmin\CPGarageAdmin\DAL\bin\Debug\System.Web.WebPages.xml
-D:\Project\CPGarageAdmin\CPGarageAdmin\DAL\bin\Debug\System.Web.WebPages.Deployment.xml
-D:\Project\CPGarageAdmin\CPGarageAdmin\DAL\bin\Debug\System.Web.WebPages.Razor.xml
-D:\Project\CPGarageAdmin\CPGarageAdmin\DAL\obj\Debug\DAL.csprojAssemblyReference.cache
-D:\Project\CPGarageAdmin\CPGarageAdmin\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
-D:\Project\CPGarageAdmin\CPGarageAdmin\DAL\obj\Debug\DAL.csproj.CopyComplete
-D:\Project\CPGarageAdmin\CPGarageAdmin\DAL\obj\Debug\DAL.dll
-D:\Project\CPGarageAdmin\CPGarageAdmin\DAL\obj\Debug\DAL.pdb
-D:\Project\CPGarageAdmin\CPGarageAdmin_GIT\DAL\bin\Debug\DAL.dll.config
-D:\Project\CPGarageAdmin\CPGarageAdmin_GIT\DAL\bin\Debug\DAL.dll
-D:\Project\CPGarageAdmin\CPGarageAdmin_GIT\DAL\bin\Debug\DAL.pdb
-D:\Project\CPGarageAdmin\CPGarageAdmin_GIT\DAL\bin\Debug\EntityFramework.dll
-D:\Project\CPGarageAdmin\CPGarageAdmin_GIT\DAL\bin\Debug\EntityFramework.SqlServer.dll
-D:\Project\CPGarageAdmin\CPGarageAdmin_GIT\DAL\bin\Debug\Microsoft.Web.Infrastructure.dll
-D:\Project\CPGarageAdmin\CPGarageAdmin_GIT\DAL\bin\Debug\System.Web.Helpers.dll
-D:\Project\CPGarageAdmin\CPGarageAdmin_GIT\DAL\bin\Debug\System.Web.Mvc.dll
-D:\Project\CPGarageAdmin\CPGarageAdmin_GIT\DAL\bin\Debug\System.Web.Razor.dll
-D:\Project\CPGarageAdmin\CPGarageAdmin_GIT\DAL\bin\Debug\System.Web.WebPages.Deployment.dll
-D:\Project\CPGarageAdmin\CPGarageAdmin_GIT\DAL\bin\Debug\System.Web.WebPages.dll
-D:\Project\CPGarageAdmin\CPGarageAdmin_GIT\DAL\bin\Debug\System.Web.WebPages.Razor.dll
-D:\Project\CPGarageAdmin\CPGarageAdmin_GIT\DAL\bin\Debug\EntityFramework.xml
-D:\Project\CPGarageAdmin\CPGarageAdmin_GIT\DAL\bin\Debug\EntityFramework.SqlServer.xml
-D:\Project\CPGarageAdmin\CPGarageAdmin_GIT\DAL\bin\Debug\System.Web.Helpers.xml
-D:\Project\CPGarageAdmin\CPGarageAdmin_GIT\DAL\bin\Debug\System.Web.Mvc.xml
-D:\Project\CPGarageAdmin\CPGarageAdmin_GIT\DAL\bin\Debug\System.Web.Razor.xml
-D:\Project\CPGarageAdmin\CPGarageAdmin_GIT\DAL\bin\Debug\System.Web.WebPages.xml
-D:\Project\CPGarageAdmin\CPGarageAdmin_GIT\DAL\bin\Debug\System.Web.WebPages.Deployment.xml
-D:\Project\CPGarageAdmin\CPGarageAdmin_GIT\DAL\bin\Debug\System.Web.WebPages.Razor.xml
-D:\Project\CPGarageAdmin\CPGarageAdmin_GIT\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
-D:\Project\CPGarageAdmin\CPGarageAdmin_GIT\DAL\obj\Debug\DAL.csproj.CopyComplete
-D:\Project\CPGarageAdmin\CPGarageAdmin_GIT\DAL\obj\Debug\DAL.dll
-D:\Project\CPGarageAdmin\CPGarageAdmin_GIT\DAL\obj\Debug\DAL.pdb
-D:\Projects\CPGarageAdmin\DAL\bin\Debug\DAL.dll.config
-D:\Projects\CPGarageAdmin\DAL\bin\Debug\DAL.dll
-D:\Projects\CPGarageAdmin\DAL\bin\Debug\DAL.pdb
-D:\Projects\CPGarageAdmin\DAL\bin\Debug\EntityFramework.dll
-D:\Projects\CPGarageAdmin\DAL\bin\Debug\EntityFramework.SqlServer.dll
-D:\Projects\CPGarageAdmin\DAL\bin\Debug\Microsoft.Web.Infrastructure.dll
-D:\Projects\CPGarageAdmin\DAL\bin\Debug\System.Web.Helpers.dll
-D:\Projects\CPGarageAdmin\DAL\bin\Debug\System.Web.Mvc.dll
-D:\Projects\CPGarageAdmin\DAL\bin\Debug\System.Web.Razor.dll
-D:\Projects\CPGarageAdmin\DAL\bin\Debug\System.Web.WebPages.Deployment.dll
-D:\Projects\CPGarageAdmin\DAL\bin\Debug\System.Web.WebPages.dll
-D:\Projects\CPGarageAdmin\DAL\bin\Debug\System.Web.WebPages.Razor.dll
-D:\Projects\CPGarageAdmin\DAL\bin\Debug\EntityFramework.xml
-D:\Projects\CPGarageAdmin\DAL\bin\Debug\EntityFramework.SqlServer.xml
-D:\Projects\CPGarageAdmin\DAL\bin\Debug\System.Web.Helpers.xml
-D:\Projects\CPGarageAdmin\DAL\bin\Debug\System.Web.Mvc.xml
-D:\Projects\CPGarageAdmin\DAL\bin\Debug\System.Web.Razor.xml
-D:\Projects\CPGarageAdmin\DAL\bin\Debug\System.Web.WebPages.xml
-D:\Projects\CPGarageAdmin\DAL\bin\Debug\System.Web.WebPages.Deployment.xml
-D:\Projects\CPGarageAdmin\DAL\bin\Debug\System.Web.WebPages.Razor.xml
-D:\Projects\CPGarageAdmin\DAL\obj\Debug\DAL.csproj.AssemblyReference.cache
-D:\Projects\CPGarageAdmin\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
-D:\Projects\CPGarageAdmin\DAL\obj\Debug\DAL.csproj.CopyComplete
-D:\Projects\CPGarageAdmin\DAL\obj\Debug\DAL.dll
-D:\Projects\CPGarageAdmin\DAL\obj\Debug\DAL.pdb
-D:\Project\CPGarageAdmin\DAL\bin\Debug\DAL.dll.config
-D:\Project\CPGarageAdmin\DAL\bin\Debug\DAL.dll
-D:\Project\CPGarageAdmin\DAL\bin\Debug\DAL.pdb
-D:\Project\CPGarageAdmin\DAL\bin\Debug\EntityFramework.dll
-D:\Project\CPGarageAdmin\DAL\bin\Debug\EntityFramework.SqlServer.dll
-D:\Project\CPGarageAdmin\DAL\bin\Debug\Microsoft.Web.Infrastructure.dll
-D:\Project\CPGarageAdmin\DAL\bin\Debug\System.Web.Helpers.dll
-D:\Project\CPGarageAdmin\DAL\bin\Debug\System.Web.Mvc.dll
-D:\Project\CPGarageAdmin\DAL\bin\Debug\System.Web.Razor.dll
-D:\Project\CPGarageAdmin\DAL\bin\Debug\System.Web.WebPages.Deployment.dll
-D:\Project\CPGarageAdmin\DAL\bin\Debug\System.Web.WebPages.dll
-D:\Project\CPGarageAdmin\DAL\bin\Debug\System.Web.WebPages.Razor.dll
-D:\Project\CPGarageAdmin\DAL\bin\Debug\EntityFramework.xml
-D:\Project\CPGarageAdmin\DAL\bin\Debug\EntityFramework.SqlServer.xml
-D:\Project\CPGarageAdmin\DAL\bin\Debug\System.Web.Helpers.xml
-D:\Project\CPGarageAdmin\DAL\bin\Debug\System.Web.Mvc.xml
-D:\Project\CPGarageAdmin\DAL\bin\Debug\System.Web.Razor.xml
-D:\Project\CPGarageAdmin\DAL\bin\Debug\System.Web.WebPages.xml
-D:\Project\CPGarageAdmin\DAL\bin\Debug\System.Web.WebPages.Deployment.xml
-D:\Project\CPGarageAdmin\DAL\bin\Debug\System.Web.WebPages.Razor.xml
-D:\Project\CPGarageAdmin\DAL\obj\Debug\DAL.csprojAssemblyReference.cache
-D:\Project\CPGarageAdmin\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
-D:\Project\CPGarageAdmin\DAL\obj\Debug\DAL.csproj.CopyComplete
-D:\Project\CPGarageAdmin\DAL\obj\Debug\DAL.dll
-D:\Project\CPGarageAdmin\DAL\obj\Debug\DAL.pdb
-<<<<<<< HEAD
-D:\Projects\CPGarage_Admin\DAL\bin\Debug\DAL.dll.config
-D:\Projects\CPGarage_Admin\DAL\bin\Debug\DAL.dll
-D:\Projects\CPGarage_Admin\DAL\bin\Debug\DAL.pdb
-D:\Projects\CPGarage_Admin\DAL\bin\Debug\EntityFramework.dll
-D:\Projects\CPGarage_Admin\DAL\bin\Debug\EntityFramework.SqlServer.dll
-D:\Projects\CPGarage_Admin\DAL\bin\Debug\Microsoft.Web.Infrastructure.dll
-D:\Projects\CPGarage_Admin\DAL\bin\Debug\System.Web.Helpers.dll
-D:\Projects\CPGarage_Admin\DAL\bin\Debug\System.Web.Mvc.dll
-D:\Projects\CPGarage_Admin\DAL\bin\Debug\System.Web.Razor.dll
-D:\Projects\CPGarage_Admin\DAL\bin\Debug\System.Web.WebPages.Deployment.dll
-D:\Projects\CPGarage_Admin\DAL\bin\Debug\System.Web.WebPages.dll
-D:\Projects\CPGarage_Admin\DAL\bin\Debug\System.Web.WebPages.Razor.dll
-D:\Projects\CPGarage_Admin\DAL\bin\Debug\EntityFramework.xml
-D:\Projects\CPGarage_Admin\DAL\bin\Debug\EntityFramework.SqlServer.xml
-D:\Projects\CPGarage_Admin\DAL\bin\Debug\System.Web.Helpers.xml
-D:\Projects\CPGarage_Admin\DAL\bin\Debug\System.Web.Mvc.xml
-D:\Projects\CPGarage_Admin\DAL\bin\Debug\System.Web.Razor.xml
-D:\Projects\CPGarage_Admin\DAL\bin\Debug\System.Web.WebPages.xml
-D:\Projects\CPGarage_Admin\DAL\bin\Debug\System.Web.WebPages.Deployment.xml
-D:\Projects\CPGarage_Admin\DAL\bin\Debug\System.Web.WebPages.Razor.xml
-D:\Projects\CPGarage_Admin\DAL\obj\Debug\DAL.csproj.AssemblyReference.cache
-D:\Projects\CPGarage_Admin\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
-D:\Projects\CPGarage_Admin\DAL\obj\Debug\DAL.csproj.CopyComplete
-D:\Projects\CPGarage_Admin\DAL\obj\Debug\DAL.dll
-D:\Projects\CPGarage_Admin\DAL\obj\Debug\DAL.pdb
-=======
-E:\Project\CPGarageAdmin\DAL\bin\Debug\DAL.dll.config
-E:\Project\CPGarageAdmin\DAL\bin\Debug\DAL.dll
-E:\Project\CPGarageAdmin\DAL\bin\Debug\DAL.pdb
-E:\Project\CPGarageAdmin\DAL\bin\Debug\EntityFramework.dll
-E:\Project\CPGarageAdmin\DAL\bin\Debug\EntityFramework.SqlServer.dll
-E:\Project\CPGarageAdmin\DAL\bin\Debug\Microsoft.Web.Infrastructure.dll
-E:\Project\CPGarageAdmin\DAL\bin\Debug\System.Web.Helpers.dll
-E:\Project\CPGarageAdmin\DAL\bin\Debug\System.Web.Mvc.dll
-E:\Project\CPGarageAdmin\DAL\bin\Debug\System.Web.Razor.dll
-E:\Project\CPGarageAdmin\DAL\bin\Debug\System.Web.WebPages.Deployment.dll
-E:\Project\CPGarageAdmin\DAL\bin\Debug\System.Web.WebPages.dll
-E:\Project\CPGarageAdmin\DAL\bin\Debug\System.Web.WebPages.Razor.dll
-E:\Project\CPGarageAdmin\DAL\bin\Debug\EntityFramework.xml
-E:\Project\CPGarageAdmin\DAL\bin\Debug\EntityFramework.SqlServer.xml
-E:\Project\CPGarageAdmin\DAL\bin\Debug\System.Web.Helpers.xml
-E:\Project\CPGarageAdmin\DAL\bin\Debug\System.Web.Mvc.xml
-E:\Project\CPGarageAdmin\DAL\bin\Debug\System.Web.Razor.xml
-E:\Project\CPGarageAdmin\DAL\bin\Debug\System.Web.WebPages.xml
-E:\Project\CPGarageAdmin\DAL\bin\Debug\System.Web.WebPages.Deployment.xml
-E:\Project\CPGarageAdmin\DAL\bin\Debug\System.Web.WebPages.Razor.xml
-E:\Project\CPGarageAdmin\DAL\obj\Debug\DAL.csproj.AssemblyReference.cache
-E:\Project\CPGarageAdmin\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
-E:\Project\CPGarageAdmin\DAL\obj\Debug\DAL.csproj.CopyComplete
-E:\Project\CPGarageAdmin\DAL\obj\Debug\DAL.dll
-E:\Project\CPGarageAdmin\DAL\obj\Debug\DAL.pdb
->>>>>>> 0bfefcb6d2bc7d796b23e0428d2025af80bd922f
+E:\Project\CP_GarageAdmin\DAL\bin\Debug\DAL.dll.config
+E:\Project\CP_GarageAdmin\DAL\bin\Debug\DAL.dll
+E:\Project\CP_GarageAdmin\DAL\bin\Debug\DAL.pdb
+E:\Project\CP_GarageAdmin\DAL\bin\Debug\EntityFramework.dll
+E:\Project\CP_GarageAdmin\DAL\bin\Debug\EntityFramework.SqlServer.dll
+E:\Project\CP_GarageAdmin\DAL\bin\Debug\Microsoft.Web.Infrastructure.dll
+E:\Project\CP_GarageAdmin\DAL\bin\Debug\System.Web.Helpers.dll
+E:\Project\CP_GarageAdmin\DAL\bin\Debug\System.Web.Mvc.dll
+E:\Project\CP_GarageAdmin\DAL\bin\Debug\System.Web.Razor.dll
+E:\Project\CP_GarageAdmin\DAL\bin\Debug\System.Web.WebPages.Deployment.dll
+E:\Project\CP_GarageAdmin\DAL\bin\Debug\System.Web.WebPages.dll
+E:\Project\CP_GarageAdmin\DAL\bin\Debug\System.Web.WebPages.Razor.dll
+E:\Project\CP_GarageAdmin\DAL\bin\Debug\EntityFramework.xml
+E:\Project\CP_GarageAdmin\DAL\bin\Debug\EntityFramework.SqlServer.xml
+E:\Project\CP_GarageAdmin\DAL\bin\Debug\System.Web.Helpers.xml
+E:\Project\CP_GarageAdmin\DAL\bin\Debug\System.Web.Mvc.xml
+E:\Project\CP_GarageAdmin\DAL\bin\Debug\System.Web.Razor.xml
+E:\Project\CP_GarageAdmin\DAL\bin\Debug\System.Web.WebPages.xml
+E:\Project\CP_GarageAdmin\DAL\bin\Debug\System.Web.WebPages.Deployment.xml
+E:\Project\CP_GarageAdmin\DAL\bin\Debug\System.Web.WebPages.Razor.xml
+E:\Project\CP_GarageAdmin\DAL\obj\Debug\DAL.csproj.AssemblyReference.cache
+E:\Project\CP_GarageAdmin\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
+E:\Project\CP_GarageAdmin\DAL\obj\Debug\DAL.csproj.CopyComplete
+E:\Project\CP_GarageAdmin\DAL\obj\Debug\DAL.dll
+E:\Project\CP_GarageAdmin\DAL\obj\Debug\DAL.pdb

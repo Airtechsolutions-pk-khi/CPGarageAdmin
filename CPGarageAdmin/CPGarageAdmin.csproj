@@ -110,6 +110,7 @@
   <ItemGroup>
     <Content Include="assets\css\component-custom-switch.min.css" />
     <Content Include="assets\css\horizontal-layout\style.css" />
+    <Content Include="assets\css\font-awesome.css" />
     <Content Include="assets\css\sweetalert.css" />
     <Content Include="assets\css\sweetalert.min.js" />
     <Content Include="assets\css\vertical-layout-dark\style.css" />
@@ -186,6 +187,7 @@
     <Content Include="assets\images\sprites\jsgrid-icons.png" />
     <Content Include="assets\images\sprites\red.png" />
     <Content Include="assets\images\sprites\yellow.png" />
+    <Content Include="assets\jquery.richtext.js" />
     <Content Include="assets\js\ace.js" />
     <Content Include="assets\js\alerts.js" />
     <Content Include="assets\js\avgrund.js" />
@@ -1812,6 +1814,7 @@
     <Content Include="Global.asax" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="index.html" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.js" />
@@ -2231,6 +2234,7 @@
     <Content Include="Views\model\addMake.cshtml" />
     <Content Include="Views\packages\add.cshtml" />
     <Content Include="Views\packages\list.cshtml" />
+    <Content Include="Views\packages\_UpdatePackage.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -2255,6 +2259,9 @@
       <Project>{d337e813-f49f-4817-8fca-4adcdbef607a}</Project>
       <Name>DAL</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

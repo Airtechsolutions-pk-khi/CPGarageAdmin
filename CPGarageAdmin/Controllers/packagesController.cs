@@ -4,6 +4,8 @@ using DAL.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
+using System.Text;
 using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
@@ -21,7 +23,7 @@ namespace CPGarageAdmin.Controllers
             packagesRepo = new packagesRepository(new Garage_LiveEntities());
 
         }
-        [System.Web.Http.HttpGet]
+        
         public ActionResult list()
         {
             var data = packagesRepo.GetAll();         
@@ -33,7 +35,7 @@ namespace CPGarageAdmin.Controllers
         {
             try
             {
-                if (id != 0 || id != null)
+                if (id != null)
                 {
                     var data = packagesRepo.Get(id);
                     return View(data);
@@ -44,24 +46,43 @@ namespace CPGarageAdmin.Controllers
             }
             return View();
         }
+        [System.Web.Http.HttpGet]
+        public JsonResult getByID(int? Id)
+        {
+            try
+            {
+                if (Id != null)
+                {
+                    var data = packagesRepo.Get(Id);
+                    return Json(data, JsonRequestBehavior.AllowGet);
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+            return Json(0, JsonRequestBehavior.AllowGet);
+        }
         [HttpPost]
         [Route("Save")]
-        public int Save([FromBody] PackagesInfoViewModel obj)
+        public JsonResult Save(PackagesInfoViewModel data)
         {
-            if (obj.PackageInfoID == 0 || obj.PackageInfoID == null)
+            if (data.PackageInfoID == 0 || data.PackageInfoID == null)
             {
-                obj.CreatedDate = DateTime.Now;
-                return packagesRepo.Insert(obj);
+                data.CreatedDate = DateTime.Now;
+                int rtn = packagesRepo.Insert(data);
+                return Json(new { data = rtn }, JsonRequestBehavior.AllowGet);
             }
             else
             {
-                obj.LastUpdatedDate = DateTime.Now;
-                return packagesRepo.Update(obj);
-                //if (data == 1)
-                //    return RedirectToAction("list");
-                //else
-                //    return RedirectToAction("list");
+                data.LastUpdatedDate = DateTime.Now;
+                int rtn = packagesRepo.Update(data);
+                return Json(new { data = rtn }, JsonRequestBehavior.AllowGet);
+                
             }
         }
+
+        
+
     }
+    
 }

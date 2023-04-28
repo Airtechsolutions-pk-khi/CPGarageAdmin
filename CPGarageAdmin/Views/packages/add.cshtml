@@ -4,7 +4,18 @@
     ViewBag.Title = "add";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<style>
+
+    .text-editor-textarea {
+        min-height: 300px;
+        border: 1px solid #ced4da;
+        padding: 10px;
+        border-radius: 4px;
+    }
+</style>
 <link href="~/assets/css/component-custom-switch.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
 <script type="text/javascript">
     function UserSuccess(result) {
         if (result.success) {
@@ -31,26 +42,29 @@
                 <div class="card mt-2 mx-auto p-4 bg-light">
                     <div class="card-body bg-light">
                         <div class="container">
-                            @using (Html.BeginForm("Save", "packages", FormMethod.Post, new { enctype = "multipart/form-data" }))
-                            {
+                            @*@using (Html.BeginForm("Save", "packages", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                            {*@
                                 <div id="packageid">
+                                    
                                     @Html.HiddenFor(x => x.PackageInfoID)
                                 </div>
-                                <form id="contact-form" role="form">
+                                @*<form id="contact-form" role="form">*@
                                     <div class="controls">
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="form_email">Package Name *</label>
-                                                    @Html.TextBoxFor(model => model.PackageName, new { @class = "form-control", placeholder = "Enter Package Name", @Id = "txtName" })
-                                                    @Html.ValidationMessageFor(model => model.PackageName, "", new { @class = "text-danger" })
+                                                    <input type="text" class="form-control" placeholder="Enter Package Name" id="txtName" />
+                                                    @*@Html.TextBoxFor(model => model.PackageName, new { @class = "form-control", placeholder = "Enter Package Name", @Id = "txtName" })
+                                                    @Html.ValidationMessageFor(model => model.PackageName, "", new { @class = "text-danger" })*@
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="form_email">Package Price</label>
-                                                    @Html.TextBoxFor(model => model.PackagePrice, new { @class = "form-control", placeholder = "Enter Package Price", @Id = "txtPrice", @type = "number" })
-                                                    @Html.ValidationMessageFor(model => model.PackagePrice, "", new { @class = "text-danger" })
+                                                    <input type="number" class="form-control" placeholder="Enter Package Price" id="txtPrice" />
+                                                    @*@Html.TextBoxFor(model => model.PackagePrice, new { @class = "form-control", placeholder = "Enter Package Price", @Id = "txtPrice", @type = "number" })
+                                                    @Html.ValidationMessageFor(model => model.PackagePrice, "", new { @class = "text-danger" })*@
                                                 </div>
                                             </div>
                                         </div>
@@ -58,26 +72,57 @@
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="form_need">Device Count</label>
-                                                    @Html.TextBoxFor(model => model.DeviceCount, new { @class = "form-control", placeholder = "Enter Device Count", @Id = "txtDevCount", @type = "number" })
-                                                    @Html.ValidationMessageFor(model => model.DeviceCount, "", new { @class = "text-danger" })
+                                                    <input type="number" class="form-control" placeholder="Enter Device Count" id="txtDevCount" />
+                                                    @*@Html.TextBoxFor(model => model.DeviceCount, new { @class = "form-control", placeholder = "Enter Device Count", @Id = "txtDevCount", @type = "number" })
+                                                    @Html.ValidationMessageFor(model => model.DeviceCount, "", new { @class = "text-danger" })*@
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="form_email">Locations Limit</label>
-                                                    @Html.TextBoxFor(model => model.LocationsLimit, new { @class = "form-control", placeholder = "Enter Location Limit", @Id = "txtLocLim", @type = "number" })
-                                                    @Html.ValidationMessageFor(model => model.LocationsLimit, "", new { @class = "text-danger" })
+                                                    <input type="number" class="form-control" placeholder="Enter Location Limit" id="txtLocLim" />
+                                                    @*@Html.TextBoxFor(model => model.LocationsLimit, new { @class = "form-control", placeholder = "Enter Location Limit", @Id = "txtLocLim", @type = "number" })
+                                                    @Html.ValidationMessageFor(model => model.LocationsLimit, "", new { @class = "text-danger" })*@
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="row">
+                                            @*<div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="form_need">Package Description</label>
+                                                        @Html.TextAreaFor(model => model.PackageDescription, new { @class = "form-control", placeholder = "Enter Description", @Id = "txtDesc" })
+                                                        @Html.ValidationMessageFor(model => model.PackageDescription, "", new { @class = "text-danger" })
+                                                    </div>
+                                                </div>*@
+
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="form_need">Package Description</label>
-                                                    @Html.TextAreaFor(model => model.PackageDescription, new { @class = "form-control", placeholder = "Enter Description", @Id = "txtDesc" })
-                                                    @Html.ValidationMessageFor(model => model.PackageDescription, "", new { @class = "text-danger" })
+                                                    <div class="container">
+
+                                                        <div class="text-editor-toolbar" style="border: 1px solid #ced4da;">
+                                                            <button type="button" class="btn btn-outline-secondary" data-command="bold"><b>B</b></button>
+                                                            <button type="button" class="btn btn-outline-secondary" data-command="italic"><i>I</i></button>
+                                                            <button type="button" class="btn btn-outline-secondary" data-command="underline"><u>U</u></button>
+                                                            <button type="button" class="btn btn-outline-secondary" data-command="justifyLeft"><i class="fa fa-align-left"></i></button>
+                                                            <button type="button" class="btn btn-outline-secondary" data-command="justifyCenter"><i class="fa fa-align-center"></i></button>
+                                                            <button type="button" class="btn btn-outline-secondary" data-command="justifyRight"><i class="fa fa-align-right"></i></button>
+                                                            <button type="button" class="btn btn-outline-secondary" data-command="insertOrderedList"><i class="fa fa-list-ol"></i></button>
+                                                            <button type="button" class="btn btn-outline-secondary" data-command="insertUnorderedList"><i class="fa fa-list"></i></button>
+
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            @*<textarea class="text-editor-textarea" contenteditable id="txtDesc"></textarea>*@
+                                                            <div class="text-editor-textarea" contenteditable  id="txtDesc"></div>
+
+                                                        </div>
+                                                    </div>
                                                 </div>
+                                                 
                                             </div>
+
+
                                             <div class="col-md-2">
                                                 <div class="form-group">
                                                     <label for="form_need">Status </label>
@@ -188,12 +233,14 @@
 
                                         <div class="row">
                                             <div class="col-md-2">
-                                                <button type="submit" class="btn btn-primary mr-2">Save</button>
+                                                @*<button type="submit" class="btn btn-primary mr-2">Save</button>*@
+                                                @*<a href="javascript:;" id="postData" class="btn btn-primary mr-2"><span>Save</span></a>*@
+                                                <button   onclick="postData();" class="btn btn-primary mr-2"><span>Save</span></button>
                                             </div>
                                         </div>
                                     </div>
-                                </form>
-                            }
+                                @*</form>*@
+                            @*}*@
                         </div>
                     </div>
                 </div>
@@ -202,6 +249,60 @@
 
     </div>
 </div>
+
+
+
 <script src="~/Scripts/jquery.validate.min.js"></script>
 <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
 <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        // Handle toolbar button clicks
+        $('.text-editor-toolbar button').click(function () {
+            var command = $(this).data('command');
+            document.execCommand(command, false, null);
+        });
+    });
+</script>
+
+<script>
+    function postData() {      
+            var PackagesInfo = new Object();
+        PackagesInfo.PackageName = $('#txtName').val();
+        PackagesInfo.PackagePrice = $('#txtPrice').val();
+        PackagesInfo.PackageDescription = $('#txtDesc').html();
+        PackagesInfo.DeviceCount = $('#txtDevCount').val();
+        PackagesInfo.LocationsLimit = $('#txtLocLim').val();
+        PackagesInfo.StatusID = $('#StatusID').val();
+        PackagesInfo.IsInventory = $('#IsInventory').val();
+        PackagesInfo.IsGarageGo = $('#IsGarageGo').val();
+        PackagesInfo.PackageInfoID = $('#packageid').val();
+       
+        var PkgInfo = JSON.stringify({ 'data': PackagesInfo });
+        
+            $.ajax({
+                type: "POST",
+                url: '/Packages/Save',
+                data: PkgInfo,
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                success: function (data) {
+                    console.log(data);
+                    if (data.data == 1) {
+                        window.location.href = ('list');
+                    }
+                    else {
+                        alert('Something went wrong!')
+                    }                                        
+                },
+                error: function (xhr, textStatus, errorThrown) {
+                }
+            });
+    };
+
+
+
+
+</script>
+

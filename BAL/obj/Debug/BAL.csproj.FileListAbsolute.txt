@@ -1,276 +1,39 @@
-D:\Projects\MARN Garage\CPGarageAdmin\BAL\bin\Debug\BAL.dll.config
-D:\Projects\MARN Garage\CPGarageAdmin\BAL\bin\Debug\BAL.dll
-D:\Projects\MARN Garage\CPGarageAdmin\BAL\bin\Debug\BAL.pdb
-D:\Projects\MARN Garage\CPGarageAdmin\BAL\bin\Debug\DAL.dll
-D:\Projects\MARN Garage\CPGarageAdmin\BAL\bin\Debug\EntityFramework.dll
-D:\Projects\MARN Garage\CPGarageAdmin\BAL\bin\Debug\EntityFramework.SqlServer.dll
-D:\Projects\MARN Garage\CPGarageAdmin\BAL\bin\Debug\Microsoft.Web.Infrastructure.dll
-D:\Projects\MARN Garage\CPGarageAdmin\BAL\bin\Debug\System.Web.Helpers.dll
-D:\Projects\MARN Garage\CPGarageAdmin\BAL\bin\Debug\System.Web.Mvc.dll
-D:\Projects\MARN Garage\CPGarageAdmin\BAL\bin\Debug\System.Web.Razor.dll
-D:\Projects\MARN Garage\CPGarageAdmin\BAL\bin\Debug\System.Web.WebPages.Deployment.dll
-D:\Projects\MARN Garage\CPGarageAdmin\BAL\bin\Debug\System.Web.WebPages.dll
-D:\Projects\MARN Garage\CPGarageAdmin\BAL\bin\Debug\System.Web.WebPages.Razor.dll
-D:\Projects\MARN Garage\CPGarageAdmin\BAL\bin\Debug\DAL.pdb
-D:\Projects\MARN Garage\CPGarageAdmin\BAL\bin\Debug\DAL.dll.config
-D:\Projects\MARN Garage\CPGarageAdmin\BAL\bin\Debug\EntityFramework.xml
-D:\Projects\MARN Garage\CPGarageAdmin\BAL\bin\Debug\EntityFramework.SqlServer.xml
-D:\Projects\MARN Garage\CPGarageAdmin\BAL\bin\Debug\System.Web.Helpers.xml
-D:\Projects\MARN Garage\CPGarageAdmin\BAL\bin\Debug\System.Web.Mvc.xml
-D:\Projects\MARN Garage\CPGarageAdmin\BAL\bin\Debug\System.Web.Razor.xml
-D:\Projects\MARN Garage\CPGarageAdmin\BAL\bin\Debug\System.Web.WebPages.xml
-D:\Projects\MARN Garage\CPGarageAdmin\BAL\bin\Debug\System.Web.WebPages.Deployment.xml
-D:\Projects\MARN Garage\CPGarageAdmin\BAL\bin\Debug\System.Web.WebPages.Razor.xml
-D:\Projects\MARN Garage\CPGarageAdmin\BAL\obj\Debug\BAL.csprojAssemblyReference.cache
-D:\Projects\MARN Garage\CPGarageAdmin\BAL\obj\Debug\BAL.csproj.CoreCompileInputs.cache
-D:\Projects\MARN Garage\CPGarageAdmin\BAL\obj\Debug\BAL.csproj.CopyComplete
-D:\Projects\MARN Garage\CPGarageAdmin\BAL\obj\Debug\BAL.dll
-D:\Projects\MARN Garage\CPGarageAdmin\BAL\obj\Debug\BAL.pdb
-D:\Projects\MARN Garage\CPGarageAdmin\BAL\bin\Debug\Microsoft.IdentityModel.Logging.dll
-D:\Projects\MARN Garage\CPGarageAdmin\BAL\bin\Debug\Microsoft.IdentityModel.Tokens.dll
-D:\Projects\MARN Garage\CPGarageAdmin\BAL\bin\Debug\Newtonsoft.Json.dll
-D:\Projects\MARN Garage\CPGarageAdmin\BAL\bin\Debug\System.IdentityModel.Tokens.Jwt.dll
-D:\Projects\MARN Garage\CPGarageAdmin\BAL\bin\Debug\Twilio.dll
-D:\Projects\MARN Garage\CPGarageAdmin\BAL\bin\Debug\Microsoft.IdentityModel.Tokens.xml
-D:\Projects\MARN Garage\CPGarageAdmin\BAL\bin\Debug\Newtonsoft.Json.xml
-D:\Projects\MARN Garage\CPGarageAdmin\BAL\bin\Debug\System.IdentityModel.Tokens.Jwt.xml
-D:\Projects\MARN Garage\CPGarageAdmin\BAL\bin\Debug\Twilio.xml
-D:\Projects\MARN Garage\CPGarageAdmin\BAL\bin\Debug\NReco.PdfGenerator.dll
-D:\Projects\MARN Garage\CPGarageAdmin\BAL\bin\Debug\NReco.PdfGenerator.xml
-D:\Project\CPGarageAdmin\CPGarageAdmin\BAL\bin\Debug\BAL.dll.config
-D:\Project\CPGarageAdmin\CPGarageAdmin\BAL\bin\Debug\BAL.dll
-D:\Project\CPGarageAdmin\CPGarageAdmin\BAL\bin\Debug\BAL.pdb
-D:\Project\CPGarageAdmin\CPGarageAdmin\BAL\bin\Debug\DAL.dll
-D:\Project\CPGarageAdmin\CPGarageAdmin\BAL\bin\Debug\EntityFramework.dll
-D:\Project\CPGarageAdmin\CPGarageAdmin\BAL\bin\Debug\EntityFramework.SqlServer.dll
-D:\Project\CPGarageAdmin\CPGarageAdmin\BAL\bin\Debug\Microsoft.IdentityModel.Logging.dll
-D:\Project\CPGarageAdmin\CPGarageAdmin\BAL\bin\Debug\Microsoft.IdentityModel.Tokens.dll
-D:\Project\CPGarageAdmin\CPGarageAdmin\BAL\bin\Debug\Microsoft.Web.Infrastructure.dll
-D:\Project\CPGarageAdmin\CPGarageAdmin\BAL\bin\Debug\Newtonsoft.Json.dll
-D:\Project\CPGarageAdmin\CPGarageAdmin\BAL\bin\Debug\NReco.PdfGenerator.dll
-D:\Project\CPGarageAdmin\CPGarageAdmin\BAL\bin\Debug\System.IdentityModel.Tokens.Jwt.dll
-D:\Project\CPGarageAdmin\CPGarageAdmin\BAL\bin\Debug\System.Web.Helpers.dll
-D:\Project\CPGarageAdmin\CPGarageAdmin\BAL\bin\Debug\System.Web.Mvc.dll
-D:\Project\CPGarageAdmin\CPGarageAdmin\BAL\bin\Debug\System.Web.Razor.dll
-D:\Project\CPGarageAdmin\CPGarageAdmin\BAL\bin\Debug\System.Web.WebPages.Deployment.dll
-D:\Project\CPGarageAdmin\CPGarageAdmin\BAL\bin\Debug\System.Web.WebPages.dll
-D:\Project\CPGarageAdmin\CPGarageAdmin\BAL\bin\Debug\System.Web.WebPages.Razor.dll
-D:\Project\CPGarageAdmin\CPGarageAdmin\BAL\bin\Debug\Twilio.dll
-D:\Project\CPGarageAdmin\CPGarageAdmin\BAL\bin\Debug\DAL.pdb
-D:\Project\CPGarageAdmin\CPGarageAdmin\BAL\bin\Debug\DAL.dll.config
-D:\Project\CPGarageAdmin\CPGarageAdmin\BAL\bin\Debug\EntityFramework.xml
-D:\Project\CPGarageAdmin\CPGarageAdmin\BAL\bin\Debug\EntityFramework.SqlServer.xml
-D:\Project\CPGarageAdmin\CPGarageAdmin\BAL\bin\Debug\Microsoft.IdentityModel.Tokens.xml
-D:\Project\CPGarageAdmin\CPGarageAdmin\BAL\bin\Debug\Newtonsoft.Json.xml
-D:\Project\CPGarageAdmin\CPGarageAdmin\BAL\bin\Debug\NReco.PdfGenerator.xml
-D:\Project\CPGarageAdmin\CPGarageAdmin\BAL\bin\Debug\System.IdentityModel.Tokens.Jwt.xml
-D:\Project\CPGarageAdmin\CPGarageAdmin\BAL\bin\Debug\System.Web.Helpers.xml
-D:\Project\CPGarageAdmin\CPGarageAdmin\BAL\bin\Debug\System.Web.Mvc.xml
-D:\Project\CPGarageAdmin\CPGarageAdmin\BAL\bin\Debug\System.Web.Razor.xml
-D:\Project\CPGarageAdmin\CPGarageAdmin\BAL\bin\Debug\System.Web.WebPages.xml
-D:\Project\CPGarageAdmin\CPGarageAdmin\BAL\bin\Debug\System.Web.WebPages.Deployment.xml
-D:\Project\CPGarageAdmin\CPGarageAdmin\BAL\bin\Debug\System.Web.WebPages.Razor.xml
-D:\Project\CPGarageAdmin\CPGarageAdmin\BAL\bin\Debug\Twilio.xml
-D:\Project\CPGarageAdmin\CPGarageAdmin\BAL\obj\Debug\BAL.csprojAssemblyReference.cache
-D:\Project\CPGarageAdmin\CPGarageAdmin\BAL\obj\Debug\BAL.csproj.CoreCompileInputs.cache
-D:\Project\CPGarageAdmin\CPGarageAdmin\BAL\obj\Debug\BAL.csproj.CopyComplete
-D:\Project\CPGarageAdmin\CPGarageAdmin\BAL\obj\Debug\BAL.dll
-D:\Project\CPGarageAdmin\CPGarageAdmin\BAL\obj\Debug\BAL.pdb
-D:\Project\CPGarageAdmin\CPGarageAdmin_GIT\BAL\bin\Debug\BAL.dll.config
-D:\Project\CPGarageAdmin\CPGarageAdmin_GIT\BAL\bin\Debug\BAL.dll
-D:\Project\CPGarageAdmin\CPGarageAdmin_GIT\BAL\bin\Debug\BAL.pdb
-D:\Project\CPGarageAdmin\CPGarageAdmin_GIT\BAL\bin\Debug\DAL.dll
-D:\Project\CPGarageAdmin\CPGarageAdmin_GIT\BAL\bin\Debug\EntityFramework.dll
-D:\Project\CPGarageAdmin\CPGarageAdmin_GIT\BAL\bin\Debug\EntityFramework.SqlServer.dll
-D:\Project\CPGarageAdmin\CPGarageAdmin_GIT\BAL\bin\Debug\Microsoft.IdentityModel.Logging.dll
-D:\Project\CPGarageAdmin\CPGarageAdmin_GIT\BAL\bin\Debug\Microsoft.IdentityModel.Tokens.dll
-D:\Project\CPGarageAdmin\CPGarageAdmin_GIT\BAL\bin\Debug\Microsoft.Web.Infrastructure.dll
-D:\Project\CPGarageAdmin\CPGarageAdmin_GIT\BAL\bin\Debug\Newtonsoft.Json.dll
-D:\Project\CPGarageAdmin\CPGarageAdmin_GIT\BAL\bin\Debug\NReco.PdfGenerator.dll
-D:\Project\CPGarageAdmin\CPGarageAdmin_GIT\BAL\bin\Debug\System.IdentityModel.Tokens.Jwt.dll
-D:\Project\CPGarageAdmin\CPGarageAdmin_GIT\BAL\bin\Debug\System.Web.Helpers.dll
-D:\Project\CPGarageAdmin\CPGarageAdmin_GIT\BAL\bin\Debug\System.Web.Mvc.dll
-D:\Project\CPGarageAdmin\CPGarageAdmin_GIT\BAL\bin\Debug\System.Web.Razor.dll
-D:\Project\CPGarageAdmin\CPGarageAdmin_GIT\BAL\bin\Debug\System.Web.WebPages.Deployment.dll
-D:\Project\CPGarageAdmin\CPGarageAdmin_GIT\BAL\bin\Debug\System.Web.WebPages.dll
-D:\Project\CPGarageAdmin\CPGarageAdmin_GIT\BAL\bin\Debug\System.Web.WebPages.Razor.dll
-D:\Project\CPGarageAdmin\CPGarageAdmin_GIT\BAL\bin\Debug\Twilio.dll
-D:\Project\CPGarageAdmin\CPGarageAdmin_GIT\BAL\bin\Debug\DAL.pdb
-D:\Project\CPGarageAdmin\CPGarageAdmin_GIT\BAL\bin\Debug\DAL.dll.config
-D:\Project\CPGarageAdmin\CPGarageAdmin_GIT\BAL\bin\Debug\EntityFramework.xml
-D:\Project\CPGarageAdmin\CPGarageAdmin_GIT\BAL\bin\Debug\EntityFramework.SqlServer.xml
-D:\Project\CPGarageAdmin\CPGarageAdmin_GIT\BAL\bin\Debug\Microsoft.IdentityModel.Tokens.xml
-D:\Project\CPGarageAdmin\CPGarageAdmin_GIT\BAL\bin\Debug\Newtonsoft.Json.xml
-D:\Project\CPGarageAdmin\CPGarageAdmin_GIT\BAL\bin\Debug\NReco.PdfGenerator.xml
-D:\Project\CPGarageAdmin\CPGarageAdmin_GIT\BAL\bin\Debug\System.IdentityModel.Tokens.Jwt.xml
-D:\Project\CPGarageAdmin\CPGarageAdmin_GIT\BAL\bin\Debug\System.Web.Helpers.xml
-D:\Project\CPGarageAdmin\CPGarageAdmin_GIT\BAL\bin\Debug\System.Web.Mvc.xml
-D:\Project\CPGarageAdmin\CPGarageAdmin_GIT\BAL\bin\Debug\System.Web.Razor.xml
-D:\Project\CPGarageAdmin\CPGarageAdmin_GIT\BAL\bin\Debug\System.Web.WebPages.xml
-D:\Project\CPGarageAdmin\CPGarageAdmin_GIT\BAL\bin\Debug\System.Web.WebPages.Deployment.xml
-D:\Project\CPGarageAdmin\CPGarageAdmin_GIT\BAL\bin\Debug\System.Web.WebPages.Razor.xml
-D:\Project\CPGarageAdmin\CPGarageAdmin_GIT\BAL\bin\Debug\Twilio.xml
-D:\Project\CPGarageAdmin\CPGarageAdmin_GIT\BAL\obj\Debug\BAL.csprojAssemblyReference.cache
-D:\Project\CPGarageAdmin\CPGarageAdmin_GIT\BAL\obj\Debug\BAL.csproj.CoreCompileInputs.cache
-D:\Project\CPGarageAdmin\CPGarageAdmin_GIT\BAL\obj\Debug\BAL.csproj.CopyComplete
-D:\Project\CPGarageAdmin\CPGarageAdmin_GIT\BAL\obj\Debug\BAL.dll
-D:\Project\CPGarageAdmin\CPGarageAdmin_GIT\BAL\obj\Debug\BAL.pdb
-D:\Projects\CPGarageAdmin\BAL\obj\Debug\BAL.csproj.AssemblyReference.cache
-D:\Projects\CPGarageAdmin\BAL\obj\Debug\BAL.csproj.CoreCompileInputs.cache
-D:\Projects\CPGarageAdmin\BAL\bin\Debug\BAL.dll.config
-D:\Projects\CPGarageAdmin\BAL\bin\Debug\BAL.dll
-D:\Projects\CPGarageAdmin\BAL\bin\Debug\BAL.pdb
-D:\Projects\CPGarageAdmin\BAL\bin\Debug\DAL.dll
-D:\Projects\CPGarageAdmin\BAL\bin\Debug\EntityFramework.dll
-D:\Projects\CPGarageAdmin\BAL\bin\Debug\EntityFramework.SqlServer.dll
-D:\Projects\CPGarageAdmin\BAL\bin\Debug\Microsoft.IdentityModel.Logging.dll
-D:\Projects\CPGarageAdmin\BAL\bin\Debug\Microsoft.IdentityModel.Tokens.dll
-D:\Projects\CPGarageAdmin\BAL\bin\Debug\Microsoft.Web.Infrastructure.dll
-D:\Projects\CPGarageAdmin\BAL\bin\Debug\Newtonsoft.Json.dll
-D:\Projects\CPGarageAdmin\BAL\bin\Debug\NReco.PdfGenerator.dll
-D:\Projects\CPGarageAdmin\BAL\bin\Debug\System.IdentityModel.Tokens.Jwt.dll
-D:\Projects\CPGarageAdmin\BAL\bin\Debug\System.Web.Helpers.dll
-D:\Projects\CPGarageAdmin\BAL\bin\Debug\System.Web.Mvc.dll
-D:\Projects\CPGarageAdmin\BAL\bin\Debug\System.Web.Razor.dll
-D:\Projects\CPGarageAdmin\BAL\bin\Debug\System.Web.WebPages.Deployment.dll
-D:\Projects\CPGarageAdmin\BAL\bin\Debug\System.Web.WebPages.dll
-D:\Projects\CPGarageAdmin\BAL\bin\Debug\System.Web.WebPages.Razor.dll
-D:\Projects\CPGarageAdmin\BAL\bin\Debug\Twilio.dll
-D:\Projects\CPGarageAdmin\BAL\bin\Debug\DAL.pdb
-D:\Projects\CPGarageAdmin\BAL\bin\Debug\DAL.dll.config
-D:\Projects\CPGarageAdmin\BAL\bin\Debug\EntityFramework.xml
-D:\Projects\CPGarageAdmin\BAL\bin\Debug\EntityFramework.SqlServer.xml
-D:\Projects\CPGarageAdmin\BAL\bin\Debug\Microsoft.IdentityModel.Tokens.xml
-D:\Projects\CPGarageAdmin\BAL\bin\Debug\Newtonsoft.Json.xml
-D:\Projects\CPGarageAdmin\BAL\bin\Debug\NReco.PdfGenerator.xml
-D:\Projects\CPGarageAdmin\BAL\bin\Debug\System.IdentityModel.Tokens.Jwt.xml
-D:\Projects\CPGarageAdmin\BAL\bin\Debug\System.Web.Helpers.xml
-D:\Projects\CPGarageAdmin\BAL\bin\Debug\System.Web.Mvc.xml
-D:\Projects\CPGarageAdmin\BAL\bin\Debug\System.Web.Razor.xml
-D:\Projects\CPGarageAdmin\BAL\bin\Debug\System.Web.WebPages.xml
-D:\Projects\CPGarageAdmin\BAL\bin\Debug\System.Web.WebPages.Deployment.xml
-D:\Projects\CPGarageAdmin\BAL\bin\Debug\System.Web.WebPages.Razor.xml
-D:\Projects\CPGarageAdmin\BAL\bin\Debug\Twilio.xml
-D:\Projects\CPGarageAdmin\BAL\obj\Debug\BAL.csproj.CopyComplete
-D:\Projects\CPGarageAdmin\BAL\obj\Debug\BAL.dll
-D:\Projects\CPGarageAdmin\BAL\obj\Debug\BAL.pdb
-D:\Project\CPGarageAdmin\BAL\bin\Debug\BAL.dll.config
-D:\Project\CPGarageAdmin\BAL\bin\Debug\BAL.dll
-D:\Project\CPGarageAdmin\BAL\bin\Debug\BAL.pdb
-D:\Project\CPGarageAdmin\BAL\bin\Debug\DAL.dll
-D:\Project\CPGarageAdmin\BAL\bin\Debug\EntityFramework.dll
-D:\Project\CPGarageAdmin\BAL\bin\Debug\EntityFramework.SqlServer.dll
-D:\Project\CPGarageAdmin\BAL\bin\Debug\Microsoft.IdentityModel.Logging.dll
-D:\Project\CPGarageAdmin\BAL\bin\Debug\Microsoft.IdentityModel.Tokens.dll
-D:\Project\CPGarageAdmin\BAL\bin\Debug\Microsoft.Web.Infrastructure.dll
-D:\Project\CPGarageAdmin\BAL\bin\Debug\Newtonsoft.Json.dll
-D:\Project\CPGarageAdmin\BAL\bin\Debug\NReco.PdfGenerator.dll
-D:\Project\CPGarageAdmin\BAL\bin\Debug\System.IdentityModel.Tokens.Jwt.dll
-D:\Project\CPGarageAdmin\BAL\bin\Debug\System.Web.Helpers.dll
-D:\Project\CPGarageAdmin\BAL\bin\Debug\System.Web.Mvc.dll
-D:\Project\CPGarageAdmin\BAL\bin\Debug\System.Web.Razor.dll
-D:\Project\CPGarageAdmin\BAL\bin\Debug\System.Web.WebPages.Deployment.dll
-D:\Project\CPGarageAdmin\BAL\bin\Debug\System.Web.WebPages.dll
-D:\Project\CPGarageAdmin\BAL\bin\Debug\System.Web.WebPages.Razor.dll
-D:\Project\CPGarageAdmin\BAL\bin\Debug\Twilio.dll
-D:\Project\CPGarageAdmin\BAL\bin\Debug\DAL.pdb
-D:\Project\CPGarageAdmin\BAL\bin\Debug\DAL.dll.config
-D:\Project\CPGarageAdmin\BAL\bin\Debug\EntityFramework.xml
-D:\Project\CPGarageAdmin\BAL\bin\Debug\EntityFramework.SqlServer.xml
-D:\Project\CPGarageAdmin\BAL\bin\Debug\Microsoft.IdentityModel.Tokens.xml
-D:\Project\CPGarageAdmin\BAL\bin\Debug\Newtonsoft.Json.xml
-D:\Project\CPGarageAdmin\BAL\bin\Debug\NReco.PdfGenerator.xml
-D:\Project\CPGarageAdmin\BAL\bin\Debug\System.IdentityModel.Tokens.Jwt.xml
-D:\Project\CPGarageAdmin\BAL\bin\Debug\System.Web.Helpers.xml
-D:\Project\CPGarageAdmin\BAL\bin\Debug\System.Web.Mvc.xml
-D:\Project\CPGarageAdmin\BAL\bin\Debug\System.Web.Razor.xml
-D:\Project\CPGarageAdmin\BAL\bin\Debug\System.Web.WebPages.xml
-D:\Project\CPGarageAdmin\BAL\bin\Debug\System.Web.WebPages.Deployment.xml
-D:\Project\CPGarageAdmin\BAL\bin\Debug\System.Web.WebPages.Razor.xml
-D:\Project\CPGarageAdmin\BAL\bin\Debug\Twilio.xml
-D:\Project\CPGarageAdmin\BAL\obj\Debug\BAL.csprojAssemblyReference.cache
-D:\Project\CPGarageAdmin\BAL\obj\Debug\BAL.csproj.CoreCompileInputs.cache
-D:\Project\CPGarageAdmin\BAL\obj\Debug\BAL.csproj.CopyComplete
-D:\Project\CPGarageAdmin\BAL\obj\Debug\BAL.dll
-D:\Project\CPGarageAdmin\BAL\obj\Debug\BAL.pdb
-<<<<<<< HEAD
-D:\Projects\CPGarage_Admin\BAL\bin\Debug\BAL.dll.config
-D:\Projects\CPGarage_Admin\BAL\bin\Debug\BAL.dll
-D:\Projects\CPGarage_Admin\BAL\bin\Debug\BAL.pdb
-D:\Projects\CPGarage_Admin\BAL\bin\Debug\DAL.dll
-D:\Projects\CPGarage_Admin\BAL\bin\Debug\EntityFramework.dll
-D:\Projects\CPGarage_Admin\BAL\bin\Debug\EntityFramework.SqlServer.dll
-D:\Projects\CPGarage_Admin\BAL\bin\Debug\Microsoft.IdentityModel.Logging.dll
-D:\Projects\CPGarage_Admin\BAL\bin\Debug\Microsoft.IdentityModel.Tokens.dll
-D:\Projects\CPGarage_Admin\BAL\bin\Debug\Microsoft.Web.Infrastructure.dll
-D:\Projects\CPGarage_Admin\BAL\bin\Debug\Newtonsoft.Json.dll
-D:\Projects\CPGarage_Admin\BAL\bin\Debug\NReco.PdfGenerator.dll
-D:\Projects\CPGarage_Admin\BAL\bin\Debug\System.IdentityModel.Tokens.Jwt.dll
-D:\Projects\CPGarage_Admin\BAL\bin\Debug\System.Web.Helpers.dll
-D:\Projects\CPGarage_Admin\BAL\bin\Debug\System.Web.Mvc.dll
-D:\Projects\CPGarage_Admin\BAL\bin\Debug\System.Web.Razor.dll
-D:\Projects\CPGarage_Admin\BAL\bin\Debug\System.Web.WebPages.Deployment.dll
-D:\Projects\CPGarage_Admin\BAL\bin\Debug\System.Web.WebPages.dll
-D:\Projects\CPGarage_Admin\BAL\bin\Debug\System.Web.WebPages.Razor.dll
-D:\Projects\CPGarage_Admin\BAL\bin\Debug\Twilio.dll
-D:\Projects\CPGarage_Admin\BAL\bin\Debug\DAL.pdb
-D:\Projects\CPGarage_Admin\BAL\bin\Debug\DAL.dll.config
-D:\Projects\CPGarage_Admin\BAL\bin\Debug\EntityFramework.xml
-D:\Projects\CPGarage_Admin\BAL\bin\Debug\EntityFramework.SqlServer.xml
-D:\Projects\CPGarage_Admin\BAL\bin\Debug\Microsoft.IdentityModel.Tokens.xml
-D:\Projects\CPGarage_Admin\BAL\bin\Debug\Newtonsoft.Json.xml
-D:\Projects\CPGarage_Admin\BAL\bin\Debug\NReco.PdfGenerator.xml
-D:\Projects\CPGarage_Admin\BAL\bin\Debug\System.IdentityModel.Tokens.Jwt.xml
-D:\Projects\CPGarage_Admin\BAL\bin\Debug\System.Web.Helpers.xml
-D:\Projects\CPGarage_Admin\BAL\bin\Debug\System.Web.Mvc.xml
-D:\Projects\CPGarage_Admin\BAL\bin\Debug\System.Web.Razor.xml
-D:\Projects\CPGarage_Admin\BAL\bin\Debug\System.Web.WebPages.xml
-D:\Projects\CPGarage_Admin\BAL\bin\Debug\System.Web.WebPages.Deployment.xml
-D:\Projects\CPGarage_Admin\BAL\bin\Debug\System.Web.WebPages.Razor.xml
-D:\Projects\CPGarage_Admin\BAL\bin\Debug\Twilio.xml
-D:\Projects\CPGarage_Admin\BAL\obj\Debug\BAL.csproj.AssemblyReference.cache
-D:\Projects\CPGarage_Admin\BAL\obj\Debug\BAL.csproj.CoreCompileInputs.cache
-D:\Projects\CPGarage_Admin\BAL\obj\Debug\BAL.csproj.CopyComplete
-D:\Projects\CPGarage_Admin\BAL\obj\Debug\BAL.dll
-D:\Projects\CPGarage_Admin\BAL\obj\Debug\BAL.pdb
-=======
-E:\Project\CPGarageAdmin\BAL\bin\Debug\BAL.dll.config
-E:\Project\CPGarageAdmin\BAL\bin\Debug\BAL.dll
-E:\Project\CPGarageAdmin\BAL\bin\Debug\BAL.pdb
-E:\Project\CPGarageAdmin\BAL\bin\Debug\DAL.dll
-E:\Project\CPGarageAdmin\BAL\bin\Debug\EntityFramework.dll
-E:\Project\CPGarageAdmin\BAL\bin\Debug\EntityFramework.SqlServer.dll
-E:\Project\CPGarageAdmin\BAL\bin\Debug\Microsoft.IdentityModel.Logging.dll
-E:\Project\CPGarageAdmin\BAL\bin\Debug\Microsoft.IdentityModel.Tokens.dll
-E:\Project\CPGarageAdmin\BAL\bin\Debug\Microsoft.Web.Infrastructure.dll
-E:\Project\CPGarageAdmin\BAL\bin\Debug\Newtonsoft.Json.dll
-E:\Project\CPGarageAdmin\BAL\bin\Debug\NReco.PdfGenerator.dll
-E:\Project\CPGarageAdmin\BAL\bin\Debug\System.IdentityModel.Tokens.Jwt.dll
-E:\Project\CPGarageAdmin\BAL\bin\Debug\System.Web.Helpers.dll
-E:\Project\CPGarageAdmin\BAL\bin\Debug\System.Web.Mvc.dll
-E:\Project\CPGarageAdmin\BAL\bin\Debug\System.Web.Razor.dll
-E:\Project\CPGarageAdmin\BAL\bin\Debug\System.Web.WebPages.Deployment.dll
-E:\Project\CPGarageAdmin\BAL\bin\Debug\System.Web.WebPages.dll
-E:\Project\CPGarageAdmin\BAL\bin\Debug\System.Web.WebPages.Razor.dll
-E:\Project\CPGarageAdmin\BAL\bin\Debug\Twilio.dll
-E:\Project\CPGarageAdmin\BAL\bin\Debug\DAL.pdb
-E:\Project\CPGarageAdmin\BAL\bin\Debug\DAL.dll.config
-E:\Project\CPGarageAdmin\BAL\bin\Debug\EntityFramework.xml
-E:\Project\CPGarageAdmin\BAL\bin\Debug\EntityFramework.SqlServer.xml
-E:\Project\CPGarageAdmin\BAL\bin\Debug\Microsoft.IdentityModel.Tokens.xml
-E:\Project\CPGarageAdmin\BAL\bin\Debug\Newtonsoft.Json.xml
-E:\Project\CPGarageAdmin\BAL\bin\Debug\NReco.PdfGenerator.xml
-E:\Project\CPGarageAdmin\BAL\bin\Debug\System.IdentityModel.Tokens.Jwt.xml
-E:\Project\CPGarageAdmin\BAL\bin\Debug\System.Web.Helpers.xml
-E:\Project\CPGarageAdmin\BAL\bin\Debug\System.Web.Mvc.xml
-E:\Project\CPGarageAdmin\BAL\bin\Debug\System.Web.Razor.xml
-E:\Project\CPGarageAdmin\BAL\bin\Debug\System.Web.WebPages.xml
-E:\Project\CPGarageAdmin\BAL\bin\Debug\System.Web.WebPages.Deployment.xml
-E:\Project\CPGarageAdmin\BAL\bin\Debug\System.Web.WebPages.Razor.xml
-E:\Project\CPGarageAdmin\BAL\bin\Debug\Twilio.xml
-E:\Project\CPGarageAdmin\BAL\obj\Debug\BAL.csproj.AssemblyReference.cache
-E:\Project\CPGarageAdmin\BAL\obj\Debug\BAL.csproj.CoreCompileInputs.cache
-E:\Project\CPGarageAdmin\BAL\obj\Debug\BAL.csproj.CopyComplete
-E:\Project\CPGarageAdmin\BAL\obj\Debug\BAL.dll
-E:\Project\CPGarageAdmin\BAL\obj\Debug\BAL.pdb
->>>>>>> 0bfefcb6d2bc7d796b23e0428d2025af80bd922f
+E:\Project\CP_GarageAdmin\BAL\bin\Debug\BAL.dll.config
+E:\Project\CP_GarageAdmin\BAL\bin\Debug\BAL.dll
+E:\Project\CP_GarageAdmin\BAL\bin\Debug\BAL.pdb
+E:\Project\CP_GarageAdmin\BAL\bin\Debug\DAL.dll
+E:\Project\CP_GarageAdmin\BAL\bin\Debug\EntityFramework.dll
+E:\Project\CP_GarageAdmin\BAL\bin\Debug\EntityFramework.SqlServer.dll
+E:\Project\CP_GarageAdmin\BAL\bin\Debug\Microsoft.IdentityModel.Logging.dll
+E:\Project\CP_GarageAdmin\BAL\bin\Debug\Microsoft.IdentityModel.Tokens.dll
+E:\Project\CP_GarageAdmin\BAL\bin\Debug\Microsoft.Web.Infrastructure.dll
+E:\Project\CP_GarageAdmin\BAL\bin\Debug\Newtonsoft.Json.dll
+E:\Project\CP_GarageAdmin\BAL\bin\Debug\NReco.PdfGenerator.dll
+E:\Project\CP_GarageAdmin\BAL\bin\Debug\System.IdentityModel.Tokens.Jwt.dll
+E:\Project\CP_GarageAdmin\BAL\bin\Debug\System.Web.Helpers.dll
+E:\Project\CP_GarageAdmin\BAL\bin\Debug\System.Web.Mvc.dll
+E:\Project\CP_GarageAdmin\BAL\bin\Debug\System.Web.Razor.dll
+E:\Project\CP_GarageAdmin\BAL\bin\Debug\System.Web.WebPages.Deployment.dll
+E:\Project\CP_GarageAdmin\BAL\bin\Debug\System.Web.WebPages.dll
+E:\Project\CP_GarageAdmin\BAL\bin\Debug\System.Web.WebPages.Razor.dll
+E:\Project\CP_GarageAdmin\BAL\bin\Debug\Twilio.dll
+E:\Project\CP_GarageAdmin\BAL\bin\Debug\DAL.pdb
+E:\Project\CP_GarageAdmin\BAL\bin\Debug\DAL.dll.config
+E:\Project\CP_GarageAdmin\BAL\bin\Debug\EntityFramework.xml
+E:\Project\CP_GarageAdmin\BAL\bin\Debug\EntityFramework.SqlServer.xml
+E:\Project\CP_GarageAdmin\BAL\bin\Debug\Microsoft.IdentityModel.Tokens.xml
+E:\Project\CP_GarageAdmin\BAL\bin\Debug\Newtonsoft.Json.xml
+E:\Project\CP_GarageAdmin\BAL\bin\Debug\NReco.PdfGenerator.xml
+E:\Project\CP_GarageAdmin\BAL\bin\Debug\System.IdentityModel.Tokens.Jwt.xml
+E:\Project\CP_GarageAdmin\BAL\bin\Debug\System.Web.Helpers.xml
+E:\Project\CP_GarageAdmin\BAL\bin\Debug\System.Web.Mvc.xml
+E:\Project\CP_GarageAdmin\BAL\bin\Debug\System.Web.Razor.xml
+E:\Project\CP_GarageAdmin\BAL\bin\Debug\System.Web.WebPages.xml
+E:\Project\CP_GarageAdmin\BAL\bin\Debug\System.Web.WebPages.Deployment.xml
+E:\Project\CP_GarageAdmin\BAL\bin\Debug\System.Web.WebPages.Razor.xml
+E:\Project\CP_GarageAdmin\BAL\bin\Debug\Twilio.xml
+E:\Project\CP_GarageAdmin\BAL\obj\Debug\BAL.csproj.AssemblyReference.cache
+E:\Project\CP_GarageAdmin\BAL\obj\Debug\BAL.csproj.CoreCompileInputs.cache
+E:\Project\CP_GarageAdmin\BAL\obj\Debug\BAL.csproj.CopyComplete
+E:\Project\CP_GarageAdmin\BAL\obj\Debug\BAL.dll
+E:\Project\CP_GarageAdmin\BAL\obj\Debug\BAL.pdb
