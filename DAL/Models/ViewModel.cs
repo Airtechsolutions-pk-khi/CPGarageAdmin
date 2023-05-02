@@ -144,9 +144,9 @@ namespace DAL.Models
         public string PackageDescription { get; set; }
         public Nullable<int> DeviceCount { get; set; }
         public Nullable<int> LocationsLimit { get; set; }
-        public Nullable<int> StatusID { get; set; }
-        public Nullable<bool> IsInventory { get; set; }
-        public Nullable<bool> IsGarageGo { get; set; }
+        public bool StatusID { get; set; }
+        public bool IsInventory { get; set; }
+        public bool IsGarageGo { get; set; }
         public Nullable<System.DateTime> CreatedDate { get; set; }
         public Nullable<System.DateTime> LastUpdatedDate { get; set; }
 

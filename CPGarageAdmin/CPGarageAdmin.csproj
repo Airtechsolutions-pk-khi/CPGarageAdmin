@@ -2232,9 +2232,10 @@
     <Content Include="Views\model\list.cshtml" />
     <Content Include="Views\model\listMake.cshtml" />
     <Content Include="Views\model\addMake.cshtml" />
-    <Content Include="Views\packages\add.cshtml" />
+    <Content Include="Views\packages\addajax.cshtml" />
     <Content Include="Views\packages\list.cshtml" />
     <Content Include="Views\packages\_UpdatePackage.cshtml" />
+    <Content Include="Views\packages\add.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
