@@ -38,5 +38,7 @@ namespace DAL.DBEntities
         public Nullable<System.DateTime> CreatedOn { get; set; }
         public string CreatedBy { get; set; }
         public Nullable<bool> IsSignUp { get; set; }
+        public string City { get; set; }
+        public string Country { get; set; }
     }
 }

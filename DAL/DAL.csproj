@@ -119,9 +119,6 @@
     <Compile Include="DBEntities\CompanyQuotationDetail.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="DBEntities\ComplianceDevice.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
     <Compile Include="DBEntities\Country.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -129,9 +126,6 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="DBEntities\Customer.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DBEntities\CustomerStatu.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="DBEntities\DBContext.cs" />
@@ -340,6 +334,9 @@
     <Compile Include="DBEntities\sp_GetLocationServices_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="DBEntities\sp_GetLocationsV2_CAPI_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="DBEntities\sp_GetLocations_CAPI_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -352,7 +349,13 @@
     <Compile Include="DBEntities\sp_GetOrderHistory_App_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="DBEntities\sp_GetOrderListCheckoutV2_APP_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="DBEntities\sp_GetOrderListCheckout_APP_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBEntities\sp_GetOrderListV2_APP_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="DBEntities\sp_GetOrderList_APP_Result.cs">
@@ -361,7 +364,19 @@
     <Compile Include="DBEntities\sp_GetOrderQR_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="DBEntities\sp_GetPackagebyID_Admin_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBEntities\sp_GetPackageInfo_UAT_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="DBEntities\sp_GetPermissions_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBEntities\sp_GetProducts_POS_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBEntities\sp_GetSession_POS_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="DBEntities\sp_GetStockNotifications_Result.cs">
@@ -370,10 +385,7 @@
     <Compile Include="DBEntities\sp_GetSubCategoryDuplication_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="DBEntities\sp_helpdiagramdefinition_Result.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DBEntities\sp_helpdiagrams_Result.cs">
+    <Compile Include="DBEntities\sp_insertPackagesInfo_Admin_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="DBEntities\sp_InsertReview_CAPI_Result.cs">
@@ -439,9 +451,6 @@
     <Compile Include="DBEntities\Supplier.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="DBEntities\sysdiagram.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
     <Compile Include="DBEntities\TimeZone.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -449,15 +458,6 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="DBEntities\User.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DBEntities\UserPackageDetail.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DBEntities\usp_Login_Result.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DBEntities\ZatcaAuthentication.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="DBEntities\ZohoChartOfAccount.cs">

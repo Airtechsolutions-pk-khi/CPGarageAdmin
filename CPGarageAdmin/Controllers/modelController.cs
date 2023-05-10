@@ -194,9 +194,9 @@ namespace CPGarageAdmin.Controllers
                     try
                     {
 
-                        path = Path.Combine(Server.MapPath("~/assets/Uploads"), random + Path.GetFileName(file.FileName));
+                        path = Path.Combine(Server.MapPath("/assets/Uploads"), random + Path.GetFileName(file.FileName));
                         file.SaveAs(path);
-                        path = "~/assets/Uploads/" + random + Path.GetFileName(file.FileName);
+                        path = "/assets/Uploads/" + random + Path.GetFileName(file.FileName);
 
                         //    ViewBag.Message = "File uploaded successfully";
                     }

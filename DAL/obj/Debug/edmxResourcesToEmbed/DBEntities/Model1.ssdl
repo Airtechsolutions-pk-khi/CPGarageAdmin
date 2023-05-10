@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="Garage_UATModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+<Schema Namespace="Garage_Live.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityType Name="AppSource">
     <Key>
       <PropertyRef Name="SourceID" />
@@ -32,8 +32,9 @@
       <PropertyRef Name="CarInspectionID" />
     </Key>
     <Property Name="CarInspectionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Name" Type="nvarchar" MaxLength="200" />
-    <Property Name="AlternateName" Type="nvarchar" MaxLength="200" />
+    <Property Name="RowID" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="100" />
+    <Property Name="AlternateName" Type="nvarchar" MaxLength="100" />
     <Property Name="Image" Type="nvarchar(max)" />
     <Property Name="Description" Type="nvarchar(max)" />
     <Property Name="StatusID" Type="int" />
@@ -273,17 +274,6 @@
     <Property Name="Total" Type="float" />
     <Property Name="StatusID" Type="int" />
   </EntityType>
-  <EntityType Name="ComplianceDevice">
-    <Key>
-      <PropertyRef Name="ComplianceDeviceID" />
-    </Key>
-    <Property Name="ComplianceDeviceID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="ModelNo" Type="nvarchar" MaxLength="50" />
-    <Property Name="SerialNo" Type="nvarchar" MaxLength="50" />
-    <Property Name="LocationID" Type="int" />
-    <Property Name="UserValue" Type="nvarchar" MaxLength="50" />
-    <Property Name="StatusID" Type="int" />
-  </EntityType>
   <EntityType Name="Country">
     <Key>
       <PropertyRef Name="Code" />
@@ -334,7 +324,7 @@
     <Property Name="Email" Type="varchar" MaxLength="50" />
     <Property Name="DOB" Type="varchar" MaxLength="100" />
     <Property Name="Sex" Type="varchar" MaxLength="50" />
-    <Property Name="Mobile" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="Mobile" Type="varchar" MaxLength="100" Nullable="false" />
     <Property Name="CardNo" Type="varchar" MaxLength="50" />
     <Property Name="LastUpdatedBy" Type="varchar" MaxLength="50" />
     <Property Name="LastUpdatedDate" Type="datetime" />
@@ -350,7 +340,6 @@
     <Property Name="CreatedOn" Type="datetime" />
     <Property Name="CreatedBy" Type="nvarchar" MaxLength="100" />
     <Property Name="IsSignUp" Type="bit" />
-    <Property Name="IsCustomerLive" Type="int" />
     <Property Name="City" Type="nvarchar" MaxLength="50" />
     <Property Name="Country" Type="nvarchar" MaxLength="50" />
   </EntityType>
@@ -402,8 +391,8 @@
     <Property Name="IntegrationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name" Type="nvarchar" MaxLength="200" />
     <Property Name="IntegrationKey" Type="nvarchar(max)" />
-    <Property Name="Token" Type="nvarchar(max)" />
     <Property Name="Value" Type="nvarchar" MaxLength="100" />
+    <Property Name="Token" Type="nvarchar(max)" />
     <Property Name="StatusID" Type="int" />
     <Property Name="UserID" Type="int" />
   </EntityType>
@@ -746,6 +735,7 @@
     <Property Name="LastUpdatedBy" Type="nvarchar" MaxLength="50" />
     <Property Name="LastUpdatedDate" Type="datetime" />
     <Property Name="StatusID" Type="int" />
+    <Property Name="CustomerStatusID" Type="int" />
     <Property Name="CompanyCode" Type="varchar" MaxLength="10" Nullable="false" />
     <Property Name="LandmarkID" Type="int" />
     <Property Name="Gmaplink" Type="nvarchar" MaxLength="500" />
@@ -781,6 +771,7 @@
     <Property Name="CreatedOn" Type="datetime" />
     <Property Name="CreatedBy" Type="nvarchar" MaxLength="100" />
     <Property Name="DisplayOrder" Type="int" />
+    <Property Name="MakeImage" Type="nvarchar(max)" />
   </EntityType>
   <EntityType Name="Model">
     <Key>
@@ -1078,14 +1069,18 @@
       <PropertyRef Name="ReceiptID" />
     </Key>
     <Property Name="ReceiptID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RowID" Type="int" Nullable="false" />
     <Property Name="ReceiptName" Type="nvarchar" MaxLength="200" />
     <Property Name="CompanyTitle" Type="nvarchar" MaxLength="200" />
     <Property Name="CompanyAddress" Type="nvarchar" MaxLength="500" />
     <Property Name="CompanyPhones" Type="nvarchar" MaxLength="20" />
+    <Property Name="CompanyFax" Type="nvarchar" MaxLength="20" />
     <Property Name="CompanyEmail" Type="nvarchar" MaxLength="200" />
     <Property Name="CompanyWebsite" Type="nvarchar" MaxLength="500" />
+    <Property Name="Promotiontagline" Type="nvarchar" MaxLength="500" />
     <Property Name="Companytagline" Type="nvarchar" MaxLength="500" />
-    <Property Name="CompanyLogoURL" Type="nvarchar(max)" />
+    <Property Name="CompanyLogoURL" Type="nvarchar" MaxLength="500" />
+    <Property Name="ReceiptContent" Type="nvarchar(max)" />
     <Property Name="Footer" Type="nvarchar(max)" />
     <Property Name="Facebook" Type="nvarchar" MaxLength="100" />
     <Property Name="Twitter" Type="nvarchar" MaxLength="100" />
@@ -1093,10 +1088,12 @@
     <Property Name="Snapchat" Type="nvarchar" MaxLength="100" />
     <Property Name="LastUpdatedBy" Type="nvarchar" MaxLength="50" />
     <Property Name="LastUpdatedDate" Type="datetime" />
-    <Property Name="IsCompanyTagline" Type="bit" />
     <Property Name="StatusID" Type="int" />
-    <Property Name="IsActive" Type="bit" Nullable="false" />
     <Property Name="LocationID" Type="int" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="100" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="IsCompanyTagline" Type="bit" />
     <Property Name="IsA4Spacing" Type="bit" />
   </EntityType>
   <EntityType Name="ReportLogs">
@@ -1311,16 +1308,6 @@
     <Property Name="UserID" Type="int" />
     <Property Name="Type" Type="nvarchar" MaxLength="50" />
   </EntityType>
-  <EntityType Name="sysdiagrams">
-    <Key>
-      <PropertyRef Name="diagram_id" />
-    </Key>
-    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-    <Property Name="principal_id" Type="int" Nullable="false" />
-    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="version" Type="int" />
-    <Property Name="definition" Type="varbinary(max)" />
-  </EntityType>
   <EntityType Name="TimeZone">
     <Key>
       <PropertyRef Name="TimeZoneID" />
@@ -1345,24 +1332,12 @@
     <Property Name="CreatedOn" Type="datetime" />
     <Property Name="CreatedBy" Type="nvarchar" MaxLength="100" />
   </EntityType>
-  <EntityType Name="UserPackageDetails">
-    <Key>
-      <PropertyRef Name="UserPackageDetailID" />
-    </Key>
-    <Property Name="UserPackageDetailID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="PackageInfoID" Type="int" />
-    <Property Name="UserID" Type="int" />
-    <Property Name="StatusID" Type="int" />
-    <Property Name="CreatedDate" Type="datetime" />
-    <Property Name="LastUpdatedDate" Type="datetime" />
-  </EntityType>
   <EntityType Name="Users">
     <Key>
       <PropertyRef Name="UserID" />
     </Key>
     <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="RowID" Type="int" Nullable="false" />
-    <Property Name="PackageInfoID" Type="int" />
     <Property Name="UserName" Type="nvarchar" MaxLength="50" />
     <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
     <Property Name="LastName" Type="nvarchar" MaxLength="50" />
@@ -1390,21 +1365,6 @@
     <Property Name="Tax" Type="float" />
     <Property Name="IsSMSCheckoutAddOn" Type="bit" />
     <Property Name="AllowNegativeInventory" Type="bit" />
-    <Property Name="IsOdoo" Type="bit" />
-    <Property Name="IsAccountingAddons" Type="bit" />
-  </EntityType>
-  <EntityType Name="ZatcaAuthentication">
-    <Key>
-      <PropertyRef Name="AuthenicationID" />
-    </Key>
-    <Property Name="AuthenicationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="LocationID" Type="int" />
-    <Property Name="InvoiceType" Type="nvarchar" MaxLength="50" />
-    <Property Name="CSR" Type="nvarchar(max)" />
-    <Property Name="PKey" Type="nvarchar(max)" />
-    <Property Name="Certificate" Type="nvarchar(max)" />
-    <Property Name="Secret" Type="nvarchar" MaxLength="200" />
-    <Property Name="UserValue" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="ZohoChartOfAccounts">
     <Key>
@@ -1414,7 +1374,6 @@
     <Property Name="account_id" Type="nvarchar" MaxLength="50" />
     <Property Name="account_name" Type="nvarchar" MaxLength="150" />
     <Property Name="account_type" Type="nvarchar" MaxLength="50" />
-    <Property Name="AccountTypeZoho" Type="nvarchar" MaxLength="50" />
     <Property Name="is_active" Type="nvarchar" MaxLength="50" />
     <Property Name="UserID" Type="int" Nullable="false" />
     <Property Name="LastUpdatedBy" Type="nvarchar" MaxLength="50" />
@@ -2938,42 +2897,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_UserPackageDetails_PackagesInfo">
-    <End Role="PackagesInfo" Type="Self.PackagesInfo" Multiplicity="0..1" />
-    <End Role="UserPackageDetails" Type="Self.UserPackageDetails" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="PackagesInfo">
-        <PropertyRef Name="PackageInfoID" />
-      </Principal>
-      <Dependent Role="UserPackageDetails">
-        <PropertyRef Name="PackageInfoID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_UserPackageDetails_UserPackageDetails">
-    <End Role="UserPackageDetails" Type="Self.UserPackageDetails" Multiplicity="1" />
-    <End Role="UserPackageDetails1" Type="Self.UserPackageDetails" Multiplicity="0..1" />
-    <ReferentialConstraint>
-      <Principal Role="UserPackageDetails">
-        <PropertyRef Name="UserPackageDetailID" />
-      </Principal>
-      <Dependent Role="UserPackageDetails1">
-        <PropertyRef Name="UserPackageDetailID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_UserPackageDetails_Users">
-    <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
-    <End Role="UserPackageDetails" Type="Self.UserPackageDetails" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Users">
-        <PropertyRef Name="UserID" />
-      </Principal>
-      <Dependent Role="UserPackageDetails">
-        <PropertyRef Name="UserID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_Users_Country">
     <End Role="Country" Type="Self.Country" Multiplicity="0..1" />
     <End Role="Users" Type="Self.Users" Multiplicity="*" />
@@ -2983,18 +2906,6 @@
       </Principal>
       <Dependent Role="Users">
         <PropertyRef Name="CountryID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Users_PackagesInfo">
-    <End Role="PackagesInfo" Type="Self.PackagesInfo" Multiplicity="0..1" />
-    <End Role="Users" Type="Self.Users" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="PackagesInfo">
-        <PropertyRef Name="PackageInfoID" />
-      </Principal>
-      <Dependent Role="Users">
-        <PropertyRef Name="PackageInfoID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -3046,7 +2957,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
   <Function Name="GetTotalCost_Items" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="float">
     <Parameter Name="ItemID" Type="int" Mode="In" />
     <Parameter Name="LocationID" Type="int" Mode="In" />
@@ -3066,12 +2976,6 @@
     <Parameter Name="StatusID" Type="int" Mode="In" />
     <Parameter Name="UserID" Type="int" Mode="In" />
   </Function>
-  <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-    <Parameter Name="owner_id" Type="int" Mode="In" />
-    <Parameter Name="version" Type="int" Mode="In" />
-    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
-  </Function>
   <Function Name="sp_apiGetSuperUserInfo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="CompanyCode" Type="nvarchar" Mode="In" />
   </Function>
@@ -3085,17 +2989,18 @@
     <Parameter Name="StatusID" Type="int" Mode="In" />
     <Parameter Name="CustomerID" Type="int" Mode="In" />
   </Function>
-  <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-    <Parameter Name="owner_id" Type="int" Mode="In" />
-    <Parameter Name="version" Type="int" Mode="In" />
-    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
-  </Function>
   <Function Name="sp_CreateSessionInfo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="SubUserID" Type="int" Mode="In" />
     <Parameter Name="LocationID" Type="int" Mode="In" />
     <Parameter Name="CompanyCode" Type="nvarchar" Mode="In" />
     <Parameter Name="Ticks" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_CreateSessionInfoV2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="SubUserID" Type="int" Mode="In" />
+    <Parameter Name="LocationID" Type="int" Mode="In" />
+    <Parameter Name="CompanyCode" Type="nvarchar" Mode="In" />
+    <Parameter Name="Ticks" Type="varchar" Mode="In" />
+    <Parameter Name="Currency" Type="nvarchar" Mode="In" />
   </Function>
   <Function Name="sp_DeductStock" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="ItemID" Type="int" Mode="In" />
@@ -3114,10 +3019,6 @@
     <Parameter Name="UserID" Type="int" Mode="In" />
     <Parameter Name="RefNo" Type="nvarchar" Mode="In" />
     <Parameter Name="Remarks" Type="nvarchar" Mode="In" />
-  </Function>
-  <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-    <Parameter Name="owner_id" Type="int" Mode="In" />
   </Function>
   <Function Name="sp_GetCar_App" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="UserID" Type="int" Mode="In" />
@@ -3151,6 +3052,7 @@
   <Function Name="sp_GetCarsBy_CustomerID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="ID" Type="int" Mode="In" />
   </Function>
+  <Function Name="sp_Getimport" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="sp_getLocation_CADMIN" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="sp_GetLocationImages_CAdmin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="id" Type="int" Mode="In" />
@@ -3162,6 +3064,10 @@
     <Parameter Name="id" Type="int" Mode="In" />
   </Function>
   <Function Name="sp_GetLocationServices" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_GetLocationsV2_CAPI" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="LocationID" Type="int" Mode="In" />
+    <Parameter Name="Date" Type="datetime" Mode="In" />
+  </Function>
   <Function Name="sp_GetNotifications" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="LocationID" Type="int" Mode="In" />
     <Parameter Name="RecordCount" Type="int" Mode="In" />
@@ -3179,13 +3085,35 @@
     <Parameter Name="Date" Type="datetime" Mode="In" />
     <Parameter Name="Status" Type="nvarchar" Mode="In" />
   </Function>
+  <Function Name="sp_GetOrderListCheckoutV2_APP" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="LocationID" Type="int" Mode="In" />
+    <Parameter Name="Date" Type="datetime" Mode="In" />
+    <Parameter Name="Status" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_GetOrderListV2_APP" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="LocationID" Type="int" Mode="In" />
+    <Parameter Name="Date" Type="datetime" Mode="In" />
+    <Parameter Name="Status" Type="nvarchar" Mode="In" />
+  </Function>
   <Function Name="sp_GetOrderQR" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="OrderID" Type="int" Mode="In" />
   </Function>
+  <Function Name="sp_GetPackagebyID_Admin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_GetPackageInfo_UAT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="sp_GetPermissions" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="UserID" Type="int" Mode="In" />
     <Parameter Name="GroupID" Type="int" Mode="In" />
     <Parameter Name="Type" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_GetProducts_POS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ProductID" Type="int" Mode="In" />
+    <Parameter Name="LocationID" Type="int" Mode="In" />
+    <Parameter Name="CurrentDate" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="sp_GetSession_POS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Session" Type="nvarchar" Mode="In" />
   </Function>
   <Function Name="sp_GetStockNotifications" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="LocationID" Type="int" Mode="In" />
@@ -3193,14 +3121,6 @@
   <Function Name="sp_GetSubCategoryDuplication" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="SubCatID" Type="int" Mode="In" />
     <Parameter Name="LocationIDs" Type="nvarchar" Mode="In" />
-  </Function>
-  <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-    <Parameter Name="owner_id" Type="int" Mode="In" />
-  </Function>
-  <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-    <Parameter Name="owner_id" Type="int" Mode="In" />
   </Function>
   <Function Name="sp_InsertDiscountItems" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="DiscountID" Type="int" Mode="In" />
@@ -3274,6 +3194,17 @@
     <Parameter Name="LocationID" Type="int" Mode="In" />
     <Parameter Name="LastUpdatedDate" Type="datetime" Mode="In" />
   </Function>
+  <Function Name="sp_insertPackagesInfo_Admin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="PackageName" Type="nvarchar" Mode="In" />
+    <Parameter Name="PackageDescription" Type="nvarchar" Mode="In" />
+    <Parameter Name="PackagePrice" Type="decimal" Mode="In" />
+    <Parameter Name="DeviceCount" Type="int" Mode="In" />
+    <Parameter Name="LocationsLimit" Type="int" Mode="In" />
+    <Parameter Name="IsInventory" Type="bit" Mode="In" />
+    <Parameter Name="IsGarageGo" Type="bit" Mode="In" />
+    <Parameter Name="StatusID" Type="int" Mode="In" />
+    <Parameter Name="CreatedDate" Type="datetime" Mode="In" />
+  </Function>
   <Function Name="sp_InsertReview_CAPI" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="Name" Type="nvarchar" Mode="In" />
     <Parameter Name="Message" Type="nvarchar" Mode="In" />
@@ -3304,11 +3235,6 @@
   </Function>
   <Function Name="sp_login_CAPI" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="Phone" Type="nvarchar" Mode="In" />
-  </Function>
-  <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-    <Parameter Name="owner_id" Type="int" Mode="In" />
-    <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
   </Function>
   <Function Name="sp_ReturnStock" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="ItemID" Type="int" Mode="In" />
@@ -3360,21 +3286,6 @@
   <Function Name="sp_RptStock_App" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="LocationIDs" Type="nvarchar" Mode="In" />
     <Parameter Name="SortBy" Type="nvarchar" Mode="In" />
-  </Function>
-  <Function Name="sp_SaveAuthentication_zatca" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="LocationID" Type="int" Mode="In" />
-    <Parameter Name="InvoiceType" Type="nvarchar" Mode="In" />
-    <Parameter Name="CSR" Type="nvarchar(max)" Mode="In" />
-    <Parameter Name="PKey" Type="nvarchar(max)" Mode="In" />
-    <Parameter Name="Certificate" Type="nvarchar(max)" Mode="In" />
-    <Parameter Name="Secret" Type="nvarchar" Mode="In" />
-    <Parameter Name="UserValue" Type="nvarchar" Mode="In" />
-  </Function>
-  <Function Name="sp_SaveCSRDevice_zatca" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="ModelNo" Type="nvarchar" Mode="In" />
-    <Parameter Name="SerialNo" Type="nvarchar" Mode="In" />
-    <Parameter Name="LocationID" Type="int" Mode="In" />
-    <Parameter Name="UserValue" Type="nvarchar" Mode="In" />
   </Function>
   <Function Name="sp_SearchCar_APP" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="RegistrationNo" Type="nvarchar" Mode="In" />
@@ -3500,8 +3411,20 @@
     <Parameter Name="ArabicName" Type="nvarchar" Mode="In" />
     <Parameter Name="ArabicDescription" Type="nvarchar" Mode="In" />
     <Parameter Name="ArabicAddress" Type="nvarchar" Mode="In" />
+    <Parameter Name="CustomerStatusID" Type="int" Mode="In" />
   </Function>
-  <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_UpdatePackagesInfo_Admin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="PackageName" Type="nvarchar" Mode="In" />
+    <Parameter Name="PackageDescription" Type="nvarchar" Mode="In" />
+    <Parameter Name="PackagePrice" Type="decimal" Mode="In" />
+    <Parameter Name="DeviceCount" Type="int" Mode="In" />
+    <Parameter Name="LocationsLimit" Type="int" Mode="In" />
+    <Parameter Name="IsInventory" Type="bit" Mode="In" />
+    <Parameter Name="IsGarageGo" Type="bit" Mode="In" />
+    <Parameter Name="StatusID" Type="int" Mode="In" />
+    <Parameter Name="LastUpdatedDate" Type="datetime" Mode="In" />
+    <Parameter Name="PackageInfoID" Type="int" Mode="In" />
+  </Function>
   <Function Name="Split" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="InputString" Type="varchar" Mode="In" />
     <Parameter Name="Delimiter" Type="varchar" Mode="In" />
@@ -3513,10 +3436,7 @@
       </CollectionType>
     </ReturnType>
   </Function>
-  <Function Name="usp_Login" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="Phone" Type="nvarchar" Mode="In" />
-  </Function>
-  <EntityContainer Name="Garage_UATModelStoreContainer">
+  <EntityContainer Name="Garage_LiveStoreContainer">
     <EntitySet Name="AppSource" EntityType="Self.AppSource" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Bay" EntityType="Self.Bay" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="CarInspection" EntityType="Self.CarInspection" Schema="dbo" store:Type="Tables" />
@@ -3532,7 +3452,6 @@
     <EntitySet Name="CompanyInvoiceDetail" EntityType="Self.CompanyInvoiceDetail" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="CompanyQuotation" EntityType="Self.CompanyQuotation" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="CompanyQuotationDetail" EntityType="Self.CompanyQuotationDetail" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="ComplianceDevice" EntityType="Self.ComplianceDevice" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Country" EntityType="Self.Country" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="CreditCustomer" EntityType="Self.CreditCustomer" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Customers" EntityType="Self.Customers" Schema="dbo" store:Type="Tables" />
@@ -3590,12 +3509,9 @@
     <EntitySet Name="SubUserLocations" EntityType="Self.SubUserLocations" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="SubUsers" EntityType="Self.SubUsers" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Supplier" EntityType="Self.Supplier" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TimeZone" EntityType="Self.TimeZone" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Units" EntityType="Self.Units" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="UserPackageDetails" EntityType="Self.UserPackageDetails" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="ZatcaAuthentication" EntityType="Self.ZatcaAuthentication" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ZohoChartOfAccounts" EntityType="Self.ZohoChartOfAccounts" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ZohoCOAMapping" EntityType="Self.ZohoCOAMapping" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ZohoSettings" EntityType="Self.ZohoSettings" Schema="dbo" store:Type="Tables" />
@@ -4095,24 +4011,8 @@
       <End Role="Users" EntitySet="Users" />
       <End Role="Supplier" EntitySet="Supplier" />
     </AssociationSet>
-    <AssociationSet Name="FK_UserPackageDetails_PackagesInfo" Association="Self.FK_UserPackageDetails_PackagesInfo">
-      <End Role="PackagesInfo" EntitySet="PackagesInfo" />
-      <End Role="UserPackageDetails" EntitySet="UserPackageDetails" />
-    </AssociationSet>
-    <AssociationSet Name="FK_UserPackageDetails_UserPackageDetails" Association="Self.FK_UserPackageDetails_UserPackageDetails">
-      <End Role="UserPackageDetails" EntitySet="UserPackageDetails" />
-      <End Role="UserPackageDetails1" EntitySet="UserPackageDetails" />
-    </AssociationSet>
-    <AssociationSet Name="FK_UserPackageDetails_Users" Association="Self.FK_UserPackageDetails_Users">
-      <End Role="Users" EntitySet="Users" />
-      <End Role="UserPackageDetails" EntitySet="UserPackageDetails" />
-    </AssociationSet>
     <AssociationSet Name="FK_Users_Country" Association="Self.FK_Users_Country">
       <End Role="Country" EntitySet="Country" />
-      <End Role="Users" EntitySet="Users" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Users_PackagesInfo" Association="Self.FK_Users_PackagesInfo">
-      <End Role="PackagesInfo" EntitySet="PackagesInfo" />
       <End Role="Users" EntitySet="Users" />
     </AssociationSet>
     <AssociationSet Name="FK_Users_Status" Association="Self.FK_Users_Status">

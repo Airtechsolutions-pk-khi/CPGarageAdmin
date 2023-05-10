@@ -17,7 +17,9 @@ namespace DAL.DBEntities
         public int RowID { get; set; }
         public string Name { get; set; }
         public string Descripiton { get; set; }
+        public string ArabicDescription { get; set; }
         public string Address { get; set; }
+        public string ArabicAddress { get; set; }
         public string ContactNo { get; set; }
         public string Email { get; set; }
         public Nullable<int> TimeZoneID { get; set; }
@@ -38,6 +40,7 @@ namespace DAL.DBEntities
         public string LastUpdatedBy { get; set; }
         public Nullable<System.DateTime> LastUpdatedDate { get; set; }
         public Nullable<int> StatusID { get; set; }
+        public Nullable<int> CustomerStatusID { get; set; }
         public string CompanyCode { get; set; }
         public Nullable<int> LandmarkID { get; set; }
         public string Gmaplink { get; set; }
@@ -45,5 +48,8 @@ namespace DAL.DBEntities
         public Nullable<bool> IsFeatured { get; set; }
         public string ArabicName { get; set; }
         public string Currency { get; set; }
+        public string VATNO { get; set; }
+        public Nullable<double> Tax { get; set; }
+        public Nullable<bool> AllowNegativeInventory { get; set; }
     }
 }

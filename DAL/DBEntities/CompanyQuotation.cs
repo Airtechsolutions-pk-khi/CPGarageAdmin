@@ -44,8 +44,8 @@ namespace DAL.DBEntities
         public string Notes { get; set; }
         public string Terms { get; set; }
     
+        public virtual User User { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CompanyQuotationDetail> CompanyQuotationDetails { get; set; }
-        public virtual User User { get; set; }
     }
 }

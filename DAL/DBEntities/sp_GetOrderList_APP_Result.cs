@@ -58,6 +58,7 @@ namespace DAL.DBEntities
         public int UserID { get; set; }
         public string ImagePath { get; set; }
         public string Gender { get; set; }
+        public Nullable<int> Status { get; set; }
         public string BayName { get; set; }
         public string MakerName { get; set; }
         public string ModelName { get; set; }

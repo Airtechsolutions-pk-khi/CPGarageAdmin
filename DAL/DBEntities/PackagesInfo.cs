@@ -14,13 +14,6 @@ namespace DAL.DBEntities
     
     public partial class PackagesInfo
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public PackagesInfo()
-        {
-            this.UserPackageDetails = new HashSet<UserPackageDetail>();
-            this.Users = new HashSet<User>();
-        }
-    
         public int PackageInfoID { get; set; }
         public string PackageName { get; set; }
         public Nullable<decimal> PackagePrice { get; set; }
@@ -32,10 +25,5 @@ namespace DAL.DBEntities
         public Nullable<bool> IsGarageGo { get; set; }
         public Nullable<System.DateTime> CreatedDate { get; set; }
         public Nullable<System.DateTime> LastUpdatedDate { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<UserPackageDetail> UserPackageDetails { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<User> Users { get; set; }
     }
 }

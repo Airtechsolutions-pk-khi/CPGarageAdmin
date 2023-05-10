@@ -18,7 +18,6 @@ namespace DAL.DBEntities
         public string account_id { get; set; }
         public string account_name { get; set; }
         public string account_type { get; set; }
-        public string AccountTypeZoho { get; set; }
         public string is_active { get; set; }
         public int UserID { get; set; }
         public string LastUpdatedBy { get; set; }

@@ -21,5 +21,9 @@ namespace DAL.DBEntities
         public Nullable<System.DateTime> LastUpdatedDate { get; set; }
         public Nullable<int> LocationID { get; set; }
         public Nullable<System.DateTime> Date { get; set; }
+        public Nullable<int> LikeCount { get; set; }
+        public Nullable<int> DislikeCount { get; set; }
+        public string ReportAbuse { get; set; }
+        public Nullable<int> CustomerID { get; set; }
     }
 }

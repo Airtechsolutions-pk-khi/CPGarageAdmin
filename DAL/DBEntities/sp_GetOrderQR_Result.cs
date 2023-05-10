@@ -94,14 +94,18 @@ namespace DAL.DBEntities
         public string ImagePath { get; set; }
         public string Gender { get; set; }
         public int ReceiptID { get; set; }
+        public int RowID1 { get; set; }
         public string ReceiptName { get; set; }
         public string CompanyTitle { get; set; }
         public string CompanyAddress { get; set; }
         public string CompanyPhones { get; set; }
+        public string CompanyFax { get; set; }
         public string CompanyEmail { get; set; }
         public string CompanyWebsite { get; set; }
+        public string Promotiontagline { get; set; }
         public string Companytagline { get; set; }
         public string CompanyLogoURL { get; set; }
+        public string ReceiptContent { get; set; }
         public string Footer { get; set; }
         public string Facebook { get; set; }
         public string Twitter { get; set; }
@@ -109,10 +113,12 @@ namespace DAL.DBEntities
         public string Snapchat { get; set; }
         public string LastUpdatedBy1 { get; set; }
         public Nullable<System.DateTime> LastUpdatedDate1 { get; set; }
-        public Nullable<bool> IsCompanyTagline { get; set; }
         public Nullable<int> StatusID2 { get; set; }
-        public bool IsActive { get; set; }
         public int LocationID3 { get; set; }
+        public Nullable<System.DateTime> CreatedOn3 { get; set; }
+        public string CreatedBy3 { get; set; }
+        public bool IsActive { get; set; }
+        public Nullable<bool> IsCompanyTagline { get; set; }
         public Nullable<bool> IsA4Spacing { get; set; }
         public string CustomerName { get; set; }
         public Nullable<System.DateTime> OrderPunchDate { get; set; }

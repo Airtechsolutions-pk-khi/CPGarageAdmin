@@ -21,6 +21,7 @@ namespace DAL.DBEntities
         }
     
         public int CarInspectionID { get; set; }
+        public int RowID { get; set; }
         public string Name { get; set; }
         public string AlternateName { get; set; }
         public string Image { get; set; }
@@ -30,8 +31,8 @@ namespace DAL.DBEntities
         public string LastUpdatedBy { get; set; }
         public Nullable<System.DateTime> LastUpdatedDate { get; set; }
     
+        public virtual User User { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CarInspectionDetail> CarInspectionDetails { get; set; }
-        public virtual User User { get; set; }
     }
 }
