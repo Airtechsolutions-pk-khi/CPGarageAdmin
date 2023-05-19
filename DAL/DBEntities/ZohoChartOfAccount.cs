@@ -22,6 +22,7 @@ namespace DAL.DBEntities
         public int UserID { get; set; }
         public string LastUpdatedBy { get; set; }
         public Nullable<System.DateTime> LastUpdatedDate { get; set; }
+        public string AccountTypeZoho { get; set; }
     
         public virtual User User { get; set; }
     }

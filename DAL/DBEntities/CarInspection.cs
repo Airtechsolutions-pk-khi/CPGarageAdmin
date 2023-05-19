@@ -21,7 +21,6 @@ namespace DAL.DBEntities
         }
     
         public int CarInspectionID { get; set; }
-        public int RowID { get; set; }
         public string Name { get; set; }
         public string AlternateName { get; set; }
         public string Image { get; set; }

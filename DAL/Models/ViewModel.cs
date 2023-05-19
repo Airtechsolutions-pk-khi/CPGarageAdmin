@@ -142,6 +142,7 @@ namespace DAL.Models
         public string PackageName { get; set; }
         public Nullable<decimal> PackagePrice { get; set; }
         public string PackageDescription { get; set; }
+        public string NoofDays { get; set; }
         public Nullable<int> DeviceCount { get; set; }
         public Nullable<int> LocationsLimit { get; set; }
         public bool StatusID { get; set; }

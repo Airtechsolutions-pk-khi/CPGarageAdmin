@@ -7,7 +7,6 @@
       <Diagram DiagramId="978523efd04a4a719aff88b1ad3235e1" Name="Diagram1">
         <EntityTypeShape EntityType="Garage_Live.AppSource" Width="1.5" PointX="11.25" PointY="92.125" IsExpanded="true" />
         <EntityTypeShape EntityType="Garage_Live.Bay" Width="1.5" PointX="18.5" PointY="99.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="Garage_Live.CarInspection" Width="1.5" PointX="11.25" PointY="95.625" IsExpanded="true" />
         <EntityTypeShape EntityType="Garage_Live.CarInspectionDetail" Width="1.5" PointX="13.5" PointY="95.375" IsExpanded="true" />
         <EntityTypeShape EntityType="Garage_Live.CarNote" Width="1.5" PointX="26.75" PointY="111" IsExpanded="true" />
         <EntityTypeShape EntityType="Garage_Live.CarNotesImage" Width="1.5" PointX="29" PointY="111.5" IsExpanded="true" />
@@ -47,7 +46,6 @@
         <EntityTypeShape EntityType="Garage_Live.LocationImage" Width="1.5" PointX="18.5" PointY="133.75" IsExpanded="true" />
         <EntityTypeShape EntityType="Garage_Live.Location" Width="1.5" PointX="16.25" PointY="110.875" IsExpanded="true" />
         <EntityTypeShape EntityType="Garage_Live.LocationServiceJunc" Width="1.5" PointX="18.5" PointY="136.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="Garage_Live.Make" Width="1.5" PointX="17" PointY="140.125" IsExpanded="true" />
         <EntityTypeShape EntityType="Garage_Live.Model" Width="1.5" PointX="17" PointY="86.5" IsExpanded="true" />
         <EntityTypeShape EntityType="Garage_Live.Modifier" Width="1.5" PointX="24.5" PointY="115.625" IsExpanded="true" />
         <EntityTypeShape EntityType="Garage_Live.OrderCheckout" Width="1.5" PointX="32.75" PointY="113.625" IsExpanded="true" />
@@ -60,10 +58,8 @@
         <EntityTypeShape EntityType="Garage_Live.OrdersChecklist" Width="1.5" PointX="23.75" PointY="110.5" IsExpanded="true" />
         <EntityTypeShape EntityType="Garage_Live.PackageDetail" Width="1.5" PointX="29.75" PointY="123.125" IsExpanded="true" />
         <EntityTypeShape EntityType="Garage_Live.Package" Width="1.5" PointX="21.5" PointY="115.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="Garage_Live.PackagesInfo" Width="1.5" PointX="4.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="Garage_Live.PaymentDetail" Width="1.5" PointX="23.75" PointY="144.75" IsExpanded="true" />
         <EntityTypeShape EntityType="Garage_Live.PaymentMode" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Garage_Live.Receipt" Width="1.5" PointX="18.5" PointY="144.625" IsExpanded="true" />
         <EntityTypeShape EntityType="Garage_Live.ReportLog" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="Garage_Live.Role_Forms" Width="1.5" PointX="11.25" PointY="152.375" IsExpanded="true" />
         <EntityTypeShape EntityType="Garage_Live.Role_Group" Width="1.5" PointX="11.25" PointY="134.875" IsExpanded="true" />
@@ -85,14 +81,11 @@
         <AssociationConnector Association="Garage_Live.FK_AppSource_Users" ManuallyRouted="false" />
         <AssociationConnector Association="Garage_Live.FK_Bay_Locations" ManuallyRouted="false" />
         <AssociationConnector Association="Garage_Live.FK_Orders_Bay" ManuallyRouted="false" />
-        <AssociationConnector Association="Garage_Live.FK_CarInspection_Users" ManuallyRouted="false" />
-        <AssociationConnector Association="Garage_Live.FK_CarInspectionDetails_CarInspection" ManuallyRouted="false" />
         <AssociationConnector Association="Garage_Live.FK_OrderInspectionMapping_CarInspectionDetails" ManuallyRouted="false" />
         <AssociationConnector Association="Garage_Live.FK_CarNotes_Locations" ManuallyRouted="false" />
         <AssociationConnector Association="Garage_Live.FK_CarNotes_Orders" ManuallyRouted="false" />
         <AssociationConnector Association="Garage_Live.FK_CarNotesImages_CarNotes" ManuallyRouted="false" />
         <AssociationConnector Association="Garage_Live.FK_Cars_Customers" ManuallyRouted="false" />
-        <AssociationConnector Association="Garage_Live.FK_Cars_Make" ManuallyRouted="false" />
         <AssociationConnector Association="Garage_Live.FK_Cars_Model" ManuallyRouted="false" />
         <AssociationConnector Association="Garage_Live.FK_Cars_Users" ManuallyRouted="false" />
         <AssociationConnector Association="Garage_Live.FK_Orders_Cars" ManuallyRouted="false" />
@@ -172,13 +165,11 @@
         <AssociationConnector Association="Garage_Live.FK_OrderCheckout_Locations" ManuallyRouted="false" />
         <AssociationConnector Association="Garage_Live.FK_Orders_Locations" ManuallyRouted="false" />
         <AssociationConnector Association="Garage_Live.FK_Packages_Locations" ManuallyRouted="false" />
-        <AssociationConnector Association="Garage_Live.FK_Receipt_Locations" ManuallyRouted="false" />
         <AssociationConnector Association="Garage_Live.FK_SalesItems_Locations" ManuallyRouted="false" />
         <AssociationConnector Association="Garage_Live.FK_SalesSetting_Locations" ManuallyRouted="false" />
         <AssociationConnector Association="Garage_Live.FK_SessionInfo_Locations" ManuallyRouted="false" />
         <AssociationConnector Association="Garage_Live.FK_Stores_Locations" ManuallyRouted="false" />
         <AssociationConnector Association="Garage_Live.FK_SubUsers_Locations" ManuallyRouted="false" />
-        <AssociationConnector Association="Garage_Live.FK_Model_Make" ManuallyRouted="false" />
         <AssociationConnector Association="Garage_Live.FK_Modifiers_Units" ManuallyRouted="false" />
         <AssociationConnector Association="Garage_Live.FK_OrderDetail_FM_Modifiers" ManuallyRouted="false" />
         <AssociationConnector Association="Garage_Live.FK_OrderCheckout_Orders" ManuallyRouted="false" />
@@ -210,6 +201,20 @@
         <AssociationConnector Association="Garage_Live.FK_ZohoChartOfAccounts_Users" ManuallyRouted="false" />
         <AssociationConnector Association="Garage_Live.FK_ZohoSettings_Users" ManuallyRouted="false" />
         <AssociationConnector Association="Garage_Live.SubUserLocations" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="Garage_Live.PackagesInfo" Width="1.5" PointX="3.375" PointY="6" />
+        <AssociationConnector Association="Garage_Live.FK_Users_PackagesInfo" />
+        <EntityTypeShape EntityType="Garage_Live.UserPackageDetail" Width="1.5" PointX="11.25" PointY="63.625" />
+        <AssociationConnector Association="Garage_Live.FK_UserPackageDetails_PackagesInfo" />
+        <AssociationConnector Association="Garage_Live.FK_UserPackageDetails_UserPackageDetails" />
+        <AssociationConnector Association="Garage_Live.FK_UserPackageDetails_Users" />
+        <EntityTypeShape EntityType="Garage_Live.Receipt" Width="1.5" PointX="18.5" PointY="145.25" />
+        <AssociationConnector Association="Garage_Live.FK_Receipt_Locations" />
+        <EntityTypeShape EntityType="Garage_Live.Make" Width="1.5" PointX="14.75" PointY="101.125" />
+        <AssociationConnector Association="Garage_Live.FK_Cars_Make" />
+        <AssociationConnector Association="Garage_Live.FK_Model_Make" />
+        <EntityTypeShape EntityType="Garage_Live.CarInspection" Width="1.5" PointX="11.25" PointY="98.75" />
+        <AssociationConnector Association="Garage_Live.FK_CarInspection_Users" />
+        <AssociationConnector Association="Garage_Live.FK_CarInspectionDetails_CarInspection" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -13,11 +13,14 @@ using System.Configuration;
 using Newtonsoft.Json.Linq;
 using System.Data.SqlClient;
 using System.Data;
+using Twilio.TwiML.Messaging;
+using WebAPICode.Helpers;
 
 namespace BAL.Repositories
 {
     public class customersRepository : BaseRepository
     {
+        private DataTable _dt;
         public customersRepository()
              : base()
         {
@@ -83,7 +86,9 @@ namespace BAL.Repositories
                         LocationEmail = r.Locations.FirstOrDefault().Email,
                         Currency = r.Locations.FirstOrDefault().Currency,
                         Tax = r.Tax,
-                        //PackageInfoID = r.PackageInfoID
+                        PackageInfoID = r.UserPackageDetails.Count == 0 ? 0 : r.UserPackageDetails.FirstOrDefault().PackageInfoID,
+                        //CreatedDate = r.UserPackageDetails.Count == 0 ? null : r.UserPackageDetails.FirstOrDefault().CreatedDate,
+                        //LastUpdatedDate = r.UserPackageDetails.Count == 0 ? null : r.UserPackageDetails.FirstOrDefault().LastUpdatedDate,
                     })
                   .FirstOrDefault();
                 return data;
@@ -115,7 +120,7 @@ namespace BAL.Repositories
                         _user.IsSMSCheckoutAddOn = modal.IsSMSActivate;
                         //_user.IsAccountingAddons = modal.IsAccountingAddons;
                         _user.StatusID = modal.StatusID == true ? 1 : 2;
-                        //_user.PackageInfoID = modal.PackageInfoID;
+                        _user.PackageInfoID = modal.PackageInfoID;
                         DBContext.Entry(_user).State = EntityState.Modified;
                         DBContext.UpdateOnly<User>(_user, x =>
                        x.FirstName,
@@ -126,23 +131,30 @@ namespace BAL.Repositories
                         x => x.UserName,
                         x => x.ContactNo,
                         x => x.IsSMSCheckoutAddOn,
-                        x => x.StatusID
+                        x => x.StatusID,
+                        x => x.UserPackageDetails
                         );
                         DBContext.SaveChanges();
-                        //if (modal.UserID > 0)
-                        //{
-                        //    UserPackageDetail _package = DBContext.UserPackageDetails.Where(x => x.UserID == modal.UserID).FirstOrDefault();
-                        //    _package.PackageInfoID = modal.PackageInfoID;
-                        //    _package.StatusID = modal.StatusID == true ? 1 : 2;
-                        //    _package.LastUpdatedDate = DateTime.UtcNow.AddMinutes(180);
-                        //    DBContext.Entry(_package).State = EntityState.Modified;
-                        //    DBContext.UpdateOnly<UserPackageDetail>(_package, x =>
-                        //   x.PackageInfoID,
-                        //    x => x.StatusID,
-                        //    x => x.LastUpdatedDate
-                        //    );
-                        //    DBContext.SaveChanges();
-                        //}
+                        if (modal.UserID > 0)
+                        {
+                            UserPackageDetail _package = DBContext.UserPackageDetails.Where(x => x.PackageInfoID == modal.PackageInfoID).FirstOrDefault();
+                            _package.PackageInfoID = modal.PackageInfoID;
+                            if (_package.PackageInfoID == 1)
+                            {
+                                _package.ExpiryDate = DateTime.UtcNow.AddDays(15);
+                            }
+                            _package.UserID = modal.UserID;
+                            _package.StatusID = modal.StatusID == true ? 1 : 2;
+                            _package.LastUpdatedDate = DateTime.UtcNow.AddMinutes(180);
+                            _package.ExpiryDate = DateTime.UtcNow.AddDays(15);
+                            DBContext.Entry(_package).State = EntityState.Modified;
+                            DBContext.UpdateOnly<UserPackageDetail>(_package, x =>
+                           x.PackageInfoID,
+                            x => x.StatusID,
+                            x => x.LastUpdatedDate
+                            );
+                            DBContext.SaveChanges();
+                        }
                     }
 
                     dbContextTransaction.Commit();
@@ -166,7 +178,7 @@ namespace BAL.Repositories
                     SubUser _subuser = new SubUser();
                     Receipt _receipt = new Receipt();
 
-                    UserPackageBLL _package = new UserPackageBLL();
+                    UserPackageDetail _package = new UserPackageDetail();
 
                     _user.FirstName = modal.FirstName;
                     _user.LastName = modal.LastName;
@@ -179,7 +191,7 @@ namespace BAL.Repositories
                     _user.Password = new clsCryption().EncryptDecrypt(modal.Password, "encrypt");
                     _user.Address = modal.LocationAddress;
                     _user.CityID = 4020;
-                    //_user.PackageInfoID = modal.PackageInfoID;
+                    _user.PackageInfoID = modal.PackageInfoID;
                     _user.CountryID = "SA";
                     _user.Subscribe = false;
                     _user.TimeZoneID = 54;
@@ -238,19 +250,25 @@ namespace BAL.Repositories
                             Receipt dataSubuser = DBContext.Receipts.Add(_receipt);
                             DBContext.SaveChanges();
                         }
-                        //if (data.PackageInfoID > 0)
-                        //{
-                        //    _package.PackageInfoID = data.PackageInfoID;
-                        //    _package.UserID = data.UserID;
-                        //    _package.StatusID = 1;
-                        //    _package.CreatedDate = DateTime.UtcNow.AddMinutes(180);
-                        //    _package.LastUpdatedDate = DateTime.UtcNow.AddMinutes(180);
-                        //}
+                        if (data.UserID != 0)
+                        {
+                            _package.UserID = data.UserID;
+                            if (_package.PackageInfoID == 1)
+                            {
+                                _package.ExpiryDate = DateTime.UtcNow.AddDays(15);
+                            }
+                            _package.PackageInfoID = modal.PackageInfoID;
+                            _package.StatusID = 1;
+                            _package.CreatedDate = DateTime.UtcNow.AddMinutes(180);
+                            _package.LastUpdatedDate = DateTime.UtcNow.AddMinutes(180);
+                            UserPackageDetail datauser = DBContext.UserPackageDetails.Add(_package);
+                            DBContext.SaveChanges();
+                        }
+
                     }
-
-
                     dbContextTransaction.Commit();
                     return 1;
+
                 }
                 catch (Exception ex)
                 {
@@ -508,6 +526,30 @@ namespace BAL.Repositories
 
 
             return folderPath + filename + ".pdf";
+        }
+        public List<UserPackageBLL> GetUserPackage()
+        {
+            try
+            {
+                var lst = new List<UserPackageBLL>();
+
+                SqlParameter[] p = new SqlParameter[0];
+
+                _dt = (new DBHelperGarageUAT().GetTableFromSP)("sp_GetUserPackage_UAT", p);
+                if (_dt != null)
+                {
+                    if (_dt.Rows.Count > 0)
+                    {
+                        lst = JArray.Parse(Newtonsoft.Json.JsonConvert.SerializeObject(_dt)).ToObject<List<UserPackageBLL>>();
+                    }
+                }
+
+                return lst;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
         }
     }
 }

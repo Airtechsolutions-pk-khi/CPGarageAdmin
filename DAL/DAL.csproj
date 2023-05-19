@@ -460,6 +460,9 @@
     <Compile Include="DBEntities\User.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="DBEntities\UserPackageDetail.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="DBEntities\ZohoChartOfAccount.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>

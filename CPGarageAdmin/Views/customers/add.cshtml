@@ -63,7 +63,7 @@
         }
     }
 </script>
-@using (Ajax.BeginForm("Save", "Customers", new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "ModalUser", OnSuccess = "UserSuccess" }))
+@using (Ajax.BeginForm("Save", "Customers", new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "ModalUser", OnSuccess = "UserSuccess"}))
 {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
@@ -172,6 +172,10 @@
                                 @Html.CheckBoxFor(model => model.StatusID, new { @class = "custom-control-input", placeholder = "", @for = "StatusID", @checked = "checked" })
                                 <label class="custom-control-label form-check-label" for="StatusID" style=" padding-top: 4px !important; padding-left: 14px;"> Activation Status</label>
                             </div>
+                            <div class="custom-control custom-switch custom-switch-md" hidden>
+                                @Html.TextBoxFor(model => model.LastUpdatedDate, new { @class = "custom-control-input", placeholder = "", @for = "LastUpdatedDate", id = "enddate" })
+                                @Html.TextBoxFor(model => model.CreatedDate, new { @class = "custom-control-input", placeholder = "", @for = "CreatedDate", id = "startdate" })
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -182,3 +186,4 @@
 <script src="~/Scripts/jquery.validate.min.js"></script>
 <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
 <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+

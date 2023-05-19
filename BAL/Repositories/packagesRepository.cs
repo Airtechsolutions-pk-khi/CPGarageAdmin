@@ -95,7 +95,7 @@ namespace BAL.Repositories
             try
             {
                 int rtn = 0;
-                SqlParameter[] p = new SqlParameter[9];
+                SqlParameter[] p = new SqlParameter[10];
 
                 p[0] = new SqlParameter("@PackageName", data.PackageName);
                 p[1] = new SqlParameter("@PackageDescription", data.PackageDescription);
@@ -106,6 +106,7 @@ namespace BAL.Repositories
                 p[6] = new SqlParameter("@IsGarageGo", data.IsGarageGo);
                 p[7] = new SqlParameter("@CreatedDate", data.CreatedDate);
                 p[8] = new SqlParameter("@StatusID", data.StatusID);
+                p[9] = new SqlParameter("@NoofDays", data.NoofDays);
                 rtn = (new DBHelperGarageUAT().ExecuteNonQueryReturn)("sp_insertPackagesInfo_Admin", p);
 
                 return rtn;
@@ -120,7 +121,7 @@ namespace BAL.Repositories
             try
             {
                 int rtn = 0;
-                SqlParameter[] p = new SqlParameter[10];
+                SqlParameter[] p = new SqlParameter[11];
 
                 p[0] = new SqlParameter("@PackageName", data.PackageName);
                 p[1] = new SqlParameter("@PackageDescription", data.PackageDescription);
@@ -132,6 +133,7 @@ namespace BAL.Repositories
                 p[7] = new SqlParameter("@LastUpdatedDate", data.LastUpdatedDate);
                 p[8] = new SqlParameter("@StatusID", data.StatusID);
                 p[9] = new SqlParameter("@PackageInfoID", data.PackageInfoID);
+                p[10] = new SqlParameter("@NoofDays", data.NoofDays);
                 rtn = (new DBHelperGarageUAT().ExecuteNonQueryReturn)("sp_UpdatePackagesInfo_Admin", p);
 
                 return rtn;

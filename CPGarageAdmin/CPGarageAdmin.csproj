@@ -1822,6 +1822,9 @@
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Template\package-update.txt" />
+    <Content Include="Template\package-reminder.txt" />
+    <Content Include="Template\new-customer.txt" />
     <Content Include="Template\invoice-sms.txt" />
     <Content Include="Template\template.html" />
     <Content Include="Web.config">
