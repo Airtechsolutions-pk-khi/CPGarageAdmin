@@ -71,7 +71,7 @@
                                         @*<a href="~/customers/Delete?id=@item.UserID"><i class="mdi mdi-delete" style="font-size:18px !important;"></i></a>*@
 
                                         <a href="~/customers/add?id=@item.UserID"><i class="mdi mdi-account-edit" data-toggle="tooltip" data-placement="bottom" title="Edit Data" style="font-size:25px !important;"></i></a>
-                                        <a href="~/customers/Status?id=@item.StatusID"><i class="mdi mdi-eye-off" style="font-size:25px !important;" data-toggle="tooltip" data-placement="bottom" title="Deactive Customer"></i></a>
+                                        @*<a href="~/customers/Status?id=@item.StatusID"><i class="mdi mdi-eye-off" style="font-size:25px !important;" data-toggle="tooltip" data-placement="bottom" title="Deactive Customer"></i></a>*@
                                     </td>
                                 </tr>
                             }
@@ -101,4 +101,12 @@
     $(function () {
         $('[data-toggle="tooltip"]').tooltip()
     })
+    $(document).ready(function () {
+
+        $.get("@Url.Action("PackageUpdate", "Customers")", function (data) {
+            if (data.success) {
+                alert("Email Send Successfully");
+            }
+        });
+    });
 </script>

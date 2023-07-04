@@ -33,13 +33,13 @@ namespace DAL.DBEntities
             this.OrderCheckouts = new HashSet<OrderCheckout>();
             this.Orders = new HashSet<Order>();
             this.Packages = new HashSet<Package>();
-            this.Receipts = new HashSet<Receipt>();
             this.SalesItems = new HashSet<SalesItem>();
             this.SalesSettings = new HashSet<SalesSetting>();
             this.SessionInfoes = new HashSet<SessionInfo>();
             this.Stores = new HashSet<Store>();
             this.SubUsers = new HashSet<SubUser>();
             this.SubUsers1 = new HashSet<SubUser>();
+            this.Receipts = new HashSet<Receipt>();
         }
     
         public int LocationID { get; set; }
@@ -121,8 +121,6 @@ namespace DAL.DBEntities
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Package> Packages { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Receipt> Receipts { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SalesItem> SalesItems { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SalesSetting> SalesSettings { get; set; }
@@ -134,5 +132,7 @@ namespace DAL.DBEntities
         public virtual ICollection<SubUser> SubUsers { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SubUser> SubUsers1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Receipt> Receipts { get; set; }
     }
 }

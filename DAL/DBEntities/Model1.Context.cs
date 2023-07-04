@@ -29,7 +29,6 @@ namespace DAL.DBEntities
     
         public virtual DbSet<AppSource> AppSources { get; set; }
         public virtual DbSet<Bay> Bays { get; set; }
-        public virtual DbSet<CarInspection> CarInspections { get; set; }
         public virtual DbSet<CarInspectionDetail> CarInspectionDetails { get; set; }
         public virtual DbSet<CarNote> CarNotes { get; set; }
         public virtual DbSet<CarNotesImage> CarNotesImages { get; set; }
@@ -69,7 +68,6 @@ namespace DAL.DBEntities
         public virtual DbSet<LocationImage> LocationImages { get; set; }
         public virtual DbSet<Location> Locations { get; set; }
         public virtual DbSet<LocationServiceJunc> LocationServiceJuncs { get; set; }
-        public virtual DbSet<Make> Makes { get; set; }
         public virtual DbSet<Model> Models { get; set; }
         public virtual DbSet<Modifier> Modifiers { get; set; }
         public virtual DbSet<OrderCheckout> OrderCheckouts { get; set; }
@@ -82,10 +80,8 @@ namespace DAL.DBEntities
         public virtual DbSet<OrdersChecklist> OrdersChecklists { get; set; }
         public virtual DbSet<PackageDetail> PackageDetails { get; set; }
         public virtual DbSet<Package> Packages { get; set; }
-        public virtual DbSet<PackagesInfo> PackagesInfoes { get; set; }
         public virtual DbSet<PaymentDetail> PaymentDetails { get; set; }
         public virtual DbSet<PaymentMode> PaymentModes { get; set; }
-        public virtual DbSet<Receipt> Receipts { get; set; }
         public virtual DbSet<ReportLog> ReportLogs { get; set; }
         public virtual DbSet<Role_Forms> Role_Forms { get; set; }
         public virtual DbSet<Role_Group> Role_Group { get; set; }
@@ -104,6 +100,11 @@ namespace DAL.DBEntities
         public virtual DbSet<ZohoChartOfAccount> ZohoChartOfAccounts { get; set; }
         public virtual DbSet<ZohoCOAMapping> ZohoCOAMappings { get; set; }
         public virtual DbSet<ZohoSetting> ZohoSettings { get; set; }
+        public virtual DbSet<PackagesInfo> PackagesInfoes { get; set; }
+        public virtual DbSet<UserPackageDetail> UserPackageDetails { get; set; }
+        public virtual DbSet<Receipt> Receipts { get; set; }
+        public virtual DbSet<Make> Makes { get; set; }
+        public virtual DbSet<CarInspection> CarInspections { get; set; }
     
         [DbFunction("Garage_LiveEntities", "Split")]
         public virtual IQueryable<Split_Result> Split(string inputString, string delimiter)
@@ -932,7 +933,7 @@ namespace DAL.DBEntities
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_insertLocationServices_CAdmin", serviceParameter, locationIDParameter, lastUpdatedDateParameter);
         }
     
-        public virtual ObjectResult<sp_insertPackagesInfo_Admin_Result> sp_insertPackagesInfo_Admin(string packageName, string packageDescription, Nullable<decimal> packagePrice, Nullable<int> deviceCount, Nullable<int> locationsLimit, Nullable<bool> isInventory, Nullable<bool> isGarageGo, Nullable<int> statusID, Nullable<System.DateTime> createdDate)
+        public virtual ObjectResult<sp_insertPackagesInfo_Admin_Result> sp_insertPackagesInfo_Admin(string packageName, string packageDescription, Nullable<decimal> packagePrice, Nullable<int> deviceCount, Nullable<int> locationsLimit, Nullable<bool> isInventory, Nullable<bool> isGarageGo, Nullable<int> statusID, Nullable<System.DateTime> createdDate, string noofDays)
         {
             var packageNameParameter = packageName != null ?
                 new ObjectParameter("PackageName", packageName) :
@@ -970,7 +971,11 @@ namespace DAL.DBEntities
                 new ObjectParameter("CreatedDate", createdDate) :
                 new ObjectParameter("CreatedDate", typeof(System.DateTime));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_insertPackagesInfo_Admin_Result>("sp_insertPackagesInfo_Admin", packageNameParameter, packageDescriptionParameter, packagePriceParameter, deviceCountParameter, locationsLimitParameter, isInventoryParameter, isGarageGoParameter, statusIDParameter, createdDateParameter);
+            var noofDaysParameter = noofDays != null ?
+                new ObjectParameter("NoofDays", noofDays) :
+                new ObjectParameter("NoofDays", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_insertPackagesInfo_Admin_Result>("sp_insertPackagesInfo_Admin", packageNameParameter, packageDescriptionParameter, packagePriceParameter, deviceCountParameter, locationsLimitParameter, isInventoryParameter, isGarageGoParameter, statusIDParameter, createdDateParameter, noofDaysParameter);
         }
     
         public virtual ObjectResult<sp_InsertReview_CAPI_Result> sp_InsertReview_CAPI(string name, string message, string rate, Nullable<int> statusID, Nullable<System.DateTime> lastUpdatedDate, Nullable<int> locationID, Nullable<System.DateTime> date)
@@ -1733,7 +1738,7 @@ namespace DAL.DBEntities
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_UpdateLocation_CADMIN", nameParameter, descripitonParameter, addressParameter, contactNoParameter, emailParameter, longitudeParameter, latitudeParameter, lastUpdatedByParameter, landmarkIDParameter, lastUpdatedDateParameter, statusIDParameter, isFeaturedParameter, locationIDParameter, gmaplinkParameter, arabicNameParameter, arabicDescriptionParameter, arabicAddressParameter, customerStatusIDParameter);
         }
     
-        public virtual int sp_UpdatePackagesInfo_Admin(string packageName, string packageDescription, Nullable<decimal> packagePrice, Nullable<int> deviceCount, Nullable<int> locationsLimit, Nullable<bool> isInventory, Nullable<bool> isGarageGo, Nullable<int> statusID, Nullable<System.DateTime> lastUpdatedDate, Nullable<int> packageInfoID)
+        public virtual int sp_UpdatePackagesInfo_Admin(string packageName, string packageDescription, Nullable<decimal> packagePrice, Nullable<int> deviceCount, Nullable<int> locationsLimit, Nullable<bool> isInventory, Nullable<bool> isGarageGo, Nullable<int> statusID, Nullable<System.DateTime> lastUpdatedDate, Nullable<int> packageInfoID, string noofDays)
         {
             var packageNameParameter = packageName != null ?
                 new ObjectParameter("PackageName", packageName) :
@@ -1775,7 +1780,11 @@ namespace DAL.DBEntities
                 new ObjectParameter("PackageInfoID", packageInfoID) :
                 new ObjectParameter("PackageInfoID", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_UpdatePackagesInfo_Admin", packageNameParameter, packageDescriptionParameter, packagePriceParameter, deviceCountParameter, locationsLimitParameter, isInventoryParameter, isGarageGoParameter, statusIDParameter, lastUpdatedDateParameter, packageInfoIDParameter);
+            var noofDaysParameter = noofDays != null ?
+                new ObjectParameter("NoofDays", noofDays) :
+                new ObjectParameter("NoofDays", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_UpdatePackagesInfo_Admin", packageNameParameter, packageDescriptionParameter, packagePriceParameter, deviceCountParameter, locationsLimitParameter, isInventoryParameter, isGarageGoParameter, statusIDParameter, lastUpdatedDateParameter, packageInfoIDParameter, noofDaysParameter);
         }
     }
 }

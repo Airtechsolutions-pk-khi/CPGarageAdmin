@@ -12,18 +12,19 @@ namespace DAL.DBEntities
     using System;
     using System.Collections.Generic;
     
-    public partial class ZohoChartOfAccount
+    public partial class UserPackageDetail
     {
-        public int ChartOfAccountsID { get; set; }
-        public string account_id { get; set; }
-        public string account_name { get; set; }
-        public string account_type { get; set; }
-        public string is_active { get; set; }
-        public int UserID { get; set; }
-        public string LastUpdatedBy { get; set; }
+        public int UserPackageDetailID { get; set; }
+        public Nullable<int> PackageInfoID { get; set; }
+        public Nullable<int> UserID { get; set; }
+        public Nullable<int> StatusID { get; set; }
+        public Nullable<System.DateTime> CreatedDate { get; set; }
         public Nullable<System.DateTime> LastUpdatedDate { get; set; }
-        public string AccountTypeZoho { get; set; }
+        public Nullable<System.DateTime> ExpiryDate { get; set; }
     
+        public virtual PackagesInfo PackagesInfo { get; set; }
+        public virtual UserPackageDetail UserPackageDetails1 { get; set; }
+        public virtual UserPackageDetail UserPackageDetail1 { get; set; }
         public virtual User User { get; set; }
     }
 }

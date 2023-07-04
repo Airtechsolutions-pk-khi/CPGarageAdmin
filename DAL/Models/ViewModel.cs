@@ -90,6 +90,7 @@ namespace DAL.Models
         public Nullable<int> TimeZoneID { get; set; }
         public string LastUpdatedBy { get; set; }
         public Nullable<System.DateTime> LastUpdatedDate { get; set; }
+        public Nullable<System.DateTime> ExpiryDate { get; set; }
         public bool StatusID { get; set; }
         public string CompanyCode { get; set; }
         public Nullable<System.DateTime> CreatedDate { get; set; }
@@ -142,6 +143,7 @@ namespace DAL.Models
         public string PackageName { get; set; }
         public Nullable<decimal> PackagePrice { get; set; }
         public string PackageDescription { get; set; }
+        public string NoofDays { get; set; }
         public Nullable<int> DeviceCount { get; set; }
         public Nullable<int> LocationsLimit { get; set; }
         public bool StatusID { get; set; }

@@ -33,23 +33,6 @@
     <NavigationProperty Name="Location" Relationship="Self.FK_Bay_Locations" FromRole="Bay" ToRole="Locations" />
     <NavigationProperty Name="Orders" Relationship="Self.FK_Orders_Bay" FromRole="Bay" ToRole="Orders" />
   </EntityType>
-  <EntityType Name="CarInspection">
-    <Key>
-      <PropertyRef Name="CarInspectionID" />
-    </Key>
-    <Property Name="CarInspectionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="RowID" Type="Int32" Nullable="false" />
-    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="AlternateName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="StatusID" Type="Int32" />
-    <Property Name="UserID" Type="Int32" Nullable="false" />
-    <Property Name="LastUpdatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="LastUpdatedDate" Type="DateTime" Precision="3" />
-    <NavigationProperty Name="User" Relationship="Self.FK_CarInspection_Users" FromRole="CarInspection" ToRole="Users" />
-    <NavigationProperty Name="CarInspectionDetails" Relationship="Self.FK_CarInspectionDetails_CarInspection" FromRole="CarInspection" ToRole="CarInspectionDetails" />
-  </EntityType>
   <EntityType Name="CarInspectionDetail">
     <Key>
       <PropertyRef Name="CarInspectionDetailID" />
@@ -67,8 +50,8 @@
     <Property Name="StatusID" Type="Int32" />
     <Property Name="LastUpdatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="LastUpdatedDate" Type="DateTime" Precision="3" />
-    <NavigationProperty Name="CarInspection" Relationship="Self.FK_CarInspectionDetails_CarInspection" FromRole="CarInspectionDetails" ToRole="CarInspection" />
     <NavigationProperty Name="OrderInspectionMappings" Relationship="Self.FK_OrderInspectionMapping_CarInspectionDetails" FromRole="CarInspectionDetails" ToRole="OrderInspectionMapping" />
+    <NavigationProperty Name="CarInspection" Relationship="Garage_Live.FK_CarInspectionDetails_CarInspection" FromRole="CarInspectionDetail" ToRole="CarInspection" />
   </EntityType>
   <EntityType Name="CarNote">
     <Key>
@@ -133,10 +116,10 @@
     <Property Name="ImagePath" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="Customer" Relationship="Self.FK_Cars_Customers" FromRole="Cars" ToRole="Customers" />
-    <NavigationProperty Name="Make" Relationship="Self.FK_Cars_Make" FromRole="Cars" ToRole="Make" />
     <NavigationProperty Name="Model" Relationship="Self.FK_Cars_Model" FromRole="Cars" ToRole="Model" />
     <NavigationProperty Name="User" Relationship="Self.FK_Cars_Users" FromRole="Cars" ToRole="Users" />
     <NavigationProperty Name="Orders" Relationship="Self.FK_Orders_Cars" FromRole="Cars" ToRole="Orders" />
+    <NavigationProperty Name="Make" Relationship="Garage_Live.FK_Cars_Make" FromRole="Car" ToRole="Make" />
   </EntityType>
   <EntityType Name="Category">
     <Key>
@@ -359,7 +342,7 @@
     <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="DOB" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Name="Sex" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="Mobile" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Mobile" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="CardNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="LastUpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="LastUpdatedDate" Type="DateTime" Precision="3" />
@@ -876,13 +859,13 @@
     <NavigationProperty Name="OrderCheckouts" Relationship="Self.FK_OrderCheckout_Locations" FromRole="Locations" ToRole="OrderCheckout" />
     <NavigationProperty Name="Orders" Relationship="Self.FK_Orders_Locations" FromRole="Locations" ToRole="Orders" />
     <NavigationProperty Name="Packages" Relationship="Self.FK_Packages_Locations" FromRole="Locations" ToRole="Packages" />
-    <NavigationProperty Name="Receipts" Relationship="Self.FK_Receipt_Locations" FromRole="Locations" ToRole="Receipt" />
     <NavigationProperty Name="SalesItems" Relationship="Self.FK_SalesItems_Locations" FromRole="Locations" ToRole="SalesItems" />
     <NavigationProperty Name="SalesSettings" Relationship="Self.FK_SalesSetting_Locations" FromRole="Locations" ToRole="SalesSetting" />
     <NavigationProperty Name="SessionInfoes" Relationship="Self.FK_SessionInfo_Locations" FromRole="Locations" ToRole="SessionInfo" />
     <NavigationProperty Name="Stores" Relationship="Self.FK_Stores_Locations" FromRole="Locations" ToRole="Stores" />
     <NavigationProperty Name="SubUsers" Relationship="Self.FK_SubUsers_Locations" FromRole="Locations" ToRole="SubUsers" />
     <NavigationProperty Name="SubUsers1" Relationship="Self.SubUserLocations" FromRole="Locations" ToRole="SubUsers" />
+    <NavigationProperty Name="Receipts" Relationship="Garage_Live.FK_Receipt_Locations" FromRole="Location" ToRole="Receipt" />
   </EntityType>
   <EntityType Name="LocationServiceJunc">
     <Key>
@@ -893,25 +876,6 @@
     <Property Name="ServiceID" Type="Int32" />
     <Property Name="LastUpdatedDate" Type="DateTime" Precision="3" />
     <NavigationProperty Name="Location" Relationship="Self.FK_LocationServiceJunc_Locations" FromRole="LocationServiceJunc" ToRole="Locations" />
-  </EntityType>
-  <EntityType Name="Make">
-    <Key>
-      <PropertyRef Name="MakeID" />
-    </Key>
-    <Property Name="MakeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="RowID" Type="Int32" />
-    <Property Name="Name" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
-    <Property Name="ArabicName" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
-    <Property Name="ImagePath" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-    <Property Name="LastUpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="LastUpdatedDate" Type="DateTime" Precision="3" />
-    <Property Name="StatusID" Type="Int32" />
-    <Property Name="CreatedOn" Type="DateTime" Precision="3" />
-    <Property Name="CreatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="DisplayOrder" Type="Int32" />
-    <Property Name="MakeImage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="Cars" Relationship="Self.FK_Cars_Make" FromRole="Make" ToRole="Cars" />
-    <NavigationProperty Name="Models" Relationship="Self.FK_Model_Make" FromRole="Make" ToRole="Model" />
   </EntityType>
   <EntityType Name="Model">
     <Key>
@@ -933,7 +897,7 @@
     <Property Name="CreatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="DisplayOrder" Type="Int32" />
     <NavigationProperty Name="Cars" Relationship="Self.FK_Cars_Model" FromRole="Model" ToRole="Cars" />
-    <NavigationProperty Name="Make" Relationship="Self.FK_Model_Make" FromRole="Model" ToRole="Make" />
+    <NavigationProperty Name="Make" Relationship="Garage_Live.FK_Model_Make" FromRole="Model" ToRole="Make" />
   </EntityType>
   <EntityType Name="Modifier">
     <Key>
@@ -1144,6 +1108,7 @@
     <NavigationProperty Name="SubUser" Relationship="Self.FK_Orders_SubUsers" FromRole="Orders" ToRole="SubUsers" />
     <NavigationProperty Name="OrdersChecklists" Relationship="Self.FK_OrdersChecklist_Orders" FromRole="Orders" ToRole="OrdersChecklist" />
     <NavigationProperty Name="PaymentDetails" Relationship="Self.FK_PaymentDetail_Orders" FromRole="Orders" ToRole="PaymentDetail" />
+    <Property Name="CustomerID" Type="Int32" />
   </EntityType>
   <EntityType Name="OrdersChecklist">
     <Key>
@@ -1204,22 +1169,6 @@
     <NavigationProperty Name="SubCategory" Relationship="Self.FK_Packages_SubCategory" FromRole="Packages" ToRole="SubCategory" />
     <NavigationProperty Name="User" Relationship="Self.FK_Packages_Users" FromRole="Packages" ToRole="Users" />
   </EntityType>
-  <EntityType Name="PackagesInfo">
-    <Key>
-      <PropertyRef Name="PackageInfoID" />
-    </Key>
-    <Property Name="PackageInfoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="PackageName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-    <Property Name="PackagePrice" Type="Decimal" Precision="18" Scale="0" />
-    <Property Name="PackageDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="DeviceCount" Type="Int32" />
-    <Property Name="LocationsLimit" Type="Int32" />
-    <Property Name="StatusID" Type="Int32" />
-    <Property Name="IsInventory" Type="Boolean" />
-    <Property Name="IsGarageGo" Type="Boolean" />
-    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
-    <Property Name="LastUpdatedDate" Type="DateTime" Precision="3" />
-  </EntityType>
   <EntityType Name="PaymentDetail">
     <Key>
       <PropertyRef Name="PartialPaymentID" />
@@ -1244,39 +1193,6 @@
     <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="PaymentMode1" Type="Int32" />
     <Property Name="StatusID" Type="Int32" />
-  </EntityType>
-  <EntityType Name="Receipt">
-    <Key>
-      <PropertyRef Name="ReceiptID" />
-    </Key>
-    <Property Name="ReceiptID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="RowID" Type="Int32" Nullable="false" />
-    <Property Name="ReceiptName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-    <Property Name="CompanyTitle" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-    <Property Name="CompanyAddress" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-    <Property Name="CompanyPhones" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-    <Property Name="CompanyFax" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-    <Property Name="CompanyEmail" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-    <Property Name="CompanyWebsite" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-    <Property Name="Promotiontagline" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-    <Property Name="Companytagline" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-    <Property Name="CompanyLogoURL" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-    <Property Name="ReceiptContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="Footer" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="Facebook" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="Twitter" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="Instagram" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="Snapchat" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="LastUpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="LastUpdatedDate" Type="DateTime" Precision="3" />
-    <Property Name="StatusID" Type="Int32" />
-    <Property Name="LocationID" Type="Int32" Nullable="false" />
-    <Property Name="CreatedOn" Type="DateTime" Precision="3" />
-    <Property Name="CreatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="IsActive" Type="Boolean" Nullable="false" />
-    <Property Name="IsCompanyTagline" Type="Boolean" />
-    <Property Name="IsA4Spacing" Type="Boolean" />
-    <NavigationProperty Name="Location" Relationship="Self.FK_Receipt_Locations" FromRole="Receipt" ToRole="Locations" />
   </EntityType>
   <EntityType Name="ReportLog">
     <Key>
@@ -1592,7 +1508,6 @@
     <Property Name="IsSMSCheckoutAddOn" Type="Boolean" />
     <Property Name="AllowNegativeInventory" Type="Boolean" />
     <NavigationProperty Name="AppSources" Relationship="Self.FK_AppSource_Users" FromRole="Users" ToRole="AppSource" />
-    <NavigationProperty Name="CarInspections" Relationship="Self.FK_CarInspection_Users" FromRole="Users" ToRole="CarInspection" />
     <NavigationProperty Name="Cars" Relationship="Self.FK_Cars_Users" FromRole="Users" ToRole="Cars" />
     <NavigationProperty Name="CompanyClients" Relationship="Self.FK_CompanyClients_Users" FromRole="Users" ToRole="CompanyClients" />
     <NavigationProperty Name="CompanyInvoices" Relationship="Self.FK_CompanyInvoice_Users" FromRole="Users" ToRole="CompanyInvoice" />
@@ -1614,6 +1529,12 @@
     <NavigationProperty Name="TimeZone" Relationship="Self.FK_Users_TimeZone" FromRole="Users" ToRole="TimeZone" />
     <NavigationProperty Name="ZohoChartOfAccounts" Relationship="Self.FK_ZohoChartOfAccounts_Users" FromRole="Users" ToRole="ZohoChartOfAccounts" />
     <NavigationProperty Name="ZohoSettings" Relationship="Self.FK_ZohoSettings_Users" FromRole="Users" ToRole="ZohoSettings" />
+    <Property Name="PackageInfoID" Type="Int32" />
+    <Property Name="IsOdoo" Type="Boolean" />
+    <Property Name="IsAccountingAddons" Type="Boolean" />
+    <NavigationProperty Name="PackagesInfo" Relationship="Garage_Live.FK_Users_PackagesInfo" FromRole="User" ToRole="PackagesInfo" />
+    <NavigationProperty Name="UserPackageDetails" Relationship="Garage_Live.FK_UserPackageDetails_Users" FromRole="User" ToRole="UserPackageDetail" />
+    <NavigationProperty Name="CarInspections" Relationship="Garage_Live.FK_CarInspection_Users" FromRole="User" ToRole="CarInspection" />
   </EntityType>
   <EntityType Name="ZohoChartOfAccount">
     <Key>
@@ -1628,6 +1549,7 @@
     <Property Name="LastUpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="LastUpdatedDate" Type="DateTime" Precision="3" />
     <NavigationProperty Name="User" Relationship="Self.FK_ZohoChartOfAccounts_Users" FromRole="ZohoChartOfAccounts" ToRole="Users" />
+    <Property Name="AccountTypeZoho" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="ZohoCOAMapping">
     <Key>
@@ -1696,30 +1618,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_CarInspection_Users">
-    <End Role="Users" Type="Self.User" Multiplicity="1" />
-    <End Role="CarInspection" Type="Self.CarInspection" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Users">
-        <PropertyRef Name="UserID" />
-      </Principal>
-      <Dependent Role="CarInspection">
-        <PropertyRef Name="UserID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_CarInspectionDetails_CarInspection">
-    <End Role="CarInspection" Type="Self.CarInspection" Multiplicity="1" />
-    <End Role="CarInspectionDetails" Type="Self.CarInspectionDetail" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="CarInspection">
-        <PropertyRef Name="CarInspectionID" />
-      </Principal>
-      <Dependent Role="CarInspectionDetails">
-        <PropertyRef Name="CarInspectionID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_OrderInspectionMapping_CarInspectionDetails">
     <End Role="CarInspectionDetails" Type="Self.CarInspectionDetail" Multiplicity="0..1" />
     <End Role="OrderInspectionMapping" Type="Self.OrderInspectionMapping" Multiplicity="*" />
@@ -1777,18 +1675,6 @@
       </Principal>
       <Dependent Role="Cars">
         <PropertyRef Name="CustomerID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Cars_Make">
-    <End Role="Make" Type="Self.Make" Multiplicity="0..1" />
-    <End Role="Cars" Type="Self.Car" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Make">
-        <PropertyRef Name="MakeID" />
-      </Principal>
-      <Dependent Role="Cars">
-        <PropertyRef Name="MakeID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -2740,18 +2626,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Receipt_Locations">
-    <End Role="Locations" Type="Self.Location" Multiplicity="1" />
-    <End Role="Receipt" Type="Self.Receipt" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Locations">
-        <PropertyRef Name="LocationID" />
-      </Principal>
-      <Dependent Role="Receipt">
-        <PropertyRef Name="LocationID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_SalesItems_Locations">
     <End Role="Locations" Type="Self.Location" Multiplicity="0..1" />
     <End Role="SalesItems" Type="Self.SalesItem" Multiplicity="*" />
@@ -2809,18 +2683,6 @@
       </Principal>
       <Dependent Role="SubUsers">
         <PropertyRef Name="LocationID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Model_Make">
-    <End Role="Make" Type="Self.Make" Multiplicity="1" />
-    <End Role="Model" Type="Self.Model" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Make">
-        <PropertyRef Name="MakeID" />
-      </Principal>
-      <Dependent Role="Model">
-        <PropertyRef Name="MakeID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -3191,7 +3053,6 @@
   <EntityContainer Name="Garage_LiveEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="AppSources" EntityType="Self.AppSource" />
     <EntitySet Name="Bays" EntityType="Self.Bay" />
-    <EntitySet Name="CarInspections" EntityType="Self.CarInspection" />
     <EntitySet Name="CarInspectionDetails" EntityType="Self.CarInspectionDetail" />
     <EntitySet Name="CarNotes" EntityType="Self.CarNote" />
     <EntitySet Name="CarNotesImages" EntityType="Self.CarNotesImage" />
@@ -3231,7 +3092,6 @@
     <EntitySet Name="LocationImages" EntityType="Self.LocationImage" />
     <EntitySet Name="Locations" EntityType="Self.Location" />
     <EntitySet Name="LocationServiceJuncs" EntityType="Self.LocationServiceJunc" />
-    <EntitySet Name="Makes" EntityType="Self.Make" />
     <EntitySet Name="Models" EntityType="Self.Model" />
     <EntitySet Name="Modifiers" EntityType="Self.Modifier" />
     <EntitySet Name="OrderCheckouts" EntityType="Self.OrderCheckout" />
@@ -3244,10 +3104,8 @@
     <EntitySet Name="OrdersChecklists" EntityType="Self.OrdersChecklist" />
     <EntitySet Name="PackageDetails" EntityType="Self.PackageDetail" />
     <EntitySet Name="Packages" EntityType="Self.Package" />
-    <EntitySet Name="PackagesInfoes" EntityType="Self.PackagesInfo" />
     <EntitySet Name="PaymentDetails" EntityType="Self.PaymentDetail" />
     <EntitySet Name="PaymentModes" EntityType="Self.PaymentMode" />
-    <EntitySet Name="Receipts" EntityType="Self.Receipt" />
     <EntitySet Name="ReportLogs" EntityType="Self.ReportLog" />
     <EntitySet Name="Role_Forms" EntityType="Self.Role_Forms" />
     <EntitySet Name="Role_Group" EntityType="Self.Role_Group" />
@@ -3278,14 +3136,6 @@
       <End Role="Bay" EntitySet="Bays" />
       <End Role="Orders" EntitySet="Orders" />
     </AssociationSet>
-    <AssociationSet Name="FK_CarInspection_Users" Association="Self.FK_CarInspection_Users">
-      <End Role="Users" EntitySet="Users" />
-      <End Role="CarInspection" EntitySet="CarInspections" />
-    </AssociationSet>
-    <AssociationSet Name="FK_CarInspectionDetails_CarInspection" Association="Self.FK_CarInspectionDetails_CarInspection">
-      <End Role="CarInspection" EntitySet="CarInspections" />
-      <End Role="CarInspectionDetails" EntitySet="CarInspectionDetails" />
-    </AssociationSet>
     <AssociationSet Name="FK_OrderInspectionMapping_CarInspectionDetails" Association="Self.FK_OrderInspectionMapping_CarInspectionDetails">
       <End Role="CarInspectionDetails" EntitySet="CarInspectionDetails" />
       <End Role="OrderInspectionMapping" EntitySet="OrderInspectionMappings" />
@@ -3304,10 +3154,6 @@
     </AssociationSet>
     <AssociationSet Name="FK_Cars_Customers" Association="Self.FK_Cars_Customers">
       <End Role="Customers" EntitySet="Customers" />
-      <End Role="Cars" EntitySet="Cars" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Cars_Make" Association="Self.FK_Cars_Make">
-      <End Role="Make" EntitySet="Makes" />
       <End Role="Cars" EntitySet="Cars" />
     </AssociationSet>
     <AssociationSet Name="FK_Cars_Model" Association="Self.FK_Cars_Model">
@@ -3626,10 +3472,6 @@
       <End Role="Locations" EntitySet="Locations" />
       <End Role="Packages" EntitySet="Packages" />
     </AssociationSet>
-    <AssociationSet Name="FK_Receipt_Locations" Association="Self.FK_Receipt_Locations">
-      <End Role="Locations" EntitySet="Locations" />
-      <End Role="Receipt" EntitySet="Receipts" />
-    </AssociationSet>
     <AssociationSet Name="FK_SalesItems_Locations" Association="Self.FK_SalesItems_Locations">
       <End Role="Locations" EntitySet="Locations" />
       <End Role="SalesItems" EntitySet="SalesItems" />
@@ -3649,10 +3491,6 @@
     <AssociationSet Name="FK_SubUsers_Locations" Association="Self.FK_SubUsers_Locations">
       <End Role="Locations" EntitySet="Locations" />
       <End Role="SubUsers" EntitySet="SubUsers" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Model_Make" Association="Self.FK_Model_Make">
-      <End Role="Make" EntitySet="Makes" />
-      <End Role="Model" EntitySet="Models" />
     </AssociationSet>
     <AssociationSet Name="FK_Modifiers_Units" Association="Self.FK_Modifiers_Units">
       <End Role="Units" EntitySet="Units" />
@@ -4024,6 +3862,7 @@
       <Parameter Name="IsGarageGo" Mode="In" Type="Boolean" />
       <Parameter Name="StatusID" Mode="In" Type="Int32" />
       <Parameter Name="CreatedDate" Mode="In" Type="DateTime" />
+      <Parameter Name="NoofDays" Mode="In" Type="String" />
     </FunctionImport>
     <FunctionImport Name="sp_InsertReview_CAPI" ReturnType="Collection(Garage_Live.sp_InsertReview_CAPI_Result)">
       <Parameter Name="Name" Mode="In" Type="String" />
@@ -4244,7 +4083,49 @@
       <Parameter Name="StatusID" Mode="In" Type="Int32" />
       <Parameter Name="LastUpdatedDate" Mode="In" Type="DateTime" />
       <Parameter Name="PackageInfoID" Mode="In" Type="Int32" />
+      <Parameter Name="NoofDays" Mode="In" Type="String" />
     </FunctionImport>
+    <EntitySet Name="PackagesInfoes" EntityType="Garage_Live.PackagesInfo" />
+    <AssociationSet Name="FK_Users_PackagesInfo" Association="Garage_Live.FK_Users_PackagesInfo">
+      <End Role="PackagesInfo" EntitySet="PackagesInfoes" />
+      <End Role="User" EntitySet="Users" />
+    </AssociationSet>
+    <EntitySet Name="UserPackageDetails" EntityType="Garage_Live.UserPackageDetail" />
+    <AssociationSet Name="FK_UserPackageDetails_PackagesInfo" Association="Garage_Live.FK_UserPackageDetails_PackagesInfo">
+      <End Role="PackagesInfo" EntitySet="PackagesInfoes" />
+      <End Role="UserPackageDetail" EntitySet="UserPackageDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserPackageDetails_UserPackageDetails" Association="Garage_Live.FK_UserPackageDetails_UserPackageDetails">
+      <End Role="UserPackageDetail" EntitySet="UserPackageDetails" />
+      <End Role="UserPackageDetail1" EntitySet="UserPackageDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserPackageDetails_Users" Association="Garage_Live.FK_UserPackageDetails_Users">
+      <End Role="User" EntitySet="Users" />
+      <End Role="UserPackageDetail" EntitySet="UserPackageDetails" />
+    </AssociationSet>
+    <EntitySet Name="Receipts" EntityType="Garage_Live.Receipt" />
+    <AssociationSet Name="FK_Receipt_Locations" Association="Garage_Live.FK_Receipt_Locations">
+      <End Role="Location" EntitySet="Locations" />
+      <End Role="Receipt" EntitySet="Receipts" />
+    </AssociationSet>
+    <EntitySet Name="Makes" EntityType="Garage_Live.Make" />
+    <AssociationSet Name="FK_Cars_Make" Association="Garage_Live.FK_Cars_Make">
+      <End Role="Make" EntitySet="Makes" />
+      <End Role="Car" EntitySet="Cars" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Model_Make" Association="Garage_Live.FK_Model_Make">
+      <End Role="Make" EntitySet="Makes" />
+      <End Role="Model" EntitySet="Models" />
+    </AssociationSet>
+    <EntitySet Name="CarInspections" EntityType="Garage_Live.CarInspection" />
+    <AssociationSet Name="FK_CarInspection_Users" Association="Garage_Live.FK_CarInspection_Users">
+      <End Role="User" EntitySet="Users" />
+      <End Role="CarInspection" EntitySet="CarInspections" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CarInspectionDetails_CarInspection" Association="Garage_Live.FK_CarInspectionDetails_CarInspection">
+      <End Role="CarInspection" EntitySet="CarInspections" />
+      <End Role="CarInspectionDetail" EntitySet="CarInspectionDetails" />
+    </AssociationSet>
   </EntityContainer>
   <ComplexType Name="sp_apiGetSuperUserInfo_Result">
     <Property Type="String" Name="BusinessType" Nullable="true" MaxLength="500" />
@@ -5622,4 +5503,209 @@
     <Property Type="String" Name="City" Nullable="true" MaxLength="50" />
     <Property Type="String" Name="Country" Nullable="true" MaxLength="50" />
   </ComplexType>
+  <EntityType Name="PackagesInfo">
+    <Key>
+      <PropertyRef Name="PackageInfoID" />
+    </Key>
+    <Property Name="PackageInfoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PackageName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="PackagePrice" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="PackageDetail" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="PackageDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="NoofDays" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DeviceCount" Type="Int32" />
+    <Property Name="LocationsLimit" Type="Int32" />
+    <Property Name="StatusID" Type="Int32" />
+    <Property Name="IsInventory" Type="Boolean" />
+    <Property Name="IsGarageGo" Type="Boolean" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="LastUpdatedDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Users" Relationship="Garage_Live.FK_Users_PackagesInfo" FromRole="PackagesInfo" ToRole="User" />
+    <NavigationProperty Name="UserPackageDetails" Relationship="Garage_Live.FK_UserPackageDetails_PackagesInfo" FromRole="PackagesInfo" ToRole="UserPackageDetail" />
+  </EntityType>
+  <Association Name="FK_Users_PackagesInfo">
+    <End Type="Garage_Live.PackagesInfo" Role="PackagesInfo" Multiplicity="0..1" />
+    <End Type="Garage_Live.User" Role="User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PackagesInfo">
+        <PropertyRef Name="PackageInfoID" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="PackageInfoID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="UserPackageDetail">
+    <Key>
+      <PropertyRef Name="UserPackageDetailID" />
+    </Key>
+    <Property Name="UserPackageDetailID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PackageInfoID" Type="Int32" />
+    <Property Name="UserID" Type="Int32" />
+    <Property Name="StatusID" Type="Int32" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="LastUpdatedDate" Type="DateTime" Precision="3" />
+    <Property Name="ExpiryDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="PackagesInfo" Relationship="Garage_Live.FK_UserPackageDetails_PackagesInfo" FromRole="UserPackageDetail" ToRole="PackagesInfo" />
+    <NavigationProperty Name="UserPackageDetails1" Relationship="Garage_Live.FK_UserPackageDetails_UserPackageDetails" FromRole="UserPackageDetail" ToRole="UserPackageDetail1" />
+    <NavigationProperty Name="UserPackageDetail1" Relationship="Garage_Live.FK_UserPackageDetails_UserPackageDetails" FromRole="UserPackageDetail1" ToRole="UserPackageDetail" />
+    <NavigationProperty Name="User" Relationship="Garage_Live.FK_UserPackageDetails_Users" FromRole="UserPackageDetail" ToRole="User" />
+  </EntityType>
+  <Association Name="FK_UserPackageDetails_PackagesInfo">
+    <End Type="Garage_Live.PackagesInfo" Role="PackagesInfo" Multiplicity="0..1" />
+    <End Type="Garage_Live.UserPackageDetail" Role="UserPackageDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PackagesInfo">
+        <PropertyRef Name="PackageInfoID" />
+      </Principal>
+      <Dependent Role="UserPackageDetail">
+        <PropertyRef Name="PackageInfoID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserPackageDetails_UserPackageDetails">
+    <End Type="Garage_Live.UserPackageDetail" Role="UserPackageDetail" Multiplicity="1" />
+    <End Type="Garage_Live.UserPackageDetail" Role="UserPackageDetail1" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="UserPackageDetail">
+        <PropertyRef Name="UserPackageDetailID" />
+      </Principal>
+      <Dependent Role="UserPackageDetail1">
+        <PropertyRef Name="UserPackageDetailID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserPackageDetails_Users">
+    <End Type="Garage_Live.User" Role="User" Multiplicity="0..1" />
+    <End Type="Garage_Live.UserPackageDetail" Role="UserPackageDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="UserPackageDetail">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Receipt">
+    <Key>
+      <PropertyRef Name="ReceiptID" />
+    </Key>
+    <Property Name="ReceiptID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ReceiptName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="CompanyTitle" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="CompanyAddress" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="CompanyPhones" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="CompanyEmail" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="CompanyWebsite" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Companytagline" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="CompanyLogoURL" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Footer" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Facebook" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Twitter" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Instagram" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Snapchat" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="LastUpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LastUpdatedDate" Type="DateTime" Precision="3" />
+    <Property Name="IsCompanyTagline" Type="Boolean" />
+    <Property Name="StatusID" Type="Int32" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="LocationID" Type="Int32" Nullable="false" />
+    <Property Name="IsA4Spacing" Type="Boolean" />
+    <NavigationProperty Name="Location" Relationship="Garage_Live.FK_Receipt_Locations" FromRole="Receipt" ToRole="Location" />
+  </EntityType>
+  <Association Name="FK_Receipt_Locations">
+    <End Type="Garage_Live.Location" Role="Location" Multiplicity="1" />
+    <End Type="Garage_Live.Receipt" Role="Receipt" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Location">
+        <PropertyRef Name="LocationID" />
+      </Principal>
+      <Dependent Role="Receipt">
+        <PropertyRef Name="LocationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Make">
+    <Key>
+      <PropertyRef Name="MakeID" />
+    </Key>
+    <Property Name="MakeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RowID" Type="Int32" />
+    <Property Name="Name" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
+    <Property Name="ArabicName" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+    <Property Name="ImagePath" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="LastUpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LastUpdatedDate" Type="DateTime" Precision="3" />
+    <Property Name="StatusID" Type="Int32" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="DisplayOrder" Type="Int32" />
+    <NavigationProperty Name="Cars" Relationship="Garage_Live.FK_Cars_Make" FromRole="Make" ToRole="Car" />
+    <NavigationProperty Name="Models" Relationship="Garage_Live.FK_Model_Make" FromRole="Make" ToRole="Model" />
+  </EntityType>
+  <Association Name="FK_Cars_Make">
+    <End Type="Garage_Live.Make" Role="Make" Multiplicity="0..1" />
+    <End Type="Garage_Live.Car" Role="Car" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Make">
+        <PropertyRef Name="MakeID" />
+      </Principal>
+      <Dependent Role="Car">
+        <PropertyRef Name="MakeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Model_Make">
+    <End Type="Garage_Live.Make" Role="Make" Multiplicity="1" />
+    <End Type="Garage_Live.Model" Role="Model" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Make">
+        <PropertyRef Name="MakeID" />
+      </Principal>
+      <Dependent Role="Model">
+        <PropertyRef Name="MakeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="CarInspection">
+    <Key>
+      <PropertyRef Name="CarInspectionID" />
+    </Key>
+    <Property Name="CarInspectionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="AlternateName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="StatusID" Type="Int32" />
+    <Property Name="UserID" Type="Int32" Nullable="false" />
+    <Property Name="LastUpdatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="LastUpdatedDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="User" Relationship="Garage_Live.FK_CarInspection_Users" FromRole="CarInspection" ToRole="User" />
+    <NavigationProperty Name="CarInspectionDetails" Relationship="Garage_Live.FK_CarInspectionDetails_CarInspection" FromRole="CarInspection" ToRole="CarInspectionDetail" />
+  </EntityType>
+  <Association Name="FK_CarInspection_Users">
+    <End Type="Garage_Live.User" Role="User" Multiplicity="1" />
+    <End Type="Garage_Live.CarInspection" Role="CarInspection" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="CarInspection">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CarInspectionDetails_CarInspection">
+    <End Type="Garage_Live.CarInspection" Role="CarInspection" Multiplicity="1" />
+    <End Type="Garage_Live.CarInspectionDetail" Role="CarInspectionDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CarInspection">
+        <PropertyRef Name="CarInspectionID" />
+      </Principal>
+      <Dependent Role="CarInspectionDetail">
+        <PropertyRef Name="CarInspectionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

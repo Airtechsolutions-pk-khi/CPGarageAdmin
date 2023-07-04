@@ -30,22 +30,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="CarInspections">
-      <EntityTypeMapping TypeName="Garage_Live.CarInspection">
-        <MappingFragment StoreEntitySet="CarInspection">
-          <ScalarProperty Name="CarInspectionID" ColumnName="CarInspectionID" />
-          <ScalarProperty Name="RowID" ColumnName="RowID" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
-          <ScalarProperty Name="AlternateName" ColumnName="AlternateName" />
-          <ScalarProperty Name="Image" ColumnName="Image" />
-          <ScalarProperty Name="Description" ColumnName="Description" />
-          <ScalarProperty Name="StatusID" ColumnName="StatusID" />
-          <ScalarProperty Name="UserID" ColumnName="UserID" />
-          <ScalarProperty Name="LastUpdatedBy" ColumnName="LastUpdatedBy" />
-          <ScalarProperty Name="LastUpdatedDate" ColumnName="LastUpdatedDate" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="CarInspectionDetails">
       <EntityTypeMapping TypeName="Garage_Live.CarInspectionDetail">
         <MappingFragment StoreEntitySet="CarInspectionDetails">
@@ -799,24 +783,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Makes">
-      <EntityTypeMapping TypeName="Garage_Live.Make">
-        <MappingFragment StoreEntitySet="Make">
-          <ScalarProperty Name="MakeID" ColumnName="MakeID" />
-          <ScalarProperty Name="RowID" ColumnName="RowID" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
-          <ScalarProperty Name="ArabicName" ColumnName="ArabicName" />
-          <ScalarProperty Name="ImagePath" ColumnName="ImagePath" />
-          <ScalarProperty Name="LastUpdatedBy" ColumnName="LastUpdatedBy" />
-          <ScalarProperty Name="LastUpdatedDate" ColumnName="LastUpdatedDate" />
-          <ScalarProperty Name="StatusID" ColumnName="StatusID" />
-          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
-          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-          <ScalarProperty Name="DisplayOrder" ColumnName="DisplayOrder" />
-          <ScalarProperty Name="MakeImage" ColumnName="MakeImage" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Models">
       <EntityTypeMapping TypeName="Garage_Live.Model">
         <MappingFragment StoreEntitySet="Model">
@@ -1002,6 +968,7 @@
     <EntitySetMapping Name="Orders">
       <EntityTypeMapping TypeName="Garage_Live.Order">
         <MappingFragment StoreEntitySet="Orders">
+          <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
           <ScalarProperty Name="OrderID" ColumnName="OrderID" />
           <ScalarProperty Name="TransactionNo" ColumnName="TransactionNo" />
           <ScalarProperty Name="OrderNo" ColumnName="OrderNo" />
@@ -1080,23 +1047,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="PackagesInfoes">
-      <EntityTypeMapping TypeName="Garage_Live.PackagesInfo">
-        <MappingFragment StoreEntitySet="PackagesInfo">
-          <ScalarProperty Name="PackageInfoID" ColumnName="PackageInfoID" />
-          <ScalarProperty Name="PackageName" ColumnName="PackageName" />
-          <ScalarProperty Name="PackagePrice" ColumnName="PackagePrice" />
-          <ScalarProperty Name="PackageDescription" ColumnName="PackageDescription" />
-          <ScalarProperty Name="DeviceCount" ColumnName="DeviceCount" />
-          <ScalarProperty Name="LocationsLimit" ColumnName="LocationsLimit" />
-          <ScalarProperty Name="StatusID" ColumnName="StatusID" />
-          <ScalarProperty Name="IsInventory" ColumnName="IsInventory" />
-          <ScalarProperty Name="IsGarageGo" ColumnName="IsGarageGo" />
-          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-          <ScalarProperty Name="LastUpdatedDate" ColumnName="LastUpdatedDate" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="PaymentDetails">
       <EntityTypeMapping TypeName="Garage_Live.PaymentDetail">
         <MappingFragment StoreEntitySet="PaymentDetail">
@@ -1120,39 +1070,6 @@
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="PaymentMode1" ColumnName="PaymentMode" />
           <ScalarProperty Name="StatusID" ColumnName="StatusID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Receipts">
-      <EntityTypeMapping TypeName="Garage_Live.Receipt">
-        <MappingFragment StoreEntitySet="Receipt">
-          <ScalarProperty Name="ReceiptID" ColumnName="ReceiptID" />
-          <ScalarProperty Name="RowID" ColumnName="RowID" />
-          <ScalarProperty Name="ReceiptName" ColumnName="ReceiptName" />
-          <ScalarProperty Name="CompanyTitle" ColumnName="CompanyTitle" />
-          <ScalarProperty Name="CompanyAddress" ColumnName="CompanyAddress" />
-          <ScalarProperty Name="CompanyPhones" ColumnName="CompanyPhones" />
-          <ScalarProperty Name="CompanyFax" ColumnName="CompanyFax" />
-          <ScalarProperty Name="CompanyEmail" ColumnName="CompanyEmail" />
-          <ScalarProperty Name="CompanyWebsite" ColumnName="CompanyWebsite" />
-          <ScalarProperty Name="Promotiontagline" ColumnName="Promotiontagline" />
-          <ScalarProperty Name="Companytagline" ColumnName="Companytagline" />
-          <ScalarProperty Name="CompanyLogoURL" ColumnName="CompanyLogoURL" />
-          <ScalarProperty Name="ReceiptContent" ColumnName="ReceiptContent" />
-          <ScalarProperty Name="Footer" ColumnName="Footer" />
-          <ScalarProperty Name="Facebook" ColumnName="Facebook" />
-          <ScalarProperty Name="Twitter" ColumnName="Twitter" />
-          <ScalarProperty Name="Instagram" ColumnName="Instagram" />
-          <ScalarProperty Name="Snapchat" ColumnName="Snapchat" />
-          <ScalarProperty Name="LastUpdatedBy" ColumnName="LastUpdatedBy" />
-          <ScalarProperty Name="LastUpdatedDate" ColumnName="LastUpdatedDate" />
-          <ScalarProperty Name="StatusID" ColumnName="StatusID" />
-          <ScalarProperty Name="LocationID" ColumnName="LocationID" />
-          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
-          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-          <ScalarProperty Name="IsCompanyTagline" ColumnName="IsCompanyTagline" />
-          <ScalarProperty Name="IsA4Spacing" ColumnName="IsA4Spacing" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -1401,6 +1318,9 @@
     <EntitySetMapping Name="Users">
       <EntityTypeMapping TypeName="Garage_Live.User">
         <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="IsAccountingAddons" ColumnName="IsAccountingAddons" />
+          <ScalarProperty Name="IsOdoo" ColumnName="IsOdoo" />
+          <ScalarProperty Name="PackageInfoID" ColumnName="PackageInfoID" />
           <ScalarProperty Name="UserID" ColumnName="UserID" />
           <ScalarProperty Name="RowID" ColumnName="RowID" />
           <ScalarProperty Name="UserName" ColumnName="UserName" />
@@ -1436,6 +1356,7 @@
     <EntitySetMapping Name="ZohoChartOfAccounts">
       <EntityTypeMapping TypeName="Garage_Live.ZohoChartOfAccount">
         <MappingFragment StoreEntitySet="ZohoChartOfAccounts">
+          <ScalarProperty Name="AccountTypeZoho" ColumnName="AccountTypeZoho" />
           <ScalarProperty Name="ChartOfAccountsID" ColumnName="ChartOfAccountsID" />
           <ScalarProperty Name="account_id" ColumnName="account_id" />
           <ScalarProperty Name="account_name" ColumnName="account_name" />
@@ -1874,7 +1795,6 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="sp_Getimport" FunctionName="Garage_Live.Store.sp_Getimport" />
     <FunctionImportMapping FunctionImportName="sp_getLocation_CADMIN" FunctionName="Garage_Live.Store.sp_getLocation_CADMIN">
       <ResultMapping>
         <ComplexTypeMapping TypeName="Garage_Live.sp_getLocation_CADMIN_Result">
@@ -2255,85 +2175,6 @@
           <ScalarProperty Name="BayName" ColumnName="BayName" />
           <ScalarProperty Name="MakerName" ColumnName="MakerName" />
           <ScalarProperty Name="ModelName" ColumnName="ModelName" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="sp_GetOrderListCheckoutV2_APP" FunctionName="Garage_Live.Store.sp_GetOrderListCheckoutV2_APP">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="Garage_Live.sp_GetOrderListCheckoutV2_APP_Result">
-          <ScalarProperty Name="OrderID" ColumnName="OrderID" />
-          <ScalarProperty Name="TransactionNo" ColumnName="TransactionNo" />
-          <ScalarProperty Name="OrderNo" ColumnName="OrderNo" />
-          <ScalarProperty Name="OrderTakerID" ColumnName="OrderTakerID" />
-          <ScalarProperty Name="CarID" ColumnName="CarID" />
-          <ScalarProperty Name="BayID" ColumnName="BayID" />
-          <ScalarProperty Name="OrderType" ColumnName="OrderType" />
-          <ScalarProperty Name="Points" ColumnName="Points" />
-          <ScalarProperty Name="OrderMode" ColumnName="OrderMode" />
-          <ScalarProperty Name="StatusID" ColumnName="StatusID" />
-          <ScalarProperty Name="OrderPunchDt" ColumnName="OrderPunchDt" />
-          <ScalarProperty Name="OrderCreatedDT" ColumnName="OrderCreatedDT" />
-          <ScalarProperty Name="SessionID" ColumnName="SessionID" />
-          <ScalarProperty Name="LastUpdateBy" ColumnName="LastUpdateBy" />
-          <ScalarProperty Name="LastUpdateDT" ColumnName="LastUpdateDT" />
-          <ScalarProperty Name="LocationID" ColumnName="LocationID" />
-          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
-          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-          <ScalarProperty Name="SubUserID" ColumnName="SubUserID" />
-          <ScalarProperty Name="CheckLiters" ColumnName="CheckLiters" />
-          <ScalarProperty Name="NextKM" ColumnName="NextKM" />
-          <ScalarProperty Name="RegistrationNo" ColumnName="RegistrationNo" />
-          <ScalarProperty Name="Year" ColumnName="Year" />
-          <ScalarProperty Name="Color" ColumnName="Color" />
-          <ScalarProperty Name="RecommendedAmount" ColumnName="RecommendedAmount" />
-          <ScalarProperty Name="CheckLitre" ColumnName="CheckLitre" />
-          <ScalarProperty Name="EngineType" ColumnName="EngineType" />
-          <ScalarProperty Name="OrderCheckOutID" ColumnName="OrderCheckOutID" />
-          <ScalarProperty Name="OrderID1" ColumnName="OrderID1" />
-          <ScalarProperty Name="SessionId1" ColumnName="SessionId1" />
-          <ScalarProperty Name="CheckoutDate" ColumnName="CheckoutDate" />
-          <ScalarProperty Name="AmountTotal" ColumnName="AmountTotal" />
-          <ScalarProperty Name="OrderStatus" ColumnName="OrderStatus" />
-          <ScalarProperty Name="AmountPaid" ColumnName="AmountPaid" />
-          <ScalarProperty Name="AmountDiscount" ColumnName="AmountDiscount" />
-          <ScalarProperty Name="Tax" ColumnName="Tax" />
-          <ScalarProperty Name="GrandTotal" ColumnName="GrandTotal" />
-          <ScalarProperty Name="lastUpdateBy1" ColumnName="lastUpdateBy1" />
-          <ScalarProperty Name="LastUpdateDT1" ColumnName="LastUpdateDT1" />
-          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
-          <ScalarProperty Name="LocationID1" ColumnName="LocationID1" />
-          <ScalarProperty Name="AmountComplementary" ColumnName="AmountComplementary" />
-          <ScalarProperty Name="CreatedOn1" ColumnName="CreatedOn1" />
-          <ScalarProperty Name="CreatedBy1" ColumnName="CreatedBy1" />
-          <ScalarProperty Name="WorkerID" ColumnName="WorkerID" />
-          <ScalarProperty Name="AssistantID" ColumnName="AssistantID" />
-          <ScalarProperty Name="PaymentMode" ColumnName="PaymentMode" />
-          <ScalarProperty Name="SubUserID1" ColumnName="SubUserID1" />
-          <ScalarProperty Name="RefundedAmount" ColumnName="RefundedAmount" />
-          <ScalarProperty Name="CashReturn" ColumnName="CashReturn" />
-          <ScalarProperty Name="CardReturn" ColumnName="CardReturn" />
-          <ScalarProperty Name="IsPaid" ColumnName="IsPaid" />
-          <ScalarProperty Name="IsReady" ColumnName="IsReady" />
-          <ScalarProperty Name="Gratuity" ColumnName="Gratuity" />
-          <ScalarProperty Name="ServiceCharges" ColumnName="ServiceCharges" />
-          <ScalarProperty Name="DiscountPercent" ColumnName="DiscountPercent" />
-          <ScalarProperty Name="TaxPercent" ColumnName="TaxPercent" />
-          <ScalarProperty Name="CreditCustomerID" ColumnName="CreditCustomerID" />
-          <ScalarProperty Name="PartialAmountReceived" ColumnName="PartialAmountReceived" />
-          <ScalarProperty Name="IsPartialPaid" ColumnName="IsPartialPaid" />
-          <ScalarProperty Name="DiscountCode" ColumnName="DiscountCode" />
-          <ScalarProperty Name="AppSourceID" ColumnName="AppSourceID" />
-          <ScalarProperty Name="Status" ColumnName="Status" />
-          <ScalarProperty Name="CustomerContact" ColumnName="CustomerContact" />
-          <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
-          <ScalarProperty Name="OrderPunchDate" ColumnName="OrderPunchDate" />
-          <ScalarProperty Name="MechanicName" ColumnName="MechanicName" />
-          <ScalarProperty Name="BayName" ColumnName="BayName" />
-          <ScalarProperty Name="MakerName" ColumnName="MakerName" />
-          <ScalarProperty Name="ModelName" ColumnName="ModelName" />
-          <ScalarProperty Name="CashAmount" ColumnName="CashAmount" />
-          <ScalarProperty Name="CardAmount" ColumnName="CardAmount" />
-          <ScalarProperty Name="CardType" ColumnName="CardType" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
@@ -3085,5 +2926,96 @@
     <FunctionImportMapping FunctionImportName="sp_UpdateLocation" FunctionName="Garage_Live.Store.sp_UpdateLocation" />
     <FunctionImportMapping FunctionImportName="sp_UpdateLocation_CADMIN" FunctionName="Garage_Live.Store.sp_UpdateLocation_CADMIN" />
     <FunctionImportMapping FunctionImportName="sp_UpdatePackagesInfo_Admin" FunctionName="Garage_Live.Store.sp_UpdatePackagesInfo_Admin" />
+    <EntitySetMapping Name="PackagesInfoes">
+      <EntityTypeMapping TypeName="Garage_Live.PackagesInfo">
+        <MappingFragment StoreEntitySet="PackagesInfo">
+          <ScalarProperty Name="LastUpdatedDate" ColumnName="LastUpdatedDate" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="IsGarageGo" ColumnName="IsGarageGo" />
+          <ScalarProperty Name="IsInventory" ColumnName="IsInventory" />
+          <ScalarProperty Name="StatusID" ColumnName="StatusID" />
+          <ScalarProperty Name="LocationsLimit" ColumnName="LocationsLimit" />
+          <ScalarProperty Name="DeviceCount" ColumnName="DeviceCount" />
+          <ScalarProperty Name="NoofDays" ColumnName="NoofDays" />
+          <ScalarProperty Name="PackageDescription" ColumnName="PackageDescription" />
+          <ScalarProperty Name="PackageDetail" ColumnName="PackageDetail" />
+          <ScalarProperty Name="PackagePrice" ColumnName="PackagePrice" />
+          <ScalarProperty Name="PackageName" ColumnName="PackageName" />
+          <ScalarProperty Name="PackageInfoID" ColumnName="PackageInfoID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserPackageDetails">
+      <EntityTypeMapping TypeName="Garage_Live.UserPackageDetail">
+        <MappingFragment StoreEntitySet="UserPackageDetails">
+          <ScalarProperty Name="ExpiryDate" ColumnName="ExpiryDate" />
+          <ScalarProperty Name="LastUpdatedDate" ColumnName="LastUpdatedDate" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="StatusID" ColumnName="StatusID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="PackageInfoID" ColumnName="PackageInfoID" />
+          <ScalarProperty Name="UserPackageDetailID" ColumnName="UserPackageDetailID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Receipts">
+      <EntityTypeMapping TypeName="Garage_Live.Receipt">
+        <MappingFragment StoreEntitySet="Receipt">
+          <ScalarProperty Name="IsA4Spacing" ColumnName="IsA4Spacing" />
+          <ScalarProperty Name="LocationID" ColumnName="LocationID" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="StatusID" ColumnName="StatusID" />
+          <ScalarProperty Name="IsCompanyTagline" ColumnName="IsCompanyTagline" />
+          <ScalarProperty Name="LastUpdatedDate" ColumnName="LastUpdatedDate" />
+          <ScalarProperty Name="LastUpdatedBy" ColumnName="LastUpdatedBy" />
+          <ScalarProperty Name="Snapchat" ColumnName="Snapchat" />
+          <ScalarProperty Name="Instagram" ColumnName="Instagram" />
+          <ScalarProperty Name="Twitter" ColumnName="Twitter" />
+          <ScalarProperty Name="Facebook" ColumnName="Facebook" />
+          <ScalarProperty Name="Footer" ColumnName="Footer" />
+          <ScalarProperty Name="CompanyLogoURL" ColumnName="CompanyLogoURL" />
+          <ScalarProperty Name="Companytagline" ColumnName="Companytagline" />
+          <ScalarProperty Name="CompanyWebsite" ColumnName="CompanyWebsite" />
+          <ScalarProperty Name="CompanyEmail" ColumnName="CompanyEmail" />
+          <ScalarProperty Name="CompanyPhones" ColumnName="CompanyPhones" />
+          <ScalarProperty Name="CompanyAddress" ColumnName="CompanyAddress" />
+          <ScalarProperty Name="CompanyTitle" ColumnName="CompanyTitle" />
+          <ScalarProperty Name="ReceiptName" ColumnName="ReceiptName" />
+          <ScalarProperty Name="ReceiptID" ColumnName="ReceiptID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Makes">
+      <EntityTypeMapping TypeName="Garage_Live.Make">
+        <MappingFragment StoreEntitySet="Make">
+          <ScalarProperty Name="DisplayOrder" ColumnName="DisplayOrder" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="StatusID" ColumnName="StatusID" />
+          <ScalarProperty Name="LastUpdatedDate" ColumnName="LastUpdatedDate" />
+          <ScalarProperty Name="LastUpdatedBy" ColumnName="LastUpdatedBy" />
+          <ScalarProperty Name="ImagePath" ColumnName="ImagePath" />
+          <ScalarProperty Name="ArabicName" ColumnName="ArabicName" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="RowID" ColumnName="RowID" />
+          <ScalarProperty Name="MakeID" ColumnName="MakeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CarInspections">
+      <EntityTypeMapping TypeName="Garage_Live.CarInspection">
+        <MappingFragment StoreEntitySet="CarInspection">
+          <ScalarProperty Name="LastUpdatedDate" ColumnName="LastUpdatedDate" />
+          <ScalarProperty Name="LastUpdatedBy" ColumnName="LastUpdatedBy" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="StatusID" ColumnName="StatusID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="AlternateName" ColumnName="AlternateName" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="CarInspectionID" ColumnName="CarInspectionID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>
