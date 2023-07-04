@@ -172,6 +172,7 @@
     <Content Include="assets\images\lightbox\thumb-v-y-2.jpg" />
     <Content Include="assets\images\login-bg.jpg" />
     <Content Include="assets\images\logo-garage-v1.svg" />
+    <Content Include="assets\images\logo-garage.png" />
     <Content Include="assets\images\logo-mini.svg" />
     <Content Include="assets\images\logo-white-mini.svg" />
     <Content Include="assets\images\logo-white.svg" />
@@ -1827,6 +1828,7 @@
     <Content Include="Template\new-customer.txt" />
     <Content Include="Template\invoice-sms.txt" />
     <Content Include="Template\template.html" />
+    <Content Include="Template\Trial_template.txt" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>

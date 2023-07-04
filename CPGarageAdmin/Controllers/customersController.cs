@@ -67,11 +67,11 @@ namespace CPGarageAdmin.Controllers
                     {
                         try
                         {
-                            //SendEmailCustomer(modal);
+
                             string ToEmail, SubJect, cc, Bcc;
                             cc = "";
                             Bcc = "";
-                            ToEmail = ConfigurationManager.AppSettings["To"].ToString();
+                            ToEmail = modal.Email;
                             SubJect = "Your Package has been updated";
                             string BodyEmail = System.IO.File.ReadAllText(Server.MapPath("~/Template") + "\\" + "package-update.txt");
                             DateTime dateTime = DateTime.UtcNow.Date;
@@ -81,11 +81,32 @@ namespace CPGarageAdmin.Controllers
                             .Replace("#Password#", modal.Password.ToString())
                             .Replace("#Contact#", modal.ContactNo.ToString())
                             .Replace("#Company#", modal.Company.ToString())
-                            .Replace("#Package#", modal.PackageInfoID.ToString());                            
+                            .Replace("#Package#", modal.PackageInfoID.ToString());
 
                             SendEmail(SubJect, BodyEmail, ToEmail);
                         }
                         catch { }
+                    }
+                    else
+                    {
+                        if (modal.PackageInfoID == 1)
+                        {
+                            try
+                            {
+                                string ToEmail, SubJect, cc, Bcc;
+                                cc = "";
+                                Bcc = "";
+                                ToEmail = modal.Email;
+                                SubJect = "Thank you For Registered in Garage";
+                                string BodyEmail = System.IO.File.ReadAllText(Server.MapPath("~/Template") + "\\" + "Trial_template.txt");
+                                SendEmail(SubJect, BodyEmail, ToEmail);
+                            }
+                            catch { }
+                            if (data == 1)
+                                return Json(new { success = true });
+                            else
+                                return Json(new { success = false });
+                        }
                     }
                     if (data == 1)
                         return Json(new { success = true });
@@ -96,33 +117,54 @@ namespace CPGarageAdmin.Controllers
                 else
                 {
                     var data = customerRepo.add(modal);
-
-                    try
+                    if (modal.PackageInfoID == 1)
                     {
-                        //SendEmailCustomer(modal);
-                        string ToEmail, SubJect, cc, Bcc;
-                        cc = "";
-                        Bcc = "";
-                        ToEmail = ConfigurationManager.AppSettings["To"].ToString();
-                        SubJect = "Thank you For Registered in Garage";
-                        string BodyEmail = System.IO.File.ReadAllText(Server.MapPath("~/Template") + "\\" + "new-customer.txt");
-                        DateTime dateTime = DateTime.UtcNow.Date;
-                        BodyEmail = BodyEmail.Replace("#Date#", dateTime.ToString("dd/MMM/yyyy"))
-                        .Replace("#Name#", modal.FirstName.ToString())
-                        .Replace("#Email#", modal.Email.ToString())
-                        .Replace("#Password#", modal.Password.ToString())
-                        .Replace("#Contact#", modal.ContactNo.ToString())
-                        .Replace("#Company#", modal.Company.ToString())
-                        .Replace("#Package#", modal.PackageInfoID.ToString());
-                        
-
-                        SendEmail(SubJect, BodyEmail, ToEmail);
+                        try
+                        {
+                            string ToEmail, SubJect, cc, Bcc;
+                            cc = "";
+                            Bcc = "";
+                            ToEmail = modal.Email;
+                            SubJect = "Thank you For Registered in Garage";
+                            string BodyEmail = System.IO.File.ReadAllText(Server.MapPath("~/Template") + "\\" + "Trial_template.txt");
+                            SendEmail(SubJect, BodyEmail, ToEmail);
+                        }
+                        catch { }
+                        if (data == 1)
+                            return Json(new { success = true });
+                        else
+                            return Json(new { success = false });
                     }
-                    catch { }
-                    if (data == 1)
-                        return Json(new { success = true });
                     else
-                        return Json(new { success = false });
+                    {
+                        try
+                        {
+                            string ToEmail, SubJect, cc, Bcc;
+                            cc = "";
+                            Bcc = "";
+                            ToEmail = modal.Email;
+                            SubJect = "Thank you For Registered in Garage";
+                            string BodyEmail = System.IO.File.ReadAllText(Server.MapPath("~/Template") + "\\" + "new-customer.txt");
+                            DateTime dateTime = DateTime.UtcNow.Date;
+                            BodyEmail = BodyEmail.Replace("#Date#", dateTime.ToString("dd/MMM/yyyy"))
+                            .Replace("#Name#", modal.FirstName.ToString())
+                            .Replace("#Email#", modal.Email.ToString())
+                            .Replace("#Password#", modal.Password.ToString())
+                            .Replace("#Contact#", modal.ContactNo.ToString())
+                            .Replace("#Company#", modal.Company.ToString())
+                            .Replace("#Package#", modal.PackageInfoID.ToString()
+                            .Replace("#PackageName#", modal.PackageInfoID == 2 ? "Professional" : null));
+                            
+
+
+                            SendEmail(SubJect, BodyEmail, ToEmail);
+                        }
+                        catch { }
+                        if (data == 1)
+                            return Json(new { success = true });
+                        else
+                            return Json(new { success = false });
+                    }
                 }
 
             }
@@ -153,7 +195,7 @@ namespace CPGarageAdmin.Controllers
                 smtp.Credentials = new System.Net.NetworkCredential
                      (ConfigurationManager.AppSettings["From"].ToString(), ConfigurationManager.AppSettings["Password"].ToString());
 
-                smtp.EnableSsl = false;
+                smtp.EnableSsl = true;
 
                 smtp.Send(mail);
             }
@@ -197,7 +239,7 @@ namespace CPGarageAdmin.Controllers
         public ActionResult PackageUpdate()
         {
             var data = customerRepo.GetUserPackage();
-            
+
             //SendEmailCustomer(modal);
             string ToEmail, SubJect, cc, Bcc;
             cc = "";
@@ -206,13 +248,6 @@ namespace CPGarageAdmin.Controllers
             SubJect = "Your Starter Package Is About To Expire";
             string BodyEmail = System.IO.File.ReadAllText(Server.MapPath("~/Template") + "\\" + "package-reminder.txt");
             DateTime dateTime = DateTime.UtcNow.Date;
-            //BodyEmail = BodyEmail.Replace("#Date#", dateTime.ToString("dd/MMM/yyyy"));
-            //.Replace("#Name#", data.ToString())
-            //.Replace("#Email#", modal.Email.ToString())
-            //.Replace("#Contact#", modal.ContactNo.ToString())
-            //.Replace("#Company#", modal.Company.ToString())
-            //.Replace("#Package#", modal.PackageInfoID.ToString())
-            //.Replace("#Password#", modal.Password.ToString());
 
             SendEmail(SubJect, BodyEmail, ToEmail);
             return View(data);

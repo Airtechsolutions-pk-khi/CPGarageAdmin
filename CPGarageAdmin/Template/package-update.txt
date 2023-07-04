@@ -1,206 +1,442 @@
-﻿<!DOCTYPE html>
-<html>
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional //EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:o="urn:schemas-microsoft-com:office:office" style="background-color: #eaeaea; margin-top: 0; padding: 0; margin: 0;">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
-
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-
+    <meta http-equiv="Content-Type" content="text/html charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="format-detection" content="telephone=no" />
     <style type="text/css">
-        body, p, div {
-            font-family: inherit;
-            font-size: 14px;
-        }
-
-        body {
-            color: #000000;
-        }
-
-            body a {
-                color: #1188E6;
-                text-decoration: none;
+        @media (max-width: 499px) {
+            u + .body .inbox-fix,
+            u + .body .content-shell-table,
+            u + .body .footer-shell-table,
+            u + .body .footer {
+                min-width: calc(100vw - 8.5vw) !important;
             }
 
-        p {
-            margin: 0;
-            padding: 0;
-        }
-
-        table.wrapper {
-            width: 100% !important;
-            table-layout: fixed;
-            -webkit-font-smoothing: antialiased;
-            -webkit-text-size-adjust: 100%;
-            -moz-text-size-adjust: 100%;
-            -ms-text-size-adjust: 100%;
-        }
-
-        img.max-width {
-            max-width: 100% !important;
-        }
-
-        .column.of-2 {
-            width: 50%;
-        }
-
-        .column.of-3 {
-            width: 33.333%;
-        }
-
-        .column.of-4 {
-            width: 25%;
-        }
-
-        @media screen and (max-width:480px) {
-            .preheader .rightColumnContent,
-            .footer .rightColumnContent {
-                text-align: left !important;
+            .mobile-hide,
+            .ios-hide {
+                display: none !important;
             }
 
-                .preheader .rightColumnContent div,
-                .preheader .rightColumnContent span,
-                .footer .rightColumnContent div,
-                .footer .rightColumnContent span {
-                    text-align: left !important;
-                }
-
-            .preheader .rightColumnContent,
-            .preheader .leftColumnContent {
-                font-size: 80% !important;
-                padding: 5px 0;
+            .desktop-hide,
+            .desktop-hide img {
+                display: initial !important;
             }
 
-            table.wrapper-mobile {
+            table.desktop-hide {
+                display: table !important;
+            }
+
+            .mobile-100w {
                 width: 100% !important;
+            }
+
+            .mobile-block {
+                display: block !important;
+            }
+
+            .mobile-center {
+                margin: 0 auto;
+                text-align: center !important;
+            }
+
+            .inner-padding {
+                padding-left: 6% !important;
+                padding-right: 6% !important;
+            }
+
+            .outside-padding {
+                padding-left: 12% !important;
+                padding-right: 12% !important;
+            }
+
+            .content-padding {
+                padding-left: 6% !important;
+                padding-right: 6% !important;
+            }
+
+            .desktop-hide-max,
+            .desktop-hide-max img {
+                display: initial !important;
+            }
+        }
+
+        @media screen and (-webkit-min-device-pixel-ratio: 0) and (max-width: 499px) {
+            .container.main-border {
+                padding: 0 !important;
+            }
+
+            .content-shell {
+                border: none !important;
+            }
+        }
+
+        @media yahoo {
+            table {
+                border-collapse: collapse;
                 table-layout: fixed;
             }
 
-            img.max-width {
+                table table {
+                    table-layout: auto;
+                }
+        }
+
+        .hide-link a,
+        .iosnonlink a,
+        .hide-link {
+            text-decoration: none !important;
+            cursor: text;
+        }
+
+        @media screen {
+            @font-face {
+                font-family: NetflixSans-Light;
+                src: url("https://assets.nflxext.com/us/email/fonts/NetflixSans-Light-Opt.woff2");
+                font-weight: 300;
+            }
+
+            @font-face {
+                font-family: NetflixSans-Regular;
+                src: url("https://assets.nflxext.com/us/email/fonts/NetflixSans-Regular-Opt.woff2");
+                font-weight: 400;
+            }
+
+            @font-face {
+                font-family: NetflixSans-Medium;
+                src: url("https://assets.nflxext.com/us/email/fonts/NetflixSans-Medium-Opt.woff2");
+                font-weight: 700;
+            }
+
+            @font-face {
+                font-family: NetflixSans-Bold;
+                src: url("https://assets.nflxext.com/us/email/fonts/NetflixSans-Bold-Opt.woff2");
+                font-weight: 700;
+            }
+        }
+
+        @media (max-width: 499px) {
+            .mobile-hide-max,
+            .ios-hide-max {
+                display: none !important;
+            }
+
+            .inbox-fix {
+                display: none;
+            }
+
+            .desktop-hide-max,
+            .desktop-hide-max img {
+                display: initial !important;
+            }
+
+            table.content-shell-table,
+            table.footer-shell-table,
+            .footer {
+                width: 100% !important;
+            }
+
+            .content {
+                width: 100% !important;
+            }
+        }
+
+        .footer-shell .footer-link {
+            line-height: 20px;
+        }
+
+        @media (max-width: 499px) {
+            .image .default-image-width img {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 499px) {
+            .bullet .indent.true {
+                width: 8% !important;
+            }
+
+            .bullet .indent.true {
+                padding-left: 3% !important;
+            }
+
+            .envelope.rtl .bullet .indent.true {
+                padding-right: 3% !important;
+            }
+        }
+
+        @media (max-width: 499px) {
+            .bullet-point {
+                line-height: 22px !important;
+            }
+        }
+
+        @media (max-width: 499px) {
+            .color-wrapper {
+                width: 100% !important;
+            }
+        }
+
+        @media (max-width: 499px) {
+            .evidence-cards-component-image-cell {
+                width: 12% !important;
+            }
+        }
+
+        @media (max-width: 499px) {
+            .evidence-images img {
+                width: 100% !important;
                 height: auto !important;
-                max-width: 100% !important;
+            }
+        }
+
+        @media (max-width: 499px) {
+            .marker {
+                padding: 5px 7px 5px 7px !important;
+            }
+        }
+
+        @media (max-width: 499px) {
+            .evidence-trailer-component-image-cell {
+                width: 12% !important;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .button-copy a {
+                padding: 13px 0px !important;
+                width: 100% !important;
+            }
+        }
+
+        @media (min-width: 501px) {
+            .button-copy a {
+                padding: 13px 40px;
+            }
+        }
+
+        @media (max-width: 499px) {
+            .image .default-image-width img {
+                width: 100%;
             }
 
-            a.bulletproof-button {
-                display: block !important;
-                width: auto !important;
-                font-size: 80%;
-                padding-left: 0 !important;
-                padding-right: 0 !important;
-            }
-
-            .columns {
+            .artwork img {
                 width: 100% !important;
             }
 
-            .column {
-                display: block !important;
+            .number img {
                 width: 100% !important;
-                padding-left: 0 !important;
-                padding-right: 0 !important;
-                margin-left: 0 !important;
-                margin-right: 0 !important;
+            }
+        }
+
+        @media (max-width: 499px) {
+            .episode-content-cell {
+                width: 40% !important;
+            }
+
+            .episode-content-cell-image {
+                width: 100% !important;
+                height: auto !important;
+            }
+
+            .episode-content-cell-progress-bar {
+                width: 100% !important;
+                height: auto !important;
+            }
+        }
+
+        @media (max-width: 499px) {
+            .exp-img-1 img {
+                width: 70% !important;
+            }
+
+            .exp-img-2 {
+                padding-left: 20px !important;
+            }
+
+                .exp-img-2 img {
+                    width: 85% !important;
+                }
+
+            .exp-img-3 img {
+                width: 85% !important;
+            }
+
+            .exp-img-4 img {
+                width: 85% !important;
+            }
+
+            .calendar img {
+                width: 85% !important;
+                height: auto !important;
+            }
+        }
+
+        @media (max-width: 499px) {
+            .logo-with-horizontal-date-logo-image-cell {
+                width: 60% !important;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .mosaic-module .middle {
+                width: 46% !important;
+                padding-right: 4% !important;
+                padding-left: 4% !important;
+            }
+
+            .mosaic-module .left,
+            .mosaic-module .right {
+                width: 24.8% !important;
+            }
+
+            .mosaic-module .component-image.cell,
+            .mosaic-module .single-button .content-padding {
+                padding-top: 15px !important;
             }
         }
     </style>
-    <!--user entered Head Start-->
-    <link href="https://fonts.googleapis.com/css?family=Viga&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Viga', sans-serif;
-        }
-    </style><!--End Head user entered-->
 </head>
-<body>
-    <center class="wrapper" data-link-color="#1188E6" data-body-style="font-size:14px; font-family:inherit; color:#000000; background-color:#f0f0f0;">
-        <div class="webkit">
-            <table cellpadding="0" cellspacing="0" border="0" width="100%" class="wrapper" bgcolor="#f0f0f0">
-                <tbody>
+<body class="body" style="background-color: #eaeaea; margin-top: 0; padding: 0; margin: 0;">
+    <div class="hide" style="display: none; width: 0; height: 0; max-height: 0; line-height: 0; mso-hide: all; overflow: hidden; visibility: hidden;">
+        We&#x27;ve changed your package for #Email#, as you asked. Please use this email address when you sign in to Garage. <br />
+        <div class="hide disabled-plaintext" style="display: none; width: 0; height: 0; max-height: 0; line-height: 0; mso-hide: all; overflow: hidden; visibility: hidden;"> ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌</div>
+    </div>
+    <table width="100%" border="0" class="envelope default " cellpadding="0" cellspacing="0" style="background-color: #eaeaea;" bgcolor="#eaeaea">
+        <tr>
+            <td align="center" class="container" style="background-color: #eaeaea; margin-top: 0;" bgcolor="#eaeaea">
+                <table align="center" border="0" class="content" cellpadding="0" cellspacing="0" style="background-color: #ffffff; width: 500px;" width="500" bgcolor="#ffffff">
                     <tr>
-                        <td valign="top" bgcolor="#f0f0f0" width="100%">
-                            <table width="100%" role="content-container" class="outer" align="center" cellpadding="0" cellspacing="0" border="0">
-                                <tbody>
-                                    <tr>
-                                        <td width="100%">
-                                            <table width="100%" cellpadding="0" cellspacing="0" border="0">
-                                                <tbody>
-                                                    <tr>
-                                                        <td>
-                                                            <table width="100%" cellpadding="0" cellspacing="0" border="0" style="width:100%; max-width:600px;" align="center">
-                                                                <tbody>
-                                                                    <tr>
-                                                                        <td role="modules-container" style="padding:0px 0px 0px 0px; color:#000000; text-align:left;" bgcolor="#ffffff" width="100%" align="left">
-                                                                            <table border="0" cellpadding="0" cellspacing="0" align="center" width="100%" role="module" data-type="columns" style="padding:30px 20px 0px 30px;">
-                                                                                <tbody>
-                                                                                    <tr role="module-content">
-                                                                                        <td height="100%" valign="top">
-                                                                                            <table class="column" width="550" style="width:550px; border-spacing:0; border-collapse:collapse; margin:0px 0px 0px 0px;" cellpadding="0" cellspacing="0" align="left" border="0" bgcolor="">
-                                                                                                <tbody>
-                                                                                                    <tr>
-                                                                                                        <td style="padding:0px;margin:0px;border-spacing:0;">
-                                                                                                            <table class="wrapper" role="module" data-type="image" border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout: fixed;" data-muid="b422590c-5d79-4675-8370-a10c2c76af02">
-                                                                                                                <tbody>
-                                                                                                                    <tr>
-                                                                                                                        <td style="">
-                                                                                                                            <img class="max-width" border="0" style="display:block; width: 130px;" alt="" data-proportionally-constrained="true" data-responsive="false" src="https://garagepos.com/ContentEn/images/logo-garage.svg">
-                                                                                                                        </td>
-                                                                                                                    </tr>
-                                                                                                                </tbody>
-                                                                                                            </table><table class="module" role="module" data-type="text" border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout: fixed;" data-muid="1995753e-0c64-4075-b4ad-321980b82dfe">
-                                                                                                                <tbody>
-                                                                                                                    <tr>
-                                                                                                                        <td style="padding:25px 0px 18px 0px; line-height:36px; text-align:inherit; color: #a43a93" height="100%" valign="top" bgcolor="" role="module-content"><div><div style="font-family: inherit; text-align: inherit;padding-top: 15px;"><span style="color: #000000; font-size: 40px; font-family: inherit">Thank You for Updating Your Package! Sit Back and Enjoy Exclusive Services of Garage</span></div><div></div></div></td>
-                                                                                                                    </tr>
-                                                                                                                </tbody>
-                                                                                                            </table>
-                                                                                                        </td>
-                                                                                                    </tr>
-                                                                                                </tbody>
-                                                                                            </table>
-
-                                                                                        </td>
-                                                                                    </tr>
-                                                                                </tbody>
-                                                                            </table>
-
-                                                                            <table class="module" role="module" data-type="text" border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout: fixed;" data-muid="264ee24b-c2b0-457c-a9c1-d465879f9935">
-                                                                                <tbody>
-                                                                                    <tr>
-                                                                                        <td style="padding:18px 20px 18px 30px; line-height:22px; text-align:inherit;" height="100%" valign="top" bgcolor="" role="module-content">
-                                                                                            <div>
-                                                                                                <div style="font-family: inherit; text-align: inherit"><span style="color: #000000"><strong>Your credential are given below</strong></span></div>
-                                                                                                <div style="font-family: inherit; text-align: inherit"><br></div>
-                                                                                                <div style="font-family: inherit; text-align: inherit">Name:#Name#</div>
-                                                                                                <div style="font-family: inherit; text-align: inherit">Email: #Email#</div>
-                                                                                                <div style="font-family: inherit; text-align: inherit">Password: #Password#</div>
-                                                                                                <div style="font-family: inherit; text-align: inherit">Phone: #Contact#</div>
-                                                                                                <div style="font-family: inherit; text-align: inherit">Company: #Company#</div>
-                                                                                                <div style="font-family: inherit; text-align: inherit">Package: #Package#</div>
-                                                                                            </div>
-                                                                                        </td>
-                                                                                    </tr>
-                                                                                </tbody>
-                                                                            </table>
-                                                                            <br>
-                                                                            <br>
-
-                                                                </tbody>
-                                                            </table>
-
-                                                        </td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </td>
-                                    </tr>
-                                </tbody>
+                        <td>
+                            <table class="tracking-pixel disabled-plaintext image" width="100%" cellpadding="0" cellspacing="0">
+                                <tr>
+                                    <td class="cell tracking-pixel disabled-plaintext content-padding" align="center" style="padding-left: 40px; padding-right: 40px; padding-top: 0;"><img src="" alt=alt width="0" border="0" class="undefined " style="-ms-interpolation-mode: bicubic; border: none; outline: none; border-collapse: collapse; display: block;" /></td>
+                                </tr>
                             </table>
                         </td>
                     </tr>
-                </tbody>
-            </table>
-        </div>
-    </center>
-
-
+                    <tr>
+                        <td align="center" class="shell">
+                            <a href="https://garagepos.com/" class="disabled-plaintext" style="color: inherit;">
+                                <table class="logo image" width="100%" cellpadding="0" cellspacing="0">
+                                    <tr>
+                                        <td class="cell logo content-padding" align="left" style="padding-left: 40px; padding-right: 40px; padding-top: 20px;"><img src="https://garagepos.com/ContentEn/images/logo-garage.svg" alt="Garage" border="0" class="undefined " style="-ms-interpolation-mode: bicubic; border: none; outline: none; border-collapse: collapse; display: block; border-style: none; width:30%;" /></td>
+                                    </tr>
+                                </table>
+                            </a>
+                            <table align="left" width="100%" class="copy-table " cellpadding="0" cellspacing="0">
+                                <tr>
+                                    <td align="left" class="copy h1 content-padding" style="padding-left: 40px; padding-right: 40px; font-family: NetflixSans-Bold, Helvetica, Roboto, Segoe UI, sans-serif; font-weight: 700; font-size: 36px; line-height: 43px; letter-spacing: -1px; padding-top: 20px; color: #221f1f;">Package updated</td>
+                                </tr>
+                            </table>
+                            <table align="left" width="100%" class="copy-table " cellpadding="0" cellspacing="0">
+                                <tr>
+                                    <td align="left" class="copy p content-padding" style="padding-left: 40px; padding-right: 40px; font-family: NetflixSans-Regular, Helvetica, Roboto, Segoe UI, sans-serif; font-weight: 400; font-size: 16px; line-height: 21px; padding-top: 20px; color: #221f1f;">Hi <span class="break-word" style="word-break: break-all;">#Name#</span>,</td>
+                                </tr>
+                            </table>
+                            <table align="left" width="100%" class="copy-table " cellpadding="0" cellspacing="0">
+                                <tr>
+                                    <td align="left" class="copy p content-padding" style="padding-left: 40px; padding-right: 40px; font-family: NetflixSans-Regular, Helvetica, Roboto, Segoe UI, sans-serif; font-weight: 400; font-size: 16px; line-height: 21px; padding-top: 20px; color: #221f1f;">We&#x27;ve changed your package for email address to #Email#.yeah, as you asked. Please use this email address when you sign in to Garage.</td>
+                                </tr>
+                            </table>
+                            <table align="left" width="100%" class="copy-table " cellpadding="0" cellspacing="0">
+                                <tr>
+                                    <td align="left" class="copy p content-padding" style="padding-left: 40px; padding-right: 40px; font-family: NetflixSans-Regular, Helvetica, Roboto, Segoe UI, sans-serif; font-weight: 400; font-size: 16px; line-height: 21px; padding-top: 20px; color: #221f1f;">We&#x27;re here to help if you need it. Visit the <a href="https://garagepos.com/en/contact" style="color: inherit; text-decoration: underline;">Help Center</a> for more info or <a href="https://garagepos.com/en/contact" style="color: inherit; text-decoration: underline;">contact us</a>.</td>
+                                </tr>
+                            </table>
+                            <table align="left" width="100%" class="copy-table " cellpadding="0" cellspacing="0">
+                                <tr>
+                                    <td align="left" class="copy h5 medium content-padding" style="padding-left: 40px; padding-right: 40px; font-size: 14px; line-height: 17px; letter-spacing: -0.2px; font-family: NetflixSans-Medium, Helvetica, Roboto, Segoe UI, sans-serif; font-weight: 700; padding-top: 20px; color: #221f1f;">Garage Team</td>
+                                </tr>
+                            </table>
+                            <table width="100%" cellpadding="0" cellspacing="0">
+                                <tr>
+                                    <td class="divider content-padding" style="padding-left: 40px; padding-right: 40px; padding-top: 30px;">
+                                        <table align="center" width="100%" cellpadding="0" cellspacing="0">
+                                            <tr>
+                                                <td class="empty divider-border" style="font-size: 0; line-height: 0; border-style: solid; border-bottom-width: 0; border-color: #221F1F; border-top-width: 2px;"> </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                            <table class="single-button mobile-100w " align="center" width="100%" cellpadding="0" cellspacing="0">
+                                <tr>
+                                    <td class="content-padding" style="padding-left: 40px; padding-right: 40px; padding-top: 30px;" align="center">
+                                        <table class="inner-button border-true" style="border-width: 2px; border-style: solid; border-radius: 4px; border-color: black; background-color: #FFFFFF; width: 100%;" cellpadding="0" cellspacing="0" width="100%" bgcolor="#FFFFFF">
+                                            <tr>
+                                                <td class="h5" style="font-family: NetflixSans-Bold, Helvetica, Roboto, Segoe UI, sans-serif; font-weight: 700; font-size: 14px; line-height: 17px; letter-spacing: -0.2px; padding: 14px 40px; color: black;" align="center"><a class="h5" href="https://garagepos.com/" style="font-family: NetflixSans-Bold, Helvetica, Roboto, Segoe UI, sans-serif; font-weight: 700; font-size: 14px; line-height: 17px; letter-spacing: -0.2px; text-align: center; text-decoration: none; display: block; color: black;">Visit Garage</a></td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="center" class="footer-shell" style="background-color: #ffffff;" bgcolor="#ffffff">
+                            <table class="footer" width="100%" border="0" cellpadding="0" cellspacing="0">
+                                <tr>
+                                    <td align="center" valign="top" class="footer-shell content-padding" style="padding-left: 40px; padding-right: 40px; background-color: #ffffff;" bgcolor="#ffffff">
+                                        <table width="100%" class="spacer-table" cellpadding="0" cellspacing="0">
+                                            <tr>
+                                                <td class="spacer" style="font-size: 0; line-height: 0; height: 40px;" height="40"> </td>
+                                            </tr>
+                                        </table>
+                                        <table width="100%" cellpadding="0" cellspacing="0">
+                                            <tr>
+                                                <td valign="top" class="footer-icon-wrapper" style="padding: 0 20px 0 0;">
+                                                    <table class="component-image image" width="100%" cellpadding="0" cellspacing="0">
+                                                        <tr>
+                                                            <td class="cell component-image none" align="center" style="padding-top: 0;"><img src="https://garagepos.com/ContentEn/images/logo-garage.svg" alt="" border="0" class="undefined " style="-ms-interpolation-mode: bicubic; border: none; outline: none; border-collapse: collapse; display: block;width:100%" /></td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                                <td valign="top" class="footer-copy-wrapper">
+                                                    <table class="footer-table" width="100%" valign="top" cellpadding="0" cellspacing="0">
+                                                        <tr>
+                                                            <td class="footer-copy-shell">
+                                                                <!--<table align="left" width="100%" class="copy-table footer-copy" cellpadding="0" cellspacing="0">
+                                                                    <tr>
+                                                                        <td align="left" class="copy p1 none" style="font-family: NetflixSans-Regular, Helvetica, Roboto, Segoe UI, sans-serif; font-weight: 400; font-size: 14px; line-height: 18px; letter-spacing: -0.25px; color: #a4a4a4; padding-top: 0;"><span class="ignore-diff">Questions? Call 1-844-505-2993</span></td>
+                                                                    </tr>
+                                                                </table>
+                                                                <table align="left" width="100%" class="copy-table footer-copy address" cellpadding="0" cellspacing="0">
+                                                                    <tr>
+                                                                        <td align="left" class="copy legal none" style="font-family: NetflixSans-Regular, Helvetica, Roboto, Segoe UI, sans-serif; font-weight: 400; font-size: 11px; line-height: 14px; letter-spacing: -0.1px; color: #a4a4a4; padding-top: 0;"><span class="hide-link" style="cursor: text; text-decoration: none;"><a href="https://help.netflix.com/legal/corpinfo?g=44cea0a0-e522-42d1-adcf-9b5ee35f1e91&amp;lkid=URL_CORP_INFO&amp;lnktrk=EVO" style="cursor: text; color: #a4a4a4; text-decoration: none;">121 Albright Way, Los Gatos, CA 95032, U.S.A.</a></span></td>
+                                                                    </tr>
+                                                                </table>-->
+                                                                <table align="left" width="100%" class="copy-table " cellpadding="0" cellspacing="0">
+                                                                    <tr>
+                                                                        <td align="left" class="copy p2 none" style="font-family: NetflixSans-Regular, Helvetica, Roboto, Segoe UI, sans-serif; font-weight: 400; font-size: 12px; line-height: 15px; letter-spacing: -0.12px; color: #a9a6a6;"><!--<a class="footer-link" href="https://www.netflix.com/" style="text-decoration: underline; line-height: 20px; color: #a4a4a4;">Communication Settings</a><br>--><a class="footer-link" href="https://garagepos.com/en/terms" style="text-decoration: underline; line-height: 20px; color: #a4a4a4;">Terms of Use</a><br /><a class="footer-link" href="https://garagepos.com/en/terms" style="text-decoration: underline; line-height: 20px; color: #a4a4a4;">Privacy</a><br /><a class="footer-link" href="https://garagepos.com/en/contact" style="text-decoration: underline; line-height: 20px; color: #a4a4a4;">Help Center</a></td>
+                                                                    </tr>
+                                                                </table>
+                                                                <table align="left" width="100%" class="copy-table footer-copy" cellpadding="0" cellspacing="0">
+                                                                    <tr>
+                                                                        <td align="left" class="copy legal none" style="font-family: NetflixSans-Regular, Helvetica, Roboto, Segoe UI, sans-serif; font-weight: 400; font-size: 11px; line-height: 14px; letter-spacing: -0.1px; padding-top: 20px; color: #a4a4a4;">This message was mailed to <a href="" class="hide-link ignore-diff" style="cursor: text; color: #a4a4a4; text-decoration: none;">[#Email#]</a> by Garage as part of your Garage membership.</td>
+                                                                    </tr>
+                                                                </table>
+                                                                <table width="100%" class="spacer-table" cellpadding="0" cellspacing="0">
+                                                                    <tr>
+                                                                        <td class="spacer" style="font-size: 0; line-height: 0; height: 40px;" height="40"> </td>
+                                                                    </tr>
+                                                                </table>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+    <div class="mobile-hide-max gmail-fix-no-inline" style="white-space: 'nowrap'; font: '15px courier'; line-height: 0;">                                                           </div>
 </body>
 </html>

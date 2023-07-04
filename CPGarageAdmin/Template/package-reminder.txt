@@ -1,184 +1,402 @@
-﻿<!DOCTYPE html>
-<html>
+﻿<html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
-
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-
-    <style type="text/css">
-        body, p, div {
-            font-family: inherit;
-            font-size: 14px;
-        }
-
-        body {
-            color: #000000;
-        }
-
-            body a {
-                color: #1188E6;
-                text-decoration: none;
-            }
-
-        p {
-            margin: 0;
-            padding: 0;
-        }
-
-        table.wrapper {
-            width: 100% !important;
-            table-layout: fixed;
-            -webkit-font-smoothing: antialiased;
-            -webkit-text-size-adjust: 100%;
-            -moz-text-size-adjust: 100%;
-            -ms-text-size-adjust: 100%;
-        }
-
-        img.max-width {
-            max-width: 100% !important;
-        }
-
-        .column.of-2 {
-            width: 50%;
-        }
-
-        .column.of-3 {
-            width: 33.333%;
-        }
-
-        .column.of-4 {
-            width: 25%;
-        }
-
-        @media screen and (max-width:480px) {
-            .preheader .rightColumnContent,
-            .footer .rightColumnContent {
-                text-align: left !important;
-            }
-
-                .preheader .rightColumnContent div,
-                .preheader .rightColumnContent span,
-                .footer .rightColumnContent div,
-                .footer .rightColumnContent span {
-                    text-align: left !important;
-                }
-
-            .preheader .rightColumnContent,
-            .preheader .leftColumnContent {
-                font-size: 80% !important;
-                padding: 5px 0;
-            }
-
-            table.wrapper-mobile {
-                width: 100% !important;
-                table-layout: fixed;
-            }
-
-            img.max-width {
-                height: auto !important;
-                max-width: 100% !important;
-            }
-
-            a.bulletproof-button {
-                display: block !important;
-                width: auto !important;
-                font-size: 80%;
-                padding-left: 0 !important;
-                padding-right: 0 !important;
-            }
-
-            .columns {
-                width: 100% !important;
-            }
-
-            .column {
-                display: block !important;
-                width: 100% !important;
-                padding-left: 0 !important;
-                padding-right: 0 !important;
-                margin-left: 0 !important;
-                margin-right: 0 !important;
-            }
-        }
-    </style>
-    <!--user entered Head Start-->
-    <link href="https://fonts.googleapis.com/css?family=Viga&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Viga', sans-serif;
-        }
-    </style><!--End Head user entered-->
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="supported-color-schemes" content="light dark" />
+    <meta name="x-apple-disable-message-reformatting" />
+    <title>Meta for Business</title>
 </head>
-<body>
-    <center class="wrapper" data-link-color="#1188E6" data-body-style="font-size:14px; font-family:inherit; color:#000000; background-color:#f0f0f0;">
-        <div class="webkit">
-            <table cellpadding="0" cellspacing="0" border="0" width="100%" class="wrapper" bgcolor="#f0f0f0">
-                <tbody>
-                    <tr>
-                        <td valign="top" bgcolor="#f0f0f0" width="100%">
-                            <table width="100%" role="content-container" class="outer" align="center" cellpadding="0" cellspacing="0" border="0">
-                                <tbody>
-                                    <tr>
-                                        <td width="100%">
-                                            <table width="100%" cellpadding="0" cellspacing="0" border="0">
-                                                <tbody>
-                                                    <tr>
-                                                        <td>
-                                                            <table width="100%" cellpadding="0" cellspacing="0" border="0" style="width:100%; max-width:600px;" align="center">
-                                                                <tbody>
-                                                                    <tr>
-                                                                        <td role="modules-container" style="padding:0px 0px 0px 0px; color:#000000; text-align:left;" bgcolor="#ffffff" width="100%" align="left">
-                                                                            <table border="0" cellpadding="0" cellspacing="0" align="center" width="100%" role="module" data-type="columns" style="padding:30px 20px 0px 30px;">
-                                                                                <tbody>
-                                                                                    <tr role="module-content">
-                                                                                        <td height="100%" valign="top">
-                                                                                            <table class="column" width="550" style="width:550px; border-spacing:0; border-collapse:collapse; margin:0px 0px 0px 0px;" cellpadding="0" cellspacing="0" align="left" border="0" bgcolor="">
-                                                                                                <tbody>
-                                                                                                    <tr>
-                                                                                                        <td style="padding:0px;margin:0px;border-spacing:0;">
-                                                                                                            <table class="wrapper" role="module" data-type="image" border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout: fixed;" data-muid="b422590c-5d79-4675-8370-a10c2c76af02">
-                                                                                                                <tbody>
-                                                                                                                    <tr>
-                                                                                                                        <td style="">
-                                                                                                                            <img class="max-width" border="0" style="display:block; width: 130px;" alt="" data-proportionally-constrained="true" data-responsive="false" src="https://garagepos.com/ContentEn/images/logo-garage.svg">
-                                                                                                                        </td>
-                                                                                                                    </tr>
-                                                                                                                </tbody>
-                                                                                                            </table><table class="module" role="module" data-type="text" border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout: fixed;" data-muid="1995753e-0c64-4075-b4ad-321980b82dfe">
-                                                                                                                <tbody>
-                                                                                                                    <tr>
-                                                                                                                        <td style="padding:25px 0px 18px 0px; line-height:36px; text-align:inherit; color: #a43a93" height="100%" valign="top" bgcolor="" role="module-content"><div><div style="font-family: inherit; text-align: inherit;padding-top: 15px;"><span style="color: #000000; font-size: 40px; font-family: inherit">Your Selected Starter Package is about to Expire Kindly update your package for Our Exclusive Services</span></div><div></div></div></td>
-                                                                                                                    </tr>
-                                                                                                                </tbody>
-                                                                                                            </table>
-                                                                                                        </td>
-                                                                                                    </tr>
-                                                                                                </tbody>
-                                                                                            </table>
+<style type="text/css" nonce="u0FMaR28">
+    :root {
+        Color-scheme: light dark;
+        supported-color-schemes: light dark;
+    }
+    /* Override Android Gmail */
+    u + .body .tp_header {
+        mix-blend-mode: screen;
+    }
 
-                                                                                        </td>
-                                                                                    </tr>
-                                                                                </tbody>
-                                                                            </table>
-                                                                </tbody>
-                                                            </table>
+    u + .body tp_header_div {
+        mix-blend-mode: difference;
+    }
 
-                                                        </td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
+    a {
+        color: #344854;
+    }
+
+    ul {
+        color: inherit;
+        list-style-type: disc;
+    }
+
+    .tp_headline {
+        color: #1C2B33 !important;
+    }
+
+    .dark-image {
+        display: none;
+        mso-hide: all;
+    }
+
+    .tp_gbm-table.bg_meta-gray {
+        background-color: #F1F4F7;
+    }
+
+    .tp_gbm-table.bg_fb-gray {
+        background-color: #FBF9F6;
+    }
+
+    .tp_gbm-table.bg_ig-gray {
+        background-color: #F1F4F7;
+    }
+
+    .tp_gbm-table.bg_ws-gray {
+        background-color: #FCF5EB;
+    }
+
+    .tp_gbm-table.bg_msg-gray {
+        background-color: #F8F8F8;
+    }
+
+    .tp_gbm-table.bg_ig-orange {
+        background-color: #FF7A00;
+    }
+
+    .tp_gbm-table.bg_ig-pink {
+        background-color: #FF0069;
+    }
+
+    .tp_gbm-table.bg_ig-purple {
+        background-color: #7638FA;
+    }
+
+    @media (prefers-color-scheme: dark) {
+        /* Override body bg in dark mode */
+        a {
+            color: #FFF;
+        }
+
+        .tp_body {
+            background-color: #283943 !important;
+            color: #F1F4F7;
+        }
+
+        .tp_content table,
+        .tp_content td {
+            background-color: #1C2B33 !important;
+            color: #F1F4F7;
+        }
+
+        .tp_content h1,
+        .tp_content h2,
+        .tp_content p,
+        .tp_content span,
+        .tp_content b,
+        .tp_content div,
+        .tp_headline {
+            color: #F1F4F7 !important;
+        }
+
+        .tp_content .tp_button {
+            background: #0064E0 !important;
+        }
+
+        .tp_button td {
+            background: none !important;
+        }
+
+        .tp_content .tp_button a {
+            color: #F1F4F7 !important;
+        }
+
+        .tp_content .email-table,
+        .tp_content .email-table table,
+        .tp_content .email-table td {
+            background: #344854 !important;
+        }
+
+        .tp_header {
+            background-color: #323232 !important;
+            display: none !important;
+        }
+
+        .tp_dark-header {
+            background-color: #283943 !important;
+            display: block !important;
+        }
+
+            .tp_dark-header .dark-image,
+            .tp_header .light-image {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .tp_dark-header .dark-image {
+                background: none !important;
+            }
+        /* Shows dark mode images */
+        .dark-image {
+            display: block !important;
+        }
+        /* Hides light mode images */
+        .light-image {
+            display: none !important;
+        }
+
+        .tp_gbm-table.bg_meta-gray,
+        .tp_gbm-table.bg_meta-gray td {
+            background-color: #344854 !important;
+        }
+
+        .tp_gbm-table.bg_fb-gray,
+        .tp_gbm-table.bg_fb-gray td {
+            background-color: #303030 !important;
+        }
+
+        .tp_gbm-table.bg_ig-gray,
+        .tp_gbm-table.bg_ig-gray td {
+            background-color: #262626 !important;
+        }
+
+        .tp_gbm-table.bg_ws-gray,
+        .tp_gbm-table.bg_ws-gray td {
+            background-color: #111B21 !important;
+        }
+
+        .tp_gbm-table.bg_msg-gray,
+        .tp_gbm-table.bg_msg-gray td {
+            background-color: #303030 !important;
+        }
+
+        .tp_gbm-table.bg_ig-orange,
+        .tp_gbm-table.bg_ig-orange td {
+            background-color: #FF7A00 !important;
+        }
+
+        .tp_gbm-table.bg_ig-pink,
+        .tp_gbm-table.bg_ig-pink td {
+            background-color: #FF0069 !important;
+        }
+
+        .tp_gbm-table.bg_ig-purple,
+        .tp_gbm-table.bg_ig-purple td {
+            background-color: #7638FA !important;
+        }
+    }
+
+    [data-ogsb] .tp_header {
+        display: none !important;
+    }
+
+    [data-ogsb] .tp_dark-header {
+        display: block !important;
+    }
+
+    [data-ogsc] .tp_body {
+        background-color: #283943 !important;
+        color: #FFF;
+    }
+
+    [data-ogsc] .dark-image {
+        display: block !important;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    ;
+    [data-ogsc] .light-image {
+        display: none !important;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    ;
+</style>
+<body style="padding:0;">
+    <table align="center" style="background-color:#e9ebee;width:100%;max-width:100%;min-width:100%;" class="tp_body" border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tr align="center">
+            <td style="width:100%;height:32px"></td>
+        </tr>
+        <tr align="center">
+            <td align="center">
+
+                <!--[if (gte mso 9)|(IE)]>
+                      <table
+                        align="center"
+                        border="0"
+                        cellspacing="0"
+                        cellpadding="0"
+                        width="600">
+                        <tr>
+                          <td align="center" valign="top" width="600">
+                      <![endif]-->
+                <table border="0" cellpadding="0" cellspacing="0" style="background-color:#e9ebee;min-width:360px;max-width:600pxwidth:100%;" width="100%">
+                    <table align="center" border="0" cellpadding="0" cellspacing="0" style="display:none; font-size:1px; color:#1C2B33; line-height:1px; max-height:0px; max-width:0px; opacity:0; overflow:hidden;background-color: #fff;" width="100%">
+                        <tr>
+                            <td>Just a Package Update Reminder </td>
+                        </tr>
+                    </table>
+                    <table align="center" style="max-width:600px;width:100%;" cellpadding="0" cellspacing="0" border="0">
+                        <tr align="center">
+                            <td style="max-width:600px;padding:50px 40px 40px 40px;width:100%;color: #000000;background-color:#ffffff;padding:0;background-color:#e9ebee; background-image:linear-gradient(#e9ebee,#e9ebee);">
+                                <table align="center" border="0" cellpadding="0" cellspacing="0" style="width:100%;">
+                                    <tr align="center">
+                                        <td style="text-align:center;border-spacing:0;color:#1C2B33;font-family:ArialMT, Arial, sans-serif;font-size:15px;width:100%;background-color:&#123;$temp_str_680999&#125;;" class="tp_header">
+                                            <div class="tp_header_div" style="background-color:&#123;$temp_str_680999&#125;;"><img width="150" height="" src="https://garagepos.com/ContentEn/images/logo-garage.svg" style="border:0;max-width:100%;" alt="Header" class="light-image" title="Image" /></div>
                                         </td>
                                     </tr>
-                                </tbody>
-                            </table>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </center>
+                                    <tr align="center">
+                                        <td style="width:100%;height:0;"></td>
+                                    </tr>
+                                </table>
+                                <table align="center" border="0" cellpadding="0" cellspacing="0" style="width:100%;">
+                                    <tr align="center">
+                                        <td style="text-align:center;border-spacing:0;color:#1C2B33;font-family:ArialMT, Arial, sans-serif;font-size:15px;width:100%;display: none; mso-hide: all;" class="tp_dark-header"><img width="150" height="" src="v" style="border:0;max-width:100%;" alt="Header" class="dark-image" title="Image" /></td>
+                                    </tr>
+                                    <tr align="center">
+                                        <td style="width:100%;height:0;"></td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr align="center">
+                            <td style="width:100%;height:21px;"></td>
+                        </tr>
+                    </table>
+                    <div class="tp_content">
+                        <style nonce="u0FMaR28">
+                            body {
+                                background-color: #fff;
+                            }
 
+                            p {
+                                color: #6B7075;
+                                line-height: 20px;
+                                font-size: 15px;
+                            }
+                        </style>
+                        <table border="0" cellpadding="0" cellspacing="0" width="500" style="text-align:center; margin-left: auto;margin-right: auto; ">
+                            <tr>
+                                <td class="">
+                                    <table align="center" style="max-width:600px;width:100%;" cellpadding="0" cellspacing="0" border="0">
+                                        <tr align="center">
+                                            <td style="max-width:600px;padding:50px 40px 40px 40px;width:100%;color: #000000;background-color:#ffffff;padding:0 0 0 0; background-color:#ffffff">
+                                                <table align="center" border="0" cellpadding="0" cellspacing="0" style="width:100%;">
+                                                    <tr align="center">
+                                                        <td style="border-spacing:0;color:#1C2B33;font-family:ArialMT, Arial, sans-serif;font-size:15px;width:100%;padding:40px 30px 0px 30px;">
+                                                            <table align="center" border="0" cellpadding="0" cellspacing="0" style="width:100%;">
+                                                                <tr align="center">
+                                                                    <td style="text-align:left;border-spacing:0;color:#1C2B33;font-family:ArialMT, Arial, sans-serif;font-size:15px;width:100%;line-height:24px;" class="tp_text-dynamic">
+                                                                        <p style="padding:0 120px 10px"><a href="" style="color:#1b74e4;text-decoration:none;"><img height="" src="https://garage.sa/images/images.jpg" style="border:0;max-width:100%;" width="" class="" title="Image" /></a></p>
+                                                                        <table align="center" border="0" cellpadding="0" cellspacing="0" style="width:100%;">
+                                                                            <tr align="center">
+                                                                                <td style="border-spacing:0;color:#1C2B33;font-family:ArialMT, Arial, sans-serif;font-size:15px;width:100%;text-align:left;font-size:27px;font-family:ArialMT, Arial, sans-serif;;font-weight:light;line-height:36px;padding-top:8px;text-align:left;font-size: 20px; line-height: 30px; font-weight:bold; " class="tp_headline">Your Trial Package is about to expire </td>
+                                                                            </tr>
+                                                                            <tr align="center">
+                                                                                <td style="width:100%;height:16px;"></td>
+                                                                            </tr>
+                                                                        </table>
+                                                                        <p style="text-align:left;margin-top:0;margin-bottom:16px;">Hi #customerName,</p>
+                                                                        <p style="text-align:left;margin-top:0;margin-bottom:16px;">Provide information such as your business name and email address. This information will be displayed to shoppers and may be required by your country or region later. </p>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr align="center">
+                                                                    <td style="width:100%;height:16px;"></td>
+                                                                </tr>
+                                                            </table><a href="https://www.facebook.com">
+                                                                <table align="center" border="0" cellpadding="0" cellspacing="0" style="width:100%;">
+                                                                    <tr align="center">
+                                                                        <td style="border-spacing:0;color:#1C2B33;font-family:ArialMT, Arial, sans-serif;font-size:15px;width:100%;width:100%;min-width:360px">
+                                                                            <table align="left" style="background-color:black;border-radius:3.6px;padding:10px 30px;-webkit-border-radius:3.6px;-moz-border-radius:3.6px;width:100%;" class="tp_button">
+                                                                                <tr align="center">
+                                                                                    <td><a href="https://www.facebook.com/" style="display:inline-block;text-decoration:none;color:#ffffff;font-size:15px;font-family:ArialMT, Arial, sans-serif;;font-weight:bold;text-align:center;width:100%;">Get started</a></td>
+                                                                                </tr>
+                                                                            </table>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr align="center">
+                                                                        <td style="width:100%;height:50px;"></td>
+                                                                    </tr>
+                                                                </table>
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                    <tr align="center">
+                                                        <td style="width:100%;height:0;"></td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                        <tr align="center">
+                                            <td style="width:100%;height:0;"></td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <table style="width:100%;" align="center">
+                        <tr align="center">
+                            <td>
+                                <table align="center" style="max-width:600px;width:100%;" cellpadding="0" cellspacing="0" border="0">
+                                    <tr align="center">
+                                        <td style="max-width:600px;padding:50px 40px 40px 40px;width:100%;color: #000000;background-color:#ffffff;padding:20px 0px 0px 0px;background-color:#e9ebee;">
+                                            <div>
+                                                <table align="center" border="0" cellpadding="0" cellspacing="0" style="width:100%;">
+                                                    <tr align="center">
+                                                        <td style="border-spacing:0;color:#1C2B33;font-family:ArialMT, Arial, sans-serif;font-size:15px;width:100%;color:#8f949b;font-size:12px;padding:0 20px;">This message was sent to <a style="color:#1b74e4;text-decoration:none;">#customeremail</a></td>
+                                                    </tr>
+                                                    <tr align="center">
+                                                        <td style="width:100%;height:15px;"></td>
+                                                    </tr>
+                                                </table>
+                                                <!--<table align="center" border="0" cellpadding="0" cellspacing="0" style="width:100%;">
+                                                    <tr align="center">
+                                                        <td style="border-spacing:0;color:#1C2B33;font-family:ArialMT, Arial, sans-serif;font-size:15px;width:100%;background-color:#979797;width:100%;height:1px;"></td>
+                                                    </tr>
+                                                    <tr align="center">
+                                                        <td style="width:100%;height:15px;"></td>
+                                                    </tr>
+                                                </table>-->
+                                            </div>
+                                            <!--<table align="center" border="0" cellpadding="0" cellspacing="0" style="width:100%;">
+                                                <tr align="center">
+                                                    <td style="border-spacing:0;color:#1C2B33;font-family:ArialMT, Arial, sans-serif;font-size:15px;width:100%;color:#8f949b;font-size:12px;padding:0 64px;">Meta Platforms, Inc., Attention: Community Support, 1 Facebook Way, Menlo Park, CA 94025</td>
+                                                </tr>
+                                                <tr align="center">
+                                                    <td style="width:100%;height:0;"></td>
+                                                </tr>
+                                            </table>-->
+                                        </td>
+                                    </tr>
+                                    <tr align="center">
+                                        <td style="width:100%;height:5px;"></td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                </table>
 
+                <!--[if (gte mso 9)|(IE)]>
+                          </td>
+                        </tr>
+                      </table>
+                      <![endif]-->
+            </td>
+        </tr>
+        <tr align="center">
+            <td style="width:100%;height:32px"></td>
+        </tr>
+        <tr>
+            <td>
+                <span style="">
+                    <img src="https://facebook.com
+        " style="border:0;width:1px;height:1px;" />
+                </span>
+            </td>
+        </tr>
+    </table>
 </body>
 </html>

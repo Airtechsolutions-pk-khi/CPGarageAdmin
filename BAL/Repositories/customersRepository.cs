@@ -77,7 +77,6 @@ namespace BAL.Repositories
                         VATNO = r.VATNO,
                         Address = r.Address,
                         IsSMSActivate = r.IsSMSCheckoutAddOn == null ? false : Convert.ToBoolean(r.IsSMSCheckoutAddOn.ToString()),
-                        //IsAccountingAddons = r.IsAccountingAddons == null ? false : Convert.ToBoolean(r.IsAccountingAddons.ToString()),
 
                         LocationID = r.Locations.FirstOrDefault().LocationID,
                         LocationName = r.Locations.FirstOrDefault().Name,
@@ -87,8 +86,7 @@ namespace BAL.Repositories
                         Currency = r.Locations.FirstOrDefault().Currency,
                         Tax = r.Tax,
                         PackageInfoID = r.UserPackageDetails.Count == 0 ? 0 : r.UserPackageDetails.FirstOrDefault().PackageInfoID,
-                        //CreatedDate = r.UserPackageDetails.Count == 0 ? null : r.UserPackageDetails.FirstOrDefault().CreatedDate,
-                        //LastUpdatedDate = r.UserPackageDetails.Count == 0 ? null : r.UserPackageDetails.FirstOrDefault().LastUpdatedDate,
+                        ExpiryDate = r.UserPackageDetails.FirstOrDefault().ExpiryDate,
                     })
                   .FirstOrDefault();
                 return data;
@@ -139,14 +137,17 @@ namespace BAL.Repositories
                         {
                             UserPackageDetail _package = DBContext.UserPackageDetails.Where(x => x.PackageInfoID == modal.PackageInfoID).FirstOrDefault();
                             _package.PackageInfoID = modal.PackageInfoID;
-                            if (_package.PackageInfoID == 1)
-                            {
-                                _package.ExpiryDate = DateTime.UtcNow.AddDays(15);
-                            }
                             _package.UserID = modal.UserID;
                             _package.StatusID = modal.StatusID == true ? 1 : 2;
                             _package.LastUpdatedDate = DateTime.UtcNow.AddMinutes(180);
-                            _package.ExpiryDate = DateTime.UtcNow.AddDays(15);
+                            if (modal.ExpiryDate != _package.ExpiryDate)
+                            {
+                                _package.ExpiryDate = modal.ExpiryDate;
+                            }
+                            else
+                            {
+                                _package.ExpiryDate = DateTime.UtcNow.AddDays(15);
+                            }
                             DBContext.Entry(_package).State = EntityState.Modified;
                             DBContext.UpdateOnly<UserPackageDetail>(_package, x =>
                            x.PackageInfoID,
