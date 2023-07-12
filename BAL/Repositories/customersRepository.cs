@@ -77,6 +77,9 @@ namespace BAL.Repositories
                         VATNO = r.VATNO,
                         Address = r.Address,
                         IsSMSActivate = r.IsSMSCheckoutAddOn == null ? false : Convert.ToBoolean(r.IsSMSCheckoutAddOn.ToString()),
+                        //AllowNegativeInventory = r.AllowNegativeInventory == null ? false : Convert.ToBoolean(r.AllowNegativeInventory.ToString()),
+                        //IsOdoo = r.IsOdoo == null ? false : Convert.ToBoolean(r.IsOdoo.ToString()),
+                        //IsAccountingAddons = r.IsAccountingAddons == null ? false : Convert.ToBoolean(r.IsAccountingAddons.ToString()),
 
                         LocationID = r.Locations.FirstOrDefault().LocationID,
                         LocationName = r.Locations.FirstOrDefault().Name,
@@ -84,9 +87,10 @@ namespace BAL.Repositories
                         LocationContactNo = r.Locations.FirstOrDefault().ContactNo,
                         LocationEmail = r.Locations.FirstOrDefault().Email,
                         Currency = r.Locations.FirstOrDefault().Currency,
-                        Tax = r.Tax,
+                        Tax = r.Tax,                       
                         PackageInfoID = r.UserPackageDetails.Count == 0 ? 0 : r.UserPackageDetails.FirstOrDefault().PackageInfoID,
-                        ExpiryDate = r.UserPackageDetails.FirstOrDefault().ExpiryDate,
+                        
+                        //ExpiryDate = r.UserPackageDetails.FirstOrDefault().ExpiryDate,
                     })
                   .FirstOrDefault();
                 return data;

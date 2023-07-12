@@ -99,8 +99,11 @@ namespace DAL.Models
         public string VATNO { get; set; }
         public Nullable<double> Tax { get; set; }
         public bool IsSMSActivate { get; set; }
+        public bool AllowNegativeInventory { get; set; }
+        public bool IsOdoo { get; set; }
+        
         public bool IsAccountingAddons { get; set; }
-        public int LocationID { get; set; }
+        public int? LocationID { get; set; }
         [Required(ErrorMessage = "Input is required")]
         public string LocationName { get; set; }
         public string LocationAddress { get; set; }
@@ -108,6 +111,7 @@ namespace DAL.Models
         [Required(ErrorMessage = "Input is required")]
         public string LocationEmail { get; set; }
         public string Currency { get; set; }
+        
 
     }
     #endregion customer
