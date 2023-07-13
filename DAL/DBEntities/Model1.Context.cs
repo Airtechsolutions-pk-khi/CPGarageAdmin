@@ -27,8 +27,10 @@ namespace DAL.DBEntities
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<Activity> Activities { get; set; }
         public virtual DbSet<AppSource> AppSources { get; set; }
         public virtual DbSet<Bay> Bays { get; set; }
+        public virtual DbSet<CarInspection> CarInspections { get; set; }
         public virtual DbSet<CarInspectionDetail> CarInspectionDetails { get; set; }
         public virtual DbSet<CarNote> CarNotes { get; set; }
         public virtual DbSet<CarNotesImage> CarNotesImages { get; set; }
@@ -41,6 +43,7 @@ namespace DAL.DBEntities
         public virtual DbSet<CompanyInvoiceDetail> CompanyInvoiceDetails { get; set; }
         public virtual DbSet<CompanyQuotation> CompanyQuotations { get; set; }
         public virtual DbSet<CompanyQuotationDetail> CompanyQuotationDetails { get; set; }
+        public virtual DbSet<ComplianceDevice> ComplianceDevices { get; set; }
         public virtual DbSet<Country> Countries { get; set; }
         public virtual DbSet<CreditCustomer> CreditCustomers { get; set; }
         public virtual DbSet<Customer> Customers { get; set; }
@@ -68,6 +71,7 @@ namespace DAL.DBEntities
         public virtual DbSet<LocationImage> LocationImages { get; set; }
         public virtual DbSet<Location> Locations { get; set; }
         public virtual DbSet<LocationServiceJunc> LocationServiceJuncs { get; set; }
+        public virtual DbSet<Make> Makes { get; set; }
         public virtual DbSet<Model> Models { get; set; }
         public virtual DbSet<Modifier> Modifiers { get; set; }
         public virtual DbSet<OrderCheckout> OrderCheckouts { get; set; }
@@ -80,8 +84,10 @@ namespace DAL.DBEntities
         public virtual DbSet<OrdersChecklist> OrdersChecklists { get; set; }
         public virtual DbSet<PackageDetail> PackageDetails { get; set; }
         public virtual DbSet<Package> Packages { get; set; }
+        public virtual DbSet<PackagesInfo> PackagesInfoes { get; set; }
         public virtual DbSet<PaymentDetail> PaymentDetails { get; set; }
         public virtual DbSet<PaymentMode> PaymentModes { get; set; }
+        public virtual DbSet<Receipt> Receipts { get; set; }
         public virtual DbSet<ReportLog> ReportLogs { get; set; }
         public virtual DbSet<Role_Forms> Role_Forms { get; set; }
         public virtual DbSet<Role_Group> Role_Group { get; set; }
@@ -94,17 +100,15 @@ namespace DAL.DBEntities
         public virtual DbSet<SubCategory> SubCategories { get; set; }
         public virtual DbSet<SubUser> SubUsers { get; set; }
         public virtual DbSet<Supplier> Suppliers { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<TimeZone> TimeZones { get; set; }
         public virtual DbSet<Unit> Units { get; set; }
+        public virtual DbSet<UserPackageDetail> UserPackageDetails { get; set; }
         public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<ZatcaAuthentication> ZatcaAuthentications { get; set; }
         public virtual DbSet<ZohoChartOfAccount> ZohoChartOfAccounts { get; set; }
         public virtual DbSet<ZohoCOAMapping> ZohoCOAMappings { get; set; }
         public virtual DbSet<ZohoSetting> ZohoSettings { get; set; }
-        public virtual DbSet<PackagesInfo> PackagesInfoes { get; set; }
-        public virtual DbSet<UserPackageDetail> UserPackageDetails { get; set; }
-        public virtual DbSet<Receipt> Receipts { get; set; }
-        public virtual DbSet<Make> Makes { get; set; }
-        public virtual DbSet<CarInspection> CarInspections { get; set; }
     
         [DbFunction("Garage_LiveEntities", "Split")]
         public virtual IQueryable<Split_Result> Split(string inputString, string delimiter)

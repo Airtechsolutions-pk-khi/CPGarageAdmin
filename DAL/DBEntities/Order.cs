@@ -52,6 +52,7 @@ namespace DAL.DBEntities
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CarNote> CarNotes { get; set; }
         public virtual Car Car { get; set; }
+        public virtual Customer Customer { get; set; }
         public virtual Location Location { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OrderCheckout> OrderCheckouts { get; set; }

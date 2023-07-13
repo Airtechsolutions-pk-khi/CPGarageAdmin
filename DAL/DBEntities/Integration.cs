@@ -17,8 +17,8 @@ namespace DAL.DBEntities
         public int IntegrationID { get; set; }
         public string Name { get; set; }
         public string IntegrationKey { get; set; }
-        public string Value { get; set; }
         public string Token { get; set; }
+        public string Value { get; set; }
         public Nullable<int> StatusID { get; set; }
         public Nullable<int> UserID { get; set; }
     

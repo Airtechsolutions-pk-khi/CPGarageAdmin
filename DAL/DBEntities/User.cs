@@ -18,6 +18,7 @@ namespace DAL.DBEntities
         public User()
         {
             this.AppSources = new HashSet<AppSource>();
+            this.CarInspections = new HashSet<CarInspection>();
             this.Cars = new HashSet<Car>();
             this.CompanyClients = new HashSet<CompanyClient>();
             this.CompanyInvoices = new HashSet<CompanyInvoice>();
@@ -34,14 +35,14 @@ namespace DAL.DBEntities
             this.Role_Group = new HashSet<Role_Group>();
             this.SubUsers = new HashSet<SubUser>();
             this.Suppliers = new HashSet<Supplier>();
+            this.UserPackageDetails = new HashSet<UserPackageDetail>();
             this.ZohoChartOfAccounts = new HashSet<ZohoChartOfAccount>();
             this.ZohoSettings = new HashSet<ZohoSetting>();
-            this.UserPackageDetails = new HashSet<UserPackageDetail>();
-            this.CarInspections = new HashSet<CarInspection>();
         }
     
         public int UserID { get; set; }
         public int RowID { get; set; }
+        public Nullable<int> PackageInfoID { get; set; }
         public string UserName { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
@@ -69,12 +70,13 @@ namespace DAL.DBEntities
         public Nullable<double> Tax { get; set; }
         public Nullable<bool> IsSMSCheckoutAddOn { get; set; }
         public Nullable<bool> AllowNegativeInventory { get; set; }
-        public Nullable<int> PackageInfoID { get; set; }
         public Nullable<bool> IsOdoo { get; set; }
         public Nullable<bool> IsAccountingAddons { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AppSource> AppSources { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CarInspection> CarInspections { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Car> Cars { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -102,6 +104,7 @@ namespace DAL.DBEntities
         public virtual ICollection<Location> Locations { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Package> Packages { get; set; }
+        public virtual PackagesInfo PackagesInfo { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Role_Group> Role_Group { get; set; }
         public virtual Status Status { get; set; }
@@ -111,13 +114,10 @@ namespace DAL.DBEntities
         public virtual ICollection<Supplier> Suppliers { get; set; }
         public virtual TimeZone TimeZone { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<UserPackageDetail> UserPackageDetails { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ZohoChartOfAccount> ZohoChartOfAccounts { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ZohoSetting> ZohoSettings { get; set; }
-        public virtual PackagesInfo PackagesInfo { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<UserPackageDetail> UserPackageDetails { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CarInspection> CarInspections { get; set; }
     }
 }

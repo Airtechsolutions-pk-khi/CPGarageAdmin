@@ -74,6 +74,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="DBEntities\Activity.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="DBEntities\AppSource.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -117,6 +120,9 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="DBEntities\CompanyQuotationDetail.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBEntities\ComplianceDevice.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="DBEntities\Country.cs">
@@ -451,6 +457,9 @@
     <Compile Include="DBEntities\Supplier.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="DBEntities\sysdiagram.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="DBEntities\TimeZone.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -461,6 +470,9 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="DBEntities\UserPackageDetail.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBEntities\ZatcaAuthentication.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="DBEntities\ZohoChartOfAccount.cs">

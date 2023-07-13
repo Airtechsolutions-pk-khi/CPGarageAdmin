@@ -17,8 +17,8 @@ namespace DAL.DBEntities
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public PackagesInfo()
         {
-            this.Users = new HashSet<User>();
             this.UserPackageDetails = new HashSet<UserPackageDetail>();
+            this.Users = new HashSet<User>();
         }
     
         public int PackageInfoID { get; set; }
@@ -36,8 +36,8 @@ namespace DAL.DBEntities
         public Nullable<System.DateTime> LastUpdatedDate { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<User> Users { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UserPackageDetail> UserPackageDetails { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<User> Users { get; set; }
     }
 }

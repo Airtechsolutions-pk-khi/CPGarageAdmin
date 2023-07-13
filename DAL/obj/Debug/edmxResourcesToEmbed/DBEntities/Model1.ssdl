@@ -1,5 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="Garage_Live.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Activities">
+    <Key>
+      <PropertyRef Name="ActivityID" />
+    </Key>
+    <Property Name="ActivityID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="200" />
+    <Property Name="UpdateBy" Type="nvarchar" MaxLength="100" />
+    <Property Name="UpdateByID" Type="int" />
+    <Property Name="Description" Type="nvarchar" MaxLength="300" />
+    <Property Name="Date" Type="datetime" />
+    <Property Name="StatusID" Type="int" />
+    <Property Name="LocationID" Type="int" />
+    <Property Name="ItemID" Type="int" />
+  </EntityType>
   <EntityType Name="AppSource">
     <Key>
       <PropertyRef Name="SourceID" />
@@ -273,6 +287,17 @@
     <Property Name="Total" Type="float" />
     <Property Name="StatusID" Type="int" />
   </EntityType>
+  <EntityType Name="ComplianceDevice">
+    <Key>
+      <PropertyRef Name="ComplianceDeviceID" />
+    </Key>
+    <Property Name="ComplianceDeviceID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ModelNo" Type="nvarchar" MaxLength="50" />
+    <Property Name="SerialNo" Type="nvarchar" MaxLength="50" />
+    <Property Name="LocationID" Type="int" />
+    <Property Name="UserValue" Type="nvarchar" MaxLength="50" />
+    <Property Name="StatusID" Type="int" />
+  </EntityType>
   <EntityType Name="Country">
     <Key>
       <PropertyRef Name="Code" />
@@ -323,7 +348,7 @@
     <Property Name="Email" Type="varchar" MaxLength="50" />
     <Property Name="DOB" Type="varchar" MaxLength="100" />
     <Property Name="Sex" Type="varchar" MaxLength="50" />
-    <Property Name="Mobile" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="Mobile" Type="nvarchar" MaxLength="100" Nullable="false" />
     <Property Name="CardNo" Type="varchar" MaxLength="50" />
     <Property Name="LastUpdatedBy" Type="varchar" MaxLength="50" />
     <Property Name="LastUpdatedDate" Type="datetime" />
@@ -666,6 +691,7 @@
     <Property Name="IsInventoryItem" Type="bit" />
     <Property Name="IsOpenItem" Type="bit" />
     <Property Name="MinOpenPrice" Type="float" />
+    <Property Name="OdooProductID" Type="int" />
   </EntityType>
   <EntityType Name="Licenses">
     <Key>
@@ -897,6 +923,7 @@
     <Property Name="RefundAmount" Type="float" />
     <Property Name="DiscountAmount" Type="float" />
     <Property Name="Description" Type="nvarchar" MaxLength="200" />
+    <Property Name="OdooProductID" Type="int" />
   </EntityType>
   <EntityType Name="OrderDetail_FM">
     <Key>
@@ -1303,6 +1330,16 @@
     <Property Name="UserID" Type="int" />
     <Property Name="Type" Type="nvarchar" MaxLength="50" />
   </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
   <EntityType Name="TimeZone">
     <Key>
       <PropertyRef Name="TimeZoneID" />
@@ -1375,6 +1412,19 @@
     <Property Name="AllowNegativeInventory" Type="bit" />
     <Property Name="IsOdoo" Type="bit" />
     <Property Name="IsAccountingAddons" Type="bit" />
+  </EntityType>
+  <EntityType Name="ZatcaAuthentication">
+    <Key>
+      <PropertyRef Name="AuthenicationID" />
+    </Key>
+    <Property Name="AuthenicationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LocationID" Type="int" />
+    <Property Name="InvoiceType" Type="nvarchar" MaxLength="50" />
+    <Property Name="CSR" Type="nvarchar(max)" />
+    <Property Name="PKey" Type="nvarchar(max)" />
+    <Property Name="Certificate" Type="nvarchar(max)" />
+    <Property Name="Secret" Type="nvarchar" MaxLength="200" />
+    <Property Name="UserValue" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="ZohoChartOfAccounts">
     <Key>
@@ -2476,6 +2526,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_Orders_Customers">
+    <End Role="Customers" Type="Self.Customers" Multiplicity="0..1" />
+    <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customers">
+        <PropertyRef Name="CustomerID" />
+      </Principal>
+      <Dependent Role="Orders">
+        <PropertyRef Name="CustomerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Orders_Locations">
     <End Role="Locations" Type="Self.Locations" Multiplicity="1" />
     <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
@@ -3492,6 +3554,7 @@
     </ReturnType>
   </Function>
   <EntityContainer Name="Garage_LiveStoreContainer">
+    <EntitySet Name="Activities" EntityType="Self.Activities" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="AppSource" EntityType="Self.AppSource" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Bay" EntityType="Self.Bay" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="CarInspection" EntityType="Self.CarInspection" Schema="dbo" store:Type="Tables" />
@@ -3507,6 +3570,7 @@
     <EntitySet Name="CompanyInvoiceDetail" EntityType="Self.CompanyInvoiceDetail" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="CompanyQuotation" EntityType="Self.CompanyQuotation" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="CompanyQuotationDetail" EntityType="Self.CompanyQuotationDetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ComplianceDevice" EntityType="Self.ComplianceDevice" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Country" EntityType="Self.Country" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="CreditCustomer" EntityType="Self.CreditCustomer" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Customers" EntityType="Self.Customers" Schema="dbo" store:Type="Tables" />
@@ -3564,10 +3628,12 @@
     <EntitySet Name="SubUserLocations" EntityType="Self.SubUserLocations" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="SubUsers" EntityType="Self.SubUsers" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Supplier" EntityType="Self.Supplier" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TimeZone" EntityType="Self.TimeZone" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Units" EntityType="Self.Units" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="UserPackageDetails" EntityType="Self.UserPackageDetails" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ZatcaAuthentication" EntityType="Self.ZatcaAuthentication" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ZohoChartOfAccounts" EntityType="Self.ZohoChartOfAccounts" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ZohoCOAMapping" EntityType="Self.ZohoCOAMapping" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ZohoSettings" EntityType="Self.ZohoSettings" Schema="dbo" store:Type="Tables" />
@@ -3921,6 +3987,10 @@
     </AssociationSet>
     <AssociationSet Name="FK_Orders_Cars" Association="Self.FK_Orders_Cars">
       <End Role="Cars" EntitySet="Cars" />
+      <End Role="Orders" EntitySet="Orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Orders_Customers" Association="Self.FK_Orders_Customers">
+      <End Role="Customers" EntitySet="Customers" />
       <End Role="Orders" EntitySet="Orders" />
     </AssociationSet>
     <AssociationSet Name="FK_Orders_Locations" Association="Self.FK_Orders_Locations">

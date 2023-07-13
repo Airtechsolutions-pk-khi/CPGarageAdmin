@@ -34,8 +34,8 @@ namespace DAL.DBEntities
         public string LastUpdatedBy { get; set; }
         public Nullable<System.DateTime> LastUpdatedDate { get; set; }
     
+        public virtual CarInspection CarInspection { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OrderInspectionMapping> OrderInspectionMappings { get; set; }
-        public virtual CarInspection CarInspection { get; set; }
     }
 }
