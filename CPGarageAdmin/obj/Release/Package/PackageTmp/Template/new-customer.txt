@@ -1,0 +1,1014 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:v="urn:schemas-microsoft-com:vml">
+<head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="format-detection" content="date=no" />
+    <meta name="format-detection" content="address=no" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="x-apple-disable-message-reformatting" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="supported-color-schemes" content="light dark" />
+    <meta name="color-scheme" content="only" />
+
+    <!--[if !mso]>
+
+    <!-->
+    <link href="https://fonts.googleapis.com/css?family=Muli:400,700" rel="stylesheet" />
+
+    <!--<![endif]-->
+    <title>#PackageName# Package</title>
+    <style media="screen" type="text/css">
+        body {
+            padding: 0 !important;
+            margin: 0 !important;
+            display: block !important;
+            min-width: 100% !important;
+            width: 100% !important;
+            background: #fffffe;
+            -webkit-text-size-adjust: none
+        }
+
+        table {
+            border-collapse: collapse;
+            border-spacing: 0 !important;
+            -webkit-border-horizontal-spacing: 0 !important;
+            -webkit-border-vertical-spacing: 0 !important
+        }
+
+        p {
+            padding: 0 !important;
+            margin: 0 !important
+        }
+
+        img,
+        a img {
+            border: 0;
+            height: auto;
+            outline: 0;
+            text-decoration: none;
+            -ms-interpolation-mode: bicubic
+        }
+
+        a {
+            color: #000001;
+            text-decoration: none
+        }
+
+        .text-button a {
+            color: #fffffe;
+            font-weight: bold;
+            text-decoration: none
+        }
+
+        @font-face {
+            font-family: 'Moderat Regular';
+            font-style: normal;
+            font-weight: 400;
+            src: url(https://www.mirror.co/webpack/assets/ca786e718a447d7e29c0ddeb96152a71.woff) format('woff')
+        }
+
+        @font-face {
+            font-family: 'Moderat Bold';
+            font-style: normal;
+            font-weight: bold;
+            src: url(https://www.mirror.co/webpack/assets/ca786e718a447d7e29c0ddeb96152a71.woff) format('woff')
+        }
+
+        img {
+            -ms-interpolation-mode: bicubic
+        }
+
+        #outlook a {
+            padding: 0
+        }
+
+        table {
+            mso-table-lspace: 0;
+            mso-table-rspace: 0
+        }
+
+        .ReadMsgBody {
+            width: 100%
+        }
+
+        .ExternalClass {
+            width: 100%
+        }
+
+        p,
+        a,
+        td {
+            mso-line-height-rule: exactly
+        }
+
+        p,
+        a,
+        td,
+        body,
+        table {
+            -ms-text-size-adjust: 100%;
+            -webkit-text-size-adjust: 100%
+        }
+
+        .ExternalClass,
+        .ExternalClass p,
+        .ExternalClass td,
+        .ExternalClass div,
+        .ExternalClass span,
+        .ExternalClass font {
+            line-height: 100%
+        }
+
+        * [href]:not([style]) {
+            color: inherit !important;
+            text-decoration: none !important
+        }
+
+        a[x-apple-data-detectors] {
+            color: inherit !important;
+            text-decoration: none !important;
+            font-size: inherit !important;
+            font-family: inherit !important;
+            font-weight: inherit !important;
+            line-height: inherit !important
+        }
+
+        @media(prefers-color-scheme:dark) {
+            .dark-img {
+                display: block !important;
+                width: auto !important;
+                overflow: visible !important;
+                float: none !important;
+                max-height: inherit !important;
+                max-width: inherit !important;
+                line-height: auto !important;
+                margin-top: 0 !important;
+                visibility: inherit !important;
+                color: #000 !important
+            }
+
+            .color-dark {
+                color: #000 !important;
+                background-color: #fffffe !important
+            }
+
+            .light-img {
+                display: none;
+                display: none !important
+            }
+
+            .darkmode {
+                background-color: #2b2b2b !important
+            }
+
+            h1,
+            h2,
+            p,
+            span,
+            a,
+            b,
+            td {
+                color: #fffffe !important
+            }
+
+            table {
+                background-color: #2b2b2b !important
+            }
+
+                table.button {
+                    background-color: #fffffe !important
+                }
+
+            td.button {
+                color: #2b2b2b !important;
+                background-color: #fffffe !important;
+                -webkit-text-fill-color: #2b2b2b !important
+            }
+
+            a.button {
+                color: #2b2b2b !important;
+                background-color: #fffffe !important;
+                -webkit-text-fill-color: #2b2b2b !important
+            }
+
+            .link {
+                color: #91add4 !important
+            }
+        }
+
+        [data-ogsc] .dark-img {
+            display: block !important;
+            width: auto !important;
+            overflow: visible !important;
+            float: none !important;
+            max-height: inherit !important;
+            max-width: inherit !important;
+            line-height: auto !important;
+            margin-top: 0 !important;
+            visibility: inherit !important
+        }
+
+        [data-ogsc] .light-img {
+            display: none;
+            display: none !important
+        }
+
+        [data-ogsc] .darkmode {
+            background-color: #2b2b2b !important
+        }
+
+        [data-ogsc] .color-dark {
+            color: #000 !important;
+            background-color: #fffffe !important
+        }
+
+        [data-ogsc] h1,
+        [data-ogsc] h2,
+        [data-ogsc] p,
+        [data-ogsc] span,
+        [data-ogsc] a,
+        [data-ogsc] b {
+            color: #fffffe !important
+        }
+
+        [data-ogsc] table {
+            background-color: #2b2b2b !important
+        }
+
+            [data-ogsc] table.button {
+                background-color: #fffffe !important
+            }
+
+        [data-ogsc] td.button {
+            color: #2b2b2b !important;
+            background-color: #fffffe !important
+        }
+
+        [data-ogsc] a.button {
+            color: #2b2b2b !important;
+            background-color: #fffffe !important
+        }
+
+        [data-ogsc] .link {
+            color: #91add4 !important
+        }
+
+        @media only screen and (max-device-width:480px), only screen and (max-width:480px) {
+            .mobile-shell {
+                width: 100% !important;
+                min-width: 100% !important
+            }
+
+            .m-center {
+                text-align: center !important
+            }
+
+            .center {
+                margin: 0 auto !important
+            }
+
+            .td {
+                width: 100% !important;
+                min-width: 100% !important
+            }
+
+            .m-br-15 {
+                height: 15px !important
+            }
+
+            .m-td,
+            .m-hide {
+                display: none !important;
+                width: 0 !important;
+                height: 0 !important;
+                font-size: 0 !important;
+                line-height: 0 !important;
+                min-height: 0 !important
+            }
+
+            .m-block {
+                display: block !important
+            }
+
+            .fluid-img img {
+                width: 100% !important;
+                max-width: 100% !important;
+                height: auto !important
+            }
+
+            .column-top {
+                float: left !important;
+                width: 100% !important;
+                display: block !important
+            }
+
+            .content-spacing {
+                width: 15px !important
+            }
+
+            .p0 {
+                padding: 0 !important
+            }
+
+            .p5 {
+                padding: 5px !important
+            }
+
+            .p15 {
+                padding: 15px !important
+            }
+
+            .pl-0 {
+                padding-left: 0 !important
+            }
+
+            .pl-15 {
+                padding-left: 15px !important
+            }
+
+            .pr-0 {
+                padding-right: 0 !important
+            }
+
+            .pr-15 {
+                padding-right: 15px !important
+            }
+
+            .p15-0 {
+                padding: 15px 0 !important
+            }
+
+            .plr-0 {
+                padding-left: 0 !important;
+                padding-right: 0 !important
+            }
+
+            .plr-5 {
+                padding-left: 5px !important;
+                padding-right: 5px !important
+            }
+
+            .plr-10 {
+                padding-left: 10px !important;
+                padding-right: 10px !important
+            }
+
+            .plr-15 {
+                padding-left: 15px !important;
+                padding-right: 15px !important
+            }
+
+            .plr-20 {
+                padding-left: 20px !important;
+                padding-right: 20px !important
+            }
+
+            .plr-25 {
+                padding-left: 25px !important;
+                padding-right: 25px !important
+            }
+
+            .plr-40 {
+                padding-left: 40px !important;
+                padding-right: 40px !important
+            }
+
+            .p30-15 {
+                padding: 30px 15px !important
+            }
+
+            .p20-10 {
+                padding: 20px 10px !important
+            }
+
+            .p35-0-30 {
+                padding: 35px 0 30px !important
+            }
+
+            .p30-10-6 {
+                padding: 30px 10px 6px !important
+            }
+
+            .p35-15-15 {
+                padding: 35px 15px 15px 15px !important
+            }
+
+            .pt-0 {
+                padding-top: 0 !important
+            }
+
+            .pt-5 {
+                padding-top: 5px !important
+            }
+
+            .pt-10 {
+                padding-top: 10px !important
+            }
+
+            .pt-15 {
+                padding-top: 15px !important
+            }
+
+            .pt-16 {
+                padding-top: 16px !important
+            }
+
+            .pt-24 {
+                padding-top: 24px !important
+            }
+
+            .pt-32 {
+                padding-top: 32px !important
+            }
+
+            .pt-40 {
+                padding-top: 40px !important
+            }
+
+            .pt-20 {
+                padding-top: 20px !important
+            }
+
+            .pt-25 {
+                padding-top: 25px !important
+            }
+
+            .pt-30 {
+                padding-top: 30px !important
+            }
+
+            .pt-40 {
+                padding-top: 40px !important
+            }
+
+            .pb-0 {
+                padding-bottom: 0 !important
+            }
+
+            .pb-5 {
+                padding-bottom: 5px !important
+            }
+
+            .pb-10 {
+                padding-bottom: 10px !important
+            }
+
+            .pb-15 {
+                padding-bottom: 15px !important
+            }
+
+            .pb-16 {
+                padding-bottom: 16px !important
+            }
+
+            .pb-24 {
+                padding-bottom: 24px !important
+            }
+
+            .pb-32 {
+                padding-bottom: 24px !important
+            }
+
+            .pb-20 {
+                padding-bottom: 20px !important
+            }
+
+            .pb-25 {
+                padding-bottom: 25px !important
+            }
+
+            .pb-30 {
+                padding-bottom: 30px !important
+            }
+
+            .pb-35 {
+                padding-bottom: 35px !important
+            }
+
+            .pb-40 {
+                padding-bottom: 40px !important
+            }
+
+            .mw100 {
+                max-width: 100% !important
+            }
+
+            .mw80 {
+                max-width: 78% !important
+            }
+
+            .mw65 {
+                max-width: 65% !important
+            }
+
+            .mw60 {
+                max-width: 58% !important
+            }
+
+            .mw55 {
+                max-width: 55% !important
+            }
+
+            .mw50 {
+                max-width: 49% !important
+            }
+
+            .mw40 {
+                max-width: 40% !important
+            }
+
+            .mw35 {
+                max-width: 35% !important
+            }
+
+            .mw20 {
+                max-width: 20% !important
+            }
+
+            .m-width {
+                width: 300px !important
+            }
+
+            .w100 {
+                width: 100% !important
+            }
+
+            .w95 {
+                width: 95% !important
+            }
+
+            .w92 {
+                width: 92% !important
+            }
+
+            .w80 {
+                width: 80% !important
+            }
+
+            .w81 {
+                width: 81% !important
+            }
+
+            .w86 {
+                width: 86% !important
+            }
+
+            .w78 {
+                width: 78% !important
+            }
+
+            .w77 {
+                width: 77% !important
+            }
+
+            .w75 {
+                width: 75% !important
+            }
+
+            .w70 {
+                width: 70% !important
+            }
+
+            .w60 {
+                width: 60% !important
+            }
+
+            .w50 {
+                width: 50% !important
+            }
+
+            .w40 {
+                width: 40% !important
+            }
+
+            .m-width {
+                width: 300px !important
+            }
+
+            .h1 {
+                font-size: 23px !important;
+                line-height: 35px !important
+            }
+
+            .h3 {
+                font-size: 21px !important;
+                line-height: 30px !important
+            }
+
+            .h2 {
+                font-size: 18px !important;
+                line-height: 22px !important
+            }
+
+            .fz-11 {
+                font-size: 11px !important;
+                line-height: 15px !important
+            }
+
+            .fz-14 {
+                font-size: 14px !important;
+                line-height: 18px !important
+            }
+
+            .fz-16 {
+                font-size: 16px !important;
+                line-height: 22px !important
+            }
+
+            .fz-18 {
+                font-size: 18px !important;
+                line-height: 24px !important
+            }
+
+            .fz-28 {
+                font-size: 28px !important;
+                line-height: 38px !important
+            }
+
+            .fz-30 {
+                font-size: 30px !important;
+                line-height: 36px !important
+            }
+
+            .fz-36 {
+                font-size: 36px !important;
+                line-height: 50px !important
+            }
+
+            u + .body .gwfw {
+                width: 100% !important;
+                width: 100vw !important
+            }
+
+            .center {
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+                width: 50%
+            }
+
+            .txtcntr {
+                text-align: center !important
+            }
+
+            .txtleft {
+                text-align: left !important
+            }
+
+            .txtright {
+                text-align: right !important
+            }
+
+            .txtbold {
+                font-weight: 600 !important
+            }
+
+            .heightauto {
+                height: auto !important
+            }
+
+            .pt-auto {
+                padding-top: 30% !important
+            }
+
+            div[class=mobilecontent],
+            .mobilecontent {
+                display: block !important;
+                max-height: none !important
+            }
+
+            div[class=hideMobile],
+            .hideMobile {
+                display: none !important;
+                max-height: 0 !important;
+                overflow: hidden !important
+            }
+        }
+    </style>
+
+</head>
+<body class="body" style="-ms-text-size-adjust: 100%; background: #fffffe; -webkit-text-size-adjust: none; padding: 0 !important; margin: 0 !important; display: block !important; min-width: 100% !important; width: 100% !important;" data-new-gr-c-s-check-loaded="14.1067.0" data-gr-ext-installed=data-gr-ext-installed data-new-gr-c-s-loaded="14.1067.0">
+    <div style="color:transparent;visibility:hidden;opacity:0;font-size:0px;border:0;max-height:1px;width:1px;margin:0px;padding:0px;border-width:0px!important;display:none!important;line-height:0px!important;"><img border="0" width="1" height="1" src="http://track.bardeen.ai/q/JyydIvLcFBHmXspCBSq69g~~/AARGbAA~/RgRmRkN0PVcDc3BjQgpkYnS-Y2SE2P4UUhltYXR0QHJlYWxseWdvb2RlbWFpbHMuY29tWAQAAAQo" alt="" /></div>
+    <!--<span style="color:transparent;visibility:hidden;display:none;opacity:0;height:0;width:0;font-size:0;">Free and easy returns</span><img src="https://links.mirror.co/e/eo?_t=4b2893a8387245c2962956aaec0b064d&amp;_m=df8a9045b2ef4eef80450559ba5728a6&amp;_e=botHryGvuuWKMKjf5gvnVqrcDVdHBhZDsEebiLsvrjiSJqFpRCoDVRAdpnzEQeQe8GiPYuVrQXn-Vqu8OlWJwi2f0A5ra2Hl7zyEUzsIC9ircoQVpFXHha-QPDLgjb4sEvMhBJ3QYByMflcxcs13rw%3D%3D" style="border:0;width:1px;height:1px;border-width:0px!important;display:none!important;line-height:0!important;" width="1" height="1" /><grammarly-desktop-integration data-grammarly-shadow-root="true"> </grammarly-desktop-integration> <grammarly-desktop-integration data-grammarly-shadow-root="true"> </grammarly-desktop-integration> <grammarly-desktop-integration data-grammarly-shadow-root="true"> </grammarly-desktop-integration> <grammarly-desktop-integration data-grammarly-shadow-root="true"> </grammarly-desktop-integration>-->
+    <table bgcolor="#fffffe" border="0" cellpadding="0" cellspacing="0" class="gwfw" width="100%" style="border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; border-spacing: 0!important; -webkit-border-horizontal-spacing: 0!important; -webkit-border-vertical-spacing: 0!important;">
+        <tbody>
+            <tr>
+                <td align="center" valign="top" style="mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;">
+                    <table border="0" cellpadding="0" cellspacing="0" class="mobile-shell" width="600" style="border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; border-spacing: 0!important; -webkit-border-horizontal-spacing: 0!important; -webkit-border-vertical-spacing: 0!important;">
+                        <tbody>
+                            <tr>
+                                <td class="td" style="mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; width: 600px; min-width: 600px; font-size: 0px; line-height: 0px; padding: 0; margin: 0; font-weight: normal;" width="600">
+
+                                    <!--[if !gte mso 9]>
+
+                                    <!-->
+                                    <!--<![endif]-->
+                                    <table border="0" cellpadding="0" cellspacing="0" width="100%" style="border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; border-spacing: 0!important; -webkit-border-horizontal-spacing: 0!important; -webkit-border-vertical-spacing: 0!important;">
+                                        <tbody>
+                                            <tr>
+                                                <td class="img p5" style="mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; padding: 15px 0; font-size: 0px; line-height: 0px;">
+
+                                                    <!-- Insert preheader hack after hidden preview text -->
+                                                    <div style="display: none; max-height: 0px; overflow: hidden;">͏‌&nbsp;͏‌&nbsp;͏‌&nbsp;͏‌&nbsp;͏‌&nbsp;͏‌&nbsp;͏‌&nbsp;͏‌&nbsp;͏‌&nbsp;͏‌&nbsp;͏‌&nbsp;͏‌&nbsp;͏‌&nbsp;͏‌&nbsp;͏‌&nbsp;͏‌&nbsp;͏‌&nbsp;͏‌&nbsp;͏‌&nbsp;͏‌&nbsp;͏‌&nbsp;͏‌&nbsp;͏‌&nbsp;͏‌&nbsp;͏‌&nbsp;͏‌&nbsp;͏‌&nbsp;͏‌&nbsp;͏‌&nbsp;͏‌&nbsp;͏‌&nbsp;͏‌&nbsp;͏‌&nbsp;͏‌&nbsp;͏‌&nbsp;͏‌&nbsp;͏‌&nbsp;͏‌&nbsp;͏‌&nbsp;͏‌&nbsp;͏‌&nbsp;͏‌&nbsp;͏‌&nbsp;͏‌&nbsp;͏‌&nbsp;͏‌&nbsp;͏‌&nbsp;͏‌&nbsp;͏‌&nbsp;͏‌&nbsp;͏‌&nbsp;͏‌&nbsp;͏‌&nbsp;͏‌&nbsp;͏‌&nbsp;͏‌&nbsp;͏‌&nbsp;͏‌&nbsp;͏‌&nbsp;͏‌&nbsp;͏‌&nbsp;͏‌&nbsp;͏‌&nbsp;͏‌&nbsp;͏‌&nbsp;͏‌&nbsp;͏‌&nbsp;͏‌&nbsp;͏‌&nbsp;͏‌&nbsp;͏‌&nbsp;͏‌&nbsp;͏‌&nbsp;͏‌&nbsp;͏‌&nbsp;͏‌&nbsp;͏‌&nbsp;͏‌&nbsp;͏‌&nbsp;͏‌&nbsp;͏‌&nbsp;͏‌&nbsp;͏‌&nbsp;͏‌&nbsp;͏‌&nbsp;͏‌&nbsp;͏‌&nbsp;͏‌&nbsp;͏‌&nbsp;͏‌&nbsp;͏‌&nbsp;͏‌&nbsp;͏‌&nbsp;͏‌&nbsp;͏‌&nbsp;͏‌&nbsp;͏‌&nbsp;͏‌&nbsp;͏‌&nbsp;͏‌&nbsp;͏‌&nbsp;͏‌&nbsp;͏‌&nbsp;͏‌&nbsp;</div>
+
+                                                    <!-- CONTAINER -->
+                                                    <table border="0" cellpadding="0" cellspacing="0" width="100%" style="border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; border-spacing: 0!important; -webkit-border-horizontal-spacing: 0!important; -webkit-border-vertical-spacing: 0!important;">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td align="center" style="mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; padding: 0; font-size: 0px; line-height: 0px; border: 1px solid #f1f1f1;">
+                                                                    <table border="0" cellpadding="0" cellspacing="0" width="100%" bgcolor="#fffffe" style="border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; border-spacing: 0!important; -webkit-border-horizontal-spacing: 0!important; -webkit-border-vertical-spacing: 0!important;">
+                                                                        <tbody>
+
+                                                                            <!-- LOGO Image -->
+                                                                            <tr>
+                                                                                <td style="mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; padding: 0;">
+                                                                                    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                                                                        <tbody>
+                                                                                            <tr>
+                                                                                                <td align="center" style="padding:0;">
+                                                                                                    <table class="hideMobile" align="center" width="100%" border="0" cellpadding="0" cellspacing="0">
+                                                                                                        <tbody>
+                                                                                                            <tr>
+                                                                                                                <td align="center" style="padding: 0;"><a target="_blank" href="https://garagepos.com/"><img alt="lululemon Studio" style="width: 30%; height: auto; max-width: 600px; display: block;" width="600" height="63" src="https://garagepos.com/ContentEn/images/logo-garage.svg" /> </a></td>
+                                                                                                            </tr>
+                                                                                                        </tbody>
+                                                                                                    </table>
+
+                                                                                                    <!--[if !mso]>
+
+                                                                                                    <!-->
+                                                                                                    <div class="mobilecontent" style="display: none; max-height: 0px">
+                                                                                                        <table align="center" width="100%" border="0" cellpadding="0" cellspacing="0">
+                                                                                                            <tbody>
+                                                                                                                <tr>
+                                                                                                                    <td align="center" style=" padding: 0;"><a target="_blank" href="https://garagepos.com/"><img alt="lululemon Studio" style="width: 100%; height: auto; max-width: 100%; display: block; margin: 0 auto;" width="100%" src="https://garagepos.com/ContentEn/images/logo-garage.svg" /> </a></td>
+                                                                                                                </tr>
+                                                                                                            </tbody>
+                                                                                                        </table>
+                                                                                                    </div>
+
+                                                                                                    <!--<![endif]-->
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                        </tbody>
+                                                                                    </table>
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td style="mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; padding: 0;">
+                                                                                    <table border="0" cellpadding="0" cellspacing="0" width="100%" bgcolor="#F2F7F9" style="border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; border-spacing: 0!important; -webkit-border-horizontal-spacing: 0!important; -webkit-border-vertical-spacing: 0!important;">
+                                                                                        <tbody>
+
+                                                                                            <!-- Images -->
+                                                                                            <tr>
+                                                                                                <td align="center" style="mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; padding: 0;">
+                                                                                                    <table align="center" width="600" border="0" cellpadding="0" cellspacing="0" class="w100" style="border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; border-spacing: 0!important; -webkit-border-horizontal-spacing: 0!important; -webkit-border-vertical-spacing: 0!important;">
+                                                                                                        <tbody>
+                                                                                                            <tr>
+                                                                                                                <td align="center" style="mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; padding: 0;">
+                                                                                                                    <table class="hideMobile" align="center" width="600" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; border-spacing: 0!important; -webkit-border-horizontal-spacing: 0!important; -webkit-border-vertical-spacing: 0!important;">
+                                                                                                                        <tbody>
+                                                                                                                            <tr>
+                                                                                                                                <td align="center" style="mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; padding: 0;"><a target="_blank" href="https://garagepos.com/" style="mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; color: inherit !important; text-decoration: none !important;"><img alt="Mirror" style="border: 0; outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; width: 100%; height: 350px; max-width: 600px; display: block; margin: 0 auto;" width="600" src="https://garagepos.com/ContentEn/Images/solrepairnew.png" /> </a></td>
+                                                                                                                            </tr>
+                                                                                                                        </tbody>
+                                                                                                                    </table>
+
+                                                                                                                    <!--[if !mso]>
+
+                                                                                                                    <!-->
+                                                                                                                    <div class="mobilecontent" style="display: none; max-height: 0px">
+                                                                                                                        <table align="center" width="100%" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; border-spacing: 0!important; -webkit-border-horizontal-spacing: 0!important; -webkit-border-vertical-spacing: 0!important;">
+                                                                                                                            <tbody>
+                                                                                                                                <tr>
+                                                                                                                                    <td align="center" style="mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; padding: 0;"><a target="_blank" href="https://garagepos.com/" style="mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; color: inherit !important; text-decoration: none !important;"><img alt="Mirror" style="border: 0; outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; width: 100%; height: 350px; max-width: 100%; display: block; margin: 0 auto;" width="100%" src="https://garagepos.com/ContentEn/Images/solrepairnew.png" /> </a></td>
+                                                                                                                                </tr>
+                                                                                                                            </tbody>
+                                                                                                                        </table>
+                                                                                                                    </div>
+
+                                                                                                                    <!--<![endif]-->
+                                                                                                                </td>
+                                                                                                            </tr>
+                                                                                                        </tbody>
+                                                                                                    </table>
+                                                                                                </td>
+                                                                                            </tr>
+
+                                                                                            <!-- Copy 01 -->
+                                                                                            <tr>
+                                                                                                <td style="mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; padding: 32px 0 0;" class="pt-24">
+                                                                                                    <table width="550" align="center" border="0" cellpadding="0" cellspacing="0" class="w86" style="border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; border-spacing: 0!important; -webkit-border-horizontal-spacing: 0!important; -webkit-border-vertical-spacing: 0!important;">
+                                                                                                        <tbody>
+                                                                                                            <tr>
+                                                                                                                <td align="center" valign="top" style="mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; font-size: 0px; line-height: 0px; text-align: center; padding: 0;" class="hideMobile"><a target="_blank" href="https://garagepos.com/" style="mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; color: inherit !important; text-decoration: none !important;"><span>Thanks for Register #PackageName# Package</span></a></td>
+
+                                                                                                                <!--[if !mso]>
+
+                                                                                                                <!-->
+                                                                                                                <td align="center" style="mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; padding: 0; display: none;" class="mobilecontent"><a target="_blank" href="https://garagepos.com/" style="mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; color: inherit !important; text-decoration: none !important;"><span>Thanks for Register #PackageName# Package</span></a></td>
+
+                                                                                                                <!--<![endif]-->
+                                                                                                            </tr>
+                                                                                                        </tbody>
+                                                                                                    </table>
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                            <tr>
+                                                                                                <td align="center" style="mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; padding: 24px 0 0; font-size: 0px; line-height: 0px;" class="pt-16">
+                                                                                                    <table width="82%" align="center" border="0" cellpadding="0" cellspacing="0" class="w86" style="border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; border-spacing: 0!important; -webkit-border-horizontal-spacing: 0!important; -webkit-border-vertical-spacing: 0!important;">
+                                                                                                        <tbody>
+                                                                                                            <tr>
+                                                                                                                <td style="mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; color: #808080; font-family: 'Moderat Regular', Helvetica, Arial,sans-serif; font-size: 18px; line-height: 26px; text-align: center; font-weight: 400; padding: 0;" class="fz-16" align="center">We're so confident you'll love the Garage services, we're offering a #PackageName# Package! Try it out our #PackageName# Package.<br /></td>
+                                                                                                            </tr>
+                                                                                                        </tbody>
+                                                                                                    </table>
+                                                                                                </td>
+                                                                                            </tr>
+
+                                                                                            <!-- Button -->
+                                                                                            <tr>
+                                                                                                <td align="center" style="mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; padding: 24px 0 32px;" class="pt-16 pb-24">
+                                                                                                    <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; border-spacing: 0!important; -webkit-border-horizontal-spacing: 0!important; -webkit-border-vertical-spacing: 0!important;">
+                                                                                                        <tbody>
+                                                                                                            <tr>
+                                                                                                                <td align="center" style="mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; padding: 0px;">
+                                                                                                                    <div>
+                                                                                                                        <a style="mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; background-color: #181818; border: 1px solid #eae6de; border-radius: 30px; color: #fffffe; display: inline-block; font-family: 'Moderat Regular', Helvetica, Arial,sans-serif; font-size: 12px; line-height: 16px; line-height: 35px; text-align: center; text-decoration: none; width: 175px; -webkit-text-size-adjust: none; mso-hide: all;" target="_blank" class="button" href="https://garagepos.com/en/pricing">View Packages</a>
+                                                                                                                    </div>
+                                                                                                                </td>
+                                                                                                            </tr>
+                                                                                                        </tbody>
+                                                                                                    </table>
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                        </tbody>
+                                                                                    </table>
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td style="mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;">
+
+                                                                                    <!-- Contact Us Snippet -->
+                                                                                    <table width="100%" border="0" cellpadding="0" cellspacing="0" bgcolor="#fffffe">
+                                                                                        <tbody>
+                                                                                            <tr>
+                                                                                                <td align="center" style="padding:0;font-size:0px;line-height:0px;">
+                                                                                                    <table width="78%" border="0" cellpadding="0" cellspacing="0" class="w86">
+                                                                                                        <tbody>
+                                                                                                            <tr>
+                                                                                                                <td align="center" style="padding:16px 0 0;" class="pt-10">
+                                                                                                                    <table align="center" width="240" border="0" cellpadding="0" cellspacing="0" class="w86">
+                                                                                                                        <tbody>
+                                                                                                                            <tr>
+                                                                                                                                <td align="center"><a target="_blank" href="https://garagepos.com/en/contact"><img alt="Contact Us" style="width: 100%; height: auto; max-width: 600px; display: block; margin: 0 auto;" width="240" src="https://static.iterable.com/4b2893a8387245c2962956aaec0b064d/22-03-09-mirror-snippets-title-contactus.png" /> </a></td>
+                                                                                                                            </tr>
+                                                                                                                        </tbody>
+                                                                                                                    </table>
+                                                                                                                </td>
+                                                                                                            </tr>
+                                                                                                            <tr>
+                                                                                                                <td align="center" style="padding:0;font-size:0px;line-height:0px;">
+                                                                                                                    <table width="78%" border="0" cellpadding="0" cellspacing="0" class="w100">
+                                                                                                                        <tbody>
+                                                                                                                            <tr>
+                                                                                                                                <td style="color:#646567; font-family:'Moderat Regular', Helvetica, Arial,sans-serif; font-size:16px; line-height:24px; text-align:center;font-weight: 400;padding:16px 0 0;" class="pt-10 fz-16">Schedule a call with a Garage Specialist<a style="color:#646567; font-family:'Moderat Regular', Helvetica, Arial,sans-serif; font-size:16px; line-height:24px; text-align:center;font-weight: 400;padding:16px 0 0;" class="pt-10 fz-16" href=""></a> to learn more about the Garage packages, features, and special offers.</td>
+                                                                                                                            </tr>
+                                                                                                                        </tbody>
+                                                                                                                    </table>
+                                                                                                                </td>
+                                                                                                            </tr>
+
+                                                                                                            <!-- Button -->
+                                                                                                            <tr>
+                                                                                                                <td align="center" style="padding: 24px 0 32px;" class="pt-16 pb-24">
+                                                                                                                    <table border="0" cellpadding="0" cellspacing="0">
+                                                                                                                        <tbody>
+                                                                                                                            <tr>
+                                                                                                                                <td align="center" style="padding:0px;">
+                                                                                                                                    <div>
+
+                                                                                                                                        <!--[if mso]><v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="https://garagepos.com/en/contact" style="height:35px;v-text-anchor:middle;width:175px;" arcsize="100%" strokecolor="#181818" fillcolor="#fffffe"> <w:anchorlock/> <center style="color:#181818;font-family:Arial,sans-serif;font-size:12px;line-height:16px;font-weight:400;">Schedule a Call</center> </v:roundrect><![endif]--><a style="background-color:#fffffe;border:1px solid #181818;border-radius:30px;color:#181818;display:inline-block;font-family:'Moderat Regular', Helvetica, Arial,sans-serif;font-size:12px;line-height: 16px;line-height:35px;font-weight:400;text-align:center;text-decoration:none;width:175px;-webkit-text-size-adjust:none;mso-hide:all;" target="_blank" class="button" href="https://garagepos.com/en/contact">Schedule a Call</a>
+                                                                                                                                    </div>
+                                                                                                                                </td>
+                                                                                                                            </tr>
+                                                                                                                        </tbody>
+                                                                                                                    </table>
+                                                                                                                </td>
+                                                                                                            </tr>
+                                                                                                        </tbody>
+                                                                                                    </table>
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                        </tbody>
+                                                                                    </table>
+
+                                                                                    <!-- END Contact Us Snippet -->
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td align="center" valign="top" style="mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;">
+                                                                                    <table width="100%" border="0" cellpadding="0" cellspacing="0" bgcolor="#F1F1F1" style="border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; border-spacing: 0!important; -webkit-border-horizontal-spacing: 0!important; -webkit-border-vertical-spacing: 0!important;">
+                                                                                        <tbody>
+                                                                                            <tr>
+                                                                                                <td align="center" style="mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; padding: 0; font-size: 0px; line-height: 0px;">
+                                                                                                    <table width="86%" border="0" cellpadding="0" cellspacing="0" class="w86" style="border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; border-spacing: 0!important; -webkit-border-horizontal-spacing: 0!important; -webkit-border-vertical-spacing: 0!important;">
+                                                                                                        <tbody>
+                                                                                                            <tr>
+                                                                                                                <td align="center" style="mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; padding: 0; font-size: 0px; line-height: 0px;">
+                                                                                                                    <table width="490" border="0" cellpadding="0" cellspacing="0" class="w86" style="border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; border-spacing: 0!important; -webkit-border-horizontal-spacing: 0!important; -webkit-border-vertical-spacing: 0!important;">
+                                                                                                                        <tbody>
+                                                                                                                            <tr>
+                                                                                                                                <td style="mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; color: #808080; font-family: 'Moderat Regular', Helvetica, Arial,sans-serif; font-size: 12px; line-height: 26px; text-align: center; font-weight: 400; padding: 24px 0 0;" class="pt-16 fz-16" align="center">Stay in touch with your customers through our solutions Garage for owners of car services business centers (repair shops, car wash stations, polishing centers, mechanic workshops, body shops, and others). Garage will make them happy to smoothly track their expenses and incomes to provide higher sales and profits for the merchant and seller.</td>
+                                                                                                                            </tr>
+                                                                                                                        </tbody>
+                                                                                                                    </table>
+                                                                                                                </td>
+                                                                                                            </tr>
+                                                                                                        </tbody>
+                                                                                                    </table>
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                        </tbody>
+                                                                                    </table>
+                                                                                </td>
+                                                                            </tr>
+                                                                        </tbody>
+                                                                    </table>
+
+                                                                    <!-- Stacked Version w/ Download Buttons Snippet -->
+                                                                    <table width="100%" border="0" cellpadding="0" cellspacing="0" bgcolor="#fffffe">
+                                                                        <tbody>
+                                                                            <tr>
+                                                                                <td align="center" style="padding:0;font-size:0px;line-height:0px;">
+                                                                                    <table width="100%" border="0" cellpadding="0" cellspacing="0" bgcolor="#F1F1F1">
+                                                                                        <tbody>
+                                                                                            <tr>
+                                                                                                <td align="center" style="padding: 24px 0;border-top: 1px solid #F1F1F1;" class="pt-24 pb-24">
+                                                                                                    <table width="100%" cellspacing="0" cellpadding="0" border="0">
+                                                                                                        <tbody>
+                                                                                                            <!-- Socials -->
+                                                                                                            <tr>
+                                                                                                                <td align="center" style="padding: 24px 0px 0px 0px;">
+                                                                                                                    <table width="104" cellspacing="0" cellpadding="0" border="0" class="es-table-not-adapt es-social">
+                                                                                                                        <tbody>
+                                                                                                                            <tr>
+                                                                                                                                <td class="img " width="28"><a target="_blank" href="https://www.instagram.com/garage_pos/"><img alt="Instagram" width="28" border="0" src="https://static.iterable.com/4b2893a8387245c2962956aaec0b064d/22-03-09-mirror-snippets-instagram-c.png" /></a></td>
+                                                                                                                                <!--<td class="img" style="padding: 5px;" width="16"></td>
+                                                                                                                                <td class="img" width="28"><a target="_blank" href=""><img alt="Facebook" width="28" border="0" src="https://static.iterable.com/4b2893a8387245c2962956aaec0b064d/22-03-08-mirror-snippets-facebook.png" /></a></td>-->
+                                                                                                                                <!--<td class="img" style="padding: 5px;" width="16"></td>-->
+                                                                                                                                <!--<td class="img" width="28"><a target="_blank" href="https://links.mirror.co/u/click?_t=4b2893a8387245c2962956aaec0b064d&_m=df8a9045b2ef4eef80450559ba5728a6&_e=R_qrb9o9N5rXtUgA2j4oi9pvvbcllTfE_fWLO7L-IOxk9BR10WslFHdjxdZzRlEWONwAiQvTkau3spC6_sDFMACH0eFgZ9WjKACz9kt3ZPllWRQJ5eJTx02JyJpdmQUd7GxUT1t9x6VJg4DqMYSFozMTDgzJ4DFP7jI-9_GgAv4kpQ8T0MyTsNz-7dEqLtD1k_ksIGTY_6D5oyKqCT-z6IU8YgjCx5nkHjfBgR0reAM%3D"><img alt="TikTok" width="28" border="0" src="https://d15k2d11r6t6rl.cloudfront.net/public/users/Integrators/669d5713-9b6a-46bb-bd7e-c542cff6dd6a/4b2893a8387245c2962956aaec0b064d/TikTok_v2.png" /></a></td>-->
+                                                                                                                                <!--<td class="img" style="padding: 5px;" width="16"></td>-->
+                                                                                                                                <td class="img" width="28"><a target="_blank" href="https://twitter.com/garagepos"><img alt="Twitter" width="28" border="0" src="https://static.iterable.com/4b2893a8387245c2962956aaec0b064d/22-03-08-mirror-snippets-twitter.png" /></a></td>
+                                                                                                                            </tr>
+                                                                                                                        </tbody>
+                                                                                                                    </table>
+                                                                                                                </td>
+                                                                                                            </tr>
+
+                                                                                                            <!-- END Socials -->
+                                                                                                            <tr>
+                                                                                                                <td align="center">
+                                                                                                                    <table width="100%" cellspacing="0" cellpadding="0" border="0">
+                                                                                                                        <tbody>
+                                                                                                                            <tr>
+                                                                                                                                <td class="footer-text" style="color:#898989; font-family:Helvetica, Arial,sans-serif; font-size:11px; line-height:20px; text-align:center;padding-top: 17px;">To see how we may use your information, refer to our <a style="color:#000000; text-decoration:underline;" target="_blank" href="https://garagepos.com/en/terms"><span style="color:#898989; text-decoration:underline;">Privacy Policy</span></a><br />© 2020 Garage POS All rights reserved.<br /> <a class="link-grey" style="color:#898989; text-decoration:none;" target="_blank" href="#"></a><br /><a style="color:#000000; text-decoration:underline;" target="_blank" href="https://garagepos.com/"><span style="color:#000000; text-decoration:underline;">garagepos.com</span></a></td>
+                                                                                                                            </tr>
+                                                                                                                        </tbody>
+                                                                                                                    </table>
+                                                                                                                </td>
+                                                                                                            </tr>
+                                                                                                        </tbody>
+                                                                                                    </table>
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                        </tbody>
+                                                                                    </table>
+                                                                                </td>
+                                                                            </tr>
+                                                                        </tbody>
+                                                                    </table>
+
+                                                                    <!-- END Stacked Version w/ Download Buttons Snippet -->
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+
+                                                    <!-- END CONTAINER -->
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

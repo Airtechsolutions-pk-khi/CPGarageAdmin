@@ -1,0 +1,135 @@
+﻿@model DAL.Models.MakeViewModel
+@using System.Web.Configuration;
+@{
+    ViewBag.Title = "add";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="~/assets/css/component-custom-switch.min.css" rel="stylesheet" />
+<script type="text/javascript">
+    function UserSuccess(result) {
+        if (result.success) {
+            window.location.href = "/model/listMake";
+        }
+        else {
+            alert("Model CANNOT CREATED SUCCESSFULLY")
+        }
+    }
+
+</script>
+
+@using (Html.BeginForm("SaveMake", "Model", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div id="makeid">
+        @Html.HiddenFor(x => x.MakeID)
+    </div>
+    <form id="contact-form" role="form">
+        <div class="controls">
+            <div class="row ">
+                <div class="col-12 grid-margin stretch-card">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">Make</h4>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="form_email">Name *</label>
+                                        @Html.TextBoxFor(model => model.Name, new { @class = "form-control", placeholder = "", @Id = "txtname" })
+                                        @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                                        @Html.HiddenFor(model => model.ImagePath)
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="form_need">Arabic Name </label>
+                                        @Html.TextBoxFor(model => model.ArabicName, new { @class = "form-control", placeholder = "", @Id = "txtarname" })
+                                        @Html.ValidationMessageFor(model => model.ArabicName, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="form_email">Display Order </label>
+                                        @Html.TextBoxFor(model => model.DisplayOrder, new { @class = "form-control", placeholder = "", @Id = "txtdisplayorder" })
+                                        @Html.ValidationMessageFor(model => model.DisplayOrder, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="form_need">Status </label>
+
+                                        @if (Model == null)
+                                        {
+                                            <div class="custom-switch custom-switch-primary mb-2">
+                                                <input class="custom-switch-input" id="StatusID" type="checkbox" value="1" name="StatusID" checked>
+                                                <label class="custom-switch-btn" for="StatusID"></label>
+                                                <input class="custom-switch-input" type="hidden" value="2" name="StatusID" />
+                                            </div>
+                                        }
+                                        else if (Model.StatusID == 1)
+                                        {
+                                            <div class="custom-switch custom-switch-primary mb-2">
+                                                <input class="custom-switch-input" id="StatusID" type="checkbox" checked value="1" name="StatusID">
+                                                <label class="custom-switch-btn" for="StatusID"></label>
+                                                <input class="custom-switch-input" type="hidden" value="2" name="StatusID" />
+                                            </div>
+
+                                        }
+                                        else if (Model.StatusID == 2)
+                                        {
+                                            <div class="custom-switch custom-switch-primary mb-2">
+                                                <input class="custom-switch-input" id="StatusID" type="checkbox" value="1" name="StatusID">
+                                                <label class="custom-switch-btn" for="StatusID"></label>
+                                                <input class="custom-switch-input" type="hidden" value="2" name="StatusID" />
+                                            </div>
+                                        }
+                                        <div class="custom-switch custom-switch-primary mb-2" style="display:none;">
+                                            <input class="custom-switch-input" id="StatusID" type="checkbox" value="1" name="StatusID" checked>
+                                            <label class="custom-switch-btn" for="StatusID"></label>
+                                            <input class="custom-switch-input" type="hidden" value="2" name="StatusID" />
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12" style="padding-bottom: 0px;">
+                                    <div class="form-group">
+                                        <label for="imgfile" style="padding-top:20px;padding-bottom:15px;">Upload Image</label>
+                                        <input type="file" class="form-control-file" name="imgfile" id="imgfile" style="padding-bottom:15px;">
+
+                                        @if (Model == null)
+                                        {
+                                            <img src="~/assets/images/no_image.jpg" style=" height:80px;width:80px; border-radius:10px 10px 10px 10px; " />
+                                        }
+                                        else if (Model.ImagePath == null)
+                                        {
+                                            <img src="~/assets/images/no_image.jpg" style=" height:80px;width:80px; border-radius:10px 10px 10px 10px; " />
+                                        }
+                                        else
+                                        {
+                                            <img src="@Url.Content(Model.ImagePath)" style=" height:80px;width:80px; border-radius:10px 10px 10px 10px;" />
+                                        }
+                                    </div>
+                                </div>
+
+
+                                <div class="col-md-3" style="padding-top:20px;"> <button type="submit" class="btn btn-primary mr-2">Save</button> </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+}
+
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+<script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+
+
+

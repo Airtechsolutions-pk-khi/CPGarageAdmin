@@ -1,0 +1,239 @@
+﻿@model DAL.Models.ModelsViewModel
+@using System.Web.Configuration;
+@{
+    ViewBag.Title = "add";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="~/assets/css/component-custom-switch.min.css" rel="stylesheet" />
+<script type="text/javascript">
+    function UserSuccess(result) {
+        if (result.success) {
+            window.location.href = "/model/list";
+        }
+        else {
+            alert("Model CANNOT CREATED SUCCESSFULLY")
+        }
+    }
+
+</script>
+
+@using (Html.BeginForm("Save", "Model", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div id="modelid">
+        @Html.HiddenFor(x => x.ModelID)
+    </div>
+    <form id="contact-form" role="form">
+        <div class="controls">
+            <div class="row">
+                <div class="col-12 grid-margin stretch-card">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">Model</h4>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="form_email">Name *</label>
+                                        @Html.TextBoxFor(model => model.Name, new { @class = "form-control", placeholder = "", @Id = "txtName" })
+                                        @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                                        @Html.HiddenFor(model => model.ImagePath)
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="form_need">Arabic Name</label>
+                                        @Html.TextBoxFor(model => model.ArabicName, new { @class = "form-control", placeholder = "", @Id = "txtArName" })
+                                        @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="form_email">Year</label>
+                                        @Html.TextBoxFor(model => model.Year, new { @class = "form-control", placeholder = "", @Id = "txtYear" })
+                                        @Html.ValidationMessageFor(model => model.Year, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="form_need">Engine #</label>
+                                        @Html.TextBoxFor(model => model.EngineNo, new { @class = "form-control", placeholder = "", @Id = "txtEngineno" })
+                                        @Html.ValidationMessageFor(model => model.EngineNo, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="form_email">Recommended Litres</label>
+                                        @Html.TextBoxFor(model => model.RecommendedLitres, new { @class = "form-control", placeholder = "", @Id = "txtLtr" })
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+
+                                    <label for="exampleInputPassword4">Make</label>
+                                    <div class="form-group">
+
+                                        @Html.DropDownListFor(model => model.MakeID, ViewBag.makeList as SelectList, "-- Select Make --", new { @class = "form-control col-md-12", @Name = "MakeID", @Id = "ddlMake" })
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="row">
+
+                                <div class="col-md-6" style="padding-bottom: 20px;">
+                                    <div class="form-group">
+                                        <label for="imgfile">Upload Image</label>
+                                        <input type="file" class="form-control-file" name="imgfile" id="imgfile">
+                                    </div>
+
+                                    @if (Model == null)
+                                    {
+                                        <img src="~/assets/images/no_image.jpg" style=" height:80px;width:80px; border-radius:10px 10px 10px 10px; " />
+                                    }
+                                    else if (Model.ImagePath == null)
+                                    {
+                                        <img src="~/assets/images/no_image.jpg" style=" height:80px;width:80px; border-radius:10px 10px 10px 10px; " />
+                                    }
+                                    else
+                                    {
+                                        <img src="@Url.Content(Model.ImagePath)" style=" height:80px;width:80px; border-radius:10px 10px 10px 10px;" />
+                                    }
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="form_need">Status </label>
+
+                                        @if (Model == null)
+                                        {
+                                            <div class="custom-switch custom-switch-primary mb-2">
+                                                <input class="custom-switch-input" id="StatusID" type="checkbox" value="1" name="StatusID" checked>
+                                                <label class="custom-switch-btn" for="StatusID"></label>
+                                                <input class="custom-switch-input" type="hidden" value="2" name="StatusID" />
+                                            </div>
+                                        }
+                                        else if (Model.StatusID == 1)
+                                        {
+                                            <div class="custom-switch custom-switch-primary mb-2">
+                                                <input class="custom-switch-input" id="StatusID" type="checkbox" checked value="1" name="StatusID">
+                                                <label class="custom-switch-btn" for="StatusID"></label>
+                                                <input class="custom-switch-input" type="hidden" value="2" name="StatusID" />
+                                            </div>
+
+                                        }
+                                        else if (Model.StatusID == 2)
+                                        {
+                                            <div class="custom-switch custom-switch-primary mb-2">
+                                                <input class="custom-switch-input" id="StatusID" type="checkbox" value="1" name="StatusID">
+                                                <label class="custom-switch-btn" for="StatusID"></label>
+                                                <input class="custom-switch-input" type="hidden" value="2" name="StatusID" />
+                                            </div>
+                                        }
+                                        <div class="custom-switch custom-switch-primary mb-2" style="display:none;">
+                                            <input class="custom-switch-input" id="StatusID" type="checkbox" value="1" name="StatusID" checked>  
+                                            <label class="custom-switch-btn" for="StatusID"></label>
+                                            <input class="custom-switch-input" type="hidden" value="2" name="StatusID" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <button type="submit" class="btn btn-primary mr-2">Save</button>
+                                @*<a href="~/model/list" class="btn btn-light">Cancel</a>*@
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </form>
+}
+
+
+
+
+
+@*@using (Html.BeginForm("Save", "Model", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    <div id="modelid">
+        @Html.HiddenFor(x => x.ModelID)
+    </div>
+    <div class="row">
+        <div class="col-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Model Details</h4>
+
+                    <div class="forms-sample">
+                        <div class="form-group">
+                            <label for="exampleInputName1">Name</label>
+                            @Html.TextBoxFor(model => model.Name, new { @class = "form-control", placeholder = "", @Id = "txtName" })
+                            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputName1">Arabic Name</label>
+                            @Html.TextBoxFor(model => model.ArabicName, new { @class = "form-control", placeholder = "", @Id = "txtArName" })
+                            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail3">Year</label>
+                            @Html.TextBoxFor(model => model.Year, new { @class = "form-control", placeholder = "", @Id = "txtYear" })
+                            @Html.ValidationMessageFor(model => model.Year, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="form-group">
+                            <label for="exampleInputPassword4">Engine #</label>
+                            @Html.TextBoxFor(model => model.EngineNo, new { @class = "form-control", placeholder = "", @Id = "txtEngineno" })
+                            @Html.ValidationMessageFor(model => model.EngineNo, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="form-group">
+                            <label for="exampleInputPassword4">Recommended Litres</label>
+                            @Html.TextBoxFor(model => model.RecommendedLitres, new { @class = "form-control", placeholder = "", @Id = "txtLtr" })
+                        </div>
+
+
+                        <label for="exampleInputPassword4" style="padding-bottom:8px !important;">Make</label>
+                        <div class="form-group">
+
+                            @Html.DropDownListFor(model => model.MakeID, ViewBag.makeList as SelectList, "-- Select Make --", new { @class = "form-control col-md-6", @Name = "MakeID", @Id = "ddlMake" })
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label font" data-translate="00cn6">Status</label>
+                            <div class="col-sm-9">
+                                <div class="custom-switch custom-switch-primary mb-2">
+
+                                    @Html.TextBoxFor(model => model.StatusID, new { @class = "form-control custom-switch-input", @Name = "StatusID", @type = "checkbox", @Id = "StatusID" })
+
+                                    <label class="custom-switch-btn" for="StatusID"></label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="imgfile">Upload Image</label>
+                            <input type="file" class="form-control-file" name="imgfile" id="imgfile">
+                        </div>
+
+                        <button type="submit" class="btn btn-primary mr-2">Save</button>
+                        <a href="~/model/list" class="btn btn-light">Cancel</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    }*@
+
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+<script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
