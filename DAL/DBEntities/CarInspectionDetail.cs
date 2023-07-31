@@ -21,9 +21,35 @@ public partial class CarInspectionDetail
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
     public CarInspectionDetail()
     {
+<<<<<<< HEAD
 
         this.OrderInspectionMappings = new HashSet<OrderInspectionMapping>();
 
+=======
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public CarInspectionDetail()
+        {
+            this.OrderInspectionMappings = new HashSet<OrderInspectionMapping>();
+        }
+    
+        public int CarInspectionDetailID { get; set; }
+        public int CarInspectionID { get; set; }
+        public string Name { get; set; }
+        public string AlternateName { get; set; }
+        public string Description { get; set; }
+        public string km5000 { get; set; }
+        public string km8000 { get; set; }
+        public string km10000 { get; set; }
+        public string km15000 { get; set; }
+        public string kmother { get; set; }
+        public Nullable<int> StatusID { get; set; }
+        public string LastUpdatedBy { get; set; }
+        public Nullable<System.DateTime> LastUpdatedDate { get; set; }
+    
+        public virtual CarInspection CarInspection { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<OrderInspectionMapping> OrderInspectionMappings { get; set; }
+>>>>>>> 2fa7e6b6f80cd3c31825fefc3f96ce80eb1d1bfa
     }
 
 

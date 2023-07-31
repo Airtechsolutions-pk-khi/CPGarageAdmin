@@ -2723,7 +2723,10 @@
     <EntitySetMapping Name="Role_Forms">
       <EntityTypeMapping TypeName="Garage_Live.Role_Forms">
         <MappingFragment StoreEntitySet="Role_Forms">
+<<<<<<< HEAD
           <ScalarProperty Name="DeviceType" ColumnName="DeviceType" />
+=======
+>>>>>>> 2fa7e6b6f80cd3c31825fefc3f96ce80eb1d1bfa
           <ScalarProperty Name="StatusID" ColumnName="StatusID" />
           <ScalarProperty Name="LastUpdatedBy" ColumnName="LastUpdatedBy" />
           <ScalarProperty Name="LastUpdatedDate" ColumnName="LastUpdatedDate" />

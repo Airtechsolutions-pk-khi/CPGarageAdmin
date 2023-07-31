@@ -15,6 +15,7 @@ namespace DAL.DBEntities
 using System;
     using System.Collections.Generic;
     
+<<<<<<< HEAD
 public partial class Integration
 {
 
@@ -38,4 +39,18 @@ public partial class Integration
 
 }
 
+=======
+    public partial class Integration
+    {
+        public int IntegrationID { get; set; }
+        public string Name { get; set; }
+        public string IntegrationKey { get; set; }
+        public string Token { get; set; }
+        public string Value { get; set; }
+        public Nullable<int> StatusID { get; set; }
+        public Nullable<int> UserID { get; set; }
+    
+        public virtual User User { get; set; }
+    }
+>>>>>>> 2fa7e6b6f80cd3c31825fefc3f96ce80eb1d1bfa
 }

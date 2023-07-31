@@ -15,6 +15,7 @@ namespace DAL.DBEntities
 using System;
     using System.Collections.Generic;
     
+<<<<<<< HEAD
 public partial class ZohoChartOfAccount
 {
 
@@ -42,4 +43,20 @@ public partial class ZohoChartOfAccount
 
 }
 
+=======
+    public partial class ZohoChartOfAccount
+    {
+        public int ChartOfAccountsID { get; set; }
+        public string account_id { get; set; }
+        public string account_name { get; set; }
+        public string account_type { get; set; }
+        public string AccountTypeZoho { get; set; }
+        public string is_active { get; set; }
+        public int UserID { get; set; }
+        public string LastUpdatedBy { get; set; }
+        public Nullable<System.DateTime> LastUpdatedDate { get; set; }
+    
+        public virtual User User { get; set; }
+    }
+>>>>>>> 2fa7e6b6f80cd3c31825fefc3f96ce80eb1d1bfa
 }

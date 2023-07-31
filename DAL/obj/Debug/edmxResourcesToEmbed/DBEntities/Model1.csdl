@@ -3803,7 +3803,10 @@
     <Property Name="LastUpdatedDate" Type="DateTime" Precision="3" />
     <Property Name="LastUpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="StatusID" Type="Int32" />
+<<<<<<< HEAD
     <Property Name="DeviceType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+=======
+>>>>>>> 2fa7e6b6f80cd3c31825fefc3f96ce80eb1d1bfa
     <NavigationProperty Name="Role_GroupForms" Relationship="Garage_Live.FK_Role_GroupForms_Role_Forms" FromRole="Role_Forms" ToRole="Role_GroupForms" />
   </EntityType>
   <EntityType Name="Role_Group">

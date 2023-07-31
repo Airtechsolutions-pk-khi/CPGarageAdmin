@@ -21,11 +21,39 @@ public partial class PackagesInfo
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
     public PackagesInfo()
     {
+<<<<<<< HEAD
 
         this.UserPackageDetails = new HashSet<UserPackageDetail>();
 
         this.Users = new HashSet<User>();
 
+=======
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public PackagesInfo()
+        {
+            this.UserPackageDetails = new HashSet<UserPackageDetail>();
+            this.Users = new HashSet<User>();
+        }
+    
+        public int PackageInfoID { get; set; }
+        public string PackageName { get; set; }
+        public Nullable<decimal> PackagePrice { get; set; }
+        public string PackageDetail { get; set; }
+        public string PackageDescription { get; set; }
+        public string NoofDays { get; set; }
+        public Nullable<int> DeviceCount { get; set; }
+        public Nullable<int> LocationsLimit { get; set; }
+        public Nullable<int> StatusID { get; set; }
+        public Nullable<bool> IsInventory { get; set; }
+        public Nullable<bool> IsGarageGo { get; set; }
+        public Nullable<System.DateTime> CreatedDate { get; set; }
+        public Nullable<System.DateTime> LastUpdatedDate { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<UserPackageDetail> UserPackageDetails { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<User> Users { get; set; }
+>>>>>>> 2fa7e6b6f80cd3c31825fefc3f96ce80eb1d1bfa
     }
 
 
