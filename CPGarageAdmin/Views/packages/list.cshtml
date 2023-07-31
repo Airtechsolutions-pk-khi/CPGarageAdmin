@@ -1,4 +1,4 @@
-﻿ 
+﻿
 @{
     ViewBag.Title = "list";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -20,7 +20,7 @@
                 <h4 class="card-title">Packages Details</h4>
             </div>
             <div class="col-4 text-right">
-                <a href="~/packages/add" class="btn btn-sm btn-secondary"><i class="mdi mdi-plus-circle"></i> Add</a>
+                <a href="~/packages/add" class="btn btn-sm btn-secondary"><i class="mdi mdi-plus-circle"></i> Add Package</a>
             </div>
         </div>
         <div class="row">
@@ -53,23 +53,24 @@
                                     <td>@item.LocationsLimit</td>
                                     <td>@item.IsInventory</td>
                                     <td>@item.IsGarageGo</td>
-                                    @if (item.StatusID == true)
-                                    {
-                                        <td class="bg-success">Active</td>
-                                    }
-                                    else
-                                    {
-                                        <td class="bg-danger"> De Active</td>
+                                    <td>
+                                        @if (item.StatusID == true)
+                                        {
+                                            <b class="badge badge-success">Active</b>
+                                        }
+                                        else
+                                        {
+                                            <b class="badge badge-danger"> De Active</b>
 
-                                    }
+                                        }
+                                    </td>
+                                    <td class="text-center">
+                                        <a href="~/packages/add?id=@item.PackageInfoID"><i class="mdi mdi-pencil" style="font-size:18px !important;"></i></a>
 
-                                <td class="text-center">
-                                    <a href="~/packages/add?id=@item.PackageInfoID"><i class="mdi mdi-pencil" style="font-size:18px !important;"></i></a>
-
-                                    @*<a onclick="getByID(@item.PackageInfoID);"><i class="mdi mdi-pencil" style="font-size:18px !important;"></i></a>*@ @*ajax*@
-                                    @*<button onclick="getByID(@item.PackageInfoID);"><i class="mdi mdi-pencil" style="font-size:18px !important;"></i></button>*@
-                                    @*<a href="~/packages/Delete?id=@item.PackageInfoID"><i class="mdi mdi-delete" style="font-size:18px !important;"></i></a>*@
-                                </td>
+                                        @*<a onclick="getByID(@item.PackageInfoID);"><i class="mdi mdi-pencil" style="font-size:18px !important;"></i></a>*@ @*ajax*@
+                                        @*<button onclick="getByID(@item.PackageInfoID);"><i class="mdi mdi-pencil" style="font-size:18px !important;"></i></button>*@
+                                        @*<a href="~/packages/Delete?id=@item.PackageInfoID"><i class="mdi mdi-delete" style="font-size:18px !important;"></i></a>*@
+                                    </td>
                                 </tr>
                             }
                         </tbody>
@@ -79,7 +80,7 @@
         </div>
     </div>
 </div>
- 
+
 
 
 
@@ -99,7 +100,7 @@
                 <div class="card">
 
                     <div class="card-body">
-                        
+
 
                         <div class="row ">
                             <div class="col-lg-12 mx-auto">
@@ -107,11 +108,11 @@
                                     <div class="card-body bg-light">
                                         <div class="container">
                                             @*@using (Html.BeginForm("Save", "packages", FormMethod.Post, new { enctype = "multipart/form-data" }))
-        {*@
+                                                {*@
                                             @*<div id="packageid">
 
-            @Html.HiddenFor(x => x.PackageInfoID)
-        </div>*@
+                                                    @Html.HiddenFor(x => x.PackageInfoID)
+                                                </div>*@
                                             <input type="hidden" id="packageid" />
                                             @*<form id="contact-form" role="form">*@
                                             <div class="controls">
@@ -121,7 +122,7 @@
                                                             <label for="form_email">Package Name *</label>
                                                             <input type="text" class="form-control" placeholder="Enter Package Name" id="txtName" />
                                                             @*@Html.TextBoxFor(model => model.PackageName, new { @class = "form-control", placeholder = "Enter Package Name", @Id = "txtName" })
-                        @Html.ValidationMessageFor(model => model.PackageName, "", new { @class = "text-danger" })*@
+                                                                @Html.ValidationMessageFor(model => model.PackageName, "", new { @class = "text-danger" })*@
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
@@ -129,7 +130,7 @@
                                                             <label for="form_email">Package Price</label>
                                                             <input type="number" class="form-control" placeholder="Enter Package Price" id="txtPrice" />
                                                             @*@Html.TextBoxFor(model => model.PackagePrice, new { @class = "form-control", placeholder = "Enter Package Price", @Id = "txtPrice", @type = "number" })
-                        @Html.ValidationMessageFor(model => model.PackagePrice, "", new { @class = "text-danger" })*@
+                                                                @Html.ValidationMessageFor(model => model.PackagePrice, "", new { @class = "text-danger" })*@
                                                         </div>
                                                     </div>
                                                 </div>
@@ -139,7 +140,7 @@
                                                             <label for="form_need">Device Count</label>
                                                             <input type="number" class="form-control" placeholder="Enter Device Count" id="txtDevCount" />
                                                             @*@Html.TextBoxFor(model => model.DeviceCount, new { @class = "form-control", placeholder = "Enter Device Count", @Id = "txtDevCount", @type = "number" })
-                        @Html.ValidationMessageFor(model => model.DeviceCount, "", new { @class = "text-danger" })*@
+                                                                @Html.ValidationMessageFor(model => model.DeviceCount, "", new { @class = "text-danger" })*@
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
@@ -147,18 +148,18 @@
                                                             <label for="form_email">Locations Limit</label>
                                                             <input type="number" class="form-control" placeholder="Enter Location Limit" id="txtLocLim" />
                                                             @*@Html.TextBoxFor(model => model.LocationsLimit, new { @class = "form-control", placeholder = "Enter Location Limit", @Id = "txtLocLim", @type = "number" })
-                        @Html.ValidationMessageFor(model => model.LocationsLimit, "", new { @class = "text-danger" })*@
+                                                                @Html.ValidationMessageFor(model => model.LocationsLimit, "", new { @class = "text-danger" })*@
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="row">
                                                     @*<div class="col-md-6">
-                    <div class="form-group">
-                        <label for="form_need">Package Description</label>
-                        @Html.TextAreaFor(model => model.PackageDescription, new { @class = "form-control", placeholder = "Enter Description", @Id = "txtDesc" })
-                        @Html.ValidationMessageFor(model => model.PackageDescription, "", new { @class = "text-danger" })
-                    </div>
-                </div>*@
+                                                            <div class="form-group">
+                                                                <label for="form_need">Package Description</label>
+                                                                @Html.TextAreaFor(model => model.PackageDescription, new { @class = "form-control", placeholder = "Enter Description", @Id = "txtDesc" })
+                                                                @Html.ValidationMessageFor(model => model.PackageDescription, "", new { @class = "text-danger" })
+                                                            </div>
+                                                        </div>*@
 
                                                     <div class="col-md-6">
                                                         <div class="form-group">
@@ -274,7 +275,7 @@
             contentType: "application/json;charset=UTF-8",
             dataType: "json",
             success: function (result) {
- 
+
                 $('#packageid').val(result.PackageInfoID);
                 $('#txtName').val(result.PackageName);
                 $('#txtPrice').val(result.PackagePrice);

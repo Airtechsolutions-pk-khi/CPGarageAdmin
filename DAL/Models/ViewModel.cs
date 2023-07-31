@@ -125,6 +125,9 @@ namespace DAL.Models
         public string TotalSubusers { get; set; }
         public string TotalCars { get; set; }
         public string TotalProducts { get; set; }
+        public string TotalTrialCustomer { get; set; }
+        public string TotalProfessionalCustomer { get; set; }
+
     }
     public class SmsBilling
     {

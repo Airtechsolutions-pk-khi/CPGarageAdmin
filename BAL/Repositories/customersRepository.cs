@@ -87,9 +87,9 @@ namespace BAL.Repositories
                         LocationContactNo = r.Locations.FirstOrDefault().ContactNo,
                         LocationEmail = r.Locations.FirstOrDefault().Email,
                         Currency = r.Locations.FirstOrDefault().Currency,
-                        Tax = r.Tax,                       
+                        Tax = r.Tax,
                         PackageInfoID = r.UserPackageDetails.Count == 0 ? 0 : r.UserPackageDetails.FirstOrDefault().PackageInfoID,
-                        
+
                         //ExpiryDate = r.UserPackageDetails.FirstOrDefault().ExpiryDate,
                     })
                   .FirstOrDefault();
@@ -137,21 +137,28 @@ namespace BAL.Repositories
                         x => x.UserPackageDetails
                         );
                         DBContext.SaveChanges();
-                        if (modal.UserID > 0)
+                        UserPackageDetail _package = DBContext.UserPackageDetails.Where(x => x.PackageInfoID == modal.PackageInfoID).FirstOrDefault();
+
+                        if (modal.PackageInfoID == 0)
                         {
-                            UserPackageDetail _package = DBContext.UserPackageDetails.Where(x => x.PackageInfoID == modal.PackageInfoID).FirstOrDefault();
+                            UserPackageDetail package = new UserPackageDetail();
+
+                            package.UserID = modal.UserID;
+                            package.PackageInfoID = modal.PackageInfoID;
+                            package.StatusID = 1;
+                            package.CreatedDate = DateTime.UtcNow.AddMinutes(180);
+                            package.LastUpdatedDate = DateTime.UtcNow.AddMinutes(180);
+                            package.ExpiryDate = modal.ExpiryDate;
+                            UserPackageDetail datauser = DBContext.UserPackageDetails.Add(_package);
+                            DBContext.SaveChanges();
+                        }
+                        if (_package.PackageInfoID != 0)
+                        {
                             _package.PackageInfoID = modal.PackageInfoID;
                             _package.UserID = modal.UserID;
                             _package.StatusID = modal.StatusID == true ? 1 : 2;
                             _package.LastUpdatedDate = DateTime.UtcNow.AddMinutes(180);
-                            if (modal.ExpiryDate != _package.ExpiryDate)
-                            {
-                                _package.ExpiryDate = modal.ExpiryDate;
-                            }
-                            else
-                            {
-                                _package.ExpiryDate = DateTime.UtcNow.AddDays(15);
-                            }
+                            _package.ExpiryDate = modal.ExpiryDate;
                             DBContext.Entry(_package).State = EntityState.Modified;
                             DBContext.UpdateOnly<UserPackageDetail>(_package, x =>
                            x.PackageInfoID,
@@ -266,6 +273,7 @@ namespace BAL.Repositories
                             _package.StatusID = 1;
                             _package.CreatedDate = DateTime.UtcNow.AddMinutes(180);
                             _package.LastUpdatedDate = DateTime.UtcNow.AddMinutes(180);
+                            _package.ExpiryDate = modal.ExpiryDate;
                             UserPackageDetail datauser = DBContext.UserPackageDetails.Add(_package);
                             DBContext.SaveChanges();
                         }

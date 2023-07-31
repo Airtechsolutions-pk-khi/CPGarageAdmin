@@ -63,7 +63,6 @@ namespace CPGarageAdmin.Controllers
             return Json(0, JsonRequestBehavior.AllowGet);
         }
         [HttpPost]
-        [Route("Save")]
         public JsonResult Save(PackagesInfoViewModel data)
         {
             if (data.PackageInfoID == 0 || data.PackageInfoID == null)

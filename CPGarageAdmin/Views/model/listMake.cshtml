@@ -7,7 +7,7 @@
 <head>
     <style>
         .swal-button {
-            background-color: #ffb509 !important;
+            background-color: #282f3a !important;
         }
     </style>
     @*<link href="~/assets/css/sweetalert.css" rel="stylesheet" />*@
@@ -19,7 +19,7 @@
                 <h4 class="card-title">Make</h4>
             </div>
             <div class="col-4 text-right">
-                <a href="~/model/addMake" class="btn btn-sm btn-secondary"><i class="mdi mdi-plus-circle"></i> Add</a>
+                <a href="~/model/addMake" class="btn btn-sm btn-secondary"><i class="mdi mdi-plus-circle"></i> Add Make</a>
             </div>
         </div>
         <div class="row">
@@ -41,43 +41,44 @@
 
                             @foreach (var item in ViewBag.MakeList)
                             {
-                            <tr>
-                                <td>
-                                    @if (item.ImagePath == null || item.ImagePath == "")
-                                    {
-                                        <img src="~/assets/images/no_image.jpg" style=" height:60px;width:60px; border-radius:20px 20px 20px 20px" />
-                                    }
-                                    else
-                                    {
-                                        <img src="@Url.Content(item.ImagePath)" style=" height:60px;width:60px; border-radius:20px 20px 20px 20px" />
-                                    }
+                                <tr>
+                                    <td>
+                                        @if (item.ImagePath == null || item.ImagePath == "")
+                                        {
+                                            <img src="~/assets/images/no_image.jpg" style=" height:40px;width:40px; border-radius:20px 20px 20px 20px" />
+                                        }
+                                        else
+                                        {
+                                            <img src="@Url.Content(item.ImagePath)" style=" height:40px;width:40px; border-radius:20px 20px 20px 20px" />
+                                        }
 
-                                </td>
-                                <td> @item.Name</td>
-                                <td> @item.ArabicName</td>
-                                <td> @item.DisplayOrder</td>
-                                @if (item.StatusID == 1)
-                                {
-                                    <td class="bg-success">Active</td>
-                                }
-                                @if (item.StatusID == 2)
-                                {
-                                    <td class="bg-danger"> De Active</td>
+                                    </td>
+                                    <td> @item.Name</td>
+                                    <td> @item.ArabicName</td>
+                                    <td> @item.DisplayOrder</td>
+                                    <td>
+                                        @if (item.StatusID == 1)
+                                        {
+                                            <b class="badge badge-success">Active</b>
+                                        }
+                                        @if (item.StatusID == 2)
+                                        {
+                                            <b class="badge badge-danger"> De Active</b>
 
-                                }
+                                        }
+                                    </td>
 
-
-                                @*<td class="text-center">
-            <a href="~/model/addMake?id=@item.MakeID"><i class="mdi mdi-pencil" style="font-size:18px !important;"></i></a>
-            <a href="~/model/DeleteMake?id=@item.MakeID" onclick = "return
-            confirm('Are you sure you wish to delete this?');
-            "style="border:none;"><i class="mdi mdi-delete" style="font-size:18px !important;"></i></a>
-        </td>*@
-                                <td class="text-center">
-                                    <a href="~/model/addMake?id=@item.MakeID"><i class="mdi mdi-pencil" style="font-size:18px !important;"></i></a>
-                                    <a href="~/model/DeleteMake?id=@item.MakeID" onclick = "return confirm('Are you sure you wish to delete?');" style="border:none;"><i class="mdi mdi-delete" style="font-size:18px !important;"></i></a>
-                                </td>
-                            </tr>
+                                    @*<td class="text-center">
+                                            <a href="~/model/addMake?id=@item.MakeID"><i class="mdi mdi-pencil" style="font-size:18px !important;"></i></a>
+                                            <a href="~/model/DeleteMake?id=@item.MakeID" onclick = "return
+                                            confirm('Are you sure you wish to delete this?');
+                                            "style="border:none;"><i class="mdi mdi-delete" style="font-size:18px !important;"></i></a>
+                                        </td>*@
+                                    <td class="text-center">
+                                        <a href="~/model/addMake?id=@item.MakeID"><i class="mdi mdi-pencil" style="font-size:18px !important;"></i></a>
+                                        <a href="~/model/DeleteMake?id=@item.MakeID" onclick="return confirm('Are you sure you wish to delete?');" style="border:none;"><i class="mdi mdi-delete" style="font-size:18px !important;"></i></a>
+                                    </td>
+                                </tr>
                             }
 
                         </tbody>

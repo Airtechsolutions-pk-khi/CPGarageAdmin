@@ -43,6 +43,7 @@ namespace BAL.Repositories
                     {
                         Model _model = DBContext.Models.Where(x => x.ModelID == modal.ModelID).FirstOrDefault();                        
                         _model.Name = modal.Name;
+                        _model.ArabicName = modal.ArabicName;
                         _model.Year = modal.Year;
                         _model.EngineNo = modal.EngineNo;
                         _model.RecommendedLitres = modal.RecommendedLitres;
@@ -91,6 +92,7 @@ namespace BAL.Repositories
                     //Receipt _receipt = new Receipt();
 
                     _model.Name = modal.Name;
+                    _model.ArabicName = modal.ArabicName;
                     _model.MakeID = modal.MakeID;
                     _model.Year = modal.Year;
                     _model.EngineNo = modal.EngineNo;
