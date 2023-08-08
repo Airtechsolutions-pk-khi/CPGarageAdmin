@@ -265,10 +265,6 @@ namespace BAL.Repositories
                         if (data.UserID != 0)
                         {
                             _package.UserID = data.UserID;
-                            if (_package.PackageInfoID == 1)
-                            {
-                                _package.ExpiryDate = DateTime.UtcNow.AddDays(15);
-                            }
                             _package.PackageInfoID = modal.PackageInfoID;
                             _package.StatusID = 1;
                             _package.CreatedDate = DateTime.UtcNow.AddMinutes(180);

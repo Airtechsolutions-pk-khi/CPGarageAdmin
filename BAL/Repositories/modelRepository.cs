@@ -1,6 +1,4 @@
-﻿
-using DAL.DBEntities;
-
+﻿using DAL.DBEntities;
 using BAL.Repositories;
 using DAL.Models;
 using System;

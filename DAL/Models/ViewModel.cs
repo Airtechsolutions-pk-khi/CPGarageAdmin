@@ -111,8 +111,7 @@ namespace DAL.Models
         [Required(ErrorMessage = "Input is required")]
         public string LocationEmail { get; set; }
         public string Currency { get; set; }
-        
-
+        public Nullable<System.DateTime> PackageExpiry { get; set; }
     }
     #endregion customer
 

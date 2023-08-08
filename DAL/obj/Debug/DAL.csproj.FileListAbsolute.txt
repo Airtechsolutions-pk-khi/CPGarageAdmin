@@ -98,3 +98,28 @@ C:\Office\Projects\GARAGEPOS\CPGarageAdmin\DAL\obj\Debug\DAL.csproj.CoreCompileI
 C:\Office\Projects\GARAGEPOS\CPGarageAdmin\DAL\obj\Debug\DAL.csproj.CopyComplete
 C:\Office\Projects\GARAGEPOS\CPGarageAdmin\DAL\obj\Debug\DAL.dll
 C:\Office\Projects\GARAGEPOS\CPGarageAdmin\DAL\obj\Debug\DAL.pdb
+F:\GIT Project's\CPGarage_Admin\DAL\bin\Debug\DAL.dll.config
+F:\GIT Project's\CPGarage_Admin\DAL\bin\Debug\DAL.dll
+F:\GIT Project's\CPGarage_Admin\DAL\bin\Debug\DAL.pdb
+F:\GIT Project's\CPGarage_Admin\DAL\bin\Debug\EntityFramework.dll
+F:\GIT Project's\CPGarage_Admin\DAL\bin\Debug\EntityFramework.SqlServer.dll
+F:\GIT Project's\CPGarage_Admin\DAL\bin\Debug\Microsoft.Web.Infrastructure.dll
+F:\GIT Project's\CPGarage_Admin\DAL\bin\Debug\System.Web.Helpers.dll
+F:\GIT Project's\CPGarage_Admin\DAL\bin\Debug\System.Web.Mvc.dll
+F:\GIT Project's\CPGarage_Admin\DAL\bin\Debug\System.Web.Razor.dll
+F:\GIT Project's\CPGarage_Admin\DAL\bin\Debug\System.Web.WebPages.Deployment.dll
+F:\GIT Project's\CPGarage_Admin\DAL\bin\Debug\System.Web.WebPages.dll
+F:\GIT Project's\CPGarage_Admin\DAL\bin\Debug\System.Web.WebPages.Razor.dll
+F:\GIT Project's\CPGarage_Admin\DAL\bin\Debug\EntityFramework.xml
+F:\GIT Project's\CPGarage_Admin\DAL\bin\Debug\EntityFramework.SqlServer.xml
+F:\GIT Project's\CPGarage_Admin\DAL\bin\Debug\System.Web.Helpers.xml
+F:\GIT Project's\CPGarage_Admin\DAL\bin\Debug\System.Web.Mvc.xml
+F:\GIT Project's\CPGarage_Admin\DAL\bin\Debug\System.Web.Razor.xml
+F:\GIT Project's\CPGarage_Admin\DAL\bin\Debug\System.Web.WebPages.xml
+F:\GIT Project's\CPGarage_Admin\DAL\bin\Debug\System.Web.WebPages.Deployment.xml
+F:\GIT Project's\CPGarage_Admin\DAL\bin\Debug\System.Web.WebPages.Razor.xml
+F:\GIT Project's\CPGarage_Admin\DAL\obj\Debug\DAL.csproj.AssemblyReference.cache
+F:\GIT Project's\CPGarage_Admin\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
+F:\GIT Project's\CPGarage_Admin\DAL\obj\Debug\DAL.csproj.CopyComplete
+F:\GIT Project's\CPGarage_Admin\DAL\obj\Debug\DAL.dll
+F:\GIT Project's\CPGarage_Admin\DAL\obj\Debug\DAL.pdb
