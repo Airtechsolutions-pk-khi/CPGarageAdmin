@@ -103,11 +103,11 @@ namespace DAL.DBEntities
         public virtual DbSet<TimeZone> TimeZones { get; set; }
         public virtual DbSet<Unit> Units { get; set; }
         public virtual DbSet<UserPackageDetail> UserPackageDetails { get; set; }
-        public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<ZatcaAuthentication> ZatcaAuthentications { get; set; }
         public virtual DbSet<ZohoChartOfAccount> ZohoChartOfAccounts { get; set; }
         public virtual DbSet<ZohoCOAMapping> ZohoCOAMappings { get; set; }
         public virtual DbSet<ZohoSetting> ZohoSettings { get; set; }
+        public virtual DbSet<User> Users { get; set; }
     
         [DbFunction("Garage_LiveEntities", "Split")]
         public virtual IQueryable<Split_Result> Split(string inputString, string delimiter)
@@ -691,25 +691,17 @@ namespace DAL.DBEntities
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_GetLocationsV2_CAPI_Result>("sp_GetLocationsV2_CAPI", locationIDParameter, dateParameter);
         }
     
-        public virtual ObjectResult<sp_GetLocationsV3_CAPI_Result> sp_GetLocationsV3_CAPI(Nullable<int> pageNumber, Nullable<int> pageSize, string paramTable1, Nullable<System.DateTime> date)
+        public virtual ObjectResult<sp_GetLocationsV3_CAPI_Result> sp_GetLocationsV3_CAPI(Nullable<int> locationID, Nullable<System.DateTime> date)
         {
-            var pageNumberParameter = pageNumber.HasValue ?
-                new ObjectParameter("PageNumber", pageNumber) :
-                new ObjectParameter("PageNumber", typeof(int));
-    
-            var pageSizeParameter = pageSize.HasValue ?
-                new ObjectParameter("PageSize", pageSize) :
-                new ObjectParameter("PageSize", typeof(int));
-    
-            var paramTable1Parameter = paramTable1 != null ?
-                new ObjectParameter("ParamTable1", paramTable1) :
-                new ObjectParameter("ParamTable1", typeof(string));
+            var locationIDParameter = locationID.HasValue ?
+                new ObjectParameter("LocationID", locationID) :
+                new ObjectParameter("LocationID", typeof(int));
     
             var dateParameter = date.HasValue ?
                 new ObjectParameter("Date", date) :
                 new ObjectParameter("Date", typeof(System.DateTime));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_GetLocationsV3_CAPI_Result>("sp_GetLocationsV3_CAPI", pageNumberParameter, pageSizeParameter, paramTable1Parameter, dateParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_GetLocationsV3_CAPI_Result>("sp_GetLocationsV3_CAPI", locationIDParameter, dateParameter);
         }
     
         public virtual ObjectResult<sp_GetNotifications_Result> sp_GetNotifications(Nullable<int> locationID, Nullable<int> recordCount)

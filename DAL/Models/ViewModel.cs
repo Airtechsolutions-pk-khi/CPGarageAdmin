@@ -99,6 +99,8 @@ namespace DAL.Models
 		public string VATNO { get; set; }
 		public Nullable<double> Tax { get; set; }
 		public bool IsSMSActivate { get; set; }
+		public bool IsGarageGo { get; set; }
+		public bool IsCashier { get; set; }
 		public bool AllowNegativeInventory { get; set; }
 		public bool IsOdoo { get; set; }
 

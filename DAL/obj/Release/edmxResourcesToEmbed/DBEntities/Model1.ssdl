@@ -1404,6 +1404,8 @@
     <Property Name="AllowNegativeInventory" Type="bit" />
     <Property Name="IsOdoo" Type="bit" />
     <Property Name="IsAccountingAddons" Type="bit" />
+    <Property Name="IsGarageGo" Type="bit" />
+    <Property Name="IsCashier" Type="bit" />
   </EntityType>
   <EntityType Name="ZatcaAuthentication">
     <Key>
@@ -3231,9 +3233,7 @@
     <Parameter Name="Date" Type="datetime" Mode="In" />
   </Function>
   <Function Name="sp_GetLocationsV3_CAPI" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="PageNumber" Type="int" Mode="In" />
-    <Parameter Name="PageSize" Type="int" Mode="In" />
-    <Parameter Name="ParamTable1" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="LocationID" Type="int" Mode="In" />
     <Parameter Name="Date" Type="datetime" Mode="In" />
   </Function>
   <Function Name="sp_GetNotifications" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">

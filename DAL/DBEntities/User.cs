@@ -71,6 +71,8 @@ namespace DAL.DBEntities
         public Nullable<bool> AllowNegativeInventory { get; set; }
         public Nullable<bool> IsOdoo { get; set; }
         public Nullable<bool> IsAccountingAddons { get; set; }
+        public Nullable<bool> IsGarageGo { get; set; }
+        public Nullable<bool> IsCashier { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AppSource> AppSources { get; set; }

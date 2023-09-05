@@ -109,7 +109,6 @@ namespace DAL.DBEntities
         public virtual Location Location1 { get; set; }
         public virtual Status Status { get; set; }
         public virtual TimeZone TimeZone { get; set; }
-        public virtual User User { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<LocationServiceJunc> LocationServiceJuncs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -134,5 +133,6 @@ namespace DAL.DBEntities
         public virtual ICollection<SubUser> SubUsers { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SubUser> SubUsers1 { get; set; }
+        public virtual User User { get; set; }
     }
 }

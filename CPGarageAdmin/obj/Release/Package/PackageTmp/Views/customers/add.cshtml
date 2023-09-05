@@ -227,32 +227,34 @@
                         <div class="form-group">
                             <label for="exampleInputPassword4">Expiry Date</label>
                             <input class="form-control" name="ExpiryDate" type="date" id="expdate" />
-                            @*@Html.TextBoxFor(model => model.ExpiryDate, new { @class = "form-control", @Name = "ExpiryDate", @type = "text", @id = "expdate", @readonly = "readonly" })*@
                         </div>
-                        <div class="form-group">
-                            @*<label class="card-title">SMS Activation</label>*@
-                            @*<div class="form-check" style="margin-left:20px">
-                                    @Html.CheckBoxFor(model => model.IsSMSActivate, new { @class = "form-check-input", placeholder = "", @for = "exampleCheck1" })
-                                    <label class="form-check-label" for="exampleCheck1">SMS Activation</label>
-                                </div>*@
-                            <div class="custom-control custom-switch custom-switch-md">
-                                @Html.CheckBoxFor(model => model.IsSMSActivate, new { @class = "custom-control-input", placeholder = "", @for = "IsSMSActivate" })
-                                <label class="custom-control-label form-check-label" for="IsSMSActivate" style=" padding-top: 4px !important; padding-left: 14px;">SMS Activation</label>
+                        <div class="form-row">
+                            <div class="col-md-6">
+                                <div class="custom-control custom-switch custom-switch-md">
+                                    @Html.CheckBoxFor(model => model.IsSMSActivate, new { @class = "custom-control-input", placeholder = "", @for = "IsSMSActivate" })
+                                    <label class="custom-control-label form-check-label" for="IsSMSActivate" style=" padding-top: 4px !important; padding-left: 14px;">SMS Activation</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="custom-control custom-switch custom-switch-md">
+                                    @Html.CheckBoxFor(model => model.IsAccountingAddons, new { @class = "custom-control-input", placeholder = "", @for = "IsAccountingAddons" })
+                                    <label class="custom-control-label form-check-label" for="IsAccountingAddons" style=" padding-top: 4px !important; padding-left: 14px;">Is Accounting Addons</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="custom-control custom-switch custom-switch-md">
+                                    @Html.CheckBoxFor(model => model.IsGarageGo, new { @class = "custom-control-input", placeholder = "", @for = "IsGarageGo" })
+                                    <label class="custom-control-label form-check-label" for="IsGarageGo" style=" padding-top: 4px !important; padding-left: 14px;">Is Garage GO</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="custom-control custom-switch custom-switch-md">
+                                    @Html.CheckBoxFor(model => model.IsCashier, new { @class = "custom-control-input", placeholder = "", @for = "IsCashier" })
+                                    <label class="custom-control-label form-check-label" for="IsCashier" style=" padding-top: 4px !important; padding-left: 14px;">Is Cashier</label>
+                                </div>
                             </div>
                         </div>
                         <div class="form-group">
-                            <div class="custom-control custom-switch custom-switch-md">
-                                @Html.CheckBoxFor(model => model.IsAccountingAddons, new { @class = "custom-control-input", placeholder = "", @for = "IsAccountingAddons" })
-                                <label class="custom-control-label form-check-label" for="IsAccountingAddons" style=" padding-top: 4px !important; padding-left: 14px;">Is Accounting Addons</label>
-                            </div>
-                            @*<label class="card-title">Is Accounting Addon</label>*@
-                            @*<div class="form-check" style="margin-left:20px">
-                                    @Html.CheckBoxFor(model => model.IsAccountingAddons, new { @class = "form-check-input", placeholder = "", @for = "exampleCheck2" })
-                                    <label class="form-check-label" for="exampleCheck1">Is Accounting Addons</label>
-                                </div>*@
-                        </div>
-                        <div class="form-group">
-                            @*<label class="card-title">Activation Status</label>*@
                             <div class="custom-control custom-switch custom-switch-md">
                                 @Html.CheckBoxFor(model => model.StatusID, new { @class = "custom-control-input", placeholder = "", @for = "StatusID", @checked = "checked" })
                                 <label class="custom-control-label form-check-label" for="StatusID" style=" padding-top: 4px !important; padding-left: 14px;"> Activation Status</label>

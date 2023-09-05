@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Garage_UATModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Garage_UATModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Activities">
           <Key>
             <PropertyRef Name="ActivityID" />
@@ -1409,6 +1409,8 @@
           <Property Name="AllowNegativeInventory" Type="bit" />
           <Property Name="IsOdoo" Type="bit" />
           <Property Name="IsAccountingAddons" Type="bit" />
+          <Property Name="IsGarageGo" Type="bit" />
+          <Property Name="IsCashier" Type="bit" />
         </EntityType>
         <EntityType Name="ZatcaAuthentication">
           <Key>
@@ -3236,9 +3238,7 @@
           <Parameter Name="Date" Type="datetime" Mode="In" />
         </Function>
         <Function Name="sp_GetLocationsV3_CAPI" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="PageNumber" Type="int" Mode="In" />
-          <Parameter Name="PageSize" Type="int" Mode="In" />
-          <Parameter Name="ParamTable1" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="LocationID" Type="int" Mode="In" />
           <Parameter Name="Date" Type="datetime" Mode="In" />
         </Function>
         <Function Name="sp_GetNotifications" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
@@ -4314,8 +4314,7 @@
             <End Role="ZohoSettings" EntitySet="ZohoSettings" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Garage_UATModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -4347,7 +4346,7 @@
           <Property Name="UserID" Type="Int32" />
           <Property Name="LastUpdatedDate" Type="DateTime" Precision="3" />
           <Property Name="LastUpdatedBy" Type="String" MaxLength="70" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="User" Relationship="Self.FK_AppSource_Users" FromRole="AppSource" ToRole="Users" />
+          <NavigationProperty Name="User" Relationship="Garage_UATModel.FK_AppSource_Users" FromRole="AppSource" ToRole="User" />
         </EntityType>
         <EntityType Name="Bay">
           <Key>
@@ -4379,8 +4378,8 @@
           <Property Name="UserID" Type="Int32" Nullable="false" />
           <Property Name="LastUpdatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="LastUpdatedDate" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="User" Relationship="Self.FK_CarInspection_Users" FromRole="CarInspection" ToRole="Users" />
           <NavigationProperty Name="CarInspectionDetails" Relationship="Self.FK_CarInspectionDetails_CarInspection" FromRole="CarInspection" ToRole="CarInspectionDetails" />
+          <NavigationProperty Name="User" Relationship="Garage_UATModel.FK_CarInspection_Users" FromRole="CarInspection" ToRole="User" />
         </EntityType>
         <EntityType Name="CarInspectionDetail">
           <Key>
@@ -4468,8 +4467,8 @@
           <NavigationProperty Name="Customer" Relationship="Self.FK_Cars_Customers" FromRole="Cars" ToRole="Customers" />
           <NavigationProperty Name="Make" Relationship="Self.FK_Cars_Make" FromRole="Cars" ToRole="Make" />
           <NavigationProperty Name="Model" Relationship="Self.FK_Cars_Model" FromRole="Cars" ToRole="Model" />
-          <NavigationProperty Name="User" Relationship="Self.FK_Cars_Users" FromRole="Cars" ToRole="Users" />
           <NavigationProperty Name="Orders" Relationship="Self.FK_Orders_Cars" FromRole="Cars" ToRole="Orders" />
+          <NavigationProperty Name="User" Relationship="Garage_UATModel.FK_Cars_Users" FromRole="Car" ToRole="User" />
         </EntityType>
         <EntityType Name="Category">
           <Key>
@@ -4537,7 +4536,7 @@
           <Property Name="UserID" Type="Int32" Nullable="false" />
           <Property Name="LastUpdatedDate" Type="DateTime" Precision="3" />
           <Property Name="LastUpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="User" Relationship="Self.FK_CompanyClients_Users" FromRole="CompanyClients" ToRole="Users" />
+          <NavigationProperty Name="User" Relationship="Garage_UATModel.FK_CompanyClients_Users" FromRole="CompanyClient" ToRole="User" />
         </EntityType>
         <EntityType Name="CompanyInvoice">
           <Key>
@@ -4566,8 +4565,8 @@
           <Property Name="LastUpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Notes" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Name="Terms" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="User" Relationship="Self.FK_CompanyInvoice_Users" FromRole="CompanyInvoice" ToRole="Users" />
           <NavigationProperty Name="CompanyInvoiceDetails" Relationship="Self.FK_CompanyInvoiceDetail_CompanyInvoice" FromRole="CompanyInvoice" ToRole="CompanyInvoiceDetail" />
+          <NavigationProperty Name="User" Relationship="Garage_UATModel.FK_CompanyInvoice_Users" FromRole="CompanyInvoice" ToRole="User" />
         </EntityType>
         <EntityType Name="CompanyInvoiceDetail">
           <Key>
@@ -4615,8 +4614,8 @@
           <Property Name="LastUpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Notes" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Name="Terms" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="User" Relationship="Self.FK_CompanyQuotation_Users" FromRole="CompanyQuotation" ToRole="Users" />
           <NavigationProperty Name="CompanyQuotationDetails" Relationship="Self.FK_CompanyQuotationDetail_CompanyQuotation" FromRole="CompanyQuotation" ToRole="CompanyQuotationDetail" />
+          <NavigationProperty Name="User" Relationship="Garage_UATModel.FK_CompanyQuotation_Users" FromRole="CompanyQuotation" ToRole="User" />
         </EntityType>
         <EntityType Name="CompanyQuotationDetail">
           <Key>
@@ -4672,7 +4671,7 @@
           <Property Name="Curr_Code" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Locations" Relationship="Self.FK_Locations_Country" FromRole="Country" ToRole="Locations" />
           <NavigationProperty Name="SubUsers" Relationship="Self.FK_SubUsers_Country" FromRole="Country" ToRole="SubUsers" />
-          <NavigationProperty Name="Users" Relationship="Self.FK_Users_Country" FromRole="Country" ToRole="Users" />
+          <NavigationProperty Name="Users" Relationship="Garage_UATModel.FK_Users_Country" FromRole="Country" ToRole="User" />
         </EntityType>
         <EntityType Name="CreditCustomer">
           <Key>
@@ -4687,8 +4686,8 @@
           <Property Name="UserID" Type="Int32" />
           <Property Name="LastUpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="LastUpdatedDate" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="User" Relationship="Self.FK_CreditCustomer_Users" FromRole="CreditCustomer" ToRole="Users" />
           <NavigationProperty Name="OrderCheckouts" Relationship="Self.FK_OrderCheckout_CreditCustomer" FromRole="CreditCustomer" ToRole="OrderCheckout" />
+          <NavigationProperty Name="User" Relationship="Garage_UATModel.FK_CreditCustomer_Users" FromRole="CreditCustomer" ToRole="User" />
         </EntityType>
         <EntityType Name="Customer">
           <Key>
@@ -4783,7 +4782,7 @@
           <Property Name="StatusID" Type="Int32" />
           <Property Name="UserID" Type="Int32" />
           <Property Name="URL" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="User" Relationship="Self.FK_Integration_Users" FromRole="Integration" ToRole="Users" />
+          <NavigationProperty Name="User" Relationship="Garage_UATModel.FK_Integration_Users" FromRole="Integration" ToRole="User" />
         </EntityType>
         <EntityType Name="inv_Bill">
           <Key>
@@ -4937,8 +4936,8 @@
           <Property Name="StoreID" Type="Int32" Nullable="false" />
           <Property Name="UserID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Store" Relationship="Self.FK_inv_Stock_Stores" FromRole="inv_Stock" ToRole="Stores" />
-          <NavigationProperty Name="User" Relationship="Self.FK_inv_Stock_Users" FromRole="inv_Stock" ToRole="Users" />
           <NavigationProperty Name="Item" Relationship="Self.FK_Stock_Items" FromRole="inv_Stock" ToRole="Items" />
+          <NavigationProperty Name="User" Relationship="Garage_UATModel.FK_inv_Stock_Users" FromRole="inv_Stock" ToRole="User" />
         </EntityType>
         <EntityType Name="inv_StockIssue">
           <Key>
@@ -4960,8 +4959,8 @@
           <NavigationProperty Name="inv_StockRequest" Relationship="Self.FK_inv_StockIssue_inv_StockRequest" FromRole="inv_StockIssue" ToRole="inv_StockRequest" />
           <NavigationProperty Name="Store" Relationship="Self.FK_inv_StockIssue_Stores" FromRole="inv_StockIssue" ToRole="Stores" />
           <NavigationProperty Name="Store1" Relationship="Self.FK_inv_StockIssue_Stores1" FromRole="inv_StockIssue" ToRole="Stores" />
-          <NavigationProperty Name="User" Relationship="Self.FK_inv_StockIssue_Users" FromRole="inv_StockIssue" ToRole="Users" />
           <NavigationProperty Name="inv_StockIssueDetail" Relationship="Self.FK_inv_StockIssueDetail_inv_StockIssue" FromRole="inv_StockIssue" ToRole="inv_StockIssueDetail" />
+          <NavigationProperty Name="User" Relationship="Garage_UATModel.FK_inv_StockIssue_Users" FromRole="inv_StockIssue" ToRole="User" />
         </EntityType>
         <EntityType Name="inv_StockIssueDetail">
           <Key>
@@ -5039,7 +5038,7 @@
           <Property Name="UserID" Type="Int32" />
           <NavigationProperty Name="Inventory" Relationship="Self.FK_inv_StockStore_Inventory" FromRole="inv_StockStore" ToRole="Inventory" />
           <NavigationProperty Name="Store" Relationship="Self.FK_inv_StockStore_Stores" FromRole="inv_StockStore" ToRole="Stores" />
-          <NavigationProperty Name="User" Relationship="Self.FK_inv_StockStore_Users" FromRole="inv_StockStore" ToRole="Users" />
+          <NavigationProperty Name="User" Relationship="Garage_UATModel.FK_inv_StockStore_Users" FromRole="inv_StockStore" ToRole="User" />
         </EntityType>
         <EntityType Name="Inventory">
           <Key>
@@ -5122,8 +5121,8 @@
           <Property Name="LastUpdatedDate" Type="DateTime" Precision="3" />
           <Property Name="StatusID" Type="Int32" />
           <NavigationProperty Name="Status" Relationship="Self.FK_Licenses_Status" FromRole="Licenses" ToRole="Status" />
-          <NavigationProperty Name="User" Relationship="Self.FK_Licenses_Users" FromRole="Licenses" ToRole="Users" />
           <NavigationProperty Name="Locations" Relationship="Self.FK_Locations_Licenses" FromRole="Licenses" ToRole="Locations" />
+          <NavigationProperty Name="User" Relationship="Garage_UATModel.FK_Licenses_Users" FromRole="License" ToRole="User" />
         </EntityType>
         <EntityType Name="LocationAmenitiesJunc">
           <Key>
@@ -5205,7 +5204,6 @@
           <NavigationProperty Name="Location1" Relationship="Self.FK_Locations_Locations" FromRole="Locations1" ToRole="Locations" />
           <NavigationProperty Name="Status" Relationship="Self.FK_Locations_Status" FromRole="Locations" ToRole="Status" />
           <NavigationProperty Name="TimeZone" Relationship="Self.FK_Locations_TimeZone" FromRole="Locations" ToRole="TimeZone" />
-          <NavigationProperty Name="User" Relationship="Self.FK_Locations_Users" FromRole="Locations" ToRole="Users" />
           <NavigationProperty Name="LocationServiceJuncs" Relationship="Self.FK_LocationServiceJunc_Locations" FromRole="Locations" ToRole="LocationServiceJunc" />
           <NavigationProperty Name="Modifiers" Relationship="Self.FK_Modifiers_Locations" FromRole="Locations" ToRole="Modifiers" />
           <NavigationProperty Name="OrderCheckouts" Relationship="Self.FK_OrderCheckout_Locations" FromRole="Locations" ToRole="OrderCheckout" />
@@ -5218,6 +5216,7 @@
           <NavigationProperty Name="Stores" Relationship="Self.FK_Stores_Locations" FromRole="Locations" ToRole="Stores" />
           <NavigationProperty Name="SubUsers" Relationship="Self.FK_SubUsers_Locations" FromRole="Locations" ToRole="SubUsers" />
           <NavigationProperty Name="SubUsers1" Relationship="Self.SubUserLocations" FromRole="Locations" ToRole="SubUsers" />
+          <NavigationProperty Name="User" Relationship="Garage_UATModel.FK_Locations_Users" FromRole="Location" ToRole="User" />
         </EntityType>
         <EntityType Name="LocationServiceJunc">
           <Key>
@@ -5539,7 +5538,7 @@
           <NavigationProperty Name="OrderDetails" Relationship="Self.FK_OrderDetail_Packages" FromRole="Packages" ToRole="OrderDetail" />
           <NavigationProperty Name="PackageDetails" Relationship="Self.FK_PackageDetails_Packages" FromRole="Packages" ToRole="PackageDetails" />
           <NavigationProperty Name="SubCategory" Relationship="Self.FK_Packages_SubCategory" FromRole="Packages" ToRole="SubCategory" />
-          <NavigationProperty Name="User" Relationship="Self.FK_Packages_Users" FromRole="Packages" ToRole="Users" />
+          <NavigationProperty Name="User" Relationship="Garage_UATModel.FK_Packages_Users" FromRole="Package" ToRole="User" />
         </EntityType>
         <EntityType Name="PackagesInfo">
           <Key>
@@ -5559,7 +5558,7 @@
           <Property Name="CreatedDate" Type="DateTime" Precision="3" />
           <Property Name="LastUpdatedDate" Type="DateTime" Precision="3" />
           <NavigationProperty Name="UserPackageDetails" Relationship="Self.FK_UserPackageDetails_PackagesInfo" FromRole="PackagesInfo" ToRole="UserPackageDetails" />
-          <NavigationProperty Name="Users" Relationship="Self.FK_Users_PackagesInfo" FromRole="PackagesInfo" ToRole="Users" />
+          <NavigationProperty Name="Users" Relationship="Garage_UATModel.FK_Users_PackagesInfo" FromRole="PackagesInfo" ToRole="User" />
         </EntityType>
         <EntityType Name="PaymentDetail">
           <Key>
@@ -5664,9 +5663,9 @@
           <Property Name="LastUpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="StatusID" Type="Int32" />
           <Property Name="UserID" Type="Int32" />
-          <NavigationProperty Name="User" Relationship="Self.FK_Role_Group_Users" FromRole="Role_Group" ToRole="Users" />
           <NavigationProperty Name="Role_GroupForms" Relationship="Self.FK_Role_GroupForms_Role_Group" FromRole="Role_Group" ToRole="Role_GroupForms" />
           <NavigationProperty Name="SubUsers" Relationship="Self.FK_SubUsers_Role_Group" FromRole="Role_Group" ToRole="SubUsers" />
+          <NavigationProperty Name="User" Relationship="Garage_UATModel.FK_Role_Group_Users" FromRole="Role_Group" ToRole="User" />
         </EntityType>
         <EntityType Name="Role_GroupForms">
           <Key>
@@ -5746,7 +5745,7 @@
           <NavigationProperty Name="Locations" Relationship="Self.FK_Locations_Status" FromRole="Status" ToRole="Locations" />
           <NavigationProperty Name="SubCategories" Relationship="Self.FK_SubCategory_Status" FromRole="Status" ToRole="SubCategory" />
           <NavigationProperty Name="SubUsers" Relationship="Self.FK_SubUsers_Status" FromRole="Status" ToRole="SubUsers" />
-          <NavigationProperty Name="Users" Relationship="Self.FK_Users_Status" FromRole="Status" ToRole="Users" />
+          <NavigationProperty Name="Users" Relationship="Garage_UATModel.FK_Users_Status" FromRole="Status" ToRole="User" />
         </EntityType>
         <EntityType Name="Store">
           <Key>
@@ -5836,8 +5835,8 @@
           <NavigationProperty Name="Role_Group" Relationship="Self.FK_SubUsers_Role_Group" FromRole="SubUsers" ToRole="Role_Group" />
           <NavigationProperty Name="SessionInfoes" Relationship="Self.FK_SessionInfo_SubUsers" FromRole="SubUsers" ToRole="SessionInfo" />
           <NavigationProperty Name="Status" Relationship="Self.FK_SubUsers_Status" FromRole="SubUsers" ToRole="Status" />
-          <NavigationProperty Name="User" Relationship="Self.FK_SubUsers_Users" FromRole="SubUsers" ToRole="Users" />
           <NavigationProperty Name="Locations" Relationship="Self.SubUserLocations" FromRole="SubUsers" ToRole="Locations" />
+          <NavigationProperty Name="User" Relationship="Garage_UATModel.FK_SubUsers_Users" FromRole="SubUser" ToRole="User" />
         </EntityType>
         <EntityType Name="Supplier">
           <Key>
@@ -5862,7 +5861,7 @@
           <NavigationProperty Name="inv_Bill" Relationship="Self.FK_inv_Bill_Supplier" FromRole="Supplier" ToRole="inv_Bill" />
           <NavigationProperty Name="inv_PurchaseOrder" Relationship="Self.FK_PurchaseOrder_Supplier" FromRole="Supplier" ToRole="inv_PurchaseOrder" />
           <NavigationProperty Name="Inventories" Relationship="Self.FK_Inventory_Supplier" FromRole="Supplier" ToRole="Inventory" />
-          <NavigationProperty Name="User" Relationship="Self.FK_Supplier_Users" FromRole="Supplier" ToRole="Users" />
+          <NavigationProperty Name="User" Relationship="Garage_UATModel.FK_Supplier_Users" FromRole="Supplier" ToRole="User" />
         </EntityType>
         <EntityType Name="sysdiagram">
           <Key>
@@ -5884,7 +5883,7 @@
           <Property Name="DisplayName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="StatusID" Type="Int32" />
           <NavigationProperty Name="Locations" Relationship="Self.FK_Locations_TimeZone" FromRole="TimeZone" ToRole="Locations" />
-          <NavigationProperty Name="Users" Relationship="Self.FK_Users_TimeZone" FromRole="TimeZone" ToRole="Users" />
+          <NavigationProperty Name="Users" Relationship="Garage_UATModel.FK_Users_TimeZone" FromRole="TimeZone" ToRole="User" />
         </EntityType>
         <EntityType Name="Unit">
           <Key>
@@ -5918,68 +5917,7 @@
           <NavigationProperty Name="PackagesInfo" Relationship="Self.FK_UserPackageDetails_PackagesInfo" FromRole="UserPackageDetails" ToRole="PackagesInfo" />
           <NavigationProperty Name="UserPackageDetails1" Relationship="Self.FK_UserPackageDetails_UserPackageDetails" FromRole="UserPackageDetails" ToRole="UserPackageDetails1" />
           <NavigationProperty Name="UserPackageDetail1" Relationship="Self.FK_UserPackageDetails_UserPackageDetails" FromRole="UserPackageDetails1" ToRole="UserPackageDetails" />
-          <NavigationProperty Name="User" Relationship="Self.FK_UserPackageDetails_Users" FromRole="UserPackageDetails" ToRole="Users" />
-        </EntityType>
-        <EntityType Name="User">
-          <Key>
-            <PropertyRef Name="UserID" />
-          </Key>
-          <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="RowID" Type="Int32" Nullable="false" />
-          <Property Name="PackageInfoID" Type="Int32" />
-          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="ImagePath" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Company" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="BusinessType" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="Email" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="ContactNo" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
-          <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="CityID" Type="Int32" />
-          <Property Name="CountryID" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
-          <Property Name="Website" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="Subscribe" Type="Boolean" />
-          <Property Name="RoleID" Type="Int32" />
-          <Property Name="TimeZoneID" Type="Int32" />
-          <Property Name="LastUpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="LastUpdatedDate" Type="DateTime" Precision="3" />
-          <Property Name="StatusID" Type="Int32" />
-          <Property Name="CompanyCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
-          <Property Name="States" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-          <Property Name="Zipcode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="VATNO" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-          <Property Name="Tax" Type="Double" />
-          <Property Name="IsSMSCheckoutAddOn" Type="Boolean" />
-          <Property Name="AllowNegativeInventory" Type="Boolean" />
-          <Property Name="IsOdoo" Type="Boolean" />
-          <Property Name="IsAccountingAddons" Type="Boolean" />
-          <NavigationProperty Name="AppSources" Relationship="Self.FK_AppSource_Users" FromRole="Users" ToRole="AppSource" />
-          <NavigationProperty Name="CarInspections" Relationship="Self.FK_CarInspection_Users" FromRole="Users" ToRole="CarInspection" />
-          <NavigationProperty Name="Cars" Relationship="Self.FK_Cars_Users" FromRole="Users" ToRole="Cars" />
-          <NavigationProperty Name="CompanyClients" Relationship="Self.FK_CompanyClients_Users" FromRole="Users" ToRole="CompanyClients" />
-          <NavigationProperty Name="CompanyInvoices" Relationship="Self.FK_CompanyInvoice_Users" FromRole="Users" ToRole="CompanyInvoice" />
-          <NavigationProperty Name="CompanyQuotations" Relationship="Self.FK_CompanyQuotation_Users" FromRole="Users" ToRole="CompanyQuotation" />
-          <NavigationProperty Name="Country" Relationship="Self.FK_Users_Country" FromRole="Users" ToRole="Country" />
-          <NavigationProperty Name="CreditCustomers" Relationship="Self.FK_CreditCustomer_Users" FromRole="Users" ToRole="CreditCustomer" />
-          <NavigationProperty Name="Integrations" Relationship="Self.FK_Integration_Users" FromRole="Users" ToRole="Integration" />
-          <NavigationProperty Name="inv_Stock" Relationship="Self.FK_inv_Stock_Users" FromRole="Users" ToRole="inv_Stock" />
-          <NavigationProperty Name="inv_StockIssue" Relationship="Self.FK_inv_StockIssue_Users" FromRole="Users" ToRole="inv_StockIssue" />
-          <NavigationProperty Name="inv_StockStore" Relationship="Self.FK_inv_StockStore_Users" FromRole="Users" ToRole="inv_StockStore" />
-          <NavigationProperty Name="Licenses" Relationship="Self.FK_Licenses_Users" FromRole="Users" ToRole="Licenses" />
-          <NavigationProperty Name="Locations" Relationship="Self.FK_Locations_Users" FromRole="Users" ToRole="Locations" />
-          <NavigationProperty Name="Packages" Relationship="Self.FK_Packages_Users" FromRole="Users" ToRole="Packages" />
-          <NavigationProperty Name="PackagesInfo" Relationship="Self.FK_Users_PackagesInfo" FromRole="Users" ToRole="PackagesInfo" />
-          <NavigationProperty Name="Role_Group" Relationship="Self.FK_Role_Group_Users" FromRole="Users" ToRole="Role_Group" />
-          <NavigationProperty Name="Status" Relationship="Self.FK_Users_Status" FromRole="Users" ToRole="Status" />
-          <NavigationProperty Name="SubUsers" Relationship="Self.FK_SubUsers_Users" FromRole="Users" ToRole="SubUsers" />
-          <NavigationProperty Name="Suppliers" Relationship="Self.FK_Supplier_Users" FromRole="Users" ToRole="Supplier" />
-          <NavigationProperty Name="TimeZone" Relationship="Self.FK_Users_TimeZone" FromRole="Users" ToRole="TimeZone" />
-          <NavigationProperty Name="UserPackageDetails" Relationship="Self.FK_UserPackageDetails_Users" FromRole="Users" ToRole="UserPackageDetails" />
-          <NavigationProperty Name="ZohoChartOfAccounts" Relationship="Self.FK_ZohoChartOfAccounts_Users" FromRole="Users" ToRole="ZohoChartOfAccounts" />
-          <NavigationProperty Name="ZohoSettings" Relationship="Self.FK_ZohoSettings_Users" FromRole="Users" ToRole="ZohoSettings" />
+          <NavigationProperty Name="User" Relationship="Garage_UATModel.FK_UserPackageDetails_Users" FromRole="UserPackageDetail" ToRole="User" />
         </EntityType>
         <EntityType Name="ZatcaAuthentication">
           <Key>
@@ -6007,7 +5945,7 @@
           <Property Name="UserID" Type="Int32" Nullable="false" />
           <Property Name="LastUpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="LastUpdatedDate" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="User" Relationship="Self.FK_ZohoChartOfAccounts_Users" FromRole="ZohoChartOfAccounts" ToRole="Users" />
+          <NavigationProperty Name="User" Relationship="Garage_UATModel.FK_ZohoChartOfAccounts_Users" FromRole="ZohoChartOfAccount" ToRole="User" />
         </EntityType>
         <EntityType Name="ZohoCOAMapping">
           <Key>
@@ -6038,20 +5976,8 @@
           <Property Name="LastUpdatedDate" Type="DateTime" Precision="3" />
           <Property Name="LastUpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="CreatedOn" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="User" Relationship="Self.FK_ZohoSettings_Users" FromRole="ZohoSettings" ToRole="Users" />
+          <NavigationProperty Name="User" Relationship="Garage_UATModel.FK_ZohoSettings_Users" FromRole="ZohoSetting" ToRole="User" />
         </EntityType>
-        <Association Name="FK_AppSource_Users">
-          <End Role="Users" Type="Self.User" Multiplicity="0..1" />
-          <End Role="AppSource" Type="Self.AppSource" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="UserID" />
-            </Principal>
-            <Dependent Role="AppSource">
-              <PropertyRef Name="UserID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Bay_Locations">
           <End Role="Locations" Type="Self.Location" Multiplicity="1" />
           <End Role="Bay" Type="Self.Bay" Multiplicity="*" />
@@ -6073,18 +5999,6 @@
             </Principal>
             <Dependent Role="Orders">
               <PropertyRef Name="BayID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_CarInspection_Users">
-          <End Role="Users" Type="Self.User" Multiplicity="1" />
-          <End Role="CarInspection" Type="Self.CarInspection" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="UserID" />
-            </Principal>
-            <Dependent Role="CarInspection">
-              <PropertyRef Name="UserID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -6184,18 +6098,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Cars_Users">
-          <End Role="Users" Type="Self.User" Multiplicity="1" />
-          <End Role="Cars" Type="Self.Car" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="UserID" />
-            </Principal>
-            <Dependent Role="Cars">
-              <PropertyRef Name="UserID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Orders_Cars">
           <End Role="Cars" Type="Self.Car" Multiplicity="0..1" />
           <End Role="Orders" Type="Self.Order" Multiplicity="*" />
@@ -6256,30 +6158,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_CompanyClients_Users">
-          <End Role="Users" Type="Self.User" Multiplicity="1" />
-          <End Role="CompanyClients" Type="Self.CompanyClient" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="UserID" />
-            </Principal>
-            <Dependent Role="CompanyClients">
-              <PropertyRef Name="UserID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_CompanyInvoice_Users">
-          <End Role="Users" Type="Self.User" Multiplicity="0..1" />
-          <End Role="CompanyInvoice" Type="Self.CompanyInvoice" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="UserID" />
-            </Principal>
-            <Dependent Role="CompanyInvoice">
-              <PropertyRef Name="UserID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_CompanyInvoiceDetail_CompanyInvoice">
           <End Role="CompanyInvoice" Type="Self.CompanyInvoice" Multiplicity="0..1" />
           <End Role="CompanyInvoiceDetail" Type="Self.CompanyInvoiceDetail" Multiplicity="*" />
@@ -6289,18 +6167,6 @@
             </Principal>
             <Dependent Role="CompanyInvoiceDetail">
               <PropertyRef Name="CompanyInvoiceID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_CompanyQuotation_Users">
-          <End Role="Users" Type="Self.User" Multiplicity="0..1" />
-          <End Role="CompanyQuotation" Type="Self.CompanyQuotation" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="UserID" />
-            </Principal>
-            <Dependent Role="CompanyQuotation">
-              <PropertyRef Name="UserID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -6337,30 +6203,6 @@
             </Principal>
             <Dependent Role="SubUsers">
               <PropertyRef Name="CountryID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Users_Country">
-          <End Role="Country" Type="Self.Country" Multiplicity="0..1" />
-          <End Role="Users" Type="Self.User" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Country">
-              <PropertyRef Name="Code" />
-            </Principal>
-            <Dependent Role="Users">
-              <PropertyRef Name="CountryID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_CreditCustomer_Users">
-          <End Role="Users" Type="Self.User" Multiplicity="0..1" />
-          <End Role="CreditCustomer" Type="Self.CreditCustomer" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="UserID" />
-            </Principal>
-            <Dependent Role="CreditCustomer">
-              <PropertyRef Name="UserID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -6433,18 +6275,6 @@
             </Principal>
             <Dependent Role="DiscountItems">
               <PropertyRef Name="SubCategoryID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Integration_Users">
-          <End Role="Users" Type="Self.User" Multiplicity="0..1" />
-          <End Role="Integration" Type="Self.Integration" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="UserID" />
-            </Principal>
-            <Dependent Role="Integration">
-              <PropertyRef Name="UserID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -6628,18 +6458,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_inv_Stock_Users">
-          <End Role="Users" Type="Self.User" Multiplicity="1" />
-          <End Role="inv_Stock" Type="Self.inv_Stock" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="UserID" />
-            </Principal>
-            <Dependent Role="inv_Stock">
-              <PropertyRef Name="UserID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Stock_Items">
           <End Role="Items" Type="Self.Item" Multiplicity="0..1" />
           <End Role="inv_Stock" Type="Self.inv_Stock" Multiplicity="*" />
@@ -6685,18 +6503,6 @@
             </Principal>
             <Dependent Role="inv_StockIssue">
               <PropertyRef Name="ToStoreID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_inv_StockIssue_Users">
-          <End Role="Users" Type="Self.User" Multiplicity="1" />
-          <End Role="inv_StockIssue" Type="Self.inv_StockIssue" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="UserID" />
-            </Principal>
-            <Dependent Role="inv_StockIssue">
-              <PropertyRef Name="UserID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -6817,18 +6623,6 @@
             </Principal>
             <Dependent Role="inv_StockStore">
               <PropertyRef Name="StoreID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_inv_StockStore_Users">
-          <End Role="Users" Type="Self.User" Multiplicity="0..1" />
-          <End Role="inv_StockStore" Type="Self.inv_StockStore" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="UserID" />
-            </Principal>
-            <Dependent Role="inv_StockStore">
-              <PropertyRef Name="UserID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -6964,18 +6758,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Licenses_Users">
-          <End Role="Users" Type="Self.User" Multiplicity="0..1" />
-          <End Role="Licenses" Type="Self.License" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="UserID" />
-            </Principal>
-            <Dependent Role="Licenses">
-              <PropertyRef Name="UserID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Locations_Licenses">
           <End Role="Licenses" Type="Self.License" Multiplicity="0..1" />
           <End Role="Locations" Type="Self.Location" Multiplicity="*" />
@@ -7045,18 +6827,6 @@
             </Principal>
             <Dependent Role="Locations">
               <PropertyRef Name="TimeZoneID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Locations_Users">
-          <End Role="Users" Type="Self.User" Multiplicity="1" />
-          <End Role="Locations" Type="Self.Location" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="UserID" />
-            </Principal>
-            <Dependent Role="Locations">
-              <PropertyRef Name="UserID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -7396,18 +7166,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Packages_Users">
-          <End Role="Users" Type="Self.User" Multiplicity="0..1" />
-          <End Role="Packages" Type="Self.Package" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="UserID" />
-            </Principal>
-            <Dependent Role="Packages">
-              <PropertyRef Name="UserID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_UserPackageDetails_PackagesInfo">
           <End Role="PackagesInfo" Type="Self.PackagesInfo" Multiplicity="0..1" />
           <End Role="UserPackageDetails" Type="Self.UserPackageDetail" Multiplicity="*" />
@@ -7416,18 +7174,6 @@
               <PropertyRef Name="PackageInfoID" />
             </Principal>
             <Dependent Role="UserPackageDetails">
-              <PropertyRef Name="PackageInfoID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Users_PackagesInfo">
-          <End Role="PackagesInfo" Type="Self.PackagesInfo" Multiplicity="0..1" />
-          <End Role="Users" Type="Self.User" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PackagesInfo">
-              <PropertyRef Name="PackageInfoID" />
-            </Principal>
-            <Dependent Role="Users">
               <PropertyRef Name="PackageInfoID" />
             </Dependent>
           </ReferentialConstraint>
@@ -7441,18 +7187,6 @@
             </Principal>
             <Dependent Role="Role_GroupForms">
               <PropertyRef Name="FormID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Role_Group_Users">
-          <End Role="Users" Type="Self.User" Multiplicity="0..1" />
-          <End Role="Role_Group" Type="Self.Role_Group" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="UserID" />
-            </Principal>
-            <Dependent Role="Role_Group">
-              <PropertyRef Name="UserID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -7516,54 +7250,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Users_Status">
-          <End Role="Status" Type="Self.Status" Multiplicity="0..1" />
-          <End Role="Users" Type="Self.User" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Status">
-              <PropertyRef Name="RowID" />
-            </Principal>
-            <Dependent Role="Users">
-              <PropertyRef Name="StatusID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_SubUsers_Users">
-          <End Role="Users" Type="Self.User" Multiplicity="1" />
-          <End Role="SubUsers" Type="Self.SubUser" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="UserID" />
-            </Principal>
-            <Dependent Role="SubUsers">
-              <PropertyRef Name="UserID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Supplier_Users">
-          <End Role="Users" Type="Self.User" Multiplicity="0..1" />
-          <End Role="Supplier" Type="Self.Supplier" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="UserID" />
-            </Principal>
-            <Dependent Role="Supplier">
-              <PropertyRef Name="UserID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Users_TimeZone">
-          <End Role="TimeZone" Type="Self.TimeZone" Multiplicity="0..1" />
-          <End Role="Users" Type="Self.User" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TimeZone">
-              <PropertyRef Name="TimeZoneID" />
-            </Principal>
-            <Dependent Role="Users">
-              <PropertyRef Name="TimeZoneID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_UserPackageDetails_UserPackageDetails">
           <End Role="UserPackageDetails" Type="Self.UserPackageDetail" Multiplicity="1" />
           <End Role="UserPackageDetails1" Type="Self.UserPackageDetail" Multiplicity="0..1" />
@@ -7573,42 +7259,6 @@
             </Principal>
             <Dependent Role="UserPackageDetails1">
               <PropertyRef Name="UserPackageDetailID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_UserPackageDetails_Users">
-          <End Role="Users" Type="Self.User" Multiplicity="0..1" />
-          <End Role="UserPackageDetails" Type="Self.UserPackageDetail" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="UserID" />
-            </Principal>
-            <Dependent Role="UserPackageDetails">
-              <PropertyRef Name="UserID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ZohoChartOfAccounts_Users">
-          <End Role="Users" Type="Self.User" Multiplicity="1" />
-          <End Role="ZohoChartOfAccounts" Type="Self.ZohoChartOfAccount" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="UserID" />
-            </Principal>
-            <Dependent Role="ZohoChartOfAccounts">
-              <PropertyRef Name="UserID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ZohoSettings_Users">
-          <End Role="Users" Type="Self.User" Multiplicity="1" />
-          <End Role="ZohoSettings" Type="Self.ZohoSetting" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="UserID" />
-            </Principal>
-            <Dependent Role="ZohoSettings">
-              <PropertyRef Name="UserID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -7693,15 +7343,10 @@
           <EntitySet Name="TimeZones" EntityType="Self.TimeZone" />
           <EntitySet Name="Units" EntityType="Self.Unit" />
           <EntitySet Name="UserPackageDetails" EntityType="Self.UserPackageDetail" />
-          <EntitySet Name="Users" EntityType="Self.User" />
           <EntitySet Name="ZatcaAuthentications" EntityType="Self.ZatcaAuthentication" />
           <EntitySet Name="ZohoChartOfAccounts" EntityType="Self.ZohoChartOfAccount" />
           <EntitySet Name="ZohoCOAMappings" EntityType="Self.ZohoCOAMapping" />
           <EntitySet Name="ZohoSettings" EntityType="Self.ZohoSetting" />
-          <AssociationSet Name="FK_AppSource_Users" Association="Self.FK_AppSource_Users">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="AppSource" EntitySet="AppSources" />
-          </AssociationSet>
           <AssociationSet Name="FK_Bay_Locations" Association="Self.FK_Bay_Locations">
             <End Role="Locations" EntitySet="Locations" />
             <End Role="Bay" EntitySet="Bays" />
@@ -7709,10 +7354,6 @@
           <AssociationSet Name="FK_Orders_Bay" Association="Self.FK_Orders_Bay">
             <End Role="Bay" EntitySet="Bays" />
             <End Role="Orders" EntitySet="Orders" />
-          </AssociationSet>
-          <AssociationSet Name="FK_CarInspection_Users" Association="Self.FK_CarInspection_Users">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="CarInspection" EntitySet="CarInspections" />
           </AssociationSet>
           <AssociationSet Name="FK_CarInspectionDetails_CarInspection" Association="Self.FK_CarInspectionDetails_CarInspection">
             <End Role="CarInspection" EntitySet="CarInspections" />
@@ -7746,10 +7387,6 @@
             <End Role="Model" EntitySet="Models" />
             <End Role="Cars" EntitySet="Cars" />
           </AssociationSet>
-          <AssociationSet Name="FK_Cars_Users" Association="Self.FK_Cars_Users">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="Cars" EntitySet="Cars" />
-          </AssociationSet>
           <AssociationSet Name="FK_Orders_Cars" Association="Self.FK_Orders_Cars">
             <End Role="Cars" EntitySet="Cars" />
             <End Role="Orders" EntitySet="Orders" />
@@ -7770,21 +7407,9 @@
             <End Role="Category" EntitySet="Categories" />
             <End Role="SubCategory" EntitySet="SubCategories" />
           </AssociationSet>
-          <AssociationSet Name="FK_CompanyClients_Users" Association="Self.FK_CompanyClients_Users">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="CompanyClients" EntitySet="CompanyClients" />
-          </AssociationSet>
-          <AssociationSet Name="FK_CompanyInvoice_Users" Association="Self.FK_CompanyInvoice_Users">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="CompanyInvoice" EntitySet="CompanyInvoices" />
-          </AssociationSet>
           <AssociationSet Name="FK_CompanyInvoiceDetail_CompanyInvoice" Association="Self.FK_CompanyInvoiceDetail_CompanyInvoice">
             <End Role="CompanyInvoice" EntitySet="CompanyInvoices" />
             <End Role="CompanyInvoiceDetail" EntitySet="CompanyInvoiceDetails" />
-          </AssociationSet>
-          <AssociationSet Name="FK_CompanyQuotation_Users" Association="Self.FK_CompanyQuotation_Users">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="CompanyQuotation" EntitySet="CompanyQuotations" />
           </AssociationSet>
           <AssociationSet Name="FK_CompanyQuotationDetail_CompanyQuotation" Association="Self.FK_CompanyQuotationDetail_CompanyQuotation">
             <End Role="CompanyQuotation" EntitySet="CompanyQuotations" />
@@ -7797,14 +7422,6 @@
           <AssociationSet Name="FK_SubUsers_Country" Association="Self.FK_SubUsers_Country">
             <End Role="Country" EntitySet="Countries" />
             <End Role="SubUsers" EntitySet="SubUsers" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Users_Country" Association="Self.FK_Users_Country">
-            <End Role="Country" EntitySet="Countries" />
-            <End Role="Users" EntitySet="Users" />
-          </AssociationSet>
-          <AssociationSet Name="FK_CreditCustomer_Users" Association="Self.FK_CreditCustomer_Users">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="CreditCustomer" EntitySet="CreditCustomers" />
           </AssociationSet>
           <AssociationSet Name="FK_OrderCheckout_CreditCustomer" Association="Self.FK_OrderCheckout_CreditCustomer">
             <End Role="CreditCustomer" EntitySet="CreditCustomers" />
@@ -7829,10 +7446,6 @@
           <AssociationSet Name="FK_DiscountItems_SubCategory" Association="Self.FK_DiscountItems_SubCategory">
             <End Role="SubCategory" EntitySet="SubCategories" />
             <End Role="DiscountItems" EntitySet="DiscountItems" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Integration_Users" Association="Self.FK_Integration_Users">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="Integration" EntitySet="Integrations" />
           </AssociationSet>
           <AssociationSet Name="FK_Bill_Locations" Association="Self.FK_Bill_Locations">
             <End Role="Locations" EntitySet="Locations" />
@@ -7894,10 +7507,6 @@
             <End Role="Stores" EntitySet="Stores" />
             <End Role="inv_Stock" EntitySet="inv_Stock" />
           </AssociationSet>
-          <AssociationSet Name="FK_inv_Stock_Users" Association="Self.FK_inv_Stock_Users">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="inv_Stock" EntitySet="inv_Stock" />
-          </AssociationSet>
           <AssociationSet Name="FK_Stock_Items" Association="Self.FK_Stock_Items">
             <End Role="Items" EntitySet="Items" />
             <End Role="inv_Stock" EntitySet="inv_Stock" />
@@ -7912,10 +7521,6 @@
           </AssociationSet>
           <AssociationSet Name="FK_inv_StockIssue_Stores1" Association="Self.FK_inv_StockIssue_Stores1">
             <End Role="Stores" EntitySet="Stores" />
-            <End Role="inv_StockIssue" EntitySet="inv_StockIssue" />
-          </AssociationSet>
-          <AssociationSet Name="FK_inv_StockIssue_Users" Association="Self.FK_inv_StockIssue_Users">
-            <End Role="Users" EntitySet="Users" />
             <End Role="inv_StockIssue" EntitySet="inv_StockIssue" />
           </AssociationSet>
           <AssociationSet Name="FK_inv_StockIssueDetail_inv_StockIssue" Association="Self.FK_inv_StockIssueDetail_inv_StockIssue">
@@ -7956,10 +7561,6 @@
           </AssociationSet>
           <AssociationSet Name="FK_inv_StockStore_Stores" Association="Self.FK_inv_StockStore_Stores">
             <End Role="Stores" EntitySet="Stores" />
-            <End Role="inv_StockStore" EntitySet="inv_StockStore" />
-          </AssociationSet>
-          <AssociationSet Name="FK_inv_StockStore_Users" Association="Self.FK_inv_StockStore_Users">
-            <End Role="Users" EntitySet="Users" />
             <End Role="inv_StockStore" EntitySet="inv_StockStore" />
           </AssociationSet>
           <AssociationSet Name="FK_Inventory_Items" Association="Self.FK_Inventory_Items">
@@ -8006,10 +7607,6 @@
             <End Role="Status" EntitySet="Status" />
             <End Role="Licenses" EntitySet="Licenses" />
           </AssociationSet>
-          <AssociationSet Name="FK_Licenses_Users" Association="Self.FK_Licenses_Users">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="Licenses" EntitySet="Licenses" />
-          </AssociationSet>
           <AssociationSet Name="FK_Locations_Licenses" Association="Self.FK_Locations_Licenses">
             <End Role="Licenses" EntitySet="Licenses" />
             <End Role="Locations" EntitySet="Locations" />
@@ -8032,10 +7629,6 @@
           </AssociationSet>
           <AssociationSet Name="FK_Locations_TimeZone" Association="Self.FK_Locations_TimeZone">
             <End Role="TimeZone" EntitySet="TimeZones" />
-            <End Role="Locations" EntitySet="Locations" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Locations_Users" Association="Self.FK_Locations_Users">
-            <End Role="Users" EntitySet="Users" />
             <End Role="Locations" EntitySet="Locations" />
           </AssociationSet>
           <AssociationSet Name="FK_LocationServiceJunc_Locations" Association="Self.FK_LocationServiceJunc_Locations">
@@ -8150,25 +7743,13 @@
             <End Role="SubCategory" EntitySet="SubCategories" />
             <End Role="Packages" EntitySet="Packages" />
           </AssociationSet>
-          <AssociationSet Name="FK_Packages_Users" Association="Self.FK_Packages_Users">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="Packages" EntitySet="Packages" />
-          </AssociationSet>
           <AssociationSet Name="FK_UserPackageDetails_PackagesInfo" Association="Self.FK_UserPackageDetails_PackagesInfo">
             <End Role="PackagesInfo" EntitySet="PackagesInfoes" />
             <End Role="UserPackageDetails" EntitySet="UserPackageDetails" />
           </AssociationSet>
-          <AssociationSet Name="FK_Users_PackagesInfo" Association="Self.FK_Users_PackagesInfo">
-            <End Role="PackagesInfo" EntitySet="PackagesInfoes" />
-            <End Role="Users" EntitySet="Users" />
-          </AssociationSet>
           <AssociationSet Name="FK_Role_GroupForms_Role_Forms" Association="Self.FK_Role_GroupForms_Role_Forms">
             <End Role="Role_Forms" EntitySet="Role_Forms" />
             <End Role="Role_GroupForms" EntitySet="Role_GroupForms" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Role_Group_Users" Association="Self.FK_Role_Group_Users">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="Role_Group" EntitySet="Role_Group" />
           </AssociationSet>
           <AssociationSet Name="FK_Role_GroupForms_Role_Group" Association="Self.FK_Role_GroupForms_Role_Group">
             <End Role="Role_Group" EntitySet="Role_Group" />
@@ -8190,37 +7771,9 @@
             <End Role="Status" EntitySet="Status" />
             <End Role="SubUsers" EntitySet="SubUsers" />
           </AssociationSet>
-          <AssociationSet Name="FK_Users_Status" Association="Self.FK_Users_Status">
-            <End Role="Status" EntitySet="Status" />
-            <End Role="Users" EntitySet="Users" />
-          </AssociationSet>
-          <AssociationSet Name="FK_SubUsers_Users" Association="Self.FK_SubUsers_Users">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="SubUsers" EntitySet="SubUsers" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Supplier_Users" Association="Self.FK_Supplier_Users">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="Supplier" EntitySet="Suppliers" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Users_TimeZone" Association="Self.FK_Users_TimeZone">
-            <End Role="TimeZone" EntitySet="TimeZones" />
-            <End Role="Users" EntitySet="Users" />
-          </AssociationSet>
           <AssociationSet Name="FK_UserPackageDetails_UserPackageDetails" Association="Self.FK_UserPackageDetails_UserPackageDetails">
             <End Role="UserPackageDetails" EntitySet="UserPackageDetails" />
             <End Role="UserPackageDetails1" EntitySet="UserPackageDetails" />
-          </AssociationSet>
-          <AssociationSet Name="FK_UserPackageDetails_Users" Association="Self.FK_UserPackageDetails_Users">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="UserPackageDetails" EntitySet="UserPackageDetails" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ZohoChartOfAccounts_Users" Association="Self.FK_ZohoChartOfAccounts_Users">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="ZohoChartOfAccounts" EntitySet="ZohoChartOfAccounts" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ZohoSettings_Users" Association="Self.FK_ZohoSettings_Users">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="ZohoSettings" EntitySet="ZohoSettings" />
           </AssociationSet>
           <AssociationSet Name="SubUserLocations" Association="Self.SubUserLocations">
             <End Role="Locations" EntitySet="Locations" />
@@ -8251,7 +7804,7 @@
             <Parameter Name="definition" Mode="In" Type="Binary" />
           </FunctionImport>
           <FunctionImport Name="sp_apiGetSuperUserInfo" ReturnType="Collection(Garage_UATModel.sp_apiGetSuperUserInfo_Result)">
-            <Parameter Name="CompanyCode" Mode="In" Type="String" />
+          <Parameter Name="CompanyCode" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_apiUserInfo_LoginV2" ReturnType="Collection(String)">
             <Parameter Name="SubUserPasscode" Mode="In" Type="Int32" />
@@ -8313,7 +7866,7 @@
             <Parameter Name="Status" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_GetCarIdByMobile" ReturnType="Collection(Garage_UATModel.sp_GetCarIdByMobile_Result)">
-            <Parameter Name="Mobile" Mode="In" Type="String" />
+          <Parameter Name="Mobile" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_GetCarlist_CAPP" ReturnType="Collection(Garage_UATModel.sp_GetCarlist_CAPP_Result)">
             <Parameter Name="UserID" Mode="In" Type="Int32" />
@@ -8321,7 +7874,7 @@
           </FunctionImport>
           <FunctionImport Name="sp_GetCarMake_CAPI" ReturnType="Collection(Garage_UATModel.sp_GetCarMake_CAPI_Result)" />
           <FunctionImport Name="sp_GetCarOrderDetail_App" ReturnType="Collection(Garage_UATModel.sp_GetCarOrderDetail_App_Result)">
-            <Parameter Name="CarID" Mode="In" Type="String" />
+          <Parameter Name="CarID" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_GetCarOrders_App" ReturnType="Collection(Garage_UATModel.sp_GetCarOrders_App_Result)">
             <Parameter Name="CarID" Mode="In" Type="String" />
@@ -8338,10 +7891,10 @@
             <Parameter Name="pageSize" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_GetCarsBy_CustomerID" ReturnType="Collection(Garage_UATModel.sp_GetCarsBy_CustomerID_Result)">
-            <Parameter Name="ID" Mode="In" Type="Int32" />
+          <Parameter Name="ID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_GetCarsbyID_Admin" ReturnType="Collection(Garage_UATModel.sp_GetCarsbyID_Admin_Result)">
-            <Parameter Name="id" Mode="In" Type="Int32" />
+          <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_GetCredCustOrdersHistory_APP" ReturnType="Collection(Garage_UATModel.sp_GetCredCustOrdersHistory_APP_Result)">
             <Parameter Name="UserID" Mode="In" Type="Int32" />
@@ -8358,7 +7911,7 @@
             <Parameter Name="UserID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_GetCustomerbyID_Admin" ReturnType="Collection(Garage_UATModel.sp_GetCustomerbyID_Admin_Result)">
-            <Parameter Name="id" Mode="In" Type="Int32" />
+          <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_GetCustOrdersHistory_APP" ReturnType="Collection(Garage_UATModel.sp_GetCustOrdersHistory_APP_Result)">
             <Parameter Name="UserID" Mode="In" Type="Int32" />
@@ -8367,7 +7920,7 @@
             <Parameter Name="LocationID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_GetIntegrationSetttings" ReturnType="Collection(Garage_UATModel.sp_GetIntegrationSetttings_Result)">
-            <Parameter Name="UserID" Mode="In" Type="Int32" />
+          <Parameter Name="UserID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_GetItemActivities" ReturnType="Collection(Garage_UATModel.sp_GetItemActivities_Result)">
             <Parameter Name="UserID" Mode="In" Type="Int32" />
@@ -8383,13 +7936,13 @@
           </FunctionImport>
           <FunctionImport Name="sp_getLocation_CADMIN" ReturnType="Collection(Garage_UATModel.sp_getLocation_CADMIN_Result)" />
           <FunctionImport Name="sp_GetLocationImages_CAdmin" ReturnType="Collection(Garage_UATModel.sp_GetLocationImages_CAdmin_Result)">
-            <Parameter Name="id" Mode="In" Type="Int32" />
+          <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_GetLocations_CAPI" ReturnType="Collection(Garage_UATModel.sp_GetLocations_CAPI_Result)">
-            <Parameter Name="Date" Mode="In" Type="DateTime" />
+          <Parameter Name="Date" Mode="In" Type="DateTime" />
           </FunctionImport>
           <FunctionImport Name="sp_GetLocationsByID_CADMIN" ReturnType="Collection(Garage_UATModel.sp_GetLocationsByID_CADMIN_Result)">
-            <Parameter Name="id" Mode="In" Type="Int32" />
+          <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_GetLocationServices" ReturnType="Collection(Garage_UATModel.sp_GetLocationServices_Result)" />
           <FunctionImport Name="sp_GetLocationsV2_CAPI" ReturnType="Collection(Garage_UATModel.sp_GetLocationsV2_CAPI_Result)">
@@ -8397,9 +7950,7 @@
             <Parameter Name="Date" Mode="In" Type="DateTime" />
           </FunctionImport>
           <FunctionImport Name="sp_GetLocationsV3_CAPI" ReturnType="Collection(Garage_UATModel.sp_GetLocationsV3_CAPI_Result)">
-            <Parameter Name="PageNumber" Mode="In" Type="Int32" />
-            <Parameter Name="PageSize" Mode="In" Type="Int32" />
-            <Parameter Name="ParamTable1" Mode="In" Type="String" />
+            <Parameter Name="LocationID" Mode="In" Type="Int32" />
             <Parameter Name="Date" Mode="In" Type="DateTime" />
           </FunctionImport>
           <FunctionImport Name="sp_GetNotifications" ReturnType="Collection(Garage_UATModel.sp_GetNotifications_Result)">
@@ -8416,7 +7967,7 @@
             <Parameter Name="Type" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_GetOrderHistory_App" ReturnType="Collection(Garage_UATModel.sp_GetOrderHistory_App_Result)">
-            <Parameter Name="CustomerID" Mode="In" Type="Int32" />
+          <Parameter Name="CustomerID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_GetOrderList_APP" ReturnType="Collection(Garage_UATModel.sp_GetOrderList_APP_Result)">
             <Parameter Name="LocationID" Mode="In" Type="Int32" />
@@ -8444,10 +7995,10 @@
             <Parameter Name="Status" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_GetOrderQR" ReturnType="Collection(Garage_UATModel.sp_GetOrderQR_Result)">
-            <Parameter Name="OrderID" Mode="In" Type="Int32" />
+          <Parameter Name="OrderID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_GetPackagebyID_Admin" ReturnType="Collection(Garage_UATModel.sp_GetPackagebyID_Admin_Result)">
-            <Parameter Name="id" Mode="In" Type="Int32" />
+          <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_GetPackageInfo_UAT" ReturnType="Collection(Garage_UATModel.sp_GetPackageInfo_UAT_Result)" />
           <FunctionImport Name="sp_GetPackageInfo_Website" ReturnType="Collection(Garage_UATModel.sp_GetPackageInfo_Website_Result)" />
@@ -8468,10 +8019,10 @@
             <Parameter Name="CurrentDate" Mode="In" Type="DateTime" />
           </FunctionImport>
           <FunctionImport Name="sp_GetSession_POS" ReturnType="Collection(Garage_UATModel.sp_GetSession_POS_Result)">
-            <Parameter Name="Session" Mode="In" Type="String" />
+          <Parameter Name="Session" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_GetStockNotifications" ReturnType="Collection(Garage_UATModel.sp_GetStockNotifications_Result)">
-            <Parameter Name="LocationID" Mode="In" Type="Int32" />
+          <Parameter Name="LocationID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_GetSubCategoryDuplication" ReturnType="Collection(Garage_UATModel.sp_GetSubCategoryDuplication_Result)">
             <Parameter Name="SubCatID" Mode="In" Type="Int32" />
@@ -8608,7 +8159,7 @@
             <Parameter Name="LocationIDs" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_login_CAPI" ReturnType="Collection(Garage_UATModel.sp_login_CAPI_Result)">
-            <Parameter Name="Phone" Mode="In" Type="String" />
+          <Parameter Name="Phone" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_renamediagram">
             <Parameter Name="diagramname" Mode="In" Type="String" />
@@ -8704,7 +8255,7 @@
             <Parameter Name="CompanyCode" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_SearchLocationSubUser" ReturnType="Collection(Garage_UATModel.sp_SearchLocationSubUser_Result)">
-            <Parameter Name="SubUserID" Mode="In" Type="Int32" />
+          <Parameter Name="SubUserID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_StockHistory_rpt" ReturnType="Collection(Garage_UATModel.sp_StockHistory_rpt_Result)">
             <Parameter Name="UserID" Mode="In" Type="Int32" />
@@ -8718,7 +8269,7 @@
             <Parameter Name="LocationID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_StockStore_rpt" ReturnType="Collection(Garage_UATModel.sp_StockStore_rpt_Result)">
-            <Parameter Name="StoreID" Mode="In" Type="Int32" />
+          <Parameter Name="StoreID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_UpdateCars">
             <Parameter Name="CarID" Mode="In" Type="Int32" />
@@ -8846,8 +8397,105 @@
           </FunctionImport>
           <FunctionImport Name="sp_upgraddiagrams" />
           <FunctionImport Name="usp_Login" ReturnType="Collection(Garage_UATModel.usp_Login_Result)">
-            <Parameter Name="Phone" Mode="In" Type="String" />
+          <Parameter Name="Phone" Mode="In" Type="String" />
           </FunctionImport>
+          <EntitySet Name="Users" EntityType="Garage_UATModel.User" />
+          <AssociationSet Name="FK_AppSource_Users" Association="Garage_UATModel.FK_AppSource_Users">
+            <End Role="User" EntitySet="Users" />
+            <End Role="AppSource" EntitySet="AppSources" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CarInspection_Users" Association="Garage_UATModel.FK_CarInspection_Users">
+            <End Role="User" EntitySet="Users" />
+            <End Role="CarInspection" EntitySet="CarInspections" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cars_Users" Association="Garage_UATModel.FK_Cars_Users">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Car" EntitySet="Cars" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CompanyClients_Users" Association="Garage_UATModel.FK_CompanyClients_Users">
+            <End Role="User" EntitySet="Users" />
+            <End Role="CompanyClient" EntitySet="CompanyClients" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CompanyInvoice_Users" Association="Garage_UATModel.FK_CompanyInvoice_Users">
+            <End Role="User" EntitySet="Users" />
+            <End Role="CompanyInvoice" EntitySet="CompanyInvoices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CompanyQuotation_Users" Association="Garage_UATModel.FK_CompanyQuotation_Users">
+            <End Role="User" EntitySet="Users" />
+            <End Role="CompanyQuotation" EntitySet="CompanyQuotations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Users_Country" Association="Garage_UATModel.FK_Users_Country">
+            <End Role="Country" EntitySet="Countries" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CreditCustomer_Users" Association="Garage_UATModel.FK_CreditCustomer_Users">
+            <End Role="User" EntitySet="Users" />
+            <End Role="CreditCustomer" EntitySet="CreditCustomers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Integration_Users" Association="Garage_UATModel.FK_Integration_Users">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Integration" EntitySet="Integrations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_inv_Stock_Users" Association="Garage_UATModel.FK_inv_Stock_Users">
+            <End Role="User" EntitySet="Users" />
+            <End Role="inv_Stock" EntitySet="inv_Stock" />
+          </AssociationSet>
+          <AssociationSet Name="FK_inv_StockIssue_Users" Association="Garage_UATModel.FK_inv_StockIssue_Users">
+            <End Role="User" EntitySet="Users" />
+            <End Role="inv_StockIssue" EntitySet="inv_StockIssue" />
+          </AssociationSet>
+          <AssociationSet Name="FK_inv_StockStore_Users" Association="Garage_UATModel.FK_inv_StockStore_Users">
+            <End Role="User" EntitySet="Users" />
+            <End Role="inv_StockStore" EntitySet="inv_StockStore" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Licenses_Users" Association="Garage_UATModel.FK_Licenses_Users">
+            <End Role="User" EntitySet="Users" />
+            <End Role="License" EntitySet="Licenses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Locations_Users" Association="Garage_UATModel.FK_Locations_Users">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Location" EntitySet="Locations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Packages_Users" Association="Garage_UATModel.FK_Packages_Users">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Package" EntitySet="Packages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Users_PackagesInfo" Association="Garage_UATModel.FK_Users_PackagesInfo">
+            <End Role="PackagesInfo" EntitySet="PackagesInfoes" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Role_Group_Users" Association="Garage_UATModel.FK_Role_Group_Users">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Role_Group" EntitySet="Role_Group" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Users_Status" Association="Garage_UATModel.FK_Users_Status">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SubUsers_Users" Association="Garage_UATModel.FK_SubUsers_Users">
+            <End Role="User" EntitySet="Users" />
+            <End Role="SubUser" EntitySet="SubUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Supplier_Users" Association="Garage_UATModel.FK_Supplier_Users">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Supplier" EntitySet="Suppliers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Users_TimeZone" Association="Garage_UATModel.FK_Users_TimeZone">
+            <End Role="TimeZone" EntitySet="TimeZones" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserPackageDetails_Users" Association="Garage_UATModel.FK_UserPackageDetails_Users">
+            <End Role="User" EntitySet="Users" />
+            <End Role="UserPackageDetail" EntitySet="UserPackageDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ZohoChartOfAccounts_Users" Association="Garage_UATModel.FK_ZohoChartOfAccounts_Users">
+            <End Role="User" EntitySet="Users" />
+            <End Role="ZohoChartOfAccount" EntitySet="ZohoChartOfAccounts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ZohoSettings_Users" Association="Garage_UATModel.FK_ZohoSettings_Users">
+            <End Role="User" EntitySet="Users" />
+            <End Role="ZohoSetting" EntitySet="ZohoSettings" />
+          </AssociationSet>
         </EntityContainer>
         <ComplexType Name="sp_apiGetSuperUserInfo_Result">
           <Property Type="String" Name="BusinessType" Nullable="true" MaxLength="500" />
@@ -10804,6 +10452,357 @@
           <Property Type="String" Name="City" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="Country" Nullable="true" MaxLength="50" />
         </ComplexType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RowID" Type="Int32" Nullable="false" />
+          <Property Name="PackageInfoID" Type="Int32" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ImagePath" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Company" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="BusinessType" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="ContactNo" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="CityID" Type="Int32" />
+          <Property Name="CountryID" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="Website" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Subscribe" Type="Boolean" />
+          <Property Name="RoleID" Type="Int32" />
+          <Property Name="TimeZoneID" Type="Int32" />
+          <Property Name="LastUpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastUpdatedDate" Type="DateTime" Precision="3" />
+          <Property Name="StatusID" Type="Int32" />
+          <Property Name="CompanyCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="States" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Zipcode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="VATNO" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Tax" Type="Double" />
+          <Property Name="IsSMSCheckoutAddOn" Type="Boolean" />
+          <Property Name="AllowNegativeInventory" Type="Boolean" />
+          <Property Name="IsOdoo" Type="Boolean" />
+          <Property Name="IsAccountingAddons" Type="Boolean" />
+          <Property Name="IsGarageGo" Type="Boolean" />
+          <Property Name="IsCashier" Type="Boolean" />
+          <NavigationProperty Name="AppSources" Relationship="Garage_UATModel.FK_AppSource_Users" FromRole="User" ToRole="AppSource" />
+          <NavigationProperty Name="CarInspections" Relationship="Garage_UATModel.FK_CarInspection_Users" FromRole="User" ToRole="CarInspection" />
+          <NavigationProperty Name="Cars" Relationship="Garage_UATModel.FK_Cars_Users" FromRole="User" ToRole="Car" />
+          <NavigationProperty Name="CompanyClients" Relationship="Garage_UATModel.FK_CompanyClients_Users" FromRole="User" ToRole="CompanyClient" />
+          <NavigationProperty Name="CompanyInvoices" Relationship="Garage_UATModel.FK_CompanyInvoice_Users" FromRole="User" ToRole="CompanyInvoice" />
+          <NavigationProperty Name="CompanyQuotations" Relationship="Garage_UATModel.FK_CompanyQuotation_Users" FromRole="User" ToRole="CompanyQuotation" />
+          <NavigationProperty Name="Country" Relationship="Garage_UATModel.FK_Users_Country" FromRole="User" ToRole="Country" />
+          <NavigationProperty Name="CreditCustomers" Relationship="Garage_UATModel.FK_CreditCustomer_Users" FromRole="User" ToRole="CreditCustomer" />
+          <NavigationProperty Name="Integrations" Relationship="Garage_UATModel.FK_Integration_Users" FromRole="User" ToRole="Integration" />
+          <NavigationProperty Name="inv_Stock" Relationship="Garage_UATModel.FK_inv_Stock_Users" FromRole="User" ToRole="inv_Stock" />
+          <NavigationProperty Name="inv_StockIssue" Relationship="Garage_UATModel.FK_inv_StockIssue_Users" FromRole="User" ToRole="inv_StockIssue" />
+          <NavigationProperty Name="inv_StockStore" Relationship="Garage_UATModel.FK_inv_StockStore_Users" FromRole="User" ToRole="inv_StockStore" />
+          <NavigationProperty Name="Licenses" Relationship="Garage_UATModel.FK_Licenses_Users" FromRole="User" ToRole="License" />
+          <NavigationProperty Name="Locations" Relationship="Garage_UATModel.FK_Locations_Users" FromRole="User" ToRole="Location" />
+          <NavigationProperty Name="Packages" Relationship="Garage_UATModel.FK_Packages_Users" FromRole="User" ToRole="Package" />
+          <NavigationProperty Name="PackagesInfo" Relationship="Garage_UATModel.FK_Users_PackagesInfo" FromRole="User" ToRole="PackagesInfo" />
+          <NavigationProperty Name="Role_Group" Relationship="Garage_UATModel.FK_Role_Group_Users" FromRole="User" ToRole="Role_Group" />
+          <NavigationProperty Name="Status" Relationship="Garage_UATModel.FK_Users_Status" FromRole="User" ToRole="Status" />
+          <NavigationProperty Name="SubUsers" Relationship="Garage_UATModel.FK_SubUsers_Users" FromRole="User" ToRole="SubUser" />
+          <NavigationProperty Name="Suppliers" Relationship="Garage_UATModel.FK_Supplier_Users" FromRole="User" ToRole="Supplier" />
+          <NavigationProperty Name="TimeZone" Relationship="Garage_UATModel.FK_Users_TimeZone" FromRole="User" ToRole="TimeZone" />
+          <NavigationProperty Name="UserPackageDetails" Relationship="Garage_UATModel.FK_UserPackageDetails_Users" FromRole="User" ToRole="UserPackageDetail" />
+          <NavigationProperty Name="ZohoChartOfAccounts" Relationship="Garage_UATModel.FK_ZohoChartOfAccounts_Users" FromRole="User" ToRole="ZohoChartOfAccount" />
+          <NavigationProperty Name="ZohoSettings" Relationship="Garage_UATModel.FK_ZohoSettings_Users" FromRole="User" ToRole="ZohoSetting" />
+        </EntityType>
+        <Association Name="FK_AppSource_Users">
+          <End Type="Garage_UATModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="Garage_UATModel.AppSource" Role="AppSource" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="AppSource">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CarInspection_Users">
+          <End Type="Garage_UATModel.User" Role="User" Multiplicity="1" />
+          <End Type="Garage_UATModel.CarInspection" Role="CarInspection" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="CarInspection">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cars_Users">
+          <End Type="Garage_UATModel.User" Role="User" Multiplicity="1" />
+          <End Type="Garage_UATModel.Car" Role="Car" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Car">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CompanyClients_Users">
+          <End Type="Garage_UATModel.User" Role="User" Multiplicity="1" />
+          <End Type="Garage_UATModel.CompanyClient" Role="CompanyClient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="CompanyClient">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CompanyInvoice_Users">
+          <End Type="Garage_UATModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="Garage_UATModel.CompanyInvoice" Role="CompanyInvoice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="CompanyInvoice">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CompanyQuotation_Users">
+          <End Type="Garage_UATModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="Garage_UATModel.CompanyQuotation" Role="CompanyQuotation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="CompanyQuotation">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Users_Country">
+          <End Type="Garage_UATModel.Country" Role="Country" Multiplicity="0..1" />
+          <End Type="Garage_UATModel.User" Role="User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="Code" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="CountryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CreditCustomer_Users">
+          <End Type="Garage_UATModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="Garage_UATModel.CreditCustomer" Role="CreditCustomer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="CreditCustomer">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Integration_Users">
+          <End Type="Garage_UATModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="Garage_UATModel.Integration" Role="Integration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Integration">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_inv_Stock_Users">
+          <End Type="Garage_UATModel.User" Role="User" Multiplicity="1" />
+          <End Type="Garage_UATModel.inv_Stock" Role="inv_Stock" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="inv_Stock">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_inv_StockIssue_Users">
+          <End Type="Garage_UATModel.User" Role="User" Multiplicity="1" />
+          <End Type="Garage_UATModel.inv_StockIssue" Role="inv_StockIssue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="inv_StockIssue">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_inv_StockStore_Users">
+          <End Type="Garage_UATModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="Garage_UATModel.inv_StockStore" Role="inv_StockStore" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="inv_StockStore">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Licenses_Users">
+          <End Type="Garage_UATModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="Garage_UATModel.License" Role="License" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="License">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Locations_Users">
+          <End Type="Garage_UATModel.User" Role="User" Multiplicity="1" />
+          <End Type="Garage_UATModel.Location" Role="Location" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Location">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Packages_Users">
+          <End Type="Garage_UATModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="Garage_UATModel.Package" Role="Package" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Package">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Users_PackagesInfo">
+          <End Type="Garage_UATModel.PackagesInfo" Role="PackagesInfo" Multiplicity="0..1" />
+          <End Type="Garage_UATModel.User" Role="User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PackagesInfo">
+              <PropertyRef Name="PackageInfoID" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="PackageInfoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Role_Group_Users">
+          <End Type="Garage_UATModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="Garage_UATModel.Role_Group" Role="Role_Group" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Role_Group">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Users_Status">
+          <End Type="Garage_UATModel.Status" Role="Status" Multiplicity="0..1" />
+          <End Type="Garage_UATModel.User" Role="User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="RowID" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="StatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SubUsers_Users">
+          <End Type="Garage_UATModel.User" Role="User" Multiplicity="1" />
+          <End Type="Garage_UATModel.SubUser" Role="SubUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="SubUser">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Supplier_Users">
+          <End Type="Garage_UATModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="Garage_UATModel.Supplier" Role="Supplier" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Supplier">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Users_TimeZone">
+          <End Type="Garage_UATModel.TimeZone" Role="TimeZone" Multiplicity="0..1" />
+          <End Type="Garage_UATModel.User" Role="User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TimeZone">
+              <PropertyRef Name="TimeZoneID" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="TimeZoneID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserPackageDetails_Users">
+          <End Type="Garage_UATModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="Garage_UATModel.UserPackageDetail" Role="UserPackageDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="UserPackageDetail">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ZohoChartOfAccounts_Users">
+          <End Type="Garage_UATModel.User" Role="User" Multiplicity="1" />
+          <End Type="Garage_UATModel.ZohoChartOfAccount" Role="ZohoChartOfAccount" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="ZohoChartOfAccount">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ZohoSettings_Users">
+          <End Type="Garage_UATModel.User" Role="User" Multiplicity="1" />
+          <End Type="Garage_UATModel.ZohoSetting" Role="ZohoSetting" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="ZohoSetting">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -12243,44 +12242,6 @@
                 <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
                 <ScalarProperty Name="LastUpdatedDate" ColumnName="LastUpdatedDate" />
                 <ScalarProperty Name="ExpiryDate" ColumnName="ExpiryDate" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Users">
-            <EntityTypeMapping TypeName="Garage_UATModel.User">
-              <MappingFragment StoreEntitySet="Users">
-                <ScalarProperty Name="UserID" ColumnName="UserID" />
-                <ScalarProperty Name="RowID" ColumnName="RowID" />
-                <ScalarProperty Name="PackageInfoID" ColumnName="PackageInfoID" />
-                <ScalarProperty Name="UserName" ColumnName="UserName" />
-                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-                <ScalarProperty Name="LastName" ColumnName="LastName" />
-                <ScalarProperty Name="ImagePath" ColumnName="ImagePath" />
-                <ScalarProperty Name="Password" ColumnName="Password" />
-                <ScalarProperty Name="Company" ColumnName="Company" />
-                <ScalarProperty Name="BusinessType" ColumnName="BusinessType" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="CityID" ColumnName="CityID" />
-                <ScalarProperty Name="CountryID" ColumnName="CountryID" />
-                <ScalarProperty Name="Website" ColumnName="Website" />
-                <ScalarProperty Name="Subscribe" ColumnName="Subscribe" />
-                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
-                <ScalarProperty Name="TimeZoneID" ColumnName="TimeZoneID" />
-                <ScalarProperty Name="LastUpdatedBy" ColumnName="LastUpdatedBy" />
-                <ScalarProperty Name="LastUpdatedDate" ColumnName="LastUpdatedDate" />
-                <ScalarProperty Name="StatusID" ColumnName="StatusID" />
-                <ScalarProperty Name="CompanyCode" ColumnName="CompanyCode" />
-                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-                <ScalarProperty Name="States" ColumnName="States" />
-                <ScalarProperty Name="Zipcode" ColumnName="Zipcode" />
-                <ScalarProperty Name="VATNO" ColumnName="VATNO" />
-                <ScalarProperty Name="Tax" ColumnName="Tax" />
-                <ScalarProperty Name="IsSMSCheckoutAddOn" ColumnName="IsSMSCheckoutAddOn" />
-                <ScalarProperty Name="AllowNegativeInventory" ColumnName="AllowNegativeInventory" />
-                <ScalarProperty Name="IsOdoo" ColumnName="IsOdoo" />
-                <ScalarProperty Name="IsAccountingAddons" ColumnName="IsAccountingAddons" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -14621,6 +14582,46 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="Garage_UATModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="IsCashier" ColumnName="IsCashier" />
+                <ScalarProperty Name="IsGarageGo" ColumnName="IsGarageGo" />
+                <ScalarProperty Name="IsAccountingAddons" ColumnName="IsAccountingAddons" />
+                <ScalarProperty Name="IsOdoo" ColumnName="IsOdoo" />
+                <ScalarProperty Name="AllowNegativeInventory" ColumnName="AllowNegativeInventory" />
+                <ScalarProperty Name="IsSMSCheckoutAddOn" ColumnName="IsSMSCheckoutAddOn" />
+                <ScalarProperty Name="Tax" ColumnName="Tax" />
+                <ScalarProperty Name="VATNO" ColumnName="VATNO" />
+                <ScalarProperty Name="Zipcode" ColumnName="Zipcode" />
+                <ScalarProperty Name="States" ColumnName="States" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CompanyCode" ColumnName="CompanyCode" />
+                <ScalarProperty Name="StatusID" ColumnName="StatusID" />
+                <ScalarProperty Name="LastUpdatedDate" ColumnName="LastUpdatedDate" />
+                <ScalarProperty Name="LastUpdatedBy" ColumnName="LastUpdatedBy" />
+                <ScalarProperty Name="TimeZoneID" ColumnName="TimeZoneID" />
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+                <ScalarProperty Name="Subscribe" ColumnName="Subscribe" />
+                <ScalarProperty Name="Website" ColumnName="Website" />
+                <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+                <ScalarProperty Name="CityID" ColumnName="CityID" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="BusinessType" ColumnName="BusinessType" />
+                <ScalarProperty Name="Company" ColumnName="Company" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="ImagePath" ColumnName="ImagePath" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="PackageInfoID" ColumnName="PackageInfoID" />
+                <ScalarProperty Name="RowID" ColumnName="RowID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
