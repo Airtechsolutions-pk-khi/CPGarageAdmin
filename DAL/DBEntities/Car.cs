@@ -44,12 +44,13 @@ namespace DAL.DBEntities
         public int UserID { get; set; }
         public string ImagePath { get; set; }
         public string Gender { get; set; }
+        public Nullable<int> CarType { get; set; }
     
         public virtual Customer Customer { get; set; }
         public virtual Make Make { get; set; }
         public virtual Model Model { get; set; }
-        public virtual User User { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Order> Orders { get; set; }
+        public virtual User User { get; set; }
     }
 }

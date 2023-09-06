@@ -34,9 +34,10 @@ namespace DAL.DBEntities
         public Nullable<int> SubUserID { get; set; }
         public Nullable<double> CheckLiters { get; set; }
         public Nullable<double> NextKM { get; set; }
+        public Nullable<int> CustomerID { get; set; }
         public int CarID1 { get; set; }
         public int RowID { get; set; }
-        public int CustomerID { get; set; }
+        public int CustomerID1 { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         public string VinNo { get; set; }
@@ -58,6 +59,7 @@ namespace DAL.DBEntities
         public int UserID { get; set; }
         public string ImagePath { get; set; }
         public string Gender { get; set; }
+        public Nullable<int> CarType { get; set; }
         public Nullable<int> Status { get; set; }
         public string BayName { get; set; }
         public string MakerName { get; set; }

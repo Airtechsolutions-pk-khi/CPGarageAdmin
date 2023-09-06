@@ -26,5 +26,6 @@ namespace DAL.DBEntities
         public Nullable<System.DateTime> LastUpdatedDate { get; set; }
         public string LastUpdatedBy { get; set; }
         public Nullable<int> StatusID { get; set; }
+        public string DeviceType { get; set; }
     }
 }

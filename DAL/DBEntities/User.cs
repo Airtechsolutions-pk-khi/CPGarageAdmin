@@ -25,7 +25,6 @@ namespace DAL.DBEntities
             this.CompanyQuotations = new HashSet<CompanyQuotation>();
             this.CreditCustomers = new HashSet<CreditCustomer>();
             this.Integrations = new HashSet<Integration>();
-            this.IntegrationActivations = new HashSet<IntegrationActivation>();
             this.inv_Stock = new HashSet<inv_Stock>();
             this.inv_StockIssue = new HashSet<inv_StockIssue>();
             this.inv_StockStore = new HashSet<inv_StockStore>();
@@ -72,6 +71,8 @@ namespace DAL.DBEntities
         public Nullable<bool> AllowNegativeInventory { get; set; }
         public Nullable<bool> IsOdoo { get; set; }
         public Nullable<bool> IsAccountingAddons { get; set; }
+        public Nullable<bool> IsGarageGo { get; set; }
+        public Nullable<bool> IsCashier { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AppSource> AppSources { get; set; }
@@ -90,8 +91,6 @@ namespace DAL.DBEntities
         public virtual ICollection<CreditCustomer> CreditCustomers { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Integration> Integrations { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<IntegrationActivation> IntegrationActivations { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<inv_Stock> inv_Stock { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

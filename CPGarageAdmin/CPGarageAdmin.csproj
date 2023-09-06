@@ -2257,6 +2257,9 @@
     <Folder Include="Views\home\" />
   </ItemGroup>
   <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\BAL\BAL.csproj">
       <Project>{f2e50be4-7deb-484a-9226-20850bf8e9f2}</Project>
       <Name>BAL</Name>
@@ -2265,9 +2268,6 @@
       <Project>{d337e813-f49f-4817-8fca-4adcdbef607a}</Project>
       <Name>DAL</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -36,5 +36,7 @@ namespace DAL.DBEntities
         public Nullable<bool> IsInventoryItem { get; set; }
         public Nullable<bool> IsOpenItem { get; set; }
         public Nullable<double> MinOpenPrice { get; set; }
+        public Nullable<int> OdooProductID { get; set; }
+        public Nullable<int> LocationID { get; set; }
     }
 }

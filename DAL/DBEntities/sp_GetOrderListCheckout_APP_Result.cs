@@ -34,9 +34,10 @@ namespace DAL.DBEntities
         public Nullable<int> SubUserID { get; set; }
         public Nullable<double> CheckLiters { get; set; }
         public Nullable<double> NextKM { get; set; }
-        public int CarID1 { get; set; }
-        public int RowID { get; set; }
-        public int CustomerID { get; set; }
+        public Nullable<int> CustomerID { get; set; }
+        public Nullable<int> CarID1 { get; set; }
+        public Nullable<int> RowID { get; set; }
+        public Nullable<int> CustomerID1 { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         public string VinNo { get; set; }
@@ -55,9 +56,10 @@ namespace DAL.DBEntities
         public Nullable<System.DateTime> CreatedOn1 { get; set; }
         public string CreatedBy1 { get; set; }
         public Nullable<int> LocationID1 { get; set; }
-        public int UserID { get; set; }
+        public Nullable<int> UserID { get; set; }
         public string ImagePath { get; set; }
         public string Gender { get; set; }
+        public Nullable<int> CarType { get; set; }
         public Nullable<int> OrderCheckOutID { get; set; }
         public Nullable<int> OrderID1 { get; set; }
         public string SessionId1 { get; set; }
@@ -94,10 +96,11 @@ namespace DAL.DBEntities
         public string DiscountCode { get; set; }
         public Nullable<int> AppSourceID { get; set; }
         public Nullable<int> Status { get; set; }
-        public string CustomerContact { get; set; }
         public string CustomerName { get; set; }
+        public string CustomerContact { get; set; }
         public Nullable<System.DateTime> OrderPunchDate { get; set; }
         public string MechanicName { get; set; }
+        public string OrderTaker { get; set; }
         public string BayName { get; set; }
         public string MakerName { get; set; }
         public string ModelName { get; set; }

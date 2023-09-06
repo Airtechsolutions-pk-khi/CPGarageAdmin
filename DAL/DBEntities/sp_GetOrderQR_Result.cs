@@ -34,6 +34,7 @@ namespace DAL.DBEntities
         public Nullable<int> SubUserID { get; set; }
         public Nullable<double> CheckLiters { get; set; }
         public Nullable<double> NextKM { get; set; }
+        public Nullable<int> CustomerID { get; set; }
         public Nullable<int> OrderCheckOutID { get; set; }
         public Nullable<int> OrderID1 { get; set; }
         public string SessionId1 { get; set; }
@@ -71,7 +72,7 @@ namespace DAL.DBEntities
         public Nullable<int> AppSourceID { get; set; }
         public int CarID1 { get; set; }
         public int RowID { get; set; }
-        public int CustomerID { get; set; }
+        public int CustomerID1 { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         public string VinNo { get; set; }
@@ -93,19 +94,16 @@ namespace DAL.DBEntities
         public int UserID { get; set; }
         public string ImagePath { get; set; }
         public string Gender { get; set; }
+        public Nullable<int> CarType { get; set; }
         public int ReceiptID { get; set; }
-        public int RowID1 { get; set; }
         public string ReceiptName { get; set; }
         public string CompanyTitle { get; set; }
         public string CompanyAddress { get; set; }
         public string CompanyPhones { get; set; }
-        public string CompanyFax { get; set; }
         public string CompanyEmail { get; set; }
         public string CompanyWebsite { get; set; }
-        public string Promotiontagline { get; set; }
         public string Companytagline { get; set; }
         public string CompanyLogoURL { get; set; }
-        public string ReceiptContent { get; set; }
         public string Footer { get; set; }
         public string Facebook { get; set; }
         public string Twitter { get; set; }
@@ -113,12 +111,10 @@ namespace DAL.DBEntities
         public string Snapchat { get; set; }
         public string LastUpdatedBy1 { get; set; }
         public Nullable<System.DateTime> LastUpdatedDate1 { get; set; }
-        public Nullable<int> StatusID2 { get; set; }
-        public int LocationID3 { get; set; }
-        public Nullable<System.DateTime> CreatedOn3 { get; set; }
-        public string CreatedBy3 { get; set; }
-        public bool IsActive { get; set; }
         public Nullable<bool> IsCompanyTagline { get; set; }
+        public Nullable<int> StatusID2 { get; set; }
+        public bool IsActive { get; set; }
+        public int LocationID3 { get; set; }
         public Nullable<bool> IsA4Spacing { get; set; }
         public string CustomerName { get; set; }
         public Nullable<System.DateTime> OrderPunchDate { get; set; }

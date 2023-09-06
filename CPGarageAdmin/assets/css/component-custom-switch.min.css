@@ -28,8 +28,8 @@
   -ms-user-select: none;
   user-select: none;
   cursor: pointer;
-  width: 58px;
-  height: 28px;
+  width: 42px;
+  height: 24px;
   margin: 0;
   padding: 4px;
   background: #ced4da;
@@ -42,8 +42,8 @@
   position: relative;
   display: block;
   content: "";
-  width: 18px;
-  height: 18px;
+  width: 14px;
+  height: 14px;
 }
 .custom-switch .custom-switch-input + .custom-switch-btn:after {
   left: 2px;
@@ -54,14 +54,14 @@
 .custom-switch .custom-switch-input + .custom-switch-btn:before {
   display: none;
 }
-.custom-switch .custom-switch-input:checked + .custom-switch-btn {
-  background: #ffb509;
-}
+    .custom-switch .custom-switch-input:checked + .custom-switch-btn {
+        background: #282f3a;
+    }
 
 
 
 .custom-switch .custom-switch-input:checked + .custom-switch-btn:after {
-  left: 30px;
+  left: 17px;
 }
 .custom-switch
   .custom-switch-input:checked

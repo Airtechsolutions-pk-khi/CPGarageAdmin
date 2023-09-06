@@ -35,6 +35,7 @@ namespace DAL.DBEntities
         public Nullable<double> RefundAmount { get; set; }
         public Nullable<double> DiscountAmount { get; set; }
         public string Description { get; set; }
+        public Nullable<int> OdooProductID { get; set; }
         public Nullable<System.DateTime> OrderPunchDt { get; set; }
         public Nullable<int> CarID { get; set; }
         public string Name { get; set; }

@@ -37,8 +37,8 @@ namespace DAL.DBEntities
         public virtual inv_StockRequest inv_StockRequest { get; set; }
         public virtual Store Store { get; set; }
         public virtual Store Store1 { get; set; }
-        public virtual User User { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<inv_StockIssueDetail> inv_StockIssueDetail { get; set; }
+        public virtual User User { get; set; }
     }
 }

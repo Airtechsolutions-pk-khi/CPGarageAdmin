@@ -21,6 +21,7 @@ namespace DAL.DBEntities
         public string Value { get; set; }
         public Nullable<int> StatusID { get; set; }
         public Nullable<int> UserID { get; set; }
+        public string URL { get; set; }
     
         public virtual User User { get; set; }
     }

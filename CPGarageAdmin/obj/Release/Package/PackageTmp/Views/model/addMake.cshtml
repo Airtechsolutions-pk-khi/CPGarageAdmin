@@ -64,32 +64,32 @@
                                         {
                                             <div class="custom-switch custom-switch-primary mb-2">
                                                 <input class="custom-switch-input" id="StatusID" type="checkbox" value="1" name="StatusID" checked>
-                                                <label class="custom-switch-btn" for="StatusID"></label>
+                                                <label class="custom-switch-btn" for="StatusID" style="width: 40px; height: 23px;"></label>
                                                 <input class="custom-switch-input" type="hidden" value="2" name="StatusID" />
                                             </div>
                                         }
                                         else if (Model.StatusID == 1)
                                         {
-                                            <div class="custom-switch custom-switch-primary mb-2">
-                                                <input class="custom-switch-input" id="StatusID" type="checkbox" checked value="1" name="StatusID">
-                                                <label class="custom-switch-btn" for="StatusID"></label>
-                                                <input class="custom-switch-input" type="hidden" value="2" name="StatusID" />
-                                            </div>
+                                    <div class="custom-switch custom-switch-primary mb-2">
+                                        <input class="custom-switch-input" id="StatusID" type="checkbox" checked value="1" name="StatusID">
+                                        <label class="custom-switch-btn" for="StatusID" style="width: 40px; height: 23px;"></label>
+                                        <input class="custom-switch-input" type="hidden" value="2" name="StatusID" />
+                                    </div>
 
                                         }
                                         else if (Model.StatusID == 2)
                                         {
-                                            <div class="custom-switch custom-switch-primary mb-2">
-                                                <input class="custom-switch-input" id="StatusID" type="checkbox" value="1" name="StatusID">
-                                                <label class="custom-switch-btn" for="StatusID"></label>
-                                                <input class="custom-switch-input" type="hidden" value="2" name="StatusID" />
-                                            </div>
+                                    <div class="custom-switch custom-switch-primary mb-2">
+                                        <input class="custom-switch-input" id="StatusID" type="checkbox" value="1" name="StatusID">
+                                        <label class="custom-switch-btn" for="StatusID" style="width: 40px; height: 23px;"></label>
+                                        <input class="custom-switch-input" type="hidden" value="2" name="StatusID" />
+                                    </div>
                                         }
-                                        <div class="custom-switch custom-switch-primary mb-2" style="display:none;">
-                                            <input class="custom-switch-input" id="StatusID" type="checkbox" value="1" name="StatusID" checked>
-                                            <label class="custom-switch-btn" for="StatusID"></label>
-                                            <input class="custom-switch-input" type="hidden" value="2" name="StatusID" />
-                                        </div>
+                                    <div class="custom-switch custom-switch-primary mb-2" style="display:none;">
+                                        <input class="custom-switch-input" id="StatusID" type="checkbox" value="1" name="StatusID" checked>
+                                        <label class="custom-switch-btn" for="StatusID" style="width: 40px; height: 23px;"></label>
+                                        <input class="custom-switch-input" type="hidden" value="2" name="StatusID" />
+                                    </div>
                                     </div>
                                 </div>
 
@@ -116,7 +116,10 @@
                                 </div>
 
 
-                                <div class="col-md-3" style="padding-top:20px;"> <button type="submit" class="btn btn-primary mr-2">Save</button> </div>
+                                <div class="col-md-3" style="padding-top:20px;">
+                                    <button type="submit" class="btn btn-dark mr-2">Save</button>
+                                    <a href="~/model/listMake" class="btn btn-light">Cancel</a>
+                                </div>
                             </div>
 
                         </div>

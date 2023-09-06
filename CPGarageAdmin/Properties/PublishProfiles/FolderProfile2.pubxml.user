@@ -5,18 +5,18 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
 <Project>
   <PropertyGroup>
     <_PublishTargetUrl>E:\ProjectsPublish\CPGarage_Admin</_PublishTargetUrl>
-    <History>True|2023-07-13T13:04:41.0074907Z;True|2023-07-13T16:56:50.2563369+05:00;</History>
+    <History>True|2023-07-25T12:27:03.9208928Z;True|2023-07-25T16:45:39.0930714+05:00;True|2023-07-25T12:20:51.7185970+05:00;True|2023-07-13T18:04:41.0074907+05:00;True|2023-07-13T16:56:50.2563369+05:00;</History>
     <LastFailureDetails />
   </PropertyGroup>
   <ItemGroup>
     <File Include="assets/css/component-custom-switch.min.css">
-      <publishTime>07/13/2023 15:40:28</publishTime>
+      <publishTime>07/24/2023 12:15:52</publishTime>
     </File>
     <File Include="assets/css/font-awesome.css">
       <publishTime>07/13/2023 15:40:28</publishTime>
     </File>
     <File Include="assets/css/horizontal-layout/style.css">
-      <publishTime>07/13/2023 15:40:28</publishTime>
+      <publishTime>07/21/2023 15:22:58</publishTime>
     </File>
     <File Include="assets/css/maps/horizontal-layout/style.css.map">
       <publishTime>07/13/2023 15:40:28</publishTime>
@@ -34,10 +34,10 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>07/13/2023 15:40:28</publishTime>
     </File>
     <File Include="assets/css/vertical-layout-dark/style.css">
-      <publishTime>07/13/2023 15:40:28</publishTime>
+      <publishTime>07/21/2023 15:25:03</publishTime>
     </File>
     <File Include="assets/css/vertical-layout-light/style.css">
-      <publishTime>07/13/2023 15:40:28</publishTime>
+      <publishTime>07/21/2023 15:26:28</publishTime>
     </File>
     <File Include="assets/fonts/.DS_Store">
       <publishTime>07/13/2023 15:40:28</publishTime>
@@ -6214,28 +6214,28 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>07/13/2023 15:40:30</publishTime>
     </File>
     <File Include="bin/BAL.dll">
-      <publishTime>07/13/2023 16:56:26</publishTime>
+      <publishTime>07/25/2023 17:10:21</publishTime>
     </File>
     <File Include="bin/BAL.dll.config">
       <publishTime>07/13/2023 15:40:27</publishTime>
     </File>
     <File Include="bin/BAL.pdb">
-      <publishTime>07/13/2023 16:56:26</publishTime>
+      <publishTime>07/25/2023 17:10:21</publishTime>
     </File>
     <File Include="bin/CPGarageAdmin.dll">
-      <publishTime>07/13/2023 18:22:58</publishTime>
+      <publishTime>07/25/2023 17:26:53</publishTime>
     </File>
     <File Include="bin/CPGarageAdmin.pdb">
-      <publishTime>07/13/2023 18:22:58</publishTime>
+      <publishTime>07/25/2023 17:26:53</publishTime>
     </File>
     <File Include="bin/DAL.dll">
-      <publishTime>07/13/2023 16:56:25</publishTime>
+      <publishTime>07/25/2023 12:20:25</publishTime>
     </File>
     <File Include="bin/DAL.dll.config">
-      <publishTime>07/13/2023 17:44:02</publishTime>
+      <publishTime>07/24/2023 20:46:21</publishTime>
     </File>
     <File Include="bin/DAL.pdb">
-      <publishTime>07/13/2023 16:56:25</publishTime>
+      <publishTime>07/25/2023 12:20:25</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>07/13/2023 15:40:31</publishTime>
@@ -6433,13 +6433,13 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>07/13/2023 15:40:28</publishTime>
     </File>
     <File Include="Views/customers/add.cshtml">
-      <publishTime>07/13/2023 16:53:25</publishTime>
+      <publishTime>07/21/2023 18:29:39</publishTime>
     </File>
     <File Include="Views/customers/list.cshtml">
-      <publishTime>07/13/2023 15:40:28</publishTime>
+      <publishTime>07/24/2023 14:57:42</publishTime>
     </File>
     <File Include="Views/dashboard/dashboard.cshtml">
-      <publishTime>07/13/2023 15:40:28</publishTime>
+      <publishTime>07/21/2023 16:41:26</publishTime>
     </File>
     <File Include="Views/itemmovement/Index.cshtml">
       <publishTime>07/13/2023 15:40:28</publishTime>
@@ -6448,25 +6448,25 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>07/13/2023 15:40:28</publishTime>
     </File>
     <File Include="Views/model/add.cshtml">
-      <publishTime>07/13/2023 15:40:28</publishTime>
+      <publishTime>07/24/2023 13:56:03</publishTime>
     </File>
     <File Include="Views/model/addMake.cshtml">
-      <publishTime>07/13/2023 15:40:28</publishTime>
+      <publishTime>07/21/2023 15:59:45</publishTime>
     </File>
     <File Include="Views/model/list.cshtml">
-      <publishTime>07/13/2023 15:40:28</publishTime>
+      <publishTime>07/24/2023 14:56:56</publishTime>
     </File>
     <File Include="Views/model/listMake.cshtml">
-      <publishTime>07/13/2023 15:40:28</publishTime>
+      <publishTime>07/24/2023 14:57:05</publishTime>
     </File>
     <File Include="Views/packages/add.cshtml">
-      <publishTime>07/13/2023 15:40:28</publishTime>
+      <publishTime>07/24/2023 14:56:03</publishTime>
     </File>
     <File Include="Views/packages/addajax.cshtml">
-      <publishTime>07/13/2023 15:40:28</publishTime>
+      <publishTime>07/24/2023 14:00:12</publishTime>
     </File>
     <File Include="Views/packages/list.cshtml">
-      <publishTime>07/13/2023 15:40:28</publishTime>
+      <publishTime>07/24/2023 14:57:28</publishTime>
     </File>
     <File Include="Views/packages/_UpdatePackage.cshtml">
       <publishTime>07/13/2023 15:40:28</publishTime>
@@ -6478,7 +6478,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>07/13/2023 15:40:28</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>07/13/2023 15:40:28</publishTime>
+      <publishTime>07/25/2023 17:26:02</publishTime>
     </File>
     <File Include="Views/sms/list.cshtml">
       <publishTime>07/13/2023 15:40:28</publishTime>
@@ -6490,7 +6490,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>07/13/2023 15:40:28</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>07/13/2023 18:04:34</publishTime>
+      <publishTime>07/25/2023 12:20:44</publishTime>
     </File>
   </ItemGroup>
 </Project>

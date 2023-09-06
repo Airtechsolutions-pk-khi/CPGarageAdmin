@@ -148,9 +148,6 @@
     <Compile Include="DBEntities\Integration.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="DBEntities\IntegrationActivation.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
     <Compile Include="DBEntities\Inventory.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -325,10 +322,40 @@
     <Compile Include="DBEntities\sp_GetCarOrders_App_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="DBEntities\sp_GetCarsbyID_Admin_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="DBEntities\sp_GetCarsBy_CustomerID_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="DBEntities\sp_GetCars_UAT_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="DBEntities\sp_GetCar_App_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBEntities\sp_GetCredCustOrdersHistory_APP_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBEntities\sp_GetCreditCustomer_POS_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBEntities\sp_GetCustomerbyID_Admin_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBEntities\sp_GetCustomer_POS_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBEntities\sp_GetCustOrdersHistory_APP_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBEntities\sp_GetIntegrationSetttings_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBEntities\sp_GetItemActivities_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBEntities\sp_GetItemHistory_rpt_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="DBEntities\sp_GetLocationImages_CAdmin_Result.cs">
@@ -343,6 +370,9 @@
     <Compile Include="DBEntities\sp_GetLocationsV2_CAPI_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="DBEntities\sp_GetLocationsV3_CAPI_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="DBEntities\sp_GetLocations_CAPI_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -350,6 +380,12 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="DBEntities\sp_GetNotifications_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBEntities\sp_GetOrderDetailv2_APP_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBEntities\sp_GetOrderDetail_APP_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="DBEntities\sp_GetOrderHistory_App_Result.cs">
@@ -367,6 +403,9 @@
     <Compile Include="DBEntities\sp_GetOrderList_APP_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="DBEntities\sp_GetOrderList_APP_test_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="DBEntities\sp_GetOrderQR_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -374,6 +413,12 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="DBEntities\sp_GetPackageInfo_UAT_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBEntities\sp_GetPackageInfo_Website_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBEntities\sp_GetPermissionsV2_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="DBEntities\sp_GetPermissions_Result.cs">
@@ -391,7 +436,10 @@
     <Compile Include="DBEntities\sp_GetSubCategoryDuplication_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="DBEntities\sp_insertPackagesInfo_Admin_Result.cs">
+    <Compile Include="DBEntities\sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBEntities\sp_helpdiagrams_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="DBEntities\sp_InsertReview_CAPI_Result.cs">
@@ -401,6 +449,9 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="DBEntities\sp_login_CAPI_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBEntities\sp_rptCategorySales_admin_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="DBEntities\sp_rptCreditCustomer_Result.cs">
@@ -431,6 +482,9 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="DBEntities\sp_SearchLocation_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBEntities\sp_StockHistoryV2_rpt_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="DBEntities\sp_StockHistory_rpt_Result.cs">
@@ -470,6 +524,9 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="DBEntities\UserPackageDetail.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBEntities\usp_Login_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="DBEntities\ZatcaAuthentication.cs">

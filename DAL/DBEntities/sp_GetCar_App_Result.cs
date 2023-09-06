@@ -37,6 +37,7 @@ namespace DAL.DBEntities
         public int UserID { get; set; }
         public string ImagePath { get; set; }
         public string Gender { get; set; }
+        public Nullable<int> CarType { get; set; }
         public string ModelName { get; set; }
         public string MakeName { get; set; }
     }

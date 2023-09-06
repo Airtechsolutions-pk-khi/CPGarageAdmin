@@ -34,6 +34,7 @@ namespace DAL.DBEntities
         public Nullable<int> SubUserID { get; set; }
         public Nullable<double> CheckLiters { get; set; }
         public Nullable<double> NextKM { get; set; }
+        public Nullable<int> CustomerID { get; set; }
         public string RegistrationNo { get; set; }
         public Nullable<int> Year { get; set; }
         public string Color { get; set; }

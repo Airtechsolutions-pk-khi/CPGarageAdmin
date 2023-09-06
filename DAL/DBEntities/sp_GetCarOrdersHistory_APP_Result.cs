@@ -34,6 +34,7 @@ namespace DAL.DBEntities
         public Nullable<int> SubUserID { get; set; }
         public Nullable<double> CheckLiters { get; set; }
         public Nullable<double> NextKM { get; set; }
+        public Nullable<int> CustomerID { get; set; }
         public int OrderCheckOutID { get; set; }
         public int OrderID1 { get; set; }
         public string SessionId1 { get; set; }
@@ -70,6 +71,8 @@ namespace DAL.DBEntities
         public string DiscountCode { get; set; }
         public Nullable<int> AppSourceID { get; set; }
         public Nullable<System.DateTime> OrderPunchDate { get; set; }
+        public string CustomerName { get; set; }
+        public Nullable<int> Status { get; set; }
         public string MechanicName { get; set; }
     }
 }

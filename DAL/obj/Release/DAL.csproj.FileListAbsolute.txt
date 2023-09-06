@@ -73,3 +73,53 @@ C:\Office\Projects\GARAGEPOS\CPGarageAdmin\DAL\obj\Release\DAL.csproj.CoreCompil
 C:\Office\Projects\GARAGEPOS\CPGarageAdmin\DAL\obj\Release\DAL.csproj.CopyComplete
 C:\Office\Projects\GARAGEPOS\CPGarageAdmin\DAL\obj\Release\DAL.dll
 C:\Office\Projects\GARAGEPOS\CPGarageAdmin\DAL\obj\Release\DAL.pdb
+F:\GIT Project's\CPGarage_Admin\DAL\bin\Release\DAL.dll.config
+F:\GIT Project's\CPGarage_Admin\DAL\bin\Release\DAL.dll
+F:\GIT Project's\CPGarage_Admin\DAL\bin\Release\DAL.pdb
+F:\GIT Project's\CPGarage_Admin\DAL\bin\Release\EntityFramework.dll
+F:\GIT Project's\CPGarage_Admin\DAL\bin\Release\EntityFramework.SqlServer.dll
+F:\GIT Project's\CPGarage_Admin\DAL\bin\Release\Microsoft.Web.Infrastructure.dll
+F:\GIT Project's\CPGarage_Admin\DAL\bin\Release\System.Web.Helpers.dll
+F:\GIT Project's\CPGarage_Admin\DAL\bin\Release\System.Web.Mvc.dll
+F:\GIT Project's\CPGarage_Admin\DAL\bin\Release\System.Web.Razor.dll
+F:\GIT Project's\CPGarage_Admin\DAL\bin\Release\System.Web.WebPages.Deployment.dll
+F:\GIT Project's\CPGarage_Admin\DAL\bin\Release\System.Web.WebPages.dll
+F:\GIT Project's\CPGarage_Admin\DAL\bin\Release\System.Web.WebPages.Razor.dll
+F:\GIT Project's\CPGarage_Admin\DAL\bin\Release\EntityFramework.xml
+F:\GIT Project's\CPGarage_Admin\DAL\bin\Release\EntityFramework.SqlServer.xml
+F:\GIT Project's\CPGarage_Admin\DAL\bin\Release\System.Web.Helpers.xml
+F:\GIT Project's\CPGarage_Admin\DAL\bin\Release\System.Web.Mvc.xml
+F:\GIT Project's\CPGarage_Admin\DAL\bin\Release\System.Web.Razor.xml
+F:\GIT Project's\CPGarage_Admin\DAL\bin\Release\System.Web.WebPages.xml
+F:\GIT Project's\CPGarage_Admin\DAL\bin\Release\System.Web.WebPages.Deployment.xml
+F:\GIT Project's\CPGarage_Admin\DAL\bin\Release\System.Web.WebPages.Razor.xml
+F:\GIT Project's\CPGarage_Admin\DAL\obj\Release\DAL.csproj.AssemblyReference.cache
+F:\GIT Project's\CPGarage_Admin\DAL\obj\Release\DAL.csproj.CoreCompileInputs.cache
+F:\GIT Project's\CPGarage_Admin\DAL\obj\Release\DAL.csproj.CopyComplete
+F:\GIT Project's\CPGarage_Admin\DAL\obj\Release\DAL.dll
+F:\GIT Project's\CPGarage_Admin\DAL\obj\Release\DAL.pdb
+F:\Projects\CPGarage_Admin\DAL\bin\Release\DAL.dll.config
+F:\Projects\CPGarage_Admin\DAL\bin\Release\DAL.dll
+F:\Projects\CPGarage_Admin\DAL\bin\Release\DAL.pdb
+F:\Projects\CPGarage_Admin\DAL\bin\Release\EntityFramework.dll
+F:\Projects\CPGarage_Admin\DAL\bin\Release\EntityFramework.SqlServer.dll
+F:\Projects\CPGarage_Admin\DAL\bin\Release\Microsoft.Web.Infrastructure.dll
+F:\Projects\CPGarage_Admin\DAL\bin\Release\System.Web.Helpers.dll
+F:\Projects\CPGarage_Admin\DAL\bin\Release\System.Web.Mvc.dll
+F:\Projects\CPGarage_Admin\DAL\bin\Release\System.Web.Razor.dll
+F:\Projects\CPGarage_Admin\DAL\bin\Release\System.Web.WebPages.Deployment.dll
+F:\Projects\CPGarage_Admin\DAL\bin\Release\System.Web.WebPages.dll
+F:\Projects\CPGarage_Admin\DAL\bin\Release\System.Web.WebPages.Razor.dll
+F:\Projects\CPGarage_Admin\DAL\bin\Release\EntityFramework.xml
+F:\Projects\CPGarage_Admin\DAL\bin\Release\EntityFramework.SqlServer.xml
+F:\Projects\CPGarage_Admin\DAL\bin\Release\System.Web.Helpers.xml
+F:\Projects\CPGarage_Admin\DAL\bin\Release\System.Web.Mvc.xml
+F:\Projects\CPGarage_Admin\DAL\bin\Release\System.Web.Razor.xml
+F:\Projects\CPGarage_Admin\DAL\bin\Release\System.Web.WebPages.xml
+F:\Projects\CPGarage_Admin\DAL\bin\Release\System.Web.WebPages.Deployment.xml
+F:\Projects\CPGarage_Admin\DAL\bin\Release\System.Web.WebPages.Razor.xml
+F:\Projects\CPGarage_Admin\DAL\obj\Release\DAL.csproj.AssemblyReference.cache
+F:\Projects\CPGarage_Admin\DAL\obj\Release\DAL.csproj.CoreCompileInputs.cache
+F:\Projects\CPGarage_Admin\DAL\obj\Release\DAL.csproj.CopyComplete
+F:\Projects\CPGarage_Admin\DAL\obj\Release\DAL.dll
+F:\Projects\CPGarage_Admin\DAL\obj\Release\DAL.pdb

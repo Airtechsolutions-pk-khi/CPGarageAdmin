@@ -33,5 +33,6 @@ namespace DAL.DBEntities
         public string BrandName { get; set; }
         public string GMapLink { get; set; }
         public Nullable<int> LandmarkID { get; set; }
+        public Nullable<int> ReviewCount { get; set; }
     }
 }

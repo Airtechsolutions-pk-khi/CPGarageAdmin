@@ -95,11 +95,11 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="form_email">Package Name *</label>
-                                            @Html.TextBoxFor(model => model.PackageName, new { @class = "form-control", placeholder = "Enter Package Name", @Id = "txtName", @required="required" })
+                                            @Html.TextBoxFor(model => model.PackageName, new { @class = "form-control", placeholder = "Enter Package Name", @Id = "txtName", @required = "required" })
                                             @Html.ValidationMessageFor(model => model.PackageName, "", new { @class = "text-danger" })
                                         </div>
                                     </div>
-                                  
+
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="form_email">Package Price</label>
@@ -136,27 +136,21 @@
                                     </div>
                                     <div class="col-md-2">
                                         <div class="form-group">
-                                            <label for="form_need">Status</label>
                                             <div class="custom-control custom-switch custom-switch-md">
                                                 @Html.CheckBoxFor(model => model.StatusID, new { @class = "custom-control-input", placeholder = "", @for = "StatusID", @checked = "checked" })
                                                 <label class="custom-control-label form-check-label" for="StatusID" style=" padding-top: 4px !important; padding-left: 14px;"> Activation Status</label>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="col-md-2">
                                         <div class="form-group" style="margin-top: 23px;">
                                             <div class="custom-control custom-switch custom-switch-md">
-                                                @Html.CheckBoxFor(model => model.IsInventory, new { @class = "custom-switch custom-switch-primary mb-2", placeholder = "", @for = "IsInventory" })
-                                                <label class="custom-switch-btn" for="IsInventory" style=" padding-top: 4px !important; padding-left: 14px;"> Is Inventory</label>
+                                                @Html.CheckBoxFor(model => model.IsInventory, new { @class = "custom-control-input", placeholder = "", @for = "IsInventory"})
+                                                <label class="custom-control-label form-check-label" for="IsInventory" style=" padding-top: 4px !important; padding-left: 14px;">Is Inventory</label>
                                             </div>
-
                                         </div>
-                                    </div>
-                                    <div class="col-md-2">
                                         <div class="form-group" style="margin-top: 23px;">
                                             <div class="custom-control custom-switch custom-switch-md">
-                                                @Html.CheckBoxFor(model => model.IsGarageGo, new { @class = "custom-switch custom-switch-primary mb-2", placeholder = "", @for = "IsGarageGo", @checked = "checked" })
-                                                <label class="custom-switch-btn" for="IsGarageGo" style=" padding-top: 4px !important; padding-left: 14px;"> Is GarageGo </label>
+                                                @Html.CheckBoxFor(model => model.IsGarageGo, new { @class = "custom-control-input", placeholder = "", @for = "IsGarageGo" })
+                                                <label class="custom-control-label form-check-label" for="IsGarageGo" style=" padding-top: 4px !important; padding-left: 14px;"> Is Garage Go</label>
                                             </div>
                                         </div>
                                     </div>
@@ -176,11 +170,10 @@
                                                     <button type="button" class="btn btn-outline-secondary" data-command="justifyRight"><i class="fa fa-align-right"></i></button>
                                                     <button type="button" class="btn btn-outline-secondary" data-command="insertOrderedList"><i class="fa fa-list-ol"></i></button>
                                                     <button type="button" class="btn btn-outline-secondary" data-command="insertUnorderedList"><i class="fa fa-list"></i></button>
-
                                                 </div>
 
                                                 <div class="form-group">
-                                                    @Html.TextAreaFor(model => model.PackageDescription, new { @class = "text-editor-textarea", placeholder = "Enter Description", @Id = "txtDesc", @required="required" })
+                                                    @Html.TextAreaFor(model => model.PackageDescription, new { @class = "text-editor-textarea", placeholder = "Enter Description", @Id = "txtDesc"})
                                                 </div>
                                             </div>
                                         </div>

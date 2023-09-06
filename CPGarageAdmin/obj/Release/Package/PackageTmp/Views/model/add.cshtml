@@ -42,7 +42,7 @@
                                     <div class="form-group">
                                         <label for="form_need">Arabic Name</label>
                                         @Html.TextBoxFor(model => model.ArabicName, new { @class = "form-control", placeholder = "", @Id = "txtArName" })
-                                        @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                                        @Html.ValidationMessageFor(model => model.ArabicName, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
                             </div>
@@ -139,8 +139,8 @@
                             </div>
 
                             <div class="row">
-                                <button type="submit" class="btn btn-primary mr-2">Save</button>
-                                @*<a href="~/model/list" class="btn btn-light">Cancel</a>*@
+                                <button type="submit" class="btn btn-dark mr-2">Save</button>
+                                <a href="~/model/list" class="btn btn-light">Cancel</a>
                             </div>
 
                         </div>

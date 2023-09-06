@@ -64,43 +64,76 @@
     }
 
 </script>
-<script type="text/javascript">
-    function GetSelectedTextValue(ddlPackage) {
-        debugger
-        var selectedText = ddlPackage.options[ddlPackage.selectedIndex].innerHTML;
-        var selectedValue = ddlPackage.value;
-
-        if (selectedText == "Starter") {
+@*<script type="text/javascript">
+        function GetSelectedTextValue(ddlPackage) {
             debugger
-            var today = new Date();
-            today.setDate(today.getDate() + 15);
+            var selectedText = ddlPackage.options[ddlPackage.selectedIndex].innerHTML;
+            var selectedValue = ddlPackage.value;
 
-            var dd = String(today.getDate()).padStart(2, '0');
-            var mm = String(today.getMonth() + 1).padStart(2, '0'); // January is 0!
-            var yyyy = today.getFullYear();
+            if (selectedText == "Starter") {
+                debugger
+                var today = new Date();
+                today.setDate(today.getDate() + 15);
 
-            var expDate = yyyy + '/' + mm + '/' + dd;
+                var dd = String(today.getDate()).padStart(2, '0');
+                var mm = String(today.getMonth() + 1).padStart(2, '0'); // January is 0!
+                var yyyy = today.getFullYear();
 
-            $('#expdate').val(expDate);
-            console.log(today);
+                //var expDate = yyyy + '/' + mm + '/' + dd;
+
+                $('#expdate').val(expDate);
+                console.log(today);
+            }
+            else {
+                var today = new Date();
+                var dd = String(today.getDate()).padStart(2, '0');
+                var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+                var yyyy = today.getFullYear() + 1;
+
+                today = yyyy + '/' + mm + '/' + dd;
+
+
+                //var date = new Date();
+                //today.Date + 365;
+                $('#expdate').val(today);
+                //console.log(date);
+            }
         }
-        else {
-            var today = new Date();
-            var dd = String(today.getDate()).padStart(2, '0');
-            var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-            var yyyy = today.getFullYear() + 1;
+    </script>*@
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        debugger
+        $('#ddlPackage').on('change', function () {
+            GetSelectedTextValue(this);
+        });
 
-            today = yyyy + '/' + mm + '/' + dd;
-
-
-            //var date = new Date();
-            //today.Date + 365;
-            $('#expdate').val(today);
-            //console.log(date);
-
-
+        function setExpiryDateValue(dateString) {
+            $('#expdate').val(dateString);
         }
-    }
+        function formatDateToISO(date) {
+            var year = date.getFullYear();
+            var month = String(date.getMonth() + 1).padStart(2, '0');
+            var day = String(date.getDate()).padStart(2, '0');
+            return year + "-" + month + "-" + day;
+        }
+
+        function GetSelectedTextValue(ddlPackage) {
+            debugger
+            var selectedValue = $(ddlPackage).val();
+
+            if (selectedValue === "1") {
+                var today = new Date();
+                today.setDate(today.getDate() + 15);
+                setExpiryDateValue(formatDateToISO(today));
+            } else {
+                var today = new Date();
+                today.setFullYear(today.getFullYear() + 1);
+                setExpiryDateValue(formatDateToISO(today));
+            }
+        }
+        GetSelectedTextValue($('#ddlPackage'));
+    });
 </script>
 @using (Ajax.BeginForm("Save", "Customers", new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "ModalUser", OnSuccess = "UserSuccess" }))
 {
@@ -141,7 +174,7 @@
                             <label for="exampleInputPassword4">Contact</label>
                             @Html.TextBoxFor(model => model.ContactNo, new { @class = "form-control", placeholder = "" })
                         </div>
-                        <button type="submit" class="btn btn-primary mr-2">Save</button>
+                        <button type="submit" class="btn btn-dark mr-2">Save</button>
                         <a href="~/customers/list" class="btn btn-light">Cancel</a>
                     </div>
                 </div>
@@ -174,7 +207,7 @@
                         <div class="form-group">
                             <label for="exampleInputPassword4">Select Country</label>
                             @Html.DropDownListFor(model => model.Currency, new List<SelectListItem>
-                             {
+                                                                 {
                                 new SelectListItem{ Text = "Saudi", Value = "SA"},
                                 new SelectListItem{ Text = "Bahrain", Value = "BHR"},
                                 new SelectListItem{ Text = "Kuwait", Value = "KWT"},
@@ -193,24 +226,35 @@
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword4">Expiry Date</label>
-                            @Html.TextBoxFor(model => model.ExpiryDate, new { @class = "form-control", @Name = "ExpiryDate", @type = "text", @id = "expdate", @readonly = "readonly" })
+                            <input class="form-control" name="ExpiryDate" type="date" id="expdate" />
                         </div>
-                        <div class="form-group">
-                            @*<label class="card-title">SMS Activation</label>*@
-                            <div class="form-check" style="margin-left:20px">
-                                @Html.CheckBoxFor(model => model.IsSMSActivate, new { @class = "form-check-input", placeholder = "", @for = "exampleCheck1" })
-                                <label class="form-check-label" for="exampleCheck1">SMS Activation</label>
+                        <div class="form-row">
+                            <div class="col-md-6">
+                                <div class="custom-control custom-switch custom-switch-md">
+                                    @Html.CheckBoxFor(model => model.IsSMSActivate, new { @class = "custom-control-input", placeholder = "", @for = "IsSMSActivate" })
+                                    <label class="custom-control-label form-check-label" for="IsSMSActivate" style=" padding-top: 4px !important; padding-left: 14px;">SMS Activation</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="custom-control custom-switch custom-switch-md">
+                                    @Html.CheckBoxFor(model => model.IsAccountingAddons, new { @class = "custom-control-input", placeholder = "", @for = "IsAccountingAddons" })
+                                    <label class="custom-control-label form-check-label" for="IsAccountingAddons" style=" padding-top: 4px !important; padding-left: 14px;">Is Accounting Addons</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="custom-control custom-switch custom-switch-md">
+                                    @Html.CheckBoxFor(model => model.IsGarageGo, new { @class = "custom-control-input", placeholder = "", @for = "IsGarageGo" })
+                                    <label class="custom-control-label form-check-label" for="IsGarageGo" style=" padding-top: 4px !important; padding-left: 14px;">Is Garage GO</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="custom-control custom-switch custom-switch-md">
+                                    @Html.CheckBoxFor(model => model.IsCashier, new { @class = "custom-control-input", placeholder = "", @for = "IsCashier" })
+                                    <label class="custom-control-label form-check-label" for="IsCashier" style=" padding-top: 4px !important; padding-left: 14px;">Is Cashier</label>
+                                </div>
                             </div>
                         </div>
                         <div class="form-group">
-                            @*<label class="card-title">Is Accounting Addon</label>*@
-                            <div class="form-check" style="margin-left:20px">
-                                @Html.CheckBoxFor(model => model.IsAccountingAddons, new { @class = "form-check-input", placeholder = "", @for = "exampleCheck2" })
-                                <label class="form-check-label" for="exampleCheck1">Is Accounting Addons</label>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            @*<label class="card-title">Activation Status</label>*@
                             <div class="custom-control custom-switch custom-switch-md">
                                 @Html.CheckBoxFor(model => model.StatusID, new { @class = "custom-control-input", placeholder = "", @for = "StatusID", @checked = "checked" })
                                 <label class="custom-control-label form-check-label" for="StatusID" style=" padding-top: 4px !important; padding-left: 14px;"> Activation Status</label>

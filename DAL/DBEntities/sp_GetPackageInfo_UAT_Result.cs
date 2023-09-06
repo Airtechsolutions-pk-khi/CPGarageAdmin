@@ -16,7 +16,9 @@ namespace DAL.DBEntities
         public int PackageInfoID { get; set; }
         public string PackageName { get; set; }
         public Nullable<decimal> PackagePrice { get; set; }
+        public string PackageDetail { get; set; }
         public string PackageDescription { get; set; }
+        public string NoofDays { get; set; }
         public Nullable<int> DeviceCount { get; set; }
         public Nullable<int> LocationsLimit { get; set; }
         public Nullable<int> StatusID { get; set; }

@@ -32,7 +32,7 @@ namespace DAL.DBEntities
         public int UserID { get; set; }
     
         public virtual Store Store { get; set; }
-        public virtual User User { get; set; }
         public virtual Item Item { get; set; }
+        public virtual User User { get; set; }
     }
 }

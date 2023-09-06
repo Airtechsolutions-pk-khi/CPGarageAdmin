@@ -11,7 +11,7 @@
                 <h4 class="card-title">Models</h4>
             </div>
             <div class="col-4 text-right">
-                <a href="~/model/add" class="btn btn-sm btn-secondary"><i class="mdi mdi-plus-circle"></i> Add</a>
+                <a href="~/model/add" class="btn btn-sm btn-secondary"><i class="mdi mdi-plus-circle"></i> Add Model</a>
             </div>
         </div>
         <div class="row">
@@ -31,40 +31,40 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach(DAL.DBEntities.Model item in Model)
+                            @foreach (DAL.DBEntities.Model item in Model)
                             {
-                            <tr>
-                                <td>
-                                    @if (item.ImagePath == null || item.ImagePath == "")
-                                    {
-                                        <img src="~/assets/images/no_image.jpg" style=" height:60px;width:60px; border-radius:20px 20px 20px 20px" />
-                                    }
-                                    else
-                                    {
-                                        <img src="@Url.Content(item.ImagePath)" style=" height:60px;width:60px; border-radius:20px 20px 20px 20px" />
-                                    }
-                                </td>
-                                <td> @item.Name</td>
-                                <td> @item.ArabicName</td>
-                                <td> @item.Year</td>
-                               <td>@item.Make.Name</td>
-                                <td> @item.EngineNo</td>
-                                @if (item.StatusID == 1)
-                                {
-                                    <td class="bg-success">Active</td>
-                                }
-                                else
-                                {
-                                    <td class="bg-danger"> De Active</td>
+                                <tr>
+                                    <td>
+                                        @if (item.ImagePath == null || item.ImagePath == "")
+                                        {
+                                            <img src="~/assets/images/no_image.jpg" style=" height:40px;width:40px; border-radius:20px 20px 20px 20px" />
+                                        }
+                                        else
+                                        {
+                                            <img src="@Url.Content(item.ImagePath)" style=" height:40px;width:40px; border-radius:20px 20px 20px 20px" />
+                                        }
+                                    </td>
+                                    <td> @item.Name</td>
+                                    <td> @item.ArabicName</td>
+                                    <td> @item.Year</td>
+                                    <td>@item.Make.Name</td>
+                                    <td> @item.EngineNo</td>
+                                    <td>
+                                        @if (item.StatusID == 1)
+                                        {
+                                            <b class="badge badge-success">Active</b>
+                                        }
+                                        else
+                                        {
+                                            <b class="badge badge-danger"> De Active</b>
 
-                                }
-
-
-                                <td class="text-center">
-                                    <a href="~/model/add?id=@item.ModelID"><i class="mdi mdi-pencil" style="font-size:18px !important;"></i></a>
-                                    <a href="~/model/Delete?id=@item.ModelID"><i class="mdi mdi-delete" style="font-size:18px !important;"></i></a>
-                                </td>
-                            </tr>
+                                        }
+                                    </td>
+                                    <td class="text-center">
+                                        <a href="~/model/add?id=@item.ModelID"><i class="mdi mdi-pencil" style="font-size:18px !important;"></i></a>
+                                        <a href="~/model/Delete?id=@item.ModelID"><i class="mdi mdi-delete" style="font-size:18px !important;"></i></a>
+                                    </td>
+                                </tr>
                             }
 
                         </tbody>

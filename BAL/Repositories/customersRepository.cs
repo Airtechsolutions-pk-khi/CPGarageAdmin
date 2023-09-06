@@ -15,6 +15,7 @@ using System.Data.SqlClient;
 using System.Data;
 using Twilio.TwiML.Messaging;
 using WebAPICode.Helpers;
+using System.Web.Razor.Tokenizer;
 
 namespace BAL.Repositories
 {
@@ -77,6 +78,8 @@ namespace BAL.Repositories
                         VATNO = r.VATNO,
                         Address = r.Address,
                         IsSMSActivate = r.IsSMSCheckoutAddOn == null ? false : Convert.ToBoolean(r.IsSMSCheckoutAddOn.ToString()),
+                        IsGarageGo = r.IsGarageGo == null ? false : Convert.ToBoolean(r.IsGarageGo.ToString()),
+                        IsCashier = r.IsCashier == null ? false : Convert.ToBoolean(r.IsCashier.ToString()),
                         //AllowNegativeInventory = r.AllowNegativeInventory == null ? false : Convert.ToBoolean(r.AllowNegativeInventory.ToString()),
                         //IsOdoo = r.IsOdoo == null ? false : Convert.ToBoolean(r.IsOdoo.ToString()),
                         //IsAccountingAddons = r.IsAccountingAddons == null ? false : Convert.ToBoolean(r.IsAccountingAddons.ToString()),
@@ -87,9 +90,9 @@ namespace BAL.Repositories
                         LocationContactNo = r.Locations.FirstOrDefault().ContactNo,
                         LocationEmail = r.Locations.FirstOrDefault().Email,
                         Currency = r.Locations.FirstOrDefault().Currency,
-                        Tax = r.Tax,                       
+                        Tax = r.Tax,
                         PackageInfoID = r.UserPackageDetails.Count == 0 ? 0 : r.UserPackageDetails.FirstOrDefault().PackageInfoID,
-                        
+
                         //ExpiryDate = r.UserPackageDetails.FirstOrDefault().ExpiryDate,
                     })
                   .FirstOrDefault();
@@ -133,30 +136,41 @@ namespace BAL.Repositories
                         x => x.UserName,
                         x => x.ContactNo,
                         x => x.IsSMSCheckoutAddOn,
+                        x => x.IsGarageGo,
+                        x => x.IsCashier,
                         x => x.StatusID,
                         x => x.UserPackageDetails
                         );
                         DBContext.SaveChanges();
-                        if (modal.UserID > 0)
+
+                        if (modal.PackageInfoID == 0)
+                        {
+                            UserPackageDetail package = new UserPackageDetail();
+
+                            package.UserID = modal.UserID;
+                            package.PackageInfoID = modal.PackageInfoID;
+                            package.StatusID = 1;
+                            package.CreatedDate = DateTime.UtcNow.AddMinutes(180);
+                            package.LastUpdatedDate = DateTime.UtcNow.AddMinutes(180);
+                            package.ExpiryDate = modal.ExpiryDate;
+                            DBContext.UserPackageDetails.Add(package);
+                            DBContext.SaveChanges();
+                        }
+                        if (modal.PackageInfoID != 0)
                         {
                             UserPackageDetail _package = DBContext.UserPackageDetails.Where(x => x.PackageInfoID == modal.PackageInfoID).FirstOrDefault();
+
                             _package.PackageInfoID = modal.PackageInfoID;
                             _package.UserID = modal.UserID;
                             _package.StatusID = modal.StatusID == true ? 1 : 2;
                             _package.LastUpdatedDate = DateTime.UtcNow.AddMinutes(180);
-                            if (modal.ExpiryDate != _package.ExpiryDate)
-                            {
-                                _package.ExpiryDate = modal.ExpiryDate;
-                            }
-                            else
-                            {
-                                _package.ExpiryDate = DateTime.UtcNow.AddDays(15);
-                            }
+                            _package.ExpiryDate = modal.ExpiryDate;
                             DBContext.Entry(_package).State = EntityState.Modified;
                             DBContext.UpdateOnly<UserPackageDetail>(_package, x =>
                            x.PackageInfoID,
                             x => x.StatusID,
-                            x => x.LastUpdatedDate
+                            x => x.LastUpdatedDate,
+                            x => x.ExpiryDate
                             );
                             DBContext.SaveChanges();
                         }
@@ -201,9 +215,9 @@ namespace BAL.Repositories
                     _user.Subscribe = false;
                     _user.TimeZoneID = 54;
                     _user.Tax = 0;
+                    _user.IsGarageGo = modal.IsGarageGo;
+                    _user.IsCashier = modal.IsCashier;
                     _user.StatusID = modal.StatusID == true ? 1 : 2;
-                    //_user.IsSMSCheckoutAddOn = false;
-                    //_user.IsAccountingAddons = false;
                     _user.CompanyCode = "POS-" + randomstring(6);
                     _user.Address = modal.LocationAddress;
                     _user.LastUpdatedDate = DateTime.UtcNow.AddMinutes(180);
@@ -258,22 +272,56 @@ namespace BAL.Repositories
                         if (data.UserID != 0)
                         {
                             _package.UserID = data.UserID;
-                            if (_package.PackageInfoID == 1)
-                            {
-                                _package.ExpiryDate = DateTime.UtcNow.AddDays(15);
-                            }
                             _package.PackageInfoID = modal.PackageInfoID;
                             _package.StatusID = 1;
                             _package.CreatedDate = DateTime.UtcNow.AddMinutes(180);
                             _package.LastUpdatedDate = DateTime.UtcNow.AddMinutes(180);
+                            _package.ExpiryDate = modal.ExpiryDate;
                             UserPackageDetail datauser = DBContext.UserPackageDetails.Add(_package);
                             DBContext.SaveChanges();
                         }
+                        try
+                        {
+                            var obj = new RoleGroup();
+                            //data.LastUpdatedBy = 
+                            //var forms = DBContext.Role_Forms.Where(x => x.StatusID == 1);
+                            string[] arr = { "Manager", "Cashier", "Technician" };
+                            foreach (var item in arr)
+                            {
+                                SqlParameter[] e = new SqlParameter[5];
+                                e[0] = new SqlParameter("@GroupName", item);
+                                e[1] = new SqlParameter("@LastUpdatedDate", data.LastUpdatedDate);
+                                e[2] = new SqlParameter("@LastUpdatedBy", data.LastUpdatedBy);
+                                e[3] = new SqlParameter("@StatusID", data.StatusID);
+                                e[4] = new SqlParameter("@UserID", data.UserID);
+                                obj.GroupID = int.Parse((new DBHelperGarageUAT().GetTableFromSP)("sp_InsertRole_Group", e).ToString());
 
+                                var New = item == "Manager" ? 1 : item == "Technician" ? 0 : item == "Cashier" ? 0 : 0;
+                                var Edit = item == "Manager" ? 1 : item == "Technician" ? 0 : item == "Cashier" ? 0 : 0;
+                                var Remove = item == "Manager" ? 1 : item == "Technician" ? 0 : item == "Cashier" ? 0 : 0;
+                                var Access = item == "Manager" ? 1 : item == "Technician" ? 0 : item == "Cashier" ? 0 : 0;
+                                var IsCashier = item == "Manager" ? 0 : item == "Technician" ? 0 : item == "Cashier" ? 1 : 0;
+
+                                SqlParameter[] e3 = new SqlParameter[7];
+                                e3[0] = new SqlParameter("@GroupID", obj.GroupID);
+                                e3[1] = new SqlParameter("@New", New);
+                                e3[2] = new SqlParameter("@Edit", Edit);
+                                e3[3] = new SqlParameter("@Remove", Remove);
+                                e3[4] = new SqlParameter("@Access", Access);
+                                e3[5] = new SqlParameter("@StatusID", data.StatusID);
+                                e3[6] = new SqlParameter("@IsCashier", IsCashier);
+                                int form = (new DBHelperGarageUAT().ExecuteNonQueryReturn)("sp_InsertRoleGroup_ADMIN", e3);
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            dbContextTransaction.Rollback();
+                            return 0;
+                        }
+                        dbContextTransaction.Rollback();
+                        //dbContextTransaction.Commit();
+                        return 1;
                     }
-                    dbContextTransaction.Commit();
-                    return 1;
-
                 }
                 catch (Exception ex)
                 {

@@ -12,7 +12,7 @@
                 <h4 class="card-title">Customers</h4>
             </div>
             <div class="col-4 text-right">
-                <a href="~/customers/add" class="btn btn-sm btn-secondary"><i class="mdi mdi-plus-circle"></i> Add</a>
+                <a href="~/customers/add" class="btn btn-sm btn-secondary"><i class="mdi mdi-plus-circle"></i> Add Customer</a>
             </div>
         </div>
         <div class="row">
@@ -25,9 +25,9 @@
                                 <th>Company Code</th>
                                 <th>User Name</th>
                                 <th>Email</th>
-                                @*<th>Password</th>*@
+                                <th>Package</th>
                                 <th>Company Name</th>
-                                <th>Sms Service</th>
+                                @*<th>Sms Service</th>*@
                                 <th>Contact</th>
                                 @*<th>Address</th>*@
                                 <th>Status</th>
@@ -42,27 +42,34 @@
                                     <td> @item.CompanyCode</td>
                                     <td> @item.FirstName  &nbsp; @item.LastName</td>
                                     <td> @item.Email</td>
-                                    @*<td> @item.Password</td>*@
-                                    <td> @item.Company</td>
-                                    @if (item.IsSMSCheckoutAddOn == true)
+                                    @if (item.PackageInfoID == 1)
                                     {
-                                        <td class="bg-success">Active</td>
+                                        <td>Free Trial</td>
                                     }
                                     else
                                     {
-                                        <td class="bg-danger"> De Active</td>
-
+                                        <td>Professional</td>
                                     }
+                                    <td> @item.Company</td>
+                                    @*@if (item.IsSMSCheckoutAddOn == true)
+                                        {
+                                            <td class="bg-success">Active</td>
+                                        }
+                                        else
+                                        {
+                                            <td class="bg-danger"> De Active</td>
+
+                                        }*@
                                     <td> @item.ContactNo</td>
                                     <td>
-                                        <label class="badge badge-info">
+                                        <label>
                                             @if (item.StatusID == 1)
                                             {
-                                                <b>Active</b>
+                                                <b class="badge badge-success">Active</b>
                                             }
                                             else
                                             {
-                                                <b>Deactive</b>
+                                                <b class="badge badge-danger">Deactive</b>
                                             }
                                         </label>
                                     </td>
