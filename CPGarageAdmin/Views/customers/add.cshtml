@@ -52,6 +52,39 @@
     .custom-switch .custom-control-input:disabled:checked ~ .custom-control-label::before {
         background-color: rgba(78, 115, 223, 0.5);
     }
+
+    .formdiv#loading {
+        display: none;
+    }
+    .modal {
+        position: fixed;
+        z-index: 999;
+        height: 100%;
+        width: 100%;
+        top: 0;
+        background-color: Black;
+        filter: alpha(opacity=60);
+        opacity: 0.6;
+        -moz-opacity: 0.8;
+        display: none;
+    }
+
+    .center {
+        z-index: 1000;
+        margin: 50pxauto;
+        padding: 10px;
+        width: 130px;
+        background-color: White;
+        border-radius: 10px;
+        filter: alpha(opacity=100);
+        opacity: 1;
+        -moz-opacity: 1;
+    }
+
+    .centerimg {
+        height: 128px;
+        width: 128px;
+    }
 </style>
 <script type="text/javascript">
     function UserSuccess(result) {
@@ -62,16 +95,16 @@
             alert("CUSTOMER CANNOT CREATED SUCCESSFULLY")
         }
     }
-
+  
 </script>
 @*<script type="text/javascript">
         function GetSelectedTextValue(ddlPackage) {
-            debugger
+
             var selectedText = ddlPackage.options[ddlPackage.selectedIndex].innerHTML;
             var selectedValue = ddlPackage.value;
 
             if (selectedText == "Starter") {
-                debugger
+
                 var today = new Date();
                 today.setDate(today.getDate() + 15);
 
@@ -103,7 +136,7 @@
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
     $(document).ready(function () {
-        debugger
+
         $('#ddlPackage').on('change', function () {
             GetSelectedTextValue(this);
         });
@@ -119,7 +152,7 @@
         }
 
         function GetSelectedTextValue(ddlPackage) {
-            debugger
+
             var selectedValue = $(ddlPackage).val();
 
             if (selectedValue === "1") {
@@ -135,8 +168,13 @@
         GetSelectedTextValue($('#ddlPackage'));
     });
 </script>
-@using (Ajax.BeginForm("Save", "Customers", new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "ModalUser", OnSuccess = "UserSuccess" }))
+@using (Ajax.BeginForm("Save", "Customers", new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "ModalUser", OnSuccess = "UserSuccess", LoadingElementId = "progress" }, new { @id = "customerForm" }))
 {
+    <div id="progress" class="modal">
+        <div class="center">
+            <img src="~/assets/images/loader.gif" width="60px" height="60px" />
+        </div>
+    </div>
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     <div class="row">

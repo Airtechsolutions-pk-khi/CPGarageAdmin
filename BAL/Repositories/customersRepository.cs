@@ -280,6 +280,9 @@ namespace BAL.Repositories
                             UserPackageDetail datauser = DBContext.UserPackageDetails.Add(_package);
                             DBContext.SaveChanges();
                         }
+
+                        dbContextTransaction.Commit();
+
                         try
                         {
                             var obj = new RoleGroup();
@@ -294,7 +297,8 @@ namespace BAL.Repositories
                                 e[2] = new SqlParameter("@LastUpdatedBy", data.LastUpdatedBy);
                                 e[3] = new SqlParameter("@StatusID", data.StatusID);
                                 e[4] = new SqlParameter("@UserID", data.UserID);
-                                obj.GroupID = int.Parse((new DBHelperGarageUAT().GetTableFromSP)("sp_InsertRole_Group", e).ToString());
+                                obj.GroupID = int.Parse((new DBHelperGarageUAT().GetDatasetFromSP)("sp_InsertRoleGroup", e).Tables[0].Rows[0][0].ToString());
+                                //obj.GroupID = int.Parse((new DBHelperGarageUAT().GetTableFromSP)("sp_InsertRoleGroup", e).ToString());
 
                                 var New = item == "Manager" ? 1 : item == "Technician" ? 0 : item == "Cashier" ? 0 : 0;
                                 var Edit = item == "Manager" ? 1 : item == "Technician" ? 0 : item == "Cashier" ? 0 : 0;
@@ -310,16 +314,13 @@ namespace BAL.Repositories
                                 e3[4] = new SqlParameter("@Access", Access);
                                 e3[5] = new SqlParameter("@StatusID", data.StatusID);
                                 e3[6] = new SqlParameter("@IsCashier", IsCashier);
-                                int form = (new DBHelperGarageUAT().ExecuteNonQueryReturn)("sp_InsertRoleGroup_ADMIN", e3);
+                                (new DBHelperGarageUAT().ExecuteNonQueryReturn)("sp_InsertRoleGroup_ADMIN", e3);
                             }
                         }
                         catch (Exception ex)
                         {
-                            dbContextTransaction.Rollback();
                             return 0;
                         }
-                        dbContextTransaction.Rollback();
-                        //dbContextTransaction.Commit();
                         return 1;
                     }
                 }

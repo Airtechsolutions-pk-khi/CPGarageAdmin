@@ -170,6 +170,7 @@
     <Content Include="assets\images\lightbox\thumb-v-v-2.jpg" />
     <Content Include="assets\images\lightbox\thumb-v-y-1.jpg" />
     <Content Include="assets\images\lightbox\thumb-v-y-2.jpg" />
+    <Content Include="assets\images\loader.gif" />
     <Content Include="assets\images\login-bg.jpg" />
     <Content Include="assets\images\logo-garage-v1.svg" />
     <Content Include="assets\images\logo-garage.png" />
