@@ -121,6 +121,8 @@ namespace BAL.Repositories
                         _user.ContactNo = modal.ContactNo;
                         _user.UserName = modal.Email;
                         _user.Company = modal.Company;
+                        _user.IsCashier = modal.IsCashier;
+                        _user.IsGarageGo = modal.IsGarageGo;
                         _user.Password = new clsCryption().EncryptDecrypt(modal.Password, "encrypt");
                         _user.IsSMSCheckoutAddOn = modal.IsSMSActivate;
                         //_user.IsAccountingAddons = modal.IsAccountingAddons;
