@@ -241,6 +241,38 @@ namespace BAL.Repositories
                         _location.Currency = modal.Currency;
                         Location dataLocation = DBContext.Locations.Add(_location);
                         DBContext.SaveChanges();
+
+                        try
+                        {
+                            //add main store for location
+                            var store = new Store();
+                            store.StatusID = 1;
+                            store.UserID = _location.UserID;
+                            store.Contact = _location.ContactNo;
+                            store.Address = _location.Address;
+                            store.LastUpdatedDate = _location.LastUpdatedDate;
+                            store.LastUpdatedBy = _location.LastUpdatedBy;
+                            store.StoreLocationID =null;
+                            store.Type = "Main Store";
+                            store.Name = dataLocation.Name + "-mainstore";
+                            DBContext.Stores.Add(store);
+                            DBContext.SaveChanges();
+                            //add store for location
+                             store = new Store();
+                            store.StatusID = 1;
+                            store.UserID = _location.UserID;
+                            store.Contact = _location.ContactNo;
+                            store.Address = _location.Address;
+                            store.LastUpdatedDate = _location.LastUpdatedDate;
+                            store.LastUpdatedBy = _location.LastUpdatedBy;
+                            store.StoreLocationID = dataLocation.LocationID;
+                            store.Type = "Location Store";
+                            store.Name = _location.Name + "-store";
+                            DBContext.Stores.Add(store);
+                            DBContext.SaveChanges();
+                        }
+                        catch (Exception e)
+                        {}
                         if (dataLocation.LocationID > 0)
                         {
                             _subuser.FirstName = modal.FirstName;
