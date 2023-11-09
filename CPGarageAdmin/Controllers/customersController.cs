@@ -82,8 +82,8 @@ namespace CPGarageAdmin.Controllers
                             .Replace("#Contact#", modal.ContactNo.ToString())
                             .Replace("#Company#", modal.Company.ToString())
                             .Replace("#Package#", modal.PackageInfoID.ToString());
-
-                            SendEmail(SubJect, BodyEmail, ToEmail);
+                            //rafi
+                            //SendEmail(SubJect, BodyEmail, ToEmail);
                         }
                         catch { }
                     }
@@ -99,7 +99,8 @@ namespace CPGarageAdmin.Controllers
                                 ToEmail = modal.Email;
                                 SubJect = "Thank you For Registered in Garage";
                                 string BodyEmail = System.IO.File.ReadAllText(Server.MapPath("~/Template") + "\\" + "Trial_template.txt");
-                                SendEmail(SubJect, BodyEmail, ToEmail);
+                                //rafi
+                                //SendEmail(SubJect, BodyEmail, ToEmail);
                             }
                             catch { }
                             if (data == 1)
