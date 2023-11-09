@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <!--<meta http-equiv="X-UA-Compatible" content="IE=edge">-->
+    <link href="https://fonts.googleapis.com/css?family=Muli:400,700" rel="stylesheet">
+    <title>Garage</title>
+</head>
+<body class="body" style="-ms-text-size-adjust: 100%; background: #fffffe; -webkit-text-size-adjust: none; padding: 0 !important; margin: 0 !important; display: block !important; min-width: 100% !important; width: 100% !important;" data-new-gr-c-s-check-loaded="14.1067.0" data-gr-ext-installed data-new-gr-c-s-loaded="14.1067.0">
+    <table bgcolor="#fffffe" border="0" cellpadding="0" cellspacing="0" class="gwfw" width="100%" style="border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; border-spacing: 0!important; -webkit-border-horizontal-spacing: 0!important; -webkit-border-vertical-spacing: 0!important;">
+        <tbody>
+            <tr>
+                <td align="center" valign="top" style="mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;">
+                    <table border="0" cellpadding="0" cellspacing="0" class="mobile-shell" width="600" style="border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; border-spacing: 0!important; -webkit-border-horizontal-spacing: 0!important; -webkit-border-vertical-spacing: 0!important;">
+                        <tbody>
+                            <tr>
+                                <td class="td" style="mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; width: 600px; min-width: 600px; font-size: 0px; line-height: 0px; padding: 0; margin: 0; font-weight: normal;" width="600">
+                                    <table border="0" cellpadding="0" cellspacing="0" width="100%" style="border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; border-spacing: 0!important; -webkit-border-horizontal-spacing: 0!important; -webkit-border-vertical-spacing: 0!important;">
+                                        <tbody>
+                                            <tr>
+                                                <td class="img p5" style="mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; padding: 15px 0; font-size: 0px; line-height: 0px;">
+                                                    <!-- Insert preheader hack after hidden preview text -->
+                                                    <!-- CONTAINER -->
+                                                    <table border="0" cellpadding="0" cellspacing="0" width="100%" style="border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; border-spacing: 0!important; -webkit-border-horizontal-spacing: 0!important; -webkit-border-vertical-spacing: 0!important;">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td align="center" style="mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; padding: 0; font-size: 0px; line-height: 0px; border: 1px solid #f1f1f1;">
+                                                                    <table border="0" cellpadding="0" cellspacing="0" width="100%" bgcolor="#fffffe" style="border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; border-spacing: 0!important; -webkit-border-horizontal-spacing: 0!important; -webkit-border-vertical-spacing: 0!important;">
+                                                                        <tbody>
+                                                                            <!-- LOGO Image -->
+                                                                            <tr>
+                                                                                <td style="mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; padding: 0;">
+                                                                                    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                                                                        <tbody>
+                                                                                            <tr>
+                                                                                                <td align="center" style="padding:0;">
+                                                                                                    <table class="hideMobile" align="center" width="100%" border="0" cellpadding="0" cellspacing="0">
+                                                                                                        <tbody>
+                                                                                                            <tr>
+                                                                                                                <td align="center" style="padding: 0;">
+                                                                                                                    <a target="_blank" href="https://www.garagepos.com/">
+                                                                                                                        <img alt="Garage" style="width:20%; height:auto;" src="http://cp.garage.sa/assets/images/logogarage.png" />
+                                                                                                                    </a>
+                                                                                                                </td>
+                                                                                                            </tr>
+                                                                                                        </tbody>
+                                                                                                    </table>
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                        </tbody>
+                                                                                    </table>
+                                                                                </td>
+                                                                            </tr>
+                                                                            <!--Promo-->
+                                                                            <tr>
+                                                                                <td align="center" style="mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; padding: 0; font-size: 0px; line-height: 0px;">
+                                                                                    <table bgcolor="#F1F1F1" border="0" cellpadding="0" cellspacing="0" width="100%">
+                                                                                        <tbody>
+                                                                                            <tr>
+                                                                                                <td style="color:#2B2B2B; font-family:'Moderat Regular', Helvetica, Arial,sans-serif; font-size:12px; line-height:16px; text-align:center;border-top:1px solid #f1f1f1;border-bottom:1px solid #f1f1f1;padding: 8px;">
+                                                                                                    <a style="text-decoration: underline; color:#2B2B2B;" target="_blank" href="https://garagepos.com/en/solutions#">Try Garage free for 14 days. No credit card, no commitments.</a>
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                        </tbody>
+                                                                                    </table>
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td style="mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; padding: 0;">
+                                                                                    <table border="0" cellpadding="0" cellspacing="0" width="100%" bgcolor="#F2F7F9" style="border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; border-spacing: 0!important; -webkit-border-horizontal-spacing: 0!important; -webkit-border-vertical-spacing: 0!important;">
+                                                                                        <tbody>
+                                                                                            <!-- Images -->
+                                                                                            <tr>
+                                                                                                <td align="center" style="mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; padding: 0;">
+                                                                                                    <table align="center" width="600" border="0" cellpadding="0" cellspacing="0" class="w100" style="border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; border-spacing: 0!important; -webkit-border-horizontal-spacing: 0!important; -webkit-border-vertical-spacing: 0!important;">
+                                                                                                        <tbody>
+                                                                                                            <tr>
+                                                                                                                <td align="center" style="mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; padding: 0;">
+
+                                                                                                                    <!--[if !mso]>
+
+                                                                                                                    <!-->
+                                                                                                                    <div class="mobilecontent" style="display: none; max-height: 0px">
+                                                                                                                        <table align="center" width="100%" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; border-spacing: 0!important; -webkit-border-horizontal-spacing: 0!important; -webkit-border-vertical-spacing: 0!important;">
+                                                                                                                            <tbody>
+                                                                                                                                <tr>
+                                                                                                                                    <td align="center" style="mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; padding: 0;">
+                                                                                                                                        <a target="_blank" href="https://garagepos.com/" style="mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; color: inherit !important; text-decoration: none !important;">
+                                                                                                                                            <img alt="Mirror" style="border: 0; outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; width: 100%; height: auto; max-width: 100%; display: block; margin: 0 auto;" width="100%" src="https://garagepos.com/ContentEn/images/logo-garage.svg">
+                                                                                                                                        </a>
+                                                                                                                                    </td>
+                                                                                                                                </tr>
+                                                                                                                            </tbody>
+                                                                                                                        </table>
+                                                                                                                    </div>
+
+                                                                                                                    <!--<![endif]-->
+                                                                                                                </td>
+                                                                                                            </tr>
+                                                                                                        </tbody>
+                                                                                                    </table>
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                            <tr>
+                                                                                                <td align="center" style="mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; padding: 24px 0 0; font-size: 0px; line-height: 0px;" class="pt-16">
+                                                                                                    <table width="82%" align="center" border="0" cellpadding="0" cellspacing="0" class="w86" style="border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; border-spacing: 0!important; -webkit-border-horizontal-spacing: 0!important; -webkit-border-vertical-spacing: 0!important;">
+                                                                                                        <tbody>
+                                                                                                            <tr>
+                                                                                                                <td style="mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; color: #808080; font-family: 'Moderat Regular', Helvetica, Arial,sans-serif; font-size: 18px; line-height: 35px; text-align: center; font-weight: 400; padding: 0;" class="fz-16" align="center"><h1>#Title#</h1></td>
+                                                                                                            </tr>
+                                                                                                        </tbody>
+                                                                                                    </table>
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                            <tr>
+                                                                                                <td align="center" style="mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; padding: 24px 0 0; font-size: 0px; line-height: 0px;" class="pt-16">
+                                                                                                    <table width="82%" align="center" border="0" cellpadding="0" cellspacing="0" class="w86" style="border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; border-spacing: 0!important; -webkit-border-horizontal-spacing: 0!important; -webkit-border-vertical-spacing: 0!important;">
+                                                                                                        <tbody>
+                                                                                                            <tr>
+                                                                                                                <td style="mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; color: #808080; font-family: 'Moderat Regular', Helvetica, Arial,sans-serif; font-size: 18px; line-height: 26px; text-align: center; font-weight: 400; padding: 0;" class="fz-16" align="center">#Description#</td>
+                                                                                                            </tr>
+                                                                                                        </tbody>
+                                                                                                    </table>
+                                                                                                </td>
+                                                                                            </tr>
+
+                                                                                            <!-- Button -->
+                                                                                            <tr>
+                                                                                                <td align="center" style="mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; padding: 24px 0 32px;" class="pt-16 pb-24">
+                                                                                                    <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; border-spacing: 0!important; -webkit-border-horizontal-spacing: 0!important; -webkit-border-vertical-spacing: 0!important;">
+                                                                                                        <tbody>
+                                                                                                            <tr>
+                                                                                                                <td align="center" style="mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; padding: 0px;">
+                                                                                                                </td>
+                                                                                                            </tr>
+                                                                                                        </tbody>
+                                                                                                    </table>
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                        </tbody>
+                                                                                    </table>
+                                                                                </td>
+                                                                            </tr>
+
+                                                                            <!-- END Hero Module -->
+                                                                            <tr>
+                                                                                <td style="mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;">
+
+                                                                                    <!-- Contact Us Snippet -->
+                                                                                    <table width="100%" border="0" cellpadding="0" cellspacing="0" bgcolor="#fffffe">
+                                                                                        <tbody>
+                                                                                            <tr>
+                                                                                                <td align="center" style="padding:0;font-size:0px;line-height:0px;">
+                                                                                                    <table width="78%" border="0" cellpadding="0" cellspacing="0" class="w86">
+                                                                                                        <tbody>
+                                                                                                            <tr>
+                                                                                                                <td align="center" style="padding:0;font-size:0px;line-height:0px;">
+                                                                                                                    <table width="78%" border="0" cellpadding="0" cellspacing="0" class="w100">
+                                                                                                                        <tbody>
+                                                                                                                            <tr>
+                                                                                                                                <td style="color:#646567; font-family:'Moderat Regular', Helvetica, Arial,sans-serif; font-size:16px; line-height:24px; text-align:center;font-weight: 400;padding:16px 0 0;" class="pt-10 fz-16">Say Hello, to our Sales team<a style="color:#646567; font-family:'Moderat Regular', Helvetica, Arial,sans-serif; font-size:16px; line-height:24px; text-align:center;font-weight: 400;padding:16px 0 0;" class="pt-10 fz-16" href="tel:18882881588"></a> Our team of retail specialists are on hand to help. Request a call back below to see how Garage can help grow your business. If you’re already a Garage customer, contact our support team for help.</td>
+                                                                                                                            </tr>
+                                                                                                                        </tbody>
+                                                                                                                    </table>
+                                                                                                                </td>
+                                                                                                            </tr>
+
+                                                                                                            <!-- Button -->
+                                                                                                            <tr>
+                                                                                                                <td align="center" style="padding: 24px 0 32px;" class="pt-16 pb-24">
+                                                                                                                    <table border="0" cellpadding="0" cellspacing="0">
+                                                                                                                        <tbody>
+                                                                                                                            <tr>
+                                                                                                                                <td align="center" style="padding:0px;">
+                                                                                                                                    <div>
+
+                                                                                                                                        <a style="background-color:#fffffe;border:1px solid #181818;border-radius:30px;color:#181818;display:inline-block;font-family:'Moderat Regular', Helvetica, Arial,sans-serif;font-size:12px;line-height: 16px;line-height:35px;font-weight:400;text-align:center;text-decoration:none;width:175px;-webkit-text-size-adjust:none;mso-hide:all;" class="button" href="https://garagepos.com/en/pricing" target="_blank">Schedule a Call</a>
+                                                                                                                                    </div>
+                                                                                                                                </td>
+                                                                                                                            </tr>
+                                                                                                                        </tbody>
+                                                                                                                    </table>
+                                                                                                                </td>
+                                                                                                            </tr>
+                                                                                                        </tbody>
+                                                                                                    </table>
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                        </tbody>
+                                                                                    </table>
+
+                                                                                    <!-- END Contact Us Snippet -->
+                                                                                </td>
+                                                                            </tr>
+                                                                        </tbody>
+                                                                    </table>
+
+                                                                    <!-- Stacked Version w/ Download Buttons Snippet -->
+                                                                    <table width="100%" border="0" cellpadding="0" cellspacing="0" bgcolor="#fffffe">
+                                                                        <tbody>
+                                                                            <tr>
+                                                                                <td align="center" style="padding:0;font-size:0px;line-height:0px;">
+                                                                                    <table width="100%" border="0" cellpadding="0" cellspacing="0" bgcolor="#F1F1F1">
+                                                                                        <tbody>
+                                                                                            <tr>
+                                                                                                <td align="center" style="padding: 24px 0;border-top: 1px solid #F1F1F1;" class="pt-24 pb-24">
+                                                                                                    <table width="100%" cellspacing="0" cellpadding="0" border="0">
+                                                                                                        <tbody>
+
+                                                                                                            <tr>
+                                                                                                                <td align="center" style="">
+                                                                                                                    <table width="100%" cellspacing="0" cellpadding="0" border="0" class="w80">
+                                                                                                                        <tbody>
+                                                                                                                            <tr>
+                                                                                                                                <td class="footer-text" style="color:#898989; font-family:Helvetica, Arial,sans-serif; font-size:11px; line-height:23px; text-align:center; padding:0px 0px 10px 0px;">Download the Garage App</td>
+                                                                                                                            </tr>
+                                                                                                                            <tr>
+                                                                                                                                <td align="center">
+                                                                                                                                    <table width="150" cellspacing="0" cellpadding="0" border="0" class="w40 es-table-not-adapt">
+                                                                                                                                        <tbody>
+                                                                                                                                            <tr>
+                                                                                                                                                <td width="100%" align="center" style="padding:0;font-size:0px;line-height:0px;"><a target="_blank" href="https://apps.apple.com/sa/app/garage-customer/id1603396836"><img alt="Apple Store" width="70" border="0" class="adapt-img w100" src="https://static.iterable.com/4b2893a8387245c2962956aaec0b064d/22-03-08-mirror-snippets-appstore.png" /> </a></td>
+                                                                                                                                            </tr>
+                                                                                                                                        </tbody>
+                                                                                                                                    </table>
+                                                                                                                                </td>
+                                                                                                                            </tr>
+                                                                                                                        </tbody>
+                                                                                                                    </table>
+                                                                                                                </td>
+                                                                                                            </tr>
+
+                                                                                                            <!-- Socials -->
+                                                                                                            <tr>
+                                                                                                                <td align="center" style="padding: 24px 0px 0px 0px;">
+                                                                                                                    <table width="104" cellspacing="0" cellpadding="0" border="0" class="es-table-not-adapt es-social">
+                                                                                                                        <tbody>
+                                                                                                                            <tr>
+                                                                                                                                <td class="img " width="28"><a target="_blank" href="https://links.mirror.co/u/click?_t=4b2893a8387245c2962956aaec0b064d&_m=df8a9045b2ef4eef80450559ba5728a6&_e=R_qrb9o9N5rXtUgA2j4oi6mhbE0GttOujAeksCFYW3QeQ6qd-NXQdmKbcM5BQ4XtM8aPve_ci_QGJ9xTQSvQkOYoEpJK50kbKgH4akFtxCj4QGdEnaximhvh6KzQfrfmmWcXQ6YEQqHUDNVvIcMVDpEp4Gfslk261zAlKdvDrYTEP8w0HSRa4GdLTwIICSfaeW5nbYSyi2oaWR5KxW8_E1ZVOCRDSl6eQVVVBHjdhmM%3D"><img alt="Instagram" width="28" border="0" src="https://static.iterable.com/4b2893a8387245c2962956aaec0b064d/22-03-09-mirror-snippets-instagram-c.png" /></a></td>
+                                                                                                                                <td class="img" style="padding: 5px;" width="16"></td>
+                                                                                                                                <td class="img" width="28"><a target="_blank" href="https://links.mirror.co/u/click?_t=4b2893a8387245c2962956aaec0b064d&_m=df8a9045b2ef4eef80450559ba5728a6&_e=R_qrb9o9N5rXtUgA2j4oi7ralMijLMqsqSpsX43f-MRQrpUy16ATbqTRSGOMiT7SmKw_okQeRq9Lru70FRqRzdatyGCwgV3vPCp5EngIlu2oKjk1L__xI-10R9Rv7YMvVUDNNVa9bZy5aJkcQPqHZPMB5F34bljd7f_y9aXEW-LrX5sPDL5MbnGvIIw6Rm0RdwwgyLlZUK1KlFCi6VmONMTjyIF7CLem3ccy4R-16aA%3D"><img alt="Facebook" width="28" border="0" src="https://static.iterable.com/4b2893a8387245c2962956aaec0b064d/22-03-08-mirror-snippets-facebook.png" /></a></td>
+                                                                                                                                <td class="img" style="padding: 5px;" width="16"></td>
+                                                                                                                                <td class="img" width="28"><a target="_blank" href="https://links.mirror.co/u/click?_t=4b2893a8387245c2962956aaec0b064d&_m=df8a9045b2ef4eef80450559ba5728a6&_e=R_qrb9o9N5rXtUgA2j4oi9pvvbcllTfE_fWLO7L-IOxk9BR10WslFHdjxdZzRlEWONwAiQvTkau3spC6_sDFMACH0eFgZ9WjKACz9kt3ZPllWRQJ5eJTx02JyJpdmQUd7GxUT1t9x6VJg4DqMYSFozMTDgzJ4DFP7jI-9_GgAv4kpQ8T0MyTsNz-7dEqLtD1k_ksIGTY_6D5oyKqCT-z6IU8YgjCx5nkHjfBgR0reAM%3D"><img alt="TikTok" width="28" border="0" src="https://d15k2d11r6t6rl.cloudfront.net/public/users/Integrators/669d5713-9b6a-46bb-bd7e-c542cff6dd6a/4b2893a8387245c2962956aaec0b064d/TikTok_v2.png" /></a></td>
+                                                                                                                                <td class="img" style="padding: 5px;" width="16"></td>
+                                                                                                                                <td class="img" width="28"><a target="_blank" href="https://links.mirror.co/u/click?_t=4b2893a8387245c2962956aaec0b064d&_m=df8a9045b2ef4eef80450559ba5728a6&_e=R_qrb9o9N5rXtUgA2j4oi1lq98Z7Zx3fNm5tId_JwRkFz2OAWBFyYxCE4gPwacSAp9vkDvo1qn1EpREOIwEY-cGSVEGuCojJYHieDzrJugUiP3rDJ-pBwv10tE-VGTqP0F-YAXjPlR35LXRsNMVe-z1hS_NPN9fOs1brQxs1qmE9YTQi_Eu6AAtaoCbtchz9_QI98M0T6Ks3bR2IM8_i6IkXsqzhw5ld8EOJ1Zi3GbY%3D"><img alt="Twitter" width="28" border="0" src="https://static.iterable.com/4b2893a8387245c2962956aaec0b064d/22-03-08-mirror-snippets-twitter.png" /></a></td>
+                                                                                                                            </tr>
+                                                                                                                        </tbody>
+                                                                                                                    </table>
+                                                                                                                </td>
+                                                                                                            </tr>
+                                                                                                        </tbody>
+                                                                                                    </table>
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                        </tbody>
+                                                                                    </table>
+                                                                                </td>
+                                                                            </tr>
+                                                                        </tbody>
+                                                                    </table>
+
+                                                                    <!-- END Stacked Version w/ Download Buttons Snippet -->
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+
+                                                    <!-- END CONTAINER -->
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

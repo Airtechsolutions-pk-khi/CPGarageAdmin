@@ -1,442 +1,283 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional //EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:o="urn:schemas-microsoft-com:office:office" style="background-color: #eaeaea; margin-top: 0; padding: 0; margin: 0;">
+﻿<!DOCTYPE html>
+<html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html charset=UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="format-detection" content="telephone=no" />
-    <style type="text/css">
-        @media (max-width: 499px) {
-            u + .body .inbox-fix,
-            u + .body .content-shell-table,
-            u + .body .footer-shell-table,
-            u + .body .footer {
-                min-width: calc(100vw - 8.5vw) !important;
-            }
-
-            .mobile-hide,
-            .ios-hide {
-                display: none !important;
-            }
-
-            .desktop-hide,
-            .desktop-hide img {
-                display: initial !important;
-            }
-
-            table.desktop-hide {
-                display: table !important;
-            }
-
-            .mobile-100w {
-                width: 100% !important;
-            }
-
-            .mobile-block {
-                display: block !important;
-            }
-
-            .mobile-center {
-                margin: 0 auto;
-                text-align: center !important;
-            }
-
-            .inner-padding {
-                padding-left: 6% !important;
-                padding-right: 6% !important;
-            }
-
-            .outside-padding {
-                padding-left: 12% !important;
-                padding-right: 12% !important;
-            }
-
-            .content-padding {
-                padding-left: 6% !important;
-                padding-right: 6% !important;
-            }
-
-            .desktop-hide-max,
-            .desktop-hide-max img {
-                display: initial !important;
-            }
-        }
-
-        @media screen and (-webkit-min-device-pixel-ratio: 0) and (max-width: 499px) {
-            .container.main-border {
-                padding: 0 !important;
-            }
-
-            .content-shell {
-                border: none !important;
-            }
-        }
-
-        @media yahoo {
-            table {
-                border-collapse: collapse;
-                table-layout: fixed;
-            }
-
-                table table {
-                    table-layout: auto;
-                }
-        }
-
-        .hide-link a,
-        .iosnonlink a,
-        .hide-link {
-            text-decoration: none !important;
-            cursor: text;
-        }
-
-        @media screen {
-            @font-face {
-                font-family: NetflixSans-Light;
-                src: url("https://assets.nflxext.com/us/email/fonts/NetflixSans-Light-Opt.woff2");
-                font-weight: 300;
-            }
-
-            @font-face {
-                font-family: NetflixSans-Regular;
-                src: url("https://assets.nflxext.com/us/email/fonts/NetflixSans-Regular-Opt.woff2");
-                font-weight: 400;
-            }
-
-            @font-face {
-                font-family: NetflixSans-Medium;
-                src: url("https://assets.nflxext.com/us/email/fonts/NetflixSans-Medium-Opt.woff2");
-                font-weight: 700;
-            }
-
-            @font-face {
-                font-family: NetflixSans-Bold;
-                src: url("https://assets.nflxext.com/us/email/fonts/NetflixSans-Bold-Opt.woff2");
-                font-weight: 700;
-            }
-        }
-
-        @media (max-width: 499px) {
-            .mobile-hide-max,
-            .ios-hide-max {
-                display: none !important;
-            }
-
-            .inbox-fix {
-                display: none;
-            }
-
-            .desktop-hide-max,
-            .desktop-hide-max img {
-                display: initial !important;
-            }
-
-            table.content-shell-table,
-            table.footer-shell-table,
-            .footer {
-                width: 100% !important;
-            }
-
-            .content {
-                width: 100% !important;
-            }
-        }
-
-        .footer-shell .footer-link {
-            line-height: 20px;
-        }
-
-        @media (max-width: 499px) {
-            .image .default-image-width img {
-                width: 100%;
-            }
-        }
-
-        @media (max-width: 499px) {
-            .bullet .indent.true {
-                width: 8% !important;
-            }
-
-            .bullet .indent.true {
-                padding-left: 3% !important;
-            }
-
-            .envelope.rtl .bullet .indent.true {
-                padding-right: 3% !important;
-            }
-        }
-
-        @media (max-width: 499px) {
-            .bullet-point {
-                line-height: 22px !important;
-            }
-        }
-
-        @media (max-width: 499px) {
-            .color-wrapper {
-                width: 100% !important;
-            }
-        }
-
-        @media (max-width: 499px) {
-            .evidence-cards-component-image-cell {
-                width: 12% !important;
-            }
-        }
-
-        @media (max-width: 499px) {
-            .evidence-images img {
-                width: 100% !important;
-                height: auto !important;
-            }
-        }
-
-        @media (max-width: 499px) {
-            .marker {
-                padding: 5px 7px 5px 7px !important;
-            }
-        }
-
-        @media (max-width: 499px) {
-            .evidence-trailer-component-image-cell {
-                width: 12% !important;
-            }
-        }
-
-        @media (max-width: 500px) {
-            .button-copy a {
-                padding: 13px 0px !important;
-                width: 100% !important;
-            }
-        }
-
-        @media (min-width: 501px) {
-            .button-copy a {
-                padding: 13px 40px;
-            }
-        }
-
-        @media (max-width: 499px) {
-            .image .default-image-width img {
-                width: 100%;
-            }
-
-            .artwork img {
-                width: 100% !important;
-            }
-
-            .number img {
-                width: 100% !important;
-            }
-        }
-
-        @media (max-width: 499px) {
-            .episode-content-cell {
-                width: 40% !important;
-            }
-
-            .episode-content-cell-image {
-                width: 100% !important;
-                height: auto !important;
-            }
-
-            .episode-content-cell-progress-bar {
-                width: 100% !important;
-                height: auto !important;
-            }
-        }
-
-        @media (max-width: 499px) {
-            .exp-img-1 img {
-                width: 70% !important;
-            }
-
-            .exp-img-2 {
-                padding-left: 20px !important;
-            }
-
-                .exp-img-2 img {
-                    width: 85% !important;
-                }
-
-            .exp-img-3 img {
-                width: 85% !important;
-            }
-
-            .exp-img-4 img {
-                width: 85% !important;
-            }
-
-            .calendar img {
-                width: 85% !important;
-                height: auto !important;
-            }
-        }
-
-        @media (max-width: 499px) {
-            .logo-with-horizontal-date-logo-image-cell {
-                width: 60% !important;
-            }
-        }
-
-        @media (max-width: 500px) {
-            .mosaic-module .middle {
-                width: 46% !important;
-                padding-right: 4% !important;
-                padding-left: 4% !important;
-            }
-
-            .mosaic-module .left,
-            .mosaic-module .right {
-                width: 24.8% !important;
-            }
-
-            .mosaic-module .component-image.cell,
-            .mosaic-module .single-button .content-padding {
-                padding-top: 15px !important;
-            }
-        }
-    </style>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <!--<meta http-equiv="X-UA-Compatible" content="IE=edge">-->
+    <link href="https://fonts.googleapis.com/css?family=Muli:400,700" rel="stylesheet">
+    <title>Garage</title>
 </head>
-<body class="body" style="background-color: #eaeaea; margin-top: 0; padding: 0; margin: 0;">
-    <div class="hide" style="display: none; width: 0; height: 0; max-height: 0; line-height: 0; mso-hide: all; overflow: hidden; visibility: hidden;">
-        We&#x27;ve changed your package for #Email#, as you asked. Please use this email address when you sign in to Garage. <br />
-        <div class="hide disabled-plaintext" style="display: none; width: 0; height: 0; max-height: 0; line-height: 0; mso-hide: all; overflow: hidden; visibility: hidden;"> ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌</div>
-    </div>
-    <table width="100%" border="0" class="envelope default " cellpadding="0" cellspacing="0" style="background-color: #eaeaea;" bgcolor="#eaeaea">
-        <tr>
-            <td align="center" class="container" style="background-color: #eaeaea; margin-top: 0;" bgcolor="#eaeaea">
-                <table align="center" border="0" class="content" cellpadding="0" cellspacing="0" style="background-color: #ffffff; width: 500px;" width="500" bgcolor="#ffffff">
-                    <tr>
-                        <td>
-                            <table class="tracking-pixel disabled-plaintext image" width="100%" cellpadding="0" cellspacing="0">
-                                <tr>
-                                    <td class="cell tracking-pixel disabled-plaintext content-padding" align="center" style="padding-left: 40px; padding-right: 40px; padding-top: 0;"><img src="" alt=alt width="0" border="0" class="undefined " style="-ms-interpolation-mode: bicubic; border: none; outline: none; border-collapse: collapse; display: block;" /></td>
-                                </tr>
-                            </table>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td align="center" class="shell">
-                            <a href="https://garagepos.com/" class="disabled-plaintext" style="color: inherit;">
-                                <table class="logo image" width="100%" cellpadding="0" cellspacing="0">
-                                    <tr>
-                                        <td class="cell logo content-padding" align="left" style="padding-left: 40px; padding-right: 40px; padding-top: 20px;"><img src="https://garagepos.com/ContentEn/images/logo-garage.svg" alt="Garage" border="0" class="undefined " style="-ms-interpolation-mode: bicubic; border: none; outline: none; border-collapse: collapse; display: block; border-style: none; width:30%;" /></td>
-                                    </tr>
-                                </table>
-                            </a>
-                            <table align="left" width="100%" class="copy-table " cellpadding="0" cellspacing="0">
-                                <tr>
-                                    <td align="left" class="copy h1 content-padding" style="padding-left: 40px; padding-right: 40px; font-family: NetflixSans-Bold, Helvetica, Roboto, Segoe UI, sans-serif; font-weight: 700; font-size: 36px; line-height: 43px; letter-spacing: -1px; padding-top: 20px; color: #221f1f;">Package updated</td>
-                                </tr>
-                            </table>
-                            <table align="left" width="100%" class="copy-table " cellpadding="0" cellspacing="0">
-                                <tr>
-                                    <td align="left" class="copy p content-padding" style="padding-left: 40px; padding-right: 40px; font-family: NetflixSans-Regular, Helvetica, Roboto, Segoe UI, sans-serif; font-weight: 400; font-size: 16px; line-height: 21px; padding-top: 20px; color: #221f1f;">Hi <span class="break-word" style="word-break: break-all;">#Name#</span>,</td>
-                                </tr>
-                            </table>
-                            <table align="left" width="100%" class="copy-table " cellpadding="0" cellspacing="0">
-                                <tr>
-                                    <td align="left" class="copy p content-padding" style="padding-left: 40px; padding-right: 40px; font-family: NetflixSans-Regular, Helvetica, Roboto, Segoe UI, sans-serif; font-weight: 400; font-size: 16px; line-height: 21px; padding-top: 20px; color: #221f1f;">We&#x27;ve changed your package for email address to #Email#.yeah, as you asked. Please use this email address when you sign in to Garage.</td>
-                                </tr>
-                            </table>
-                            <table align="left" width="100%" class="copy-table " cellpadding="0" cellspacing="0">
-                                <tr>
-                                    <td align="left" class="copy p content-padding" style="padding-left: 40px; padding-right: 40px; font-family: NetflixSans-Regular, Helvetica, Roboto, Segoe UI, sans-serif; font-weight: 400; font-size: 16px; line-height: 21px; padding-top: 20px; color: #221f1f;">We&#x27;re here to help if you need it. Visit the <a href="https://garagepos.com/en/contact" style="color: inherit; text-decoration: underline;">Help Center</a> for more info or <a href="https://garagepos.com/en/contact" style="color: inherit; text-decoration: underline;">contact us</a>.</td>
-                                </tr>
-                            </table>
-                            <table align="left" width="100%" class="copy-table " cellpadding="0" cellspacing="0">
-                                <tr>
-                                    <td align="left" class="copy h5 medium content-padding" style="padding-left: 40px; padding-right: 40px; font-size: 14px; line-height: 17px; letter-spacing: -0.2px; font-family: NetflixSans-Medium, Helvetica, Roboto, Segoe UI, sans-serif; font-weight: 700; padding-top: 20px; color: #221f1f;">Garage Team</td>
-                                </tr>
-                            </table>
-                            <table width="100%" cellpadding="0" cellspacing="0">
-                                <tr>
-                                    <td class="divider content-padding" style="padding-left: 40px; padding-right: 40px; padding-top: 30px;">
-                                        <table align="center" width="100%" cellpadding="0" cellspacing="0">
+<body class="body" style="-ms-text-size-adjust: 100%; background: #fffffe; -webkit-text-size-adjust: none; padding: 0 !important; margin: 0 !important; display: block !important; min-width: 100% !important; width: 100% !important;" data-new-gr-c-s-check-loaded="14.1067.0" data-gr-ext-installed data-new-gr-c-s-loaded="14.1067.0">
+    <table bgcolor="#fffffe" border="0" cellpadding="0" cellspacing="0" class="gwfw" width="100%" style="border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; border-spacing: 0!important; -webkit-border-horizontal-spacing: 0!important; -webkit-border-vertical-spacing: 0!important;">
+        <tbody>
+            <tr>
+                <td align="center" valign="top" style="mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;">
+                    <table border="0" cellpadding="0" cellspacing="0" class="mobile-shell" width="600" style="border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; border-spacing: 0!important; -webkit-border-horizontal-spacing: 0!important; -webkit-border-vertical-spacing: 0!important;">
+                        <tbody>
+                            <tr>
+                                <td class="td" style="mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; width: 600px; min-width: 600px; font-size: 0px; line-height: 0px; padding: 0; margin: 0; font-weight: normal;" width="600">
+                                    <table border="0" cellpadding="0" cellspacing="0" width="100%" style="border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; border-spacing: 0!important; -webkit-border-horizontal-spacing: 0!important; -webkit-border-vertical-spacing: 0!important;">
+                                        <tbody>
                                             <tr>
-                                                <td class="empty divider-border" style="font-size: 0; line-height: 0; border-style: solid; border-bottom-width: 0; border-color: #221F1F; border-top-width: 2px;"> </td>
-                                            </tr>
-                                        </table>
-                                    </td>
-                                </tr>
-                            </table>
-                            <table class="single-button mobile-100w " align="center" width="100%" cellpadding="0" cellspacing="0">
-                                <tr>
-                                    <td class="content-padding" style="padding-left: 40px; padding-right: 40px; padding-top: 30px;" align="center">
-                                        <table class="inner-button border-true" style="border-width: 2px; border-style: solid; border-radius: 4px; border-color: black; background-color: #FFFFFF; width: 100%;" cellpadding="0" cellspacing="0" width="100%" bgcolor="#FFFFFF">
-                                            <tr>
-                                                <td class="h5" style="font-family: NetflixSans-Bold, Helvetica, Roboto, Segoe UI, sans-serif; font-weight: 700; font-size: 14px; line-height: 17px; letter-spacing: -0.2px; padding: 14px 40px; color: black;" align="center"><a class="h5" href="https://garagepos.com/" style="font-family: NetflixSans-Bold, Helvetica, Roboto, Segoe UI, sans-serif; font-weight: 700; font-size: 14px; line-height: 17px; letter-spacing: -0.2px; text-align: center; text-decoration: none; display: block; color: black;">Visit Garage</a></td>
-                                            </tr>
-                                        </table>
-                                    </td>
-                                </tr>
-                            </table>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td align="center" class="footer-shell" style="background-color: #ffffff;" bgcolor="#ffffff">
-                            <table class="footer" width="100%" border="0" cellpadding="0" cellspacing="0">
-                                <tr>
-                                    <td align="center" valign="top" class="footer-shell content-padding" style="padding-left: 40px; padding-right: 40px; background-color: #ffffff;" bgcolor="#ffffff">
-                                        <table width="100%" class="spacer-table" cellpadding="0" cellspacing="0">
-                                            <tr>
-                                                <td class="spacer" style="font-size: 0; line-height: 0; height: 40px;" height="40"> </td>
-                                            </tr>
-                                        </table>
-                                        <table width="100%" cellpadding="0" cellspacing="0">
-                                            <tr>
-                                                <td valign="top" class="footer-icon-wrapper" style="padding: 0 20px 0 0;">
-                                                    <table class="component-image image" width="100%" cellpadding="0" cellspacing="0">
-                                                        <tr>
-                                                            <td class="cell component-image none" align="center" style="padding-top: 0;"><img src="https://garagepos.com/ContentEn/images/logo-garage.svg" alt="" border="0" class="undefined " style="-ms-interpolation-mode: bicubic; border: none; outline: none; border-collapse: collapse; display: block;width:100%" /></td>
-                                                        </tr>
+                                                <td class="img p5" style="mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; padding: 15px 0; font-size: 0px; line-height: 0px;">
+                                                    <!-- Insert preheader hack after hidden preview text -->
+                                                    <!-- CONTAINER -->
+                                                    <table border="0" cellpadding="0" cellspacing="0" width="100%" style="border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; border-spacing: 0!important; -webkit-border-horizontal-spacing: 0!important; -webkit-border-vertical-spacing: 0!important;">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td align="center" style="mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; padding: 0; font-size: 0px; line-height: 0px; border: 1px solid #f1f1f1;">
+                                                                    <table border="0" cellpadding="0" cellspacing="0" width="100%" bgcolor="#fffffe" style="border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; border-spacing: 0!important; -webkit-border-horizontal-spacing: 0!important; -webkit-border-vertical-spacing: 0!important;">
+                                                                        <tbody>
+                                                                            <!-- LOGO Image -->
+                                                                            <tr>
+                                                                                <td style="mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; padding: 0;">
+                                                                                    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                                                                        <tbody>
+                                                                                            <tr>
+                                                                                                <td align="center" style="padding:0;">
+                                                                                                    <table class="hideMobile" align="center" width="100%" border="0" cellpadding="0" cellspacing="0">
+                                                                                                        <tbody>
+                                                                                                            <tr>
+                                                                                                                <td align="center" style="padding: 0;">
+                                                                                                                    <a target="_blank" href="https://www.garagepos.com/">
+                                                                                                                        <img alt="Garage" style="width:20%; height:auto;" src="https://garagepos.com/ContentEn/images/logo-garage.svg" />
+                                                                                                                    </a>
+                                                                                                                </td>
+                                                                                                            </tr>
+                                                                                                        </tbody>
+                                                                                                    </table>
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                        </tbody>
+                                                                                    </table>
+                                                                                </td>
+                                                                            </tr>
+                                                                            <!--Promo-->
+                                                                            <tr>
+                                                                                <td align="center" style="mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; padding: 0; font-size: 0px; line-height: 0px;">
+                                                                                    <table bgcolor="#F1F1F1" border="0" cellpadding="0" cellspacing="0" width="100%">
+                                                                                        <tbody>
+                                                                                            <tr>
+                                                                                                <td style="color:#2B2B2B; font-family:'Moderat Regular', Helvetica, Arial,sans-serif; font-size:12px; line-height:16px; text-align:center;border-top:1px solid #f1f1f1;border-bottom:1px solid #f1f1f1;padding: 8px;">
+                                                                                                    <a style="text-decoration: underline; color:#2B2B2B;" target="_blank" href="https://garagepos.com/en/solutions#">Try Garage free for 14 days. No credit card, no commitments.</a>
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                        </tbody>
+                                                                                    </table>
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td style="mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; padding: 0;">
+                                                                                    <table border="0" cellpadding="0" cellspacing="0" width="100%" bgcolor="#F2F7F9" style="border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; border-spacing: 0!important; -webkit-border-horizontal-spacing: 0!important; -webkit-border-vertical-spacing: 0!important;">
+                                                                                        <tbody>
+                                                                                            <!-- Images -->
+                                                                                            <tr>
+                                                                                                <td align="center" style="mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; padding: 0;">
+                                                                                                    <table align="center" width="600" border="0" cellpadding="0" cellspacing="0" class="w100" style="border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; border-spacing: 0!important; -webkit-border-horizontal-spacing: 0!important; -webkit-border-vertical-spacing: 0!important;">
+                                                                                                        <tbody>
+                                                                                                            <tr>
+                                                                                                                <td align="center" style="mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; padding: 0;">
+
+                                                                                                                    <!--[if !mso]>
+
+                                                                                                                    <!-->
+                                                                                                                    <div class="mobilecontent" style="display: none; max-height: 0px">
+                                                                                                                        <table align="center" width="100%" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; border-spacing: 0!important; -webkit-border-horizontal-spacing: 0!important; -webkit-border-vertical-spacing: 0!important;">
+                                                                                                                            <tbody>
+                                                                                                                                <tr>
+                                                                                                                                    <td align="center" style="mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; padding: 0;">
+                                                                                                                                        <a target="_blank" href="https://garagepos.com/" style="mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; color: inherit !important; text-decoration: none !important;">
+                                                                                                                                            <img alt="Mirror" style="border: 0; outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; width: 100%; height: auto; max-width: 100%; display: block; margin: 0 auto;" width="100%" src="https://garagepos.com/ContentEn/images/logo-garage.svg">
+                                                                                                                                        </a>
+                                                                                                                                    </td>
+                                                                                                                                </tr>
+                                                                                                                            </tbody>
+                                                                                                                        </table>
+                                                                                                                    </div>
+
+                                                                                                                    <!--<![endif]-->
+                                                                                                                </td>
+                                                                                                            </tr>
+                                                                                                        </tbody>
+                                                                                                    </table>
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                            <tr>
+                                                                                                <td align="center" style="mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; padding: 24px 0 0; font-size: 0px; line-height: 0px;" class="pt-16">
+                                                                                                    <table width="82%" align="center" border="0" cellpadding="0" cellspacing="0" class="w86" style="border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; border-spacing: 0!important; -webkit-border-horizontal-spacing: 0!important; -webkit-border-vertical-spacing: 0!important;">
+                                                                                                        <tbody>
+                                                                                                            <tr>
+                                                                                                                <td style="mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; color: #808080; font-family: 'Moderat Regular', Helvetica, Arial,sans-serif; font-size: 18px; line-height: 26px; text-align: center; font-weight: 400; padding: 0;" class="fz-16" align="center"><h1>#Title#</h1></td>
+                                                                                                            </tr>
+                                                                                                        </tbody>
+                                                                                                    </table>
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                            <tr>
+                                                                                                <td align="center" style="mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; padding: 24px 0 0; font-size: 0px; line-height: 0px;" class="pt-16">
+                                                                                                    <table width="82%" align="center" border="0" cellpadding="0" cellspacing="0" class="w86" style="border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; border-spacing: 0!important; -webkit-border-horizontal-spacing: 0!important; -webkit-border-vertical-spacing: 0!important;">
+                                                                                                        <tbody>
+                                                                                                            <tr>
+                                                                                                                <td style="mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; color: #808080; font-family: 'Moderat Regular', Helvetica, Arial,sans-serif; font-size: 18px; line-height: 26px; text-align: center; font-weight: 400; padding: 0;" class="fz-16" align="center">#Description#</td>
+                                                                                                            </tr>
+                                                                                                        </tbody>
+                                                                                                    </table>
+                                                                                                </td>
+                                                                                            </tr>
+
+                                                                                            <!-- Button -->
+                                                                                            <tr>
+                                                                                                <td align="center" style="mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; padding: 24px 0 32px;" class="pt-16 pb-24">
+                                                                                                    <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; border-spacing: 0!important; -webkit-border-horizontal-spacing: 0!important; -webkit-border-vertical-spacing: 0!important;">
+                                                                                                        <tbody>
+                                                                                                            <tr>
+                                                                                                                <td align="center" style="mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; padding: 0px;">
+                                                                                                                </td>
+                                                                                                            </tr>
+                                                                                                        </tbody>
+                                                                                                    </table>
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                        </tbody>
+                                                                                    </table>
+                                                                                </td>
+                                                                            </tr>
+
+                                                                            <!-- END Hero Module -->
+                                                                            <tr>
+                                                                                <td style="mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;">
+
+                                                                                    <!-- Contact Us Snippet -->
+                                                                                    <table width="100%" border="0" cellpadding="0" cellspacing="0" bgcolor="#fffffe">
+                                                                                        <tbody>
+                                                                                            <tr>
+                                                                                                <td align="center" style="padding:0;font-size:0px;line-height:0px;">
+                                                                                                    <table width="78%" border="0" cellpadding="0" cellspacing="0" class="w86">
+                                                                                                        <tbody>
+                                                                                                            <tr>
+                                                                                                                <td align="center" style="padding:0;font-size:0px;line-height:0px;">
+                                                                                                                    <table width="78%" border="0" cellpadding="0" cellspacing="0" class="w100">
+                                                                                                                        <tbody>
+                                                                                                                            <tr>
+                                                                                                                                <td style="color:#646567; font-family:'Moderat Regular', Helvetica, Arial,sans-serif; font-size:16px; line-height:24px; text-align:center;font-weight: 400;padding:16px 0 0;" class="pt-10 fz-16">Say Hello, to our Sales team<a style="color:#646567; font-family:'Moderat Regular', Helvetica, Arial,sans-serif; font-size:16px; line-height:24px; text-align:center;font-weight: 400;padding:16px 0 0;" class="pt-10 fz-16" href="tel:18882881588"></a> Our team of retail specialists are on hand to help. Request a call back below to see how Garage can help grow your business. If you’re already a Garage customer, contact our support team for help.</td>
+                                                                                                                            </tr>
+                                                                                                                        </tbody>
+                                                                                                                    </table>
+                                                                                                                </td>
+                                                                                                            </tr>
+
+                                                                                                            <!-- Button -->
+                                                                                                            <tr>
+                                                                                                                <td align="center" style="padding: 24px 0 32px;" class="pt-16 pb-24">
+                                                                                                                    <table border="0" cellpadding="0" cellspacing="0">
+                                                                                                                        <tbody>
+                                                                                                                            <tr>
+                                                                                                                                <td align="center" style="padding:0px;">
+                                                                                                                                    <div>
+
+                                                                                                                                        <a style="background-color:#fffffe;border:1px solid #181818;border-radius:30px;color:#181818;display:inline-block;font-family:'Moderat Regular', Helvetica, Arial,sans-serif;font-size:12px;line-height: 16px;line-height:35px;font-weight:400;text-align:center;text-decoration:none;width:175px;-webkit-text-size-adjust:none;mso-hide:all;" class="button" href="https://garagepos.com/en/pricing" target="_blank">Schedule a Call</a>
+                                                                                                                                    </div>
+                                                                                                                                </td>
+                                                                                                                            </tr>
+                                                                                                                        </tbody>
+                                                                                                                    </table>
+                                                                                                                </td>
+                                                                                                            </tr>
+                                                                                                        </tbody>
+                                                                                                    </table>
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                        </tbody>
+                                                                                    </table>
+
+                                                                                    <!-- END Contact Us Snippet -->
+                                                                                </td>
+                                                                            </tr>
+                                                                        </tbody>
+                                                                    </table>
+
+                                                                    <!-- Stacked Version w/ Download Buttons Snippet -->
+                                                                    <table width="100%" border="0" cellpadding="0" cellspacing="0" bgcolor="#fffffe">
+                                                                        <tbody>
+                                                                            <tr>
+                                                                                <td align="center" style="padding:0;font-size:0px;line-height:0px;">
+                                                                                    <table width="100%" border="0" cellpadding="0" cellspacing="0" bgcolor="#F1F1F1">
+                                                                                        <tbody>
+                                                                                            <tr>
+                                                                                                <td align="center" style="padding: 24px 0;border-top: 1px solid #F1F1F1;" class="pt-24 pb-24">
+                                                                                                    <table width="100%" cellspacing="0" cellpadding="0" border="0">
+                                                                                                        <tbody>
+
+                                                                                                            <tr>
+                                                                                                                <td align="center" style="">
+                                                                                                                    <table width="100%" cellspacing="0" cellpadding="0" border="0" class="w80">
+                                                                                                                        <tbody>
+                                                                                                                            <tr>
+                                                                                                                                <td class="footer-text" style="color:#898989; font-family:Helvetica, Arial,sans-serif; font-size:11px; line-height:23px; text-align:center; padding:0px 0px 10px 0px;">Download the Garage App</td>
+                                                                                                                            </tr>
+                                                                                                                            <tr>
+                                                                                                                                <td align="center">
+                                                                                                                                    <table width="150" cellspacing="0" cellpadding="0" border="0" class="w40 es-table-not-adapt">
+                                                                                                                                        <tbody>
+                                                                                                                                            <tr>
+                                                                                                                                                <td width="100%" align="center" style="padding:0;font-size:0px;line-height:0px;"><a target="_blank" href="https://apps.apple.com/sa/app/garage-customer/id1603396836"><img alt="Apple Store" width="70" border="0" class="adapt-img w100" src="https://static.iterable.com/4b2893a8387245c2962956aaec0b064d/22-03-08-mirror-snippets-appstore.png" /> </a></td>
+                                                                                                                                            </tr>
+                                                                                                                                        </tbody>
+                                                                                                                                    </table>
+                                                                                                                                </td>
+                                                                                                                            </tr>
+                                                                                                                        </tbody>
+                                                                                                                    </table>
+                                                                                                                </td>
+                                                                                                            </tr>
+
+                                                                                                            <!-- Socials -->
+                                                                                                            <tr>
+                                                                                                                <td align="center" style="padding: 24px 0px 0px 0px;">
+                                                                                                                    <table width="104" cellspacing="0" cellpadding="0" border="0" class="es-table-not-adapt es-social">
+                                                                                                                        <tbody>
+                                                                                                                            <tr>
+                                                                                                                                <td class="img " width="28"><a target="_blank" href="https://links.mirror.co/u/click?_t=4b2893a8387245c2962956aaec0b064d&_m=df8a9045b2ef4eef80450559ba5728a6&_e=R_qrb9o9N5rXtUgA2j4oi6mhbE0GttOujAeksCFYW3QeQ6qd-NXQdmKbcM5BQ4XtM8aPve_ci_QGJ9xTQSvQkOYoEpJK50kbKgH4akFtxCj4QGdEnaximhvh6KzQfrfmmWcXQ6YEQqHUDNVvIcMVDpEp4Gfslk261zAlKdvDrYTEP8w0HSRa4GdLTwIICSfaeW5nbYSyi2oaWR5KxW8_E1ZVOCRDSl6eQVVVBHjdhmM%3D"><img alt="Instagram" width="28" border="0" src="https://static.iterable.com/4b2893a8387245c2962956aaec0b064d/22-03-09-mirror-snippets-instagram-c.png" /></a></td>
+                                                                                                                                <td class="img" style="padding: 5px;" width="16"></td>
+                                                                                                                                <td class="img" width="28"><a target="_blank" href="https://links.mirror.co/u/click?_t=4b2893a8387245c2962956aaec0b064d&_m=df8a9045b2ef4eef80450559ba5728a6&_e=R_qrb9o9N5rXtUgA2j4oi7ralMijLMqsqSpsX43f-MRQrpUy16ATbqTRSGOMiT7SmKw_okQeRq9Lru70FRqRzdatyGCwgV3vPCp5EngIlu2oKjk1L__xI-10R9Rv7YMvVUDNNVa9bZy5aJkcQPqHZPMB5F34bljd7f_y9aXEW-LrX5sPDL5MbnGvIIw6Rm0RdwwgyLlZUK1KlFCi6VmONMTjyIF7CLem3ccy4R-16aA%3D"><img alt="Facebook" width="28" border="0" src="https://static.iterable.com/4b2893a8387245c2962956aaec0b064d/22-03-08-mirror-snippets-facebook.png" /></a></td>
+                                                                                                                                <td class="img" style="padding: 5px;" width="16"></td>
+                                                                                                                                <td class="img" width="28"><a target="_blank" href="https://links.mirror.co/u/click?_t=4b2893a8387245c2962956aaec0b064d&_m=df8a9045b2ef4eef80450559ba5728a6&_e=R_qrb9o9N5rXtUgA2j4oi9pvvbcllTfE_fWLO7L-IOxk9BR10WslFHdjxdZzRlEWONwAiQvTkau3spC6_sDFMACH0eFgZ9WjKACz9kt3ZPllWRQJ5eJTx02JyJpdmQUd7GxUT1t9x6VJg4DqMYSFozMTDgzJ4DFP7jI-9_GgAv4kpQ8T0MyTsNz-7dEqLtD1k_ksIGTY_6D5oyKqCT-z6IU8YgjCx5nkHjfBgR0reAM%3D"><img alt="TikTok" width="28" border="0" src="https://d15k2d11r6t6rl.cloudfront.net/public/users/Integrators/669d5713-9b6a-46bb-bd7e-c542cff6dd6a/4b2893a8387245c2962956aaec0b064d/TikTok_v2.png" /></a></td>
+                                                                                                                                <td class="img" style="padding: 5px;" width="16"></td>
+                                                                                                                                <td class="img" width="28"><a target="_blank" href="https://links.mirror.co/u/click?_t=4b2893a8387245c2962956aaec0b064d&_m=df8a9045b2ef4eef80450559ba5728a6&_e=R_qrb9o9N5rXtUgA2j4oi1lq98Z7Zx3fNm5tId_JwRkFz2OAWBFyYxCE4gPwacSAp9vkDvo1qn1EpREOIwEY-cGSVEGuCojJYHieDzrJugUiP3rDJ-pBwv10tE-VGTqP0F-YAXjPlR35LXRsNMVe-z1hS_NPN9fOs1brQxs1qmE9YTQi_Eu6AAtaoCbtchz9_QI98M0T6Ks3bR2IM8_i6IkXsqzhw5ld8EOJ1Zi3GbY%3D"><img alt="Twitter" width="28" border="0" src="https://static.iterable.com/4b2893a8387245c2962956aaec0b064d/22-03-08-mirror-snippets-twitter.png" /></a></td>
+                                                                                                                            </tr>
+                                                                                                                        </tbody>
+                                                                                                                    </table>
+                                                                                                                </td>
+                                                                                                            </tr>
+                                                                                                        </tbody>
+                                                                                                    </table>
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                        </tbody>
+                                                                                    </table>
+                                                                                </td>
+                                                                            </tr>
+                                                                        </tbody>
+                                                                    </table>
+
+                                                                    <!-- END Stacked Version w/ Download Buttons Snippet -->
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
                                                     </table>
-                                                </td>
-                                                <td valign="top" class="footer-copy-wrapper">
-                                                    <table class="footer-table" width="100%" valign="top" cellpadding="0" cellspacing="0">
-                                                        <tr>
-                                                            <td class="footer-copy-shell">
-                                                                <!--<table align="left" width="100%" class="copy-table footer-copy" cellpadding="0" cellspacing="0">
-                                                                    <tr>
-                                                                        <td align="left" class="copy p1 none" style="font-family: NetflixSans-Regular, Helvetica, Roboto, Segoe UI, sans-serif; font-weight: 400; font-size: 14px; line-height: 18px; letter-spacing: -0.25px; color: #a4a4a4; padding-top: 0;"><span class="ignore-diff">Questions? Call 1-844-505-2993</span></td>
-                                                                    </tr>
-                                                                </table>
-                                                                <table align="left" width="100%" class="copy-table footer-copy address" cellpadding="0" cellspacing="0">
-                                                                    <tr>
-                                                                        <td align="left" class="copy legal none" style="font-family: NetflixSans-Regular, Helvetica, Roboto, Segoe UI, sans-serif; font-weight: 400; font-size: 11px; line-height: 14px; letter-spacing: -0.1px; color: #a4a4a4; padding-top: 0;"><span class="hide-link" style="cursor: text; text-decoration: none;"><a href="https://help.netflix.com/legal/corpinfo?g=44cea0a0-e522-42d1-adcf-9b5ee35f1e91&amp;lkid=URL_CORP_INFO&amp;lnktrk=EVO" style="cursor: text; color: #a4a4a4; text-decoration: none;">121 Albright Way, Los Gatos, CA 95032, U.S.A.</a></span></td>
-                                                                    </tr>
-                                                                </table>-->
-                                                                <table align="left" width="100%" class="copy-table " cellpadding="0" cellspacing="0">
-                                                                    <tr>
-                                                                        <td align="left" class="copy p2 none" style="font-family: NetflixSans-Regular, Helvetica, Roboto, Segoe UI, sans-serif; font-weight: 400; font-size: 12px; line-height: 15px; letter-spacing: -0.12px; color: #a9a6a6;"><!--<a class="footer-link" href="https://www.netflix.com/" style="text-decoration: underline; line-height: 20px; color: #a4a4a4;">Communication Settings</a><br>--><a class="footer-link" href="https://garagepos.com/en/terms" style="text-decoration: underline; line-height: 20px; color: #a4a4a4;">Terms of Use</a><br /><a class="footer-link" href="https://garagepos.com/en/terms" style="text-decoration: underline; line-height: 20px; color: #a4a4a4;">Privacy</a><br /><a class="footer-link" href="https://garagepos.com/en/contact" style="text-decoration: underline; line-height: 20px; color: #a4a4a4;">Help Center</a></td>
-                                                                    </tr>
-                                                                </table>
-                                                                <table align="left" width="100%" class="copy-table footer-copy" cellpadding="0" cellspacing="0">
-                                                                    <tr>
-                                                                        <td align="left" class="copy legal none" style="font-family: NetflixSans-Regular, Helvetica, Roboto, Segoe UI, sans-serif; font-weight: 400; font-size: 11px; line-height: 14px; letter-spacing: -0.1px; padding-top: 20px; color: #a4a4a4;">This message was mailed to <a href="" class="hide-link ignore-diff" style="cursor: text; color: #a4a4a4; text-decoration: none;">[#Email#]</a> by Garage as part of your Garage membership.</td>
-                                                                    </tr>
-                                                                </table>
-                                                                <table width="100%" class="spacer-table" cellpadding="0" cellspacing="0">
-                                                                    <tr>
-                                                                        <td class="spacer" style="font-size: 0; line-height: 0; height: 40px;" height="40"> </td>
-                                                                    </tr>
-                                                                </table>
-                                                            </td>
-                                                        </tr>
-                                                    </table>
+
+                                                    <!-- END CONTAINER -->
                                                 </td>
                                             </tr>
-                                        </table>
-                                    </td>
-                                </tr>
-                            </table>
-                        </td>
-                    </tr>
-                </table>
-            </td>
-        </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+        </tbody>
     </table>
-    <div class="mobile-hide-max gmail-fix-no-inline" style="white-space: 'nowrap'; font: '15px courier'; line-height: 0;">                                                           </div>
 </body>
 </html>

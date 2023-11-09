@@ -123,7 +123,6 @@ namespace BAL.Repositories
                         _user.Company = modal.Company;
                         _user.Password = new clsCryption().EncryptDecrypt(modal.Password, "encrypt");
                         _user.IsSMSCheckoutAddOn = modal.IsSMSActivate;
-                        //_user.IsAccountingAddons = modal.IsAccountingAddons;
                         _user.StatusID = modal.StatusID == true ? 1 : 2;
                         _user.PackageInfoID = modal.PackageInfoID;
                         DBContext.Entry(_user).State = EntityState.Modified;
