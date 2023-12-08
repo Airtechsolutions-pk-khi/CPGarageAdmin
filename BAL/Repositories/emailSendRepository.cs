@@ -24,7 +24,7 @@ namespace BAL.Repositories
 		private DataTable _dt;
 		private DataSet _ds;
 
-		public emailSendRepository()
+		public emailSendRepository(Garage_LiveEntities garage_LiveEntities)
 			 : base()
 		{
 			DBContext = new Garage_LiveEntities();
@@ -90,23 +90,6 @@ namespace BAL.Repositories
 			{
 				return new List<User>();
 			}
-			//try
-			//{
-			//	string[] idValues = id.Split(',');
-			//	SqlParameter[] parameters = new SqlParameter[idValues.Length];
-
-			//	for (int i = 0; i < idValues.Length; i++)
-			//	{
-			//		parameters[i] = new SqlParameter("@id" + (i + 1), idValues[i]);
-			//	}
-
-			//	_ds = (new DBHelperGarageUAT().GetDatasetFromSP)("sp_GetCustomerEmail_CP", parameters);
-			//	return _ds;
-			//}
-			//catch (Exception ex)
-			//{
-			//	return null;
-			//}
 		}
 		public DataSet GetCustomerContactByID(string Customers)
 		{
@@ -137,16 +120,6 @@ namespace BAL.Repositories
 			{
 				return null;
 			}
-		}
-
-		public emailSendRepository(Garage_LiveEntities contextDB)
-			: base(contextDB)
-		{
-			DBContext = contextDB;
-		}
-		public int SendEmail(EmailSendViewModel modal)
-		{
-			return 0;
 		}
 	}
 }

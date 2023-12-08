@@ -27,52 +27,73 @@ namespace CPGarageAdmin.Controllers
 			carsRepo = new carsRepository(new Garage_LiveEntities());
 
 		}
-
-		//[HttpPost]
-		//public ActionResult LoadData()
-		//{
-
-		//	var draw = Request.Form.GetValues("draw").FirstOrDefault();
-		//	var start = Request.Form.GetValues("start").FirstOrDefault();
-		//	var length = Request.Form.GetValues("length").FirstOrDefault();
-		//	//Find Order Column
-		//	var sortColumn = Request.Form.GetValues("columns[" + Request.Form.GetValues("order[0][column]").FirstOrDefault() + "][name]").FirstOrDefault();
-		//	var sortColumnDir = Request.Form.GetValues("order[0][dir]").FirstOrDefault();
-
-
-		//	int pageSize = length != null ? Convert.ToInt32(length) : 0;
-		//	int skip = start != null ? Convert.ToInt32(start) : 0;
-		//	int recordsTotal = 0;
-		//	using (Garage_LiveEntities dc = new Garage_LiveEntities())
-		//	{
-		//		// dc.Configuration.LazyLoadingEnabled = false; // if your table is relational, contain foreign key
-		//		var v = carsRepo.GetCars();
-
-		//		//SORT
-		//		if (!(string.IsNullOrEmpty(sortColumn) && string.IsNullOrEmpty(sortColumnDir)))
-		//		{
-		//			//v = v.OrderBy(sortColumn + " " + sortColumnDir);
-		//		}
-
-		//		recordsTotal = v.Count();
-		//		var data = v.Skip(skip).Take(pageSize).ToList();
-		//		return Json(new { draw = draw, recordsFiltered = recordsTotal, recordsTotal = recordsTotal, data = data }, JsonRequestBehavior.AllowGet);
-		//	}
-		//}
 		public ActionResult List()
 		{
-			var data = carsRepo.GetCars();
-			return View(data);
-			//return View();
+			return View();
 		}
+		public ActionResult GetData(JqueryDatatableParam param)
+		{
+			var employees = carsRepo.GetCars(param);
+			if (!string.IsNullOrEmpty(param.sSearch))
+			{
+				employees = employees.Where(x => x.RegistrationNo.ToLower().Contains(param.sSearch.ToLower())
+											  || x.MakeName.ToLower().Contains(param.sSearch.ToLower())
+											  || x.ModelName.ToLower().Contains(param.sSearch.ToLower())
+											  || x.Year.ToString().Contains(param.sSearch.ToLower())
+											  || x.CarTypeName.ToString().Contains(param.sSearch.ToLower())).ToList();
+			}
+			var sortColumnIndex = Convert.ToInt32(HttpContext.Request.QueryString["iSortCol_0"]);
+			var sortDirection = HttpContext.Request.QueryString["sSortDir_0"];
+			if (sortColumnIndex == 3)
+			{
+				//employees = sortDirection == "asc" ? employees.OrderBy(c => c.Name) : employees.OrderByDescending(c => c.);
+			}
+			else if (sortColumnIndex == 4)
+			{
+				//employees = sortDirection == "asc" ? employees.OrderBy(c => c.CarTypeName) : employees.OrderByDescending(c => c.CarTypeName);
+			}
+			else if (sortColumnIndex == 5)
+			{
+			//	employees = sortDirection == "asc" ? employees.OrderBy(c => c.Color) : employees.OrderByDescending(c => c.Salary);
+			}
+			else
+			{
+				//Func<Car, string> orderingFunction = e => sortColumnIndex == 0 ? e.Name : sortColumnIndex == 1 ? e.RegistrationNo : e.EngineType;
+				//employees = sortDirection == "asc" ? employees.OrderBy(orderingFunction) : employees.OrderByDescending(orderingFunction);
+			}
+			var displayResult = employees.Skip(param.iDisplayStart)
+			   .Take(param.iDisplayLength).ToList();
+			var totalRecords = employees.Count();
+			return Json(new
+			{
+				param.sEcho,
+				iTotalRecords = totalRecords,
+				iTotalDisplayRecords = totalRecords,
+				aaData = displayResult
+			}, JsonRequestBehavior.AllowGet);
+		}
+
+		//public ActionResult List(int page = 1, int pageSize = 10)
+		//{
+		//	int skip = (page - 1) * pageSize;
+		//	var data = carsRepo.GetCars(skip, pageSize);
+		//	return View(data);
+		//}
+
+		//public ActionResult List()
+		//{
+		//	var data = carsRepo.GetCars();
+		//	return View(data);
+		//	//return View();
+		//}
 		[HttpGet]
 		public ActionResult add(int? id)
 		{
 			var Make = carsRepo.GetMake();
 			ViewBag.Make = new SelectList(Make, "MakeID", "Name");
 
-			var Customer = carsRepo.GetCustomer();
-			ViewBag.Customer = new SelectList(Customer, "CustomerID", "FullName");
+			//var Customer = carsRepo.GetCustomer();
+			//ViewBag.Customer = new SelectList(Customer, "CustomerID", "FullName");
 			try
 			{
 				if (id != 0 || id != null)
@@ -99,20 +120,8 @@ namespace CPGarageAdmin.Controllers
 					id = c.CustomerID,
 					text = c.FullName,
 				});
-
 			return Json(results, JsonRequestBehavior.AllowGet);
 		}
-		//public ActionResult GetCustomer()
-		//{
-		//	var Customer = carsRepo.GetCustomer();
-		//	ViewBag.Customer = new SelectList(Customer, "CustomerID", "FullName");
-		//	return Json(Customer, JsonRequestBehavior.AllowGet);
-		//}
-		//public JsonResult GetMakes(string searchTerm)
-		//{
-		//	var makes = carsRepo.GetMake(searchTerm);
-		//	return Json(makes, JsonRequestBehavior.AllowGet);
-		//}
 		[HttpGet]
 		public ActionResult Models(int makeId)
 		{

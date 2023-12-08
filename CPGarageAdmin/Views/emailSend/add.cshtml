@@ -332,6 +332,7 @@
 </script>
 <script>
     function showDetails1() {
+        debugger
         var selectedType = document.querySelector('input[name="WhatsappType"]:checked').value;
         document.getElementById('whatsappCustomer').style.display = 'none';
         document.getElementById('whatsappUser').style.display = 'none';
@@ -346,7 +347,7 @@
 
     var radioButtons = document.querySelectorAll('input[name="WhatsappType"]');
     radioButtons.forEach(function (radioButton) {
-        radioButton.addEventListener('change', showDetails);
+        radioButton.addEventListener('change', showDetails1);
     });
     showDetails1();
 </script>

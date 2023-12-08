@@ -5,6 +5,8 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <link href="~/assets/css/component-custom-switch.min.css" rel="stylesheet" />
+<!-- Include jQuery -->
+
 <script type="text/javascript">
     function UserSuccess(result) {
         if (result.success) {
@@ -48,24 +50,8 @@
 </script>
 <script>
     $(document).ready(function () {
-        $("#ddlMake").select2({
-            placeholder: "-- Search Make --",
-            width: "100%",
-            dropdownAutoWidth: true
-        });
-    });
-    $(document).ready(function () {
-        $("#ddlModel").select2({
-            placeholder: "-- Search Model --",
-            width: "100%",
-            dropdownAutoWidth: true
-        });
-    });
-</script>
-<script>
-    $(document).ready(function () {
-        debugger
         $('#ddlCustomer').select2({
+
             placeholder: "-- Select Customer --",
             allowClear: true,
             ajax: {
@@ -79,6 +65,7 @@
                     };
                 },
                 processResults: function (data, params) {
+                    debugger
                     return {
                         results: data
                     };
@@ -90,15 +77,32 @@
                 return markup;
             }
         });
+
+        $("#ddlMake").select2({
+            placeholder: "-- Search Make --",
+            width: "100%",
+            dropdownAutoWidth: true
+        });
+
+        $("#ddlModel").select2({
+            placeholder: "-- Search Model --",
+            width: "100%",
+            dropdownAutoWidth: true
+        });
     });
 </script>
 <style>
-    .select2-container--default .select2-selection--single .select2-selection__arrow {
-        height: 26px;
+    .select2-container--default .select2-selection--single .select2-selection__arrow b {
+        border-color: #888 transparent transparent transparent;
+        border-style: solid;
+        border-width: 5px 4px 0 4px;
+        height: 0;
+        left: 50%;
+        margin-left: -4px;
+        margin-top: 5px;
         position: absolute;
-        top: 9px;
-        right: 1px;
-        width: 20px;
+        top: 50%;
+        width: 0;
     }
 </style>
 
@@ -118,7 +122,11 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        @Html.DropDownListFor(model => model.CustomerID, ViewBag.Customer as SelectList, "-- Select Customer --", new { @class = "form-control col-md-12", @Name = "CustomerID", @Id = "ddlCustomer" })
+                                        @* @Html.DropDownListFor(model => model.CustomerID, ViewBag.Customer as SelectList, "-- Select Customer --", new { @class = "form-control col-md-12", @Name = "CustomerID", @id = "ddlCustomer" })*@
+                                        <select id="ddlCustomer" class="form-control">
+                                            <!-- Options will be dynamically loaded using jQuery -->
+                                        </select>
+
                                     </div>
                                 </div>
                                 <div class="col-md-6">

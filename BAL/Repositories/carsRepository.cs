@@ -32,14 +32,50 @@ namespace BAL.Repositories
 		{
 			DBContext = contextDB;
 		}
+		//public List<CarsViewModel> GetCars(int skip, int take)
+		//{
+		//	try
+		//	{
+		//		var lst = new List<CarsViewModel>();
 
-		public List<CarsViewModel> GetCars()
+		//		// Modify your data access logic to include the skip and take parameters
+		//		var parameters = new List<SqlParameter>
+		//{
+		//	new SqlParameter("@Skip", skip),
+		//	new SqlParameter("@Take", take)
+		//};
+
+		//		_dt = (new DBHelperGarageUAT().GetTableFromSP)("sp_GetCars_CP", parameters.ToArray());
+
+		//		if (_dt != null && _dt.Rows.Count > 0)
+		//		{
+		//			// Convert DataTable to a list of CarsViewModel
+		//			lst = JArray.Parse(Newtonsoft.Json.JsonConvert.SerializeObject(_dt)).ToObject<List<CarsViewModel>>();
+		//		}
+
+		//		return lst;
+		//	}
+		//	catch (Exception ex)
+		//	{
+		//		// Handle exceptions appropriately (throw, log, etc.)
+		//		throw new Exception("Error fetching paginated cars.", ex);
+		//	}
+		//}
+
+
+		public List<CarsViewModel> GetCars(JqueryDatatableParam param)
 		{
 			try
 			{
 				var lst = new List<CarsViewModel>();
-
-				_dt = (new DBHelperGarageUAT().GetTableFromSP)("sp_GetCars_CP");
+				SqlParameter[] p = new SqlParameter[2];
+				if(param.iDisplayStart == 0)
+				{
+					param.iDisplayStart = 1;
+				}
+				p[0] = new SqlParameter("@start", param.iDisplayStart);
+				p[1] = new SqlParameter("@end", param.iDisplayLength);
+				_dt = (new DBHelperGarageUAT().GetTableFromSP)("sp_GetCars_CP",p);
 				if (_dt != null)
 				{
 					if (_dt.Rows.Count > 0)
@@ -77,6 +113,56 @@ namespace BAL.Repositories
 				return null;
 			}
 		}
+		//public List<CarsViewModel> GetPaginatedCars(int skip, int take)
+		//{
+		//	try
+		//	{
+		//		// Your existing logic for fetching all data
+		//		var allData = GetCars();
+
+		//		// Paginate the data using Skip and Take
+		//		var paginatedData = allData.Skip(skip).Take(take).ToList();
+
+		//		return paginatedData;
+		//	}
+		//	catch (Exception ex)
+		//	{
+		//		// Handle exceptions appropriately
+		//		return null;
+		//	}
+		//}
+		public List<CarsViewModel> GetPaginatedCars(int skip, int take)
+		{
+			try
+			{
+				var lst = new List<CarsViewModel>();
+
+				// Modify your data access logic to call the stored procedure with pagination parameters
+				var parameters = new List<SqlParameter>
+		{
+			new SqlParameter("@Skip", skip),
+			new SqlParameter("@Take", take)
+            // Add other parameters as needed
+        };
+
+				_dt = (new DBHelperGarageUAT().GetTableFromSP)("sp_GetCars_CP", parameters.ToArray());
+				_dt = (new DBHelperGarageUAT().GetTableFromSP)("sp_GetCars_CP", parameters.ToArray());
+
+				if (_dt != null && _dt.Rows.Count > 0)
+				{
+					// Convert DataTable to a list of CarsViewModel
+					lst = JArray.Parse(Newtonsoft.Json.JsonConvert.SerializeObject(_dt)).ToObject<List<CarsViewModel>>();
+				}
+
+				return lst;
+			}
+			catch (Exception ex)
+			{
+				// Handle exceptions appropriately
+				return null;
+			}
+		}
+
 		public List<MakeViewModel> GetMake()
 		{
 			try
