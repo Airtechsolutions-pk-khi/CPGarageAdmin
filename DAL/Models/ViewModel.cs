@@ -2,11 +2,13 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Razor.Parser.SyntaxTree;
 
 
 namespace DAL.Models
@@ -65,9 +67,11 @@ namespace DAL.Models
 	#region customer
 	public class CustomerViewModel
 	{
-		public int UserID { get; set; }
+		public int CustomerID { get; set; }
+		public int? UserID { get; set; }
 		public int? PackageInfoID { get; set; }
 		public int RowID { get; set; }
+		public string FullName { get; set; }
 		public string UserName { get; set; }
 		[Required(ErrorMessage = "Input is required")]
 		public string FirstName { get; set; }
@@ -194,5 +198,100 @@ namespace DAL.Models
 		public string Name { get; set; }
 	}
 	#endregion
+
+	#region EmailModel
+	public class EmailSendViewModel
+	{
+		//public string[] UserIDs { get; set; }
+		public string UserIDs { get; set; }
+		public string Users { get; set; }
+		public string Customers { get; set; }
+		public string CustomerIDs { get; set; }
+		public string Title { get; set; }
+		public string Title1 { get; set; }
+		public string Title2 { get; set; }
+		public string Subject { get; set; }
+		[AllowHtml]
+		public string Descripiton { get; set; }
+		public string PushDescription { get; set; }
+		[AllowHtml]
+		public string WhatsappDescription { get; set; }
+		public string Type { get; set; }
+		public string WhatsappType { get; set; }
+		[NotMapped]
+		public IEnumerable<Customer> customerList { get; set; }
+	}
+	#endregion
+	#region cars
+	public class CarsViewModel
+	{
+		public int CarID { get; set; }
+		public int? RowID { get; set; }
+		public int? CustomerID { get; set; }
+		public string CustomerPhone { get; set; }
+		public string Name { get; set; }
+		public string Description { get; set; }
+		public string VinNo { get; set; }
+		public int? MakeID { get; set; }
+		public int? ModelID { get; set; }
+		public int? Year { get; set; }
+		public string Color { get; set; }
+		public string RegistrationNo { get; set; }
+		public Nullable<float> CheckLitre { get; set; }
+		public string EngineType { get; set; }
+		public string RecommendedAmount { get; set; }
+		public int StatusID { get; set; }
+		public string BinaryImage { get; set; }
+		public string LastUpdateBy { get; set; }
+		public string LastUpdateDate { get; set; }
+		public DateTime? CreatedOn { get; set; }
+		public string CreatedBy { get; set; }
+		public int? LocationID { get; set; }
+		public int? UserID { get; set; }
+		public string ImagePath { get; set; }
+		public string Gender { get; set; }
+		public string CarTypeName { get; set; }
+		public string MakeName { get; set; }
+		public string ModelName { get; set; }
+		public string CarType { get; set; }
+	}
+	public class CartypeViewModel
+	{
+		public int BodyTypeID { get; set; }
+		public string Name { get; set; }
+		public string ArabicName { get; set; }
+		public string Image { get; set; }
+		public int StatusID { get; set; }
+	}
+	public class JqueryDatatableParam
+	{
+		public string sEcho { get; set; }
+		public string sSearch { get; set; }
+		public int iDisplayLength { get; set; }
+		public int iDisplayStart { get; set; }
+		public int iColumns { get; set; }
+		public int iSortCol_0 { get; set; }
+		public string sSortDir_0 { get; set; }
+		public int iSortingCols { get; set; }
+		public string sColumns { get; set; }
+	}
+
+	#endregion
+	public class PushTokenBLL
+	{
+		public int TokenID { get; set; }
+		public string Token { get; set; }
+		public int? CustomerID { get; set; }
+		public int? StatusID { get; set; }
+		public int? DeviceID { get; set; }
+	}
+	public class PushNoticationBLL
+	{
+		public string DeviceID { get; set; }
+		public string Type { get; set; }
+		public string Link { get; set; }
+		public string Title { get; set; }
+		public string Message { get; set; }
+	}
 }
 

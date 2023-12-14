@@ -89,15 +89,15 @@
 
                                     @if (Model == null)
                                     {
-                                        <img src="~/assets/images/no_image.jpg" style=" height:80px;width:80px; border-radius:10px 10px 10px 10px; " />
+                                        <img src="~/assets/images/no_image.jpg" name="ImagePath" style=" height:80px;width:80px; border-radius:10px 10px 10px 10px; " />
                                     }
                                     else if (Model.ImagePath == null)
                                     {
-                                        <img src="~/assets/images/no_image.jpg" style=" height:80px;width:80px; border-radius:10px 10px 10px 10px; " />
+                                        <img src="~/assets/images/no_image.jpg" name="ImagePath" style=" height:80px;width:80px; border-radius:10px 10px 10px 10px; " />
                                     }
                                     else
                                     {
-                                        <img src="@Url.Content(Model.ImagePath)" style=" height:80px;width:80px; border-radius:10px 10px 10px 10px;" />
+                                        <img src="@Url.Content(Model.ImagePath)" name="ImagePath" style=" height:80px;width:80px; border-radius:10px 10px 10px 10px;" />
                                     }
                                 </div>
                                 <div class="col-md-6">
@@ -151,10 +151,6 @@
 
     </form>
 }
-
-
-
-
 
 @*@using (Html.BeginForm("Save", "Model", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {

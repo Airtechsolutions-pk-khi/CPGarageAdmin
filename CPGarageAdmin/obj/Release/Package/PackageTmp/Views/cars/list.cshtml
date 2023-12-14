@@ -1,0 +1,142 @@
+﻿@{
+    ViewBag.Title = "list";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="card">
+    <div class="card-body">
+        <div class="row form-group">
+            <div class="col-8">
+                <h4 class="card-title">Cars</h4>
+            </div>
+            <div class="col-4 text-right">
+                <a href="~/cars/add" class="btn btn-sm btn-secondary"><i class="mdi mdi-plus-circle"></i> Add Car</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="table-responsive">
+                    <table id="order-listing1" class="table">
+                        <thead>
+                            <tr>
+                                <th>Registration #</th>
+                                <th>Name</th>
+                                <th>Make Name</th>
+                                <th>Model Name</th>
+                                <th>Year</th>
+                                <th>Car Type</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (DAL.Models.CarsViewModel item in Model)
+                            {
+                                <tr>
+                                    <td> @item.RegistrationNo</td>
+                                    <td> @item.Name</td>
+                                    <td> @item.MakeName</td>
+                                    <td> @item.ModelName</td>
+                                    <td> @item.Year</td>
+                                    <td> @item.CarTypeName</td>
+                                    <td>
+                                        <label>
+                                            @if (item.StatusID == 1)
+                                            {
+                                                <b class="badge badge-success">Active</b>
+                                            }
+                                            else
+                                            {
+                                                <b class="badge badge-danger">Deactive</b>
+                                            }
+                                        </label>
+                                    </td>
+                                    <td class="text-center">
+                                        <a class="delete-car" href="~/cars/add?id=@item.CarID"><i class="mdi mdi-account-edit" data-toggle="tooltip" data-placement="bottom" title="Edit Data" style="font-size:25px !important;"></i></a>
+                                        @*<a href="~/cars/delete?id=@item.CarID"><i class="mdi mdi-trash-can" data-toggle="tooltip" data-placement="bottom" title="Delete Data" style="font-size:25px !important;"></i></a>*@
+                                        <a href="javascript:void(0);" class="delete-car" data-carid="@item.CarID">
+                                            <i class="mdi mdi-trash-can" data-toggle="tooltip" data-placement="bottom" title="Delete Data" style="font-size: 25px !important;"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            }
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        $('#order-listing1').DataTable();
+    });
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+    })
+    $('.delete-car').click(function () {
+        debugger
+        var carId = $(this).data('carid');
+        var confirmation = confirm("Are you sure you want to delete this car?");
+
+        if (confirmation) {
+            // Make an AJAX request to delete the car
+            $.ajax({
+                url: '/cars/delete', // Replace with your controller and action URL
+                type: 'POST', // or 'GET' based on your API endpoint
+                data: { id: carId },
+                success: function (data) {
+                    if (data.success) {
+                        // You may also remove the row from the table
+                    }
+                },
+                error: function () {
+                    showAlert("An error occurred.", "danger");
+                }
+            });
+        }
+    });
+
+@* $(document).ready(function () {
+        debugger
+        $("#order-listing1").DataTable({
+            "processing": true,
+            "serverSide": true,
+            "filter": true,
+            "ajax": {
+                "url": "/cars/LoadData",
+                "type": "POST",
+                "datatype": "json"
+            },
+            "columnDefs": [{
+                "targets": [0],
+                "visible": false,
+                "searchable": false
+            }],
+            "columns": [
+                { "data": "RegistrationNo", "name": "RegistrationNo", "autoWidth": true },
+                { "data": "Name", "name": "Name", "autoWidth": true },
+                { "data": "MakeName", "name": "MakeName", "autoWidth": true },
+                { "data": "ModelName", "name": "ModelName", "autoWidth": true },
+                { "data": "Year", "name": "Year", "autoWidth": true },
+                { "data": "CarTypeName", "name": "CarTypeName", "autoWidth": true },
+                { "data": "StatusID", "name": "StatusID", "autoWidth": true },
+                {
+                    "render": function (data, row) {
+                        return "<a href='#' class='mdi mdi-pencil' onclick=editCar('" + row.carId + "'); ></a>";
+
+                        return "<a href='#' class='mdi mdi-delete' onclick=editCar('" + row.carId + "'); ></a>";
+                    }
+                },
+            ]
+        });
+    });
+    function editCar(carId) {
+        debugger
+        // Redirect to the edit page with the carId as a parameter
+        window.location.href = '/cars/add?id=' + carId;
+    }*@
+
+</script>

@@ -357,6 +357,27 @@ namespace WebAPICode.Helpers
 
 
         }
+		public DataTable GetTableFromSPWithPagination(string storedProcedureName, int skip, int take)
+		{
+			using (SqlConnection connection = new SqlConnection(connectionString))
+			{
+				connection.Open();
 
-    }
+				using (SqlCommand command = new SqlCommand(storedProcedureName, connection))
+				{
+					command.CommandType = CommandType.StoredProcedure;
+					command.Parameters.AddWithValue("@Skip", skip); // Parameter for skipping records
+					command.Parameters.AddWithValue("@Take", take); // Parameter for taking records
+
+					using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+					{
+						DataTable dataTable = new DataTable();
+						adapter.Fill(dataTable);
+						return dataTable;
+					}
+				}
+			}
+		}
+
+	}
 }

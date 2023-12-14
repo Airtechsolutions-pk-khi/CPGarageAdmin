@@ -44,6 +44,7 @@ namespace BAL.Repositories
                         _model.ArabicName = modal.ArabicName;
                         _model.Year = modal.Year;
                         _model.EngineNo = modal.EngineNo;
+                        _model.MakeID = modal.MakeID;
                         _model.RecommendedLitres = modal.RecommendedLitres;
                         _model.ImagePath = path;
                         _model.LastUpdatedBy = modal.LastUpdatedBy;
@@ -60,7 +61,9 @@ namespace BAL.Repositories
                         x => x.LastUpdatedBy,
                         x => x.LastUpdatedDate,
                         x => x.StatusID,
-                        x => x.DisplayOrder
+                        x => x.DisplayOrder,
+                        x => x.ArabicName,
+                        x => x.MakeID
 
                         );
                         DBContext.SaveChanges();
@@ -138,6 +141,7 @@ namespace BAL.Repositories
                         RowID = r.RowID,
                         MakeID = r.MakeID,
                         Name = r.Name,
+                        ArabicName = r.ArabicName,
                         Year = r.Year,                        
                         EngineNo = r.EngineNo,
                         RecommendedLitres = r.RecommendedLitres,

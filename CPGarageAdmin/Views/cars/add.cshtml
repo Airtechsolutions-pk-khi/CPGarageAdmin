@@ -1,0 +1,315 @@
+﻿@model DAL.Models.CarsViewModel
+@using System.Web.Configuration;
+@{
+    ViewBag.Title = "add";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="~/assets/css/component-custom-switch.min.css" rel="stylesheet" />
+<!-- Include jQuery -->
+
+<script type="text/javascript">
+    function UserSuccess(result) {
+        if (result.success) {
+            window.location.href = "/cars/list";
+            alert("CARS ADDED SUCCESSFULLY")
+        }
+        else {
+            alert("CARS CANNOT ADDED SUCCESSFULLY")
+        }
+    }
+</script>
+<script>
+    $(document).ready(function () {
+        debugger
+        var makeDropdown = $("#ddlMake");
+        var modelDropdown = $("#ddlModel");
+        makeDropdown.change(function () {
+            var selectedMakeID = makeDropdown.val();
+            debugger
+            if (selectedMakeID) {
+                debugger
+                $.ajax({
+                    type: "GET",
+                    url: "/cars/models?makeId=" + selectedMakeID,
+                    success: function (data) {
+
+                        modelDropdown.empty();
+                        modelDropdown.append($('<option>').text("-- Select Model --").val(''));
+                        $.each(data, function (index, item) {
+                            modelDropdown.append($('<option>').text(item.Name).val(item.ModelID));
+                        });
+                    }
+                });
+            } else {
+                modelDropdown.empty();
+                modelDropdown.append($('<option>').text("-- Select Model --").val(''));
+            }
+        });
+    });
+
+</script>
+<script>
+    $(document).ready(function () {
+        $('#ddlCustomer').select2({
+
+            placeholder: "-- Select Customer --",
+            allowClear: true,
+            ajax: {
+                url: '/cars/GetCustomer',
+                dataType: 'json',
+                delay: 250,
+                data: function (params) {
+                    return {
+                        searchTerm: params.term,
+                        page: params.page
+                    };
+                },
+                processResults: function (data, params) {
+                    debugger
+                    return {
+                        results: data
+                    };
+                },
+                cache: true
+            },
+            minimumInputLength: 2,
+            escapeMarkup: function (markup) {
+                return markup;
+            }
+        });
+
+        $("#ddlMake").select2({
+            placeholder: "-- Search Make --",
+            width: "100%",
+            dropdownAutoWidth: true
+        });
+
+        $("#ddlModel").select2({
+            placeholder: "-- Search Model --",
+            width: "100%",
+            dropdownAutoWidth: true
+        });
+    });
+</script>
+<style>
+    .select2-container--default .select2-selection--single .select2-selection__arrow b {
+        border-color: #888 transparent transparent transparent;
+        border-style: solid;
+        border-width: 5px 4px 0 4px;
+        height: 0;
+        left: 50%;
+        margin-left: -4px;
+        margin-top: 5px;
+        position: absolute;
+        top: 50%;
+        width: 0;
+    }
+</style>
+
+@using (Html.BeginForm("Save", "Cars", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div id="carid">
+        @Html.HiddenFor(x => x.CarID)
+    </div>
+    <form id="contact-form" role="form">
+        <div class="controls">
+            <div class="row ">
+                <div class="col-12 grid-margin stretch-card">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">Cars</h4>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        @* @Html.DropDownListFor(model => model.CustomerID, ViewBag.Customer as SelectList, "-- Select Customer --", new { @class = "form-control col-md-12", @Name = "CustomerID", @id = "ddlCustomer" })*@
+                                        <select id="ddlCustomer" class="form-control">
+                                            <!-- Options will be dynamically loaded using jQuery -->
+                                        </select>
+
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="form_need">Name</label>
+                                        @Html.TextBoxFor(model => model.Name, new { @class = "form-control", placeholder = "", @Id = "txtarname", @required = "required" })
+                                        @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="form_need">VIN No</label>
+                                        @Html.TextBoxFor(model => model.VinNo, new { @class = "form-control", placeholder = "", @Id = "txtarname" })
+                                        @Html.ValidationMessageFor(model => model.VinNo, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="form_need">Year</label>
+                                        @Html.TextBoxFor(model => model.Year, new { @class = "form-control", placeholder = "", @Id = "txtarname", @required = "required", @type = "number" })
+                                        @Html.ValidationMessageFor(model => model.Year, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="form_need">Color</label>
+                                        @Html.TextBoxFor(model => model.Color, new { @class = "form-control", placeholder = "", @Id = "txtarname" })
+                                        @Html.ValidationMessageFor(model => model.Color, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="exampleInputPassword4">Select Make</label>
+                                        <div class="form-group">
+                                            @Html.DropDownListFor(model => model.MakeID, ViewBag.Make as SelectList, "-- Select Make --", new { @class = "form-control col-md-12", @Name = "MakeID", @Id = "ddlMake" })
+                                            @*@Html.DropDownListFor(model => model.MakeID, ViewBag.Make as SelectList, "-- Select Make --", new { @class = "form-control col-md-12", @Name = "MakeID", @Id = "ddlMake" })*@
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="exampleInputPassword4">Select Model</label>
+                                        <div class="form-group">
+                                            @Html.DropDownListFor(model => model.ModelID, new SelectList(Enumerable.Empty<SelectListItem>(), "ModelID", "Name"), "-- Select Model --", new { @class = "form-control col-md-12", @Name = "ModelID", @Id = "ddlModel" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="form_need">Registration No.</label>
+                                        @Html.TextBoxFor(model => model.RegistrationNo, new { @class = "form-control", placeholder = "", @Id = "txtarname", @required = "required", @Name = "RegistrationNo" })
+                                        @Html.ValidationMessageFor(model => model.RegistrationNo, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="form_need">Check Litres</label>
+                                        @Html.TextBoxFor(model => model.CheckLitre, new { @class = "form-control", placeholder = "", @Id = "txtarname", @Name = "CheckLitre", @type = "number" })
+                                        @*@Html.ValidationMessageFor(model => model.CheckLitre, "", new { @class = "text-danger" })*@
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="form_need">Engine Type</label>
+                                        <select type="time" class="form-control" id=EngineType placeholder="" name="EngineType" , required="required">
+                                            <option selected disabled> -- Please Select -- </option>
+                                            <option>Inline Engine Layout</option>
+                                            <option>Flat Engine</option>
+                                            <option>V-Engine</option>
+                                            <option>Twin Cylinder</option>
+                                            <option>Three Cylinder</option>
+                                            <option>Four Cylinder</option>
+                                            <option>Five Cylinder</option>
+                                            <option>Six Cylinder</option>
+                                            <option>Seven Cylinder</option>
+                                            <option>Eight Cylinders</option>
+                                            <option>Nine Cylinders</option>
+                                            <option>Ten Cylinders</option>
+                                            <option>Eleven Cylinders</option>
+                                            <option>Twelve Cylinders</option>
+                                            <option>Other</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="form_need">Recommended Amount</label>
+                                        @Html.TextBoxFor(model => model.RecommendedAmount, new { @class = "form-control", placeholder = "", @Id = "txtarname", @Name = "RecommendedAmount", @type = "number" })
+                                        @*@Html.ValidationMessageFor(model => model.CheckLitre, "", new { @class = "text-danger" })*@
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="exampleInputPassword4">Car Type</label>
+                                        <div class="form-group">
+                                            <select type="time" class="form-control" id=EngineType placeholder="" name="CarType" , required="required">
+                                                <option selected disabled> -- Please Select -- </option>
+                                                <option value="1"> Public  </option>
+                                                <option value="2"> Private </option>
+                                                <option value="3"> Commercial </option>
+                                                <option value="4"> Diplomat </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="form_need">Status </label>
+
+                                        @if (Model == null)
+                                        {
+                                            <div class="custom-switch custom-switch-primary mb-2">
+                                                <input class="custom-switch-input" id="StatusID" type="checkbox" value="1" name="StatusID" checked>
+                                                <label class="custom-switch-btn" for="StatusID" style="width: 40px; height: 23px;"></label>
+                                                <input class="custom-switch-input" type="hidden" value="2" name="StatusID" />
+                                            </div>
+                                        }
+                                        else if (Model.StatusID == 1)
+                                        {
+                                            <div class="custom-switch custom-switch-primary mb-2">
+                                                <input class="custom-switch-input" id="StatusID" type="checkbox" checked value="1" name="StatusID">
+                                                <label class="custom-switch-btn" for="StatusID" style="width: 40px; height: 23px;"></label>
+                                                <input class="custom-switch-input" type="hidden" value="2" name="StatusID" />
+                                            </div>
+
+                                        }
+                                        else if (Model.StatusID == 2)
+                                        {
+                                            <div class="custom-switch custom-switch-primary mb-2">
+                                                <input class="custom-switch-input" id="StatusID" type="checkbox" value="1" name="StatusID">
+                                                <label class="custom-switch-btn" for="StatusID" style="width: 40px; height: 23px;"></label>
+                                                <input class="custom-switch-input" type="hidden" value="2" name="StatusID" />
+                                            </div>
+                                        }
+                                        <div class="custom-switch custom-switch-primary mb-2" style="display:none;">
+                                            <input class="custom-switch-input" id="StatusID" type="checkbox" value="1" name="StatusID" checked>
+                                            <label class="custom-switch-btn" for="StatusID" style="width: 40px; height: 23px;"></label>
+                                            <input class="custom-switch-input" type="hidden" value="2" name="StatusID" />
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12" style="padding-bottom: 0px;">
+                                    <div class="form-group">
+                                        <label for="imgfile" style="padding-top:20px;padding-bottom:15px;">Upload Image</label>
+                                        <input type="file" class="form-control-file" name="ImagePath" id="imgfile" style="padding-bottom:15px;">
+
+                                        @if (Model == null)
+                                        {
+                                            <img src="~/assets/images/no_image.jpg" style=" height:80px;width:80px; border-radius:10px 10px 10px 10px; " />
+                                        }
+                                        else if (Model.ImagePath == null)
+                                        {
+                                            <img src="~/assets/images/no_image.jpg" style=" height:80px;width:80px; border-radius:10px 10px 10px 10px; " />
+                                        }
+                                        else
+                                        {
+                                            <img src="@Url.Content(Model.ImagePath)" style=" height:80px;width:80px; border-radius:10px 10px 10px 10px;" />
+                                        }
+                                    </div>
+                                </div>
+
+
+                                <div class="col-md-3" style="padding-top:20px;">
+                                    <button type="submit" class="btn btn-dark mr-2">Save</button>
+                                    <a href="~/model/listMake" class="btn btn-light">Cancel</a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+}
+
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+<script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>

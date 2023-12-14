@@ -17,7 +17,7 @@
   }
 }
 .form-control {
-  border: 1px solid $border-color;
+  border: 1px solid #000000;
   font-weight: 400;
   font-size: $input-font-size;
 }
@@ -29,7 +29,7 @@ select {
     outline: 0;
     color: $input-placeholder-color;
     &:focus {
-      outline: 1px solid $border-color;
+      outline: 1px solid #000000;
     }
     @each $color, $value in $theme-colors {
       &.border-#{$color} {

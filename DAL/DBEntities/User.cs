@@ -40,6 +40,7 @@ namespace DAL.DBEntities
         }
     
         public int UserID { get; set; }
+        public string[] UserIDs { get; set; }
         public int RowID { get; set; }
         public Nullable<int> PackageInfoID { get; set; }
         public string UserName { get; set; }
