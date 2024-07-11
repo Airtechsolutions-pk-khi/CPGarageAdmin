@@ -93,6 +93,7 @@ namespace DAL.Models
 		public Nullable<int> RoleID { get; set; }
 		public Nullable<int> TimeZoneID { get; set; }
 		public string LastUpdatedBy { get; set; }
+		public string BusinessTypes { get; set; }
 		public Nullable<System.DateTime> LastUpdatedDate { get; set; }
 		public Nullable<System.DateTime> ExpiryDate { get; set; }
 		public bool StatusID { get; set; }
@@ -107,8 +108,10 @@ namespace DAL.Models
 		public bool IsCashier { get; set; }
 		public bool AllowNegativeInventory { get; set; }
 		public bool IsOdoo { get; set; }
-
 		public bool IsAccountingAddons { get; set; }
+		public bool IsYakeen { get; set; }
+		public bool IsMojaz { get; set; }
+		public bool IsDefaultCar { get; set; }
 		public int? LocationID { get; set; }
 		[Required(ErrorMessage = "Input is required")]
 		public string LocationName { get; set; }
@@ -117,9 +120,9 @@ namespace DAL.Models
 		[Required(ErrorMessage = "Input is required")]
 		public string LocationEmail { get; set; }
 		public string Currency { get; set; }
+		public string RemainingDays { get; set; }
 		public Nullable<System.DateTime> PackageExpiry { get; set; }
 	}
-
 	public class RoleGroup
 	{
 		public int GroupID { get; set; }
@@ -141,8 +144,6 @@ namespace DAL.Models
 		public int StatusID { get; set; }
 	}
 	#endregion customer
-
-
 	public class DasboardViewModel
 	{
 		public string TotalCustomers { get; set; }
@@ -198,27 +199,26 @@ namespace DAL.Models
 		public string Name { get; set; }
 	}
 	#endregion
-
 	#region EmailModel
 	public class EmailSendViewModel
 	{
 		//public string[] UserIDs { get; set; }
-		public string UserIDs { get; set; }
-		public string Users { get; set; }
-		public string Customers { get; set; }
-		public string CustomerIDs { get; set; }
-		public string Title { get; set; }
-		public string Title1 { get; set; }
-		public string Title2 { get; set; }
-		public string Subject { get; set; }
-		[AllowHtml]
-		public string Descripiton { get; set; }
-		public string PushDescription { get; set; }
-		[AllowHtml]
-		public string WhatsappDescription { get; set; }
-		public string Type { get; set; }
-		public string WhatsappType { get; set; }
-		[NotMapped]
+		public string UserIDs { get; set; } = null;
+		public string Users { get; set; } = null;
+        public string Customers { get; set; } = null;
+        public string CustomerIDs { get; set; } = null;
+        public string Title { get; set; } = null;
+        public string Title1 { get; set; } = null;
+        public string Title2 { get; set; } = null;
+        public string Subject { get; set; } = null;
+        [AllowHtml]
+		public string Descripiton { get; set; } = null;
+        public string PushDescription { get; set; } = null;
+        [AllowHtml]
+		public string WhatsappDescription { get; set; } = null;
+        public string Type { get; set; } = null;
+        public string WhatsappType { get; set; } = null;
+        [NotMapped]
 		public IEnumerable<Customer> customerList { get; set; }
 	}
 	#endregion
@@ -253,8 +253,9 @@ namespace DAL.Models
 		public string CarTypeName { get; set; }
 		public string MakeName { get; set; }
 		public string ModelName { get; set; }
-		public string CarType { get; set; }
-	}
+		public int? CarType { get; set; }
+
+    }
 	public class CartypeViewModel
 	{
 		public int BodyTypeID { get; set; }
@@ -274,10 +275,15 @@ namespace DAL.Models
 		public string sSortDir_0 { get; set; }
 		public int iSortingCols { get; set; }
 		public string sColumns { get; set; }
-	}
+    }
+    public class CarsPaginationResult
+    {
+        public List<CarsViewModel> Cars { get; set; }
+        public int TotalRecords { get; set; }
+    }
 
-	#endregion
-	public class PushTokenBLL
+    #endregion
+    public class PushTokenBLL
 	{
 		public int TokenID { get; set; }
 		public string Token { get; set; }
@@ -293,5 +299,46 @@ namespace DAL.Models
 		public string Title { get; set; }
 		public string Message { get; set; }
 	}
+	public class CarDeleteViewModel
+	{
+		public int RequestID { get; set; }
+		public int CarID { get; set; }
+		public string CarName { get; set; }
+		public int CustomerID { get; set; }
+		public string CustomerName { get; set; }
+		public string Reason { get; set; }
+		public string RequestFrom { get; set; }
+		public int RequestStatus { get; set; }
+		public DateTime? CreatedDate { get; set; }
+		public string CreatedBy { get; set; }
+		public DateTime? LastUpdatedDate { get; set; }
+		public string LastUpdatedBy { get; set; }
+	}
+
+	public class summaryViewModel
+	{
+		public string TotalTransaction { get; set; }
+		public string TotalLocation { get; set; }
+		public string TotalCars { get; set; }
+		public string TotalCustomers { get; set; }
+		public string TotalProfessionalCustomers { get; set; }
+		public string TotalTrialCustomers { get; set; }
+	}
+	public class leadReportViewModel
+	{
+		public int UserID { get; set; }
+		public string FirstName { get; set; }
+		public string LastName { get; set; }
+		public string Email { get; set; }
+		public string ContactNo { get; set; }
+		public int PackageInfoID { get; set; }
+		public string Company { get; set; }
+		public int? RemainingDays { get; set; }	
+		public string BusinessType { get; set; }	
+		public string PackageName { get; set; }	
+		public string PackageNameAr { get; set; }	
+		public DateTime? CreatedDate { get; set; }	
+		public DateTime? ExpiryDate { get; set; }	
+    }
 }
 

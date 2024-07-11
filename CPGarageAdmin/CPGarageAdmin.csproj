@@ -288,6 +288,8 @@
     <Content Include="assets\images\file-icons\64\007-folder.png" />
     <Content Include="assets\images\file-icons\64\008-archive.png" />
     <Content Include="assets\images\garage-icon.png" />
+    <Content Include="assets\images\Group 28.svg" />
+    <Content Include="assets\images\Group 30.svg" />
     <Content Include="assets\images\lightbox\play-button.png" />
     <Content Include="assets\images\lightbox\thumb-v-v-1.jpg" />
     <Content Include="assets\images\lightbox\thumb-v-v-2.jpg" />
@@ -1943,6 +1945,29 @@
     <Content Include="Global.asax" />
     <Content Include="Content\bootstrap-chosen.scss" />
     <Content Include="Content\bootstrap-chosen.less" />
+    <Content Include="assets\fonts\SpaceGrosek\Arabic\YekanBakh-Black.ttf" />
+    <Content Include="assets\fonts\SpaceGrosek\Arabic\YekanBakh-Bold.ttf" />
+    <Content Include="assets\fonts\SpaceGrosek\Arabic\YekanBakh-ExtraBlack.ttf" />
+    <Content Include="assets\fonts\SpaceGrosek\Arabic\YekanBakh-ExtraBold.ttf" />
+    <Content Include="assets\fonts\SpaceGrosek\Arabic\YekanBakh-Light.ttf" />
+    <Content Include="assets\fonts\SpaceGrosek\Arabic\YekanBakh-Regular.ttf" />
+    <Content Include="assets\fonts\SpaceGrosek\Arabic\YekanBakh-SemiBold.ttf" />
+    <Content Include="assets\fonts\SpaceGrosek\Arabic\YekanBakh-Thin.ttf" />
+    <Content Include="assets\fonts\SpaceGrosek\English Primary\.DS_Store" />
+    <Content Include="assets\fonts\SpaceGrosek\English Primary\SpaceGrotesk-Bold.ttf" />
+    <Content Include="assets\fonts\SpaceGrosek\English Primary\SpaceGrotesk-Light.ttf" />
+    <Content Include="assets\fonts\SpaceGrosek\English Primary\SpaceGrotesk-Medium.ttf" />
+    <Content Include="assets\fonts\SpaceGrosek\English Primary\SpaceGrotesk-Regular.ttf" />
+    <Content Include="assets\fonts\SpaceGrosek\English Primary\SpaceGrotesk-SemiBold.ttf" />
+    <Content Include="assets\fonts\SpaceGrosek\English Secondary\Inter-Black.ttf" />
+    <Content Include="assets\fonts\SpaceGrosek\English Secondary\Inter-Bold.ttf" />
+    <Content Include="assets\fonts\SpaceGrosek\English Secondary\Inter-ExtraBold.ttf" />
+    <Content Include="assets\fonts\SpaceGrosek\English Secondary\Inter-ExtraLight.ttf" />
+    <Content Include="assets\fonts\SpaceGrosek\English Secondary\Inter-Light.ttf" />
+    <Content Include="assets\fonts\SpaceGrosek\English Secondary\Inter-Medium.ttf" />
+    <Content Include="assets\fonts\SpaceGrosek\English Secondary\Inter-Regular.ttf" />
+    <Content Include="assets\fonts\SpaceGrosek\English Secondary\Inter-SemiBold.ttf" />
+    <Content Include="assets\fonts\SpaceGrosek\English Secondary\Inter-Thin.ttf" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="index.html" />
@@ -1971,6 +1996,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\baseController.cs" />
+    <Compile Include="Controllers\carDeleteController.cs" />
     <Compile Include="Controllers\carsController.cs" />
     <Compile Include="Controllers\emailSendController.cs" />
     <Compile Include="Controllers\modelController.cs" />
@@ -1978,6 +2004,7 @@
     <Compile Include="Controllers\homeController.cs" />
     <Compile Include="Controllers\BroadcastController.cs" />
     <Compile Include="Controllers\packagesController.cs" />
+    <Compile Include="Controllers\reportController.cs" />
     <Compile Include="Controllers\smsController.cs" />
     <Compile Include="Controllers\itemmovementController.cs" />
     <Compile Include="Controllers\loginController.cs" />
@@ -2379,6 +2406,11 @@
     <Content Include="Views\emailSend\add.cshtml" />
     <Content Include="Views\cars\add.cshtml" />
     <Content Include="Views\cars\list.cshtml" />
+    <Content Include="Views\carDelete\list.cshtml" />
+    <Content Include="Views\emailSend\sendemail.cshtml" />
+    <Content Include="Views\Report\SummaryReport.cshtml" />
+    <Content Include="Views\Report\LeadDetailReport.cshtml" />
+    <Content Include="Views\carDelete\detail.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

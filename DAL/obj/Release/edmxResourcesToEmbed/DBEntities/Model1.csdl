@@ -142,7 +142,7 @@
     <Property Name="CreatedOn" Type="DateTime" Precision="3" />
     <Property Name="CreatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="LocationID" Type="Int32" />
-    <Property Name="UserID" Type="Int32" Nullable="false" />
+    <Property Name="UserID" Type="Int32" />
     <Property Name="ImagePath" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="CarType" Type="Int32" />
@@ -150,6 +150,18 @@
     <NavigationProperty Name="Make" Relationship="Self.FK_Cars_Make" FromRole="Cars" ToRole="Make" />
     <NavigationProperty Name="Model" Relationship="Self.FK_Cars_Model" FromRole="Cars" ToRole="Model" />
     <NavigationProperty Name="Orders" Relationship="Self.FK_Orders_Cars" FromRole="Cars" ToRole="Orders" />
+    <Property Name="plateText1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="plateText2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="plateText3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="plateNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="regTypeDescAr" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="bodyTypeDescAr" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="majorColor" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="vehicleClassDescAr" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="capacity" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="weight" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="plateReturnIndex" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsVerified" Type="Boolean" />
     <NavigationProperty Name="User" Relationship="Garage_UATModel.FK_Cars_Users" FromRole="Car" ToRole="User" />
   </EntityType>
   <EntityType Name="Category">
@@ -248,6 +260,7 @@
     <Property Name="Notes" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
     <Property Name="Terms" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="CompanyInvoiceDetails" Relationship="Self.FK_CompanyInvoiceDetail_CompanyInvoice" FromRole="CompanyInvoice" ToRole="CompanyInvoiceDetail" />
+    <Property Name="PaymentMode" Type="Int32" />
     <NavigationProperty Name="User" Relationship="Garage_UATModel.FK_CompanyInvoice_Users" FromRole="CompanyInvoice" ToRole="User" />
   </EntityType>
   <EntityType Name="CompanyInvoiceDetail">
@@ -369,6 +382,9 @@
     <Property Name="LastUpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="LastUpdatedDate" Type="DateTime" Precision="3" />
     <NavigationProperty Name="OrderCheckouts" Relationship="Self.FK_OrderCheckout_CreditCustomer" FromRole="CreditCustomer" ToRole="OrderCheckout" />
+    <Property Name="Address" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="VATNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsVAT" Type="Boolean" />
     <NavigationProperty Name="User" Relationship="Garage_UATModel.FK_CreditCustomer_Users" FromRole="CreditCustomer" ToRole="User" />
   </EntityType>
   <EntityType Name="Customer">
@@ -609,7 +625,7 @@
     <Property Name="CurrentStock" Type="Int32" />
     <Property Name="ItemID" Type="Int32" />
     <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Remarks" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Remarks" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
     <Property Name="StatusID" Type="Int32" />
     <Property Name="LastUpdatedDate" Type="DateTime" Precision="3" />
     <Property Name="LastUpdatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
@@ -836,8 +852,8 @@
     <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="Descripiton" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
     <Property Name="ArabicDescription" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-    <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-    <Property Name="ArabicAddress" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ArabicAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="ContactNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Email" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
     <Property Name="TimeZoneID" Type="Int32" />
@@ -1240,6 +1256,9 @@
     <Property Name="CreatedDate" Type="DateTime" Precision="3" />
     <Property Name="LastUpdatedDate" Type="DateTime" Precision="3" />
     <NavigationProperty Name="UserPackageDetails" Relationship="Self.FK_UserPackageDetails_PackagesInfo" FromRole="PackagesInfo" ToRole="UserPackageDetails" />
+    <Property Name="PackageNameAr" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="PackageDetailAr" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="PackageDescriptionAr" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="Users" Relationship="Garage_UATModel.FK_Users_PackagesInfo" FromRole="PackagesInfo" ToRole="User" />
   </EntityType>
   <EntityType Name="PaymentDetail">
@@ -1293,6 +1312,8 @@
     <Property Name="LocationID" Type="Int32" Nullable="false" />
     <Property Name="IsA4Spacing" Type="Boolean" />
     <NavigationProperty Name="Location" Relationship="Self.FK_Receipt_Locations" FromRole="Receipt" ToRole="Locations" />
+    <Property Name="QRTagline" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="QRLink" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="ReportLog">
     <Key>
@@ -3476,8 +3497,10 @@
       <Parameter Name="RegistrationNo" Mode="In" Type="String" />
       <Parameter Name="ImagePath" Mode="In" Type="String" />
       <Parameter Name="LocationID" Mode="In" Type="Int32" />
-      <Parameter Name="StatusID" Mode="In" Type="Int32" />
       <Parameter Name="UserID" Mode="In" Type="Int32" />
+      <Parameter Name="StatusID" Mode="In" Type="Int32" />
+      <Parameter Name="CheckLitre" Mode="In" Type="Double" />
+      <Parameter Name="EngineType" Mode="In" Type="String" />
     </FunctionImport>
     <FunctionImport Name="sp_alterdiagram">
       <Parameter Name="diagramname" Mode="In" Type="String" />
@@ -3670,6 +3693,8 @@
       <Parameter Name="LocationID" Mode="In" Type="Int32" />
       <Parameter Name="Date" Mode="In" Type="DateTime" />
       <Parameter Name="Status" Mode="In" Type="String" />
+      <Parameter Name="CarID" Mode="In" Type="Int32" />
+      <Parameter Name="UserID" Mode="In" Type="Int32" />
     </FunctionImport>
     <FunctionImport Name="sp_GetOrderListV2_APP" ReturnType="Collection(Garage_UATModel.sp_GetOrderListV2_APP_Result)">
       <Parameter Name="LocationID" Mode="In" Type="Int32" />
@@ -3967,6 +3992,8 @@
       <Parameter Name="LocationID" Mode="In" Type="Int32" />
       <Parameter Name="StatusID" Mode="In" Type="Int32" />
       <Parameter Name="UserID" Mode="In" Type="Int32" />
+      <Parameter Name="CheckLitre" Mode="In" Type="Double" />
+      <Parameter Name="EngineType" Mode="In" Type="String" />
     </FunctionImport>
     <FunctionImport Name="sp_UpdateCustomer_CAPI" ReturnType="Collection(Garage_UATModel.sp_UpdateCustomer_CAPI_Result)">
       <Parameter Name="FullName" Mode="In" Type="String" />
@@ -4055,6 +4082,11 @@
       <Parameter Name="ArabicDescription" Mode="In" Type="String" />
       <Parameter Name="ArabicAddress" Mode="In" Type="String" />
       <Parameter Name="CustomerStatusID" Mode="In" Type="Int32" />
+      <Parameter Name="BrandImage" Mode="In" Type="String" />
+      <Parameter Name="CountryCode" Mode="In" Type="String" />
+      <Parameter Name="CityID" Mode="In" Type="Int32" />
+      <Parameter Name="UserID" Mode="In" Type="Int32" />
+      <Parameter Name="BusinessType" Mode="In" Type="String" />
     </FunctionImport>
     <FunctionImport Name="sp_UpdateOrderItemOdoo">
       <Parameter Name="ItemID" Mode="In" Type="Int32" />
@@ -6172,6 +6204,11 @@
     <Property Name="IsAccountingAddons" Type="Boolean" />
     <Property Name="IsGarageGo" Type="Boolean" />
     <Property Name="IsCashier" Type="Boolean" />
+    <Property Name="BrandThumbnailImage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="LoginSessionTime" Type="Int32" />
+    <Property Name="IsYakeen" Type="Boolean" />
+    <Property Name="IsMojaz" Type="Boolean" />
+    <Property Name="IsDefaultCar" Type="Boolean" />
     <NavigationProperty Name="AppSources" Relationship="Garage_UATModel.FK_AppSource_Users" FromRole="User" ToRole="AppSource" />
     <NavigationProperty Name="CarInspections" Relationship="Garage_UATModel.FK_CarInspection_Users" FromRole="User" ToRole="CarInspection" />
     <NavigationProperty Name="Cars" Relationship="Garage_UATModel.FK_Cars_Users" FromRole="User" ToRole="Car" />
@@ -6222,7 +6259,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Cars_Users">
-    <End Type="Garage_UATModel.User" Role="User" Multiplicity="1" />
+    <End Type="Garage_UATModel.User" Role="User" Multiplicity="0..1" />
     <End Type="Garage_UATModel.Car" Role="Car" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="User">

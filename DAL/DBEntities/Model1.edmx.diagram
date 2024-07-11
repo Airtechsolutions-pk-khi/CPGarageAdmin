@@ -193,7 +193,7 @@
         <AssociationConnector Association="Garage_UATModel.FK_SubUsers_Status" ManuallyRouted="false" />
         <AssociationConnector Association="Garage_UATModel.FK_UserPackageDetails_UserPackageDetails" ManuallyRouted="false" />
         <AssociationConnector Association="Garage_UATModel.SubUserLocations" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="Garage_UATModel.User" Width="1.5" PointX="16.25" PointY="126.5" />
+        <EntityTypeShape EntityType="Garage_UATModel.User" Width="1.5" PointX="16.25" PointY="126" />
         <AssociationConnector Association="Garage_UATModel.FK_AppSource_Users" />
         <AssociationConnector Association="Garage_UATModel.FK_CarInspection_Users" />
         <AssociationConnector Association="Garage_UATModel.FK_Cars_Users" />
@@ -218,7 +218,7 @@
         <AssociationConnector Association="Garage_UATModel.FK_UserPackageDetails_Users" />
         <AssociationConnector Association="Garage_UATModel.FK_ZohoChartOfAccounts_Users" />
         <AssociationConnector Association="Garage_UATModel.FK_ZohoSettings_Users" />
-      </Diagram>
+        </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>

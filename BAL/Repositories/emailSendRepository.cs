@@ -78,6 +78,30 @@ namespace BAL.Repositories
 			{
 				return null;
 			}
+		}	
+		
+		public List<Customer> GetCustomerMarketing()
+		{
+			try
+			{
+				var lst = new List<Customer>();
+
+				SqlParameter[] p = new SqlParameter[0];
+
+				_dt = (new DBHelperGarageUAT().GetTableFromSP)("sp_GetCustomerforMarketing_CP", p);
+				if (_dt != null)
+				{
+					if (_dt.Rows.Count > 0)
+					{
+						lst = JArray.Parse(Newtonsoft.Json.JsonConvert.SerializeObject(_dt)).ToObject<List<Customer>>();
+					}
+				}
+				return lst;
+			}
+			catch (Exception ex)
+			{
+				return null;
+			}
 		}
 		public List<User> GetCustomerEmailByID(int id)
 		{

@@ -33,16 +33,28 @@ namespace BAL.Repositories
             DBContext = contextDB;
         }
 
-        public List<User> GetCustomers()
+        public List<User> GetAll()
         {
             try
             {
-                var data = DBContext.Users.Where(x => x.StatusID != 3).ToList();
-                return data;
+                var lst = new List<User>();
+
+                SqlParameter[] p = new SqlParameter[0];
+
+                _dt = (new DBHelperGarageUAT().GetTableFromSP)("sp_GetCustomer_CP", p);
+                if (_dt != null)
+                {
+                    if (_dt.Rows.Count > 0)
+                    {
+                        lst = JArray.Parse(Newtonsoft.Json.JsonConvert.SerializeObject(_dt)).ToObject<List<User>>();
+                    }
+                }
+
+                return lst;
             }
             catch (Exception ex)
             {
-                return new List<User>();
+                return null;
             }
         }
         public CustomerViewModel GetCustomerbyid(int id)
@@ -82,8 +94,10 @@ namespace BAL.Repositories
                         IsCashier = r.IsCashier == null ? false : Convert.ToBoolean(r.IsCashier.ToString()),
                         //AllowNegativeInventory = r.AllowNegativeInventory == null ? false : Convert.ToBoolean(r.AllowNegativeInventory.ToString()),
                         //IsOdoo = r.IsOdoo == null ? false : Convert.ToBoolean(r.IsOdoo.ToString()),
-                        //IsAccountingAddons = r.IsAccountingAddons == null ? false : Convert.ToBoolean(r.IsAccountingAddons.ToString()),
-
+                        IsAccountingAddons = r.IsAccountingAddons == null ? false : Convert.ToBoolean(r.IsAccountingAddons.ToString()),
+                        IsYakeen = r.IsYakeen == null ? false : Convert.ToBoolean(r.IsYakeen.ToString()),
+                        IsMojaz = r.IsMojaz == null ? false : Convert.ToBoolean(r.IsMojaz.ToString()),
+                        IsDefaultCar = r.IsDefaultCar == null ? false : Convert.ToBoolean(r.IsDefaultCar.ToString()),
                         LocationID = r.Locations.FirstOrDefault().LocationID,
                         LocationName = r.Locations.FirstOrDefault().Name,
                         LocationAddress = r.Locations.FirstOrDefault().Address,
@@ -123,10 +137,15 @@ namespace BAL.Repositories
                         _user.Company = modal.Company;
                         _user.IsCashier = modal.IsCashier;
                         _user.IsGarageGo = modal.IsGarageGo;
+                        _user.IsYakeen = modal.IsYakeen;
+                        _user.IsMojaz = modal.IsMojaz;
+                        _user.IsDefaultCar = modal.IsDefaultCar;
+                        _user.BusinessType = modal.BusinessType;
                         _user.Password = new clsCryption().EncryptDecrypt(modal.Password, "encrypt");
                         _user.IsSMSCheckoutAddOn = modal.IsSMSActivate;
                         _user.StatusID = modal.StatusID == true ? 1 : 2;
                         _user.PackageInfoID = modal.PackageInfoID;
+                        _user.IsAccountingAddons = modal.IsAccountingAddons;
                         DBContext.Entry(_user).State = EntityState.Modified;
                         DBContext.UpdateOnly<User>(_user, x =>
                        x.FirstName,
@@ -139,6 +158,10 @@ namespace BAL.Repositories
                         x => x.IsSMSCheckoutAddOn,
                         x => x.IsGarageGo,
                         x => x.IsCashier,
+                        x => x.IsYakeen,
+                        x => x.IsMojaz,
+                        x => x.IsDefaultCar,
+                        x => x.BusinessType,
                         x => x.StatusID,
                         x => x.UserPackageDetails
                         );
@@ -207,7 +230,7 @@ namespace BAL.Repositories
                     _user.Email = modal.Email;
                     _user.ContactNo = modal.ContactNo;
                     _user.Password = new clsCryption().EncryptDecrypt(modal.Password, "encrypt");
-                    _user.BusinessType = "Garage";
+                    _user.BusinessType = modal.BusinessType;
                     _user.Password = new clsCryption().EncryptDecrypt(modal.Password, "encrypt");
                     _user.Address = modal.LocationAddress;
                     _user.CityID = 4020;
@@ -218,6 +241,9 @@ namespace BAL.Repositories
                     _user.Tax = 0;
                     _user.IsGarageGo = modal.IsGarageGo;
                     _user.IsCashier = modal.IsCashier;
+                    _user.IsYakeen = modal.IsYakeen;
+                    _user.IsMojaz = modal.IsMojaz;
+                    _user.IsDefaultCar = modal.IsDefaultCar;
                     _user.StatusID = modal.StatusID == true ? 1 : 2;
                     _user.CompanyCode = "POS-" + randomstring(6);
                     _user.Address = modal.LocationAddress;
@@ -514,7 +540,7 @@ namespace BAL.Repositories
                 DBContext.UpdateOnly<User>(customer, x => x.LastUpdatedDate, x => x.StatusID);
                 DBContext.SaveChanges();
             }
-            return GetCustomers();
+            return GetAll();
         }
         public List<User> status(int id)
         {
@@ -537,7 +563,7 @@ namespace BAL.Repositories
                 DBContext.UpdateOnly<User>(customer, x => x.LastUpdatedDate, x => x.StatusID);
                 DBContext.SaveChanges();
             }
-            return GetCustomers();
+            return GetAll();
         }
         public string GetInvoicePrint(string companyname, string smscount, string fromdate, string todate, string total, int userid)
         {

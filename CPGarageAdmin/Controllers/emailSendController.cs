@@ -42,9 +42,24 @@ namespace CPGarageAdmin.Controllers
 			var Customers = emailSendRepo.GetCustomerNotification();
 			ViewBag.Customers = new SelectList(Customers, "CustomerID", "FullName");
 
+			var  CustomerMarketing = emailSendRepo.GetCustomerMarketing();
+			ViewBag.CustomerMarketing = new SelectList(CustomerMarketing, "CustomerID", "FullName");
 			return View();
 		}
-		[HttpPost]
+		[HttpGet]
+        public ActionResult sendemail()
+        {
+            var AllCustomers = emailSendRepo.GetCustomers();
+            ViewBag.AllCustomers = new SelectList(AllCustomers, "UserID", "UserName");
+
+            var Customers = emailSendRepo.GetCustomerNotification();
+            ViewBag.Customers = new SelectList(Customers, "CustomerID", "FullName");
+
+            var CustomerMarketing = emailSendRepo.GetCustomerMarketing();
+            ViewBag.CustomerMarketing = new SelectList(CustomerMarketing, "CustomerID", "FullName");
+            return View();
+        }
+        [HttpPost]
 		public ActionResult EmailSend(EmailSendViewModel model)
 		{
 			try
@@ -172,7 +187,6 @@ namespace CPGarageAdmin.Controllers
 					{
 						var ds = emailSendRepo.GetCustomerContactByID(model.Customers);
 						var lstcustomer = JArray.Parse(Newtonsoft.Json.JsonConvert.SerializeObject(ds.Tables[0])).ToObject<List<Customer>>();
-
 						foreach (var item in lstcustomer)
 						{
 							try
@@ -294,25 +308,24 @@ namespace CPGarageAdmin.Controllers
 		}
 		public void SendEmail(string Subject, string BodyEmail, string To)
 		{
-			try
-			{
-				MailMessage mail = new MailMessage();
-				mail.To.Add(To);
-				mail.From = new MailAddress(ConfigurationManager.AppSettings["From"].ToString());
-				mail.Subject = Subject;
-				string Body = BodyEmail;
-				mail.Body = Body;
-				mail.IsBodyHtml = true;
-				SmtpClient smtp = new SmtpClient();
-				smtp.UseDefaultCredentials = false;
-				smtp.Port = int.Parse(ConfigurationManager.AppSettings["SmtpPort"].ToString());
-				smtp.Host = ConfigurationManager.AppSettings["SmtpServer"].ToString();
-				smtp.Credentials = new System.Net.NetworkCredential
-					 (ConfigurationManager.AppSettings["From"].ToString(), ConfigurationManager.AppSettings["Password"].ToString());
-				smtp.EnableSsl = true;
-				smtp.Send(mail);
-			}
-			catch (Exception ex) { }
-		}
+            try
+            {
+                MailMessage mail = new MailMessage();
+                mail.To.Add(To);
+                mail.From = new MailAddress(ConfigurationManager.AppSettings["From"].ToString());
+                mail.Subject = Subject;
+                mail.Body = BodyEmail;
+                mail.IsBodyHtml = true;
+                SmtpClient smtp1 = new SmtpClient("mail.alfalahchemical.com", 587);
+                smtp1.EnableSsl = true;
+                smtp1.UseDefaultCredentials = false;
+                smtp1.Credentials = new System.Net.NetworkCredential("support@garage.sa", "gwsjtdptdehujbza");
+                smtp1.Send(mail);
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
 	}
 }

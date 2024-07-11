@@ -29,6 +29,9 @@ namespace DAL.DBEntities
         public Nullable<int> UserID { get; set; }
         public string LastUpdatedBy { get; set; }
         public Nullable<System.DateTime> LastUpdatedDate { get; set; }
+        public string Address { get; set; }
+        public string VATNo { get; set; }
+        public Nullable<bool> IsVAT { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OrderCheckout> OrderCheckouts { get; set; }

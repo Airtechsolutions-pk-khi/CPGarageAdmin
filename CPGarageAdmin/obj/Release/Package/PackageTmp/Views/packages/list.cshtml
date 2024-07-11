@@ -255,20 +255,11 @@
         </div>
     </div>
 </div>
-
-
-
-
 <script>
-    //function add(PackageInfoID) {
-    //    debugger
-    //    window.location.href = '/packages/add/?PackageInfoID=' + PackageInfoID;
-    //}
     $(document).ready(function () {
         $('#myModal').modal('hide');
     });
     function getByID(Id) {
-        debugger
         $.ajax({
             url: "/packages/getByID/" + Id,
             typr: "GET",

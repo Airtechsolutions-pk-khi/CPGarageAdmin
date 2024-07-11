@@ -6223,28 +6223,28 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>08/07/2023 22:36:23</publishTime>
     </File>
     <File Include="bin/BAL.dll">
-      <publishTime>11/09/2023 14:33:04</publishTime>
+      <publishTime>01/23/2024 15:34:09</publishTime>
     </File>
     <File Include="bin/BAL.dll.config">
       <publishTime>08/07/2023 22:36:21</publishTime>
     </File>
     <File Include="bin/BAL.pdb">
-      <publishTime>11/09/2023 14:33:04</publishTime>
+      <publishTime>01/23/2024 15:34:09</publishTime>
     </File>
     <File Include="bin/CPGarageAdmin.dll">
-      <publishTime>11/09/2023 14:33:14</publishTime>
+      <publishTime>01/23/2024 15:34:14</publishTime>
     </File>
     <File Include="bin/CPGarageAdmin.pdb">
-      <publishTime>11/09/2023 14:33:14</publishTime>
+      <publishTime>01/23/2024 15:34:14</publishTime>
     </File>
     <File Include="bin/DAL.dll">
-      <publishTime>11/09/2023 14:33:03</publishTime>
+      <publishTime>01/23/2024 15:34:09</publishTime>
     </File>
     <File Include="bin/DAL.dll.config">
-      <publishTime>11/09/2023 14:32:10</publishTime>
+      <publishTime>12/19/2023 13:12:09</publishTime>
     </File>
     <File Include="bin/DAL.pdb">
-      <publishTime>11/09/2023 14:33:03</publishTime>
+      <publishTime>01/23/2024 15:34:09</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>04/17/2020 01:38:42</publishTime>
@@ -6543,11 +6543,14 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
     <File Include="Views/Broadcast/Broadcast.cshtml">
       <publishTime>08/07/2023 22:36:22</publishTime>
     </File>
+    <File Include="Views/carDelete/list.cshtml">
+      <publishTime>12/28/2023 17:58:43</publishTime>
+    </File>
     <File Include="Views/cars/add.cshtml">
-      <publishTime>10/31/2023 17:23:23</publishTime>
+      <publishTime>11/15/2023 13:11:03</publishTime>
     </File>
     <File Include="Views/cars/list.cshtml">
-      <publishTime>10/31/2023 13:02:00</publishTime>
+      <publishTime>12/05/2023 20:10:32</publishTime>
     </File>
     <File Include="Views/customers/add.cshtml">
       <publishTime>10/24/2023 13:26:50</publishTime>
@@ -6559,7 +6562,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>08/07/2023 22:36:22</publishTime>
     </File>
     <File Include="Views/emailSend/add.cshtml">
-      <publishTime>11/08/2023 15:52:21</publishTime>
+      <publishTime>12/18/2023 12:44:09</publishTime>
     </File>
     <File Include="Views/itemmovement/Index.cshtml">
       <publishTime>08/07/2023 22:36:22</publishTime>
@@ -6598,7 +6601,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>08/07/2023 22:36:22</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>11/08/2023 13:24:57</publishTime>
+      <publishTime>12/19/2023 14:33:36</publishTime>
     </File>
     <File Include="Views/sms/list.cshtml">
       <publishTime>08/07/2023 22:36:22</publishTime>
@@ -6610,7 +6613,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>08/07/2023 22:36:22</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>11/09/2023 14:33:16</publishTime>
+      <publishTime>01/23/2024 15:34:17</publishTime>
     </File>
   </ItemGroup>
 </Project>

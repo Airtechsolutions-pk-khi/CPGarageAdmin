@@ -123,7 +123,7 @@ namespace DAL.DBEntities
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<Split_Result>("[Garage_LiveEntities].[Split](@InputString, @Delimiter)", inputStringParameter, delimiterParameter);
         }
     
-        public virtual ObjectResult<Nullable<decimal>> sp_AddCars(Nullable<int> rowID, Nullable<int> customerID, Nullable<int> makeID, string name, Nullable<int> modelID, string description, Nullable<int> year, string registrationNo, string imagePath, Nullable<int> locationID, Nullable<int> statusID, Nullable<int> userID)
+        public virtual ObjectResult<Nullable<decimal>> sp_AddCars(Nullable<int> rowID, Nullable<int> customerID, Nullable<int> makeID, string name, Nullable<int> modelID, string description, Nullable<int> year, string registrationNo, string imagePath, Nullable<int> locationID, Nullable<int> userID, Nullable<int> statusID, Nullable<double> checkLitre, string engineType)
         {
             var rowIDParameter = rowID.HasValue ?
                 new ObjectParameter("RowID", rowID) :
@@ -165,15 +165,23 @@ namespace DAL.DBEntities
                 new ObjectParameter("LocationID", locationID) :
                 new ObjectParameter("LocationID", typeof(int));
     
-            var statusIDParameter = statusID.HasValue ?
-                new ObjectParameter("StatusID", statusID) :
-                new ObjectParameter("StatusID", typeof(int));
-    
             var userIDParameter = userID.HasValue ?
                 new ObjectParameter("UserID", userID) :
                 new ObjectParameter("UserID", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("sp_AddCars", rowIDParameter, customerIDParameter, makeIDParameter, nameParameter, modelIDParameter, descriptionParameter, yearParameter, registrationNoParameter, imagePathParameter, locationIDParameter, statusIDParameter, userIDParameter);
+            var statusIDParameter = statusID.HasValue ?
+                new ObjectParameter("StatusID", statusID) :
+                new ObjectParameter("StatusID", typeof(int));
+    
+            var checkLitreParameter = checkLitre.HasValue ?
+                new ObjectParameter("CheckLitre", checkLitre) :
+                new ObjectParameter("CheckLitre", typeof(double));
+    
+            var engineTypeParameter = engineType != null ?
+                new ObjectParameter("EngineType", engineType) :
+                new ObjectParameter("EngineType", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("sp_AddCars", rowIDParameter, customerIDParameter, makeIDParameter, nameParameter, modelIDParameter, descriptionParameter, yearParameter, registrationNoParameter, imagePathParameter, locationIDParameter, userIDParameter, statusIDParameter, checkLitreParameter, engineTypeParameter);
         }
     
         public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
@@ -807,7 +815,7 @@ namespace DAL.DBEntities
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_GetOrderListCheckout_APP_Result>("sp_GetOrderListCheckout_APP", locationIDParameter, dateParameter, statusParameter);
         }
     
-        public virtual ObjectResult<sp_GetOrderListCheckoutV2_APP_Result> sp_GetOrderListCheckoutV2_APP(Nullable<int> locationID, Nullable<System.DateTime> date, string status)
+        public virtual ObjectResult<sp_GetOrderListCheckoutV2_APP_Result> sp_GetOrderListCheckoutV2_APP(Nullable<int> locationID, Nullable<System.DateTime> date, string status, Nullable<int> carID, Nullable<int> userID)
         {
             var locationIDParameter = locationID.HasValue ?
                 new ObjectParameter("LocationID", locationID) :
@@ -821,7 +829,15 @@ namespace DAL.DBEntities
                 new ObjectParameter("Status", status) :
                 new ObjectParameter("Status", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_GetOrderListCheckoutV2_APP_Result>("sp_GetOrderListCheckoutV2_APP", locationIDParameter, dateParameter, statusParameter);
+            var carIDParameter = carID.HasValue ?
+                new ObjectParameter("CarID", carID) :
+                new ObjectParameter("CarID", typeof(int));
+    
+            var userIDParameter = userID.HasValue ?
+                new ObjectParameter("UserID", userID) :
+                new ObjectParameter("UserID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_GetOrderListCheckoutV2_APP_Result>("sp_GetOrderListCheckoutV2_APP", locationIDParameter, dateParameter, statusParameter, carIDParameter, userIDParameter);
         }
     
         public virtual ObjectResult<sp_GetOrderListV2_APP_Result> sp_GetOrderListV2_APP(Nullable<int> locationID, Nullable<System.DateTime> date, string status)
@@ -1822,7 +1838,7 @@ namespace DAL.DBEntities
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_StockStore_rpt_Result>("sp_StockStore_rpt", storeIDParameter);
         }
     
-        public virtual int sp_UpdateCars(Nullable<int> carID, Nullable<int> rowID, Nullable<int> customerID, Nullable<int> makeID, string name, Nullable<int> modelID, string description, Nullable<int> year, string registrationNo, string imagePath, Nullable<int> locationID, Nullable<int> statusID, Nullable<int> userID)
+        public virtual int sp_UpdateCars(Nullable<int> carID, Nullable<int> rowID, Nullable<int> customerID, Nullable<int> makeID, string name, Nullable<int> modelID, string description, Nullable<int> year, string registrationNo, string imagePath, Nullable<int> locationID, Nullable<int> statusID, Nullable<int> userID, Nullable<double> checkLitre, string engineType)
         {
             var carIDParameter = carID.HasValue ?
                 new ObjectParameter("CarID", carID) :
@@ -1876,7 +1892,15 @@ namespace DAL.DBEntities
                 new ObjectParameter("UserID", userID) :
                 new ObjectParameter("UserID", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_UpdateCars", carIDParameter, rowIDParameter, customerIDParameter, makeIDParameter, nameParameter, modelIDParameter, descriptionParameter, yearParameter, registrationNoParameter, imagePathParameter, locationIDParameter, statusIDParameter, userIDParameter);
+            var checkLitreParameter = checkLitre.HasValue ?
+                new ObjectParameter("CheckLitre", checkLitre) :
+                new ObjectParameter("CheckLitre", typeof(double));
+    
+            var engineTypeParameter = engineType != null ?
+                new ObjectParameter("EngineType", engineType) :
+                new ObjectParameter("EngineType", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_UpdateCars", carIDParameter, rowIDParameter, customerIDParameter, makeIDParameter, nameParameter, modelIDParameter, descriptionParameter, yearParameter, registrationNoParameter, imagePathParameter, locationIDParameter, statusIDParameter, userIDParameter, checkLitreParameter, engineTypeParameter);
         }
     
         public virtual ObjectResult<sp_UpdateCustomer_CAPI_Result> sp_UpdateCustomer_CAPI(string fullName, string password, string email, string sex, string mobile, string lastUpdatedBy, Nullable<System.DateTime> lastUpdatedDate, Nullable<double> points, string imagePath, Nullable<int> statusID, Nullable<int> userID, Nullable<int> locationID, Nullable<System.DateTime> createdOn, string createdBy, Nullable<int> customerID, string city)
@@ -2139,7 +2163,7 @@ namespace DAL.DBEntities
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_UpdateLocation", locationIDParameter, nameParameter, descripitonParameter, addressParameter, contactNoParameter, emailParameter, timeZoneIDParameter, countryIDParameter, cityIDParameter, userIDParameter, longitudeParameter, latitudeParameter, industryTypeParameter, deliveryServicesParameter, deliveryChargesParameter, deliveryTimeParameter, minOrderAmountParameter, lastUpdatedByParameter, lastUpdatedDateParameter, statusIDParameter, companyCodeParameter, open_TimeParameter, close_TimeParameter);
         }
     
-        public virtual int sp_UpdateLocation_CADMIN(string name, string descripiton, string address, string contactNo, string email, string longitude, string latitude, string lastUpdatedBy, Nullable<int> landmarkID, Nullable<System.DateTime> lastUpdatedDate, Nullable<int> statusID, Nullable<bool> isFeatured, Nullable<int> locationID, string gmaplink, string arabicName, string arabicDescription, string arabicAddress, Nullable<int> customerStatusID)
+        public virtual int sp_UpdateLocation_CADMIN(string name, string descripiton, string address, string contactNo, string email, string longitude, string latitude, string lastUpdatedBy, Nullable<int> landmarkID, Nullable<System.DateTime> lastUpdatedDate, Nullable<int> statusID, Nullable<bool> isFeatured, Nullable<int> locationID, string gmaplink, string arabicName, string arabicDescription, string arabicAddress, Nullable<int> customerStatusID, string brandImage, string countryCode, Nullable<int> cityID, Nullable<int> userID, string businessType)
         {
             var nameParameter = name != null ?
                 new ObjectParameter("Name", name) :
@@ -2213,7 +2237,27 @@ namespace DAL.DBEntities
                 new ObjectParameter("CustomerStatusID", customerStatusID) :
                 new ObjectParameter("CustomerStatusID", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_UpdateLocation_CADMIN", nameParameter, descripitonParameter, addressParameter, contactNoParameter, emailParameter, longitudeParameter, latitudeParameter, lastUpdatedByParameter, landmarkIDParameter, lastUpdatedDateParameter, statusIDParameter, isFeaturedParameter, locationIDParameter, gmaplinkParameter, arabicNameParameter, arabicDescriptionParameter, arabicAddressParameter, customerStatusIDParameter);
+            var brandImageParameter = brandImage != null ?
+                new ObjectParameter("BrandImage", brandImage) :
+                new ObjectParameter("BrandImage", typeof(string));
+    
+            var countryCodeParameter = countryCode != null ?
+                new ObjectParameter("CountryCode", countryCode) :
+                new ObjectParameter("CountryCode", typeof(string));
+    
+            var cityIDParameter = cityID.HasValue ?
+                new ObjectParameter("CityID", cityID) :
+                new ObjectParameter("CityID", typeof(int));
+    
+            var userIDParameter = userID.HasValue ?
+                new ObjectParameter("UserID", userID) :
+                new ObjectParameter("UserID", typeof(int));
+    
+            var businessTypeParameter = businessType != null ?
+                new ObjectParameter("BusinessType", businessType) :
+                new ObjectParameter("BusinessType", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_UpdateLocation_CADMIN", nameParameter, descripitonParameter, addressParameter, contactNoParameter, emailParameter, longitudeParameter, latitudeParameter, lastUpdatedByParameter, landmarkIDParameter, lastUpdatedDateParameter, statusIDParameter, isFeaturedParameter, locationIDParameter, gmaplinkParameter, arabicNameParameter, arabicDescriptionParameter, arabicAddressParameter, customerStatusIDParameter, brandImageParameter, countryCodeParameter, cityIDParameter, userIDParameter, businessTypeParameter);
         }
     
         public virtual int sp_UpdateOrderItemOdoo(Nullable<int> itemID, Nullable<int> odooProductID)

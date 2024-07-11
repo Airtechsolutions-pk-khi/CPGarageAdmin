@@ -95,6 +95,7 @@
     <Compile Include="Class1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\BaseRepository.cs" />
+    <Compile Include="Repositories\carDeleteRepository.cs" />
     <Compile Include="Repositories\clsCryption.cs" />
     <Compile Include="Repositories\carsRepository.cs" />
     <Compile Include="Repositories\emailSendRepository.cs" />
@@ -105,6 +106,7 @@
     <Compile Include="Repositories\DateTimeUTC.cs" />
     <Compile Include="Repositories\customersRepository.cs" />
     <Compile Include="Repositories\loginRepository.cs" />
+    <Compile Include="Repositories\reportRepository.cs" />
     <Compile Include="Repositories\packagesRepository.cs" />
     <Compile Include="Repositories\uploadRepository.cs" />
   </ItemGroup>

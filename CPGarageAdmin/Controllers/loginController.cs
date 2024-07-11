@@ -61,14 +61,12 @@ namespace CPGarageAdmin.Controllers
             //        }
             //    }
             //    sess.specialPermission = sp;
-
-            //    Session["UserSession"] = sess;
+            //Session["UserSession"] = sess;
             if (username == "cpadmin@garage.sa" && password == "admin")
             {
                 ViewBag.welcome = "Welcome: '" + username + "'";
                 return RedirectToAction("dashboard", "dashboard");
             }
-
             else
             {
                 return View();

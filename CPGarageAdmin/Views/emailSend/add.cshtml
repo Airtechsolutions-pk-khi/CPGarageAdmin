@@ -75,12 +75,11 @@
             alert("MESSAGE CANNOT SENT SUCCESSFULLY")
         }
     }
-
 </script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/bbbootstrap/libraries@main/choices.min.css">
 <script src="https://cdn.jsdelivr.net/gh/bbbootstrap/libraries@main/choices.min.js"></script>
 <script src="https://cdn.tiny.cloud/1/3rir8wj2omxyuofel8wtx2gfx1xyqpc8iss55mv9yrcj5yhu/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
-
+@*<script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>*@
 @using (Ajax.BeginForm("EmailSend", "emailSend", new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "ModalUser", OnSuccess = "UserSuccess", LoadingElementId = "progress" }, new { @id = "customerForm" }))
 {
     <div id="progress" class="modal">
@@ -119,14 +118,17 @@
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label for="form_email">Title</label>
-                                                @Html.TextBoxFor(model => model.Title, new { @class = "form-control", placeholder = "", @Id = "txtname", name = "Title" })
+                                                <input type="text" class="form-control" id="txtname" name="Title" required>
+                                                @*@Html.TextBoxFor(model => model.Title, new { @class = "form-control", placeholder = "", @Id = "txtname", name = "Title" })*@
+                                                <div class="invalid-feedback" id="invalid-feedback">Please enter a title.</div>
                                             </div>
                                         </div>
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label for="form_need">Subject</label>
-                                                @Html.TextBoxFor(model => model.Subject, new { @class = "form-control", placeholder = "", @Id = "txtarname", name = "Subject" })
-                                                @Html.ValidationMessageFor(model => model.Subject, "", new { @class = "text-danger" })
+                                                <input type="text" class="form-control" id="txtarname" name="Subject" required>
+                                                @*@Html.TextBoxFor(model => model.Subject, new { @class = "form-control", placeholder = "", @Id = "txtarname", name = "Subject" })*@
+                                                <div class="invalid-feedback" id="invalid-feedback">Please enter a subject.</div>
                                             </div>
                                         </div>
                                     </div>
@@ -138,7 +140,7 @@
                                             <select id="multipleSelect" multiple name="Customers" placeholder="-- Please Select --" data-search="true" data-silent-initial-value-set="true">
                                                 @if (ViewBag.Customers != null)
                                                 {
-                                                    foreach (var item in ViewBag.Customers)
+                                                    foreach (var item in ViewBag.CustomerMarketing)
                                                     {
                                                         <option value="@item.Value">
                                                             @item.Text
@@ -179,7 +181,8 @@
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label for="form_email">Title</label>
-                                                @Html.TextBoxFor(model => model.Title1, new { @class = "form-control", placeholder = "", @Id = "txtname", name = "Title" })
+                                                <input type="text" class="form-control" id="whatsapptitle" name="Title1" required>
+                                                <div class="invalid-feedback" id="invalid-feedback">Please enter a title.</div>
                                             </div>
                                         </div>
                                     </div>
@@ -203,7 +206,7 @@
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label for="form_email">Title</label>
-                                                <input type="text" class="form-control" name="Title2" Id="txtname" />
+                                                @Html.TextBoxFor(model => model.Title2, new { @class = "form-control", placeholder = "", @Id = "pushtext", name = "Title2" })
                                             </div>
                                         </div>
                                     </div>
@@ -251,11 +254,11 @@
                                 </div>
                                 <div id="whatsappDescription" style="display: none;">
                                     <label for="form_email">Message Body</label>
-                                    <textarea class="form-control" name="WhatsappDescription" rows="20"></textarea>
+                                    <textarea class="form-control" name="WhatsappDescription" id="whatsappdesc" rows="20"></textarea>
                                 </div>
                                 <div id="pushNotificationDescription" style="display: none;">
                                     <label for="form_email">Notification Message</label>
-                                    <textarea class="form-control" name="PushDescription" rows="20"></textarea>
+                                    <textarea class="form-control" name="PushDescription" id="pushdesc" rows="20"></textarea>
                                 </div>
                             </div>
                         </div>
@@ -264,7 +267,6 @@
             </div>
         </div>
     </div>
-
 }
 <script src="~/Scripts/jquery.validate.min.js"></script>
 <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
@@ -309,12 +311,30 @@
         if (selectedType === 'Email') {
             document.getElementById('emailDetails').style.display = 'block';
             document.getElementById('emailDescription').style.display = 'block';
+            document.getElementById('txtname').setAttribute('required', 'required');
+            document.getElementById('txtarname').setAttribute('required', 'required');
         } else if (selectedType === 'WhatsApp') {
             document.getElementById('whatsappDetails').style.display = 'block';
             document.getElementById('whatsappDescription').style.display = 'block';
+            document.getElementById('whatsapptitle').setAttribute('required', 'required');
+            document.getElementById('whatsappdesc').setAttribute('required', 'required');
+
+            // Remove 'required' attribute from txtarname
+            document.getElementById('txtname').removeAttribute('required');
+            document.getElementById('txtarname').removeAttribute('required');
         } else if (selectedType === 'PushNotification') {
             document.getElementById('pushNotificationDetails').style.display = 'block';
             document.getElementById('pushNotificationDescription').style.display = 'block';
+
+            document.getElementById('pushtext').setAttribute('required', 'required');
+            document.getElementById('pushdesc').setAttribute('required', 'required');
+
+
+            // Remove 'required' attribute from txtarname
+            document.getElementById('txtname').removeAttribute('required');
+            document.getElementById('txtarname').removeAttribute('required');
+            document.getElementById('whatsapptitle').removeAttribute('required');
+            document.getElementById('whatsappdesc').removeAttribute('required');
         }
     }
     var radioButtons = document.querySelectorAll('input[name="Type"]');
@@ -332,7 +352,6 @@
 </script>
 <script>
     function showDetails1() {
-        debugger
         var selectedType = document.querySelector('input[name="WhatsappType"]:checked').value;
         document.getElementById('whatsappCustomer').style.display = 'none';
         document.getElementById('whatsappUser').style.display = 'none';
@@ -350,33 +369,4 @@
         radioButton.addEventListener('change', showDetails1);
     });
     showDetails1();
-</script>
-<script>
-    function enableSubmitButton() {
-        // Check if all text fields are filled
-        var allTextFields = $('input[type="text"], textarea');
-        var allFieldsFilled = true;
-
-        allTextFields.each(function () {
-            if ($(this).val().trim() === '') {
-                allFieldsFilled = false;
-                return false; // Exit the loop early
-            }
-        });
-
-        // Enable or disable the submit button
-        if (allFieldsFilled) {
-            $('#submitButton').prop('disabled', false);
-        } else {
-            $('#submitButton').prop('disabled', true);
-        }
-    }
-
-    // Call the function when the page loads
-    $(document).ready(function () {
-        enableSubmitButton();
-
-        // Add input event listeners to all text fields
-        $('input[type="text"], textarea').on('input', enableSubmitButton);
-    });
 </script>

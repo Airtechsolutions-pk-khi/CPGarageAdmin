@@ -91,18 +91,20 @@
         <!-- partial:partials/_navbar.html -->
         <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
             <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-                <a class="navbar-brand brand-logo" href="~/dashboard/dashboard"><img src="~/assets/images/MainLogo.png" alt="logo" style="width:85px;height:35px;" /></a>
-                <a class="navbar-brand brand-logo-mini" href="~/dashboard/dashboard"><img src="~/assets/images/MainLogo-mini.png" alt="logo" /></a>
+                <a class="navbar-brand brand-logo" href="~/dashboard/dashboard"><img src="~/assets/images/Group 30.svg" alt="logo" style="" /></a>
+                <a class="navbar-brand brand-logo-mini" href="~/dashboard/dashboard"><img src="~/assets/images/Group 30.svg" alt="logo" /></a>
             </div>
             <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
 
-                <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
-                    <span class="mdi mdi-menu"></span>
-                </button>
+                @*<button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+                        <span class="mdi mdi-menu"></span>
+                    </button>*@
                 <ul class="navbar-nav navbar-nav-right">
                     <li class="nav-item nav-profile dropdown">
+                        <a style="padding-right: 20px; color: #1E1E1E; font-weight: 600; font-family: 'spacegrotesk-regular'; ">Administrator</a>
                         <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
-                            <img src="https://via.placeholder.com/30x30" alt="profile" />
+                            @*<img src="https://via.placeholder.com/30x30" alt="profile" />*@
+                            <img src="~/assets/images/Group 30.svg" alt="profile" />
                         </a>
                         <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
                             <a class="dropdown-item" href="~/login/login">
@@ -135,8 +137,8 @@
                             <span class="menu-title">Customers</span>
                         </a>
                     </li>
-                    <li class="dropdown" style="display:none;">
-                        <a class=" dropdown-toggle" data-toggle="dropdown" style="color:black !important;">
+                    <li class="dropdown nav-item" style="display:none;">
+                        <a class=" dropdown-toggle nav-link" data-toggle="dropdown" style="color:black !important;">
                             Settings
                             <span class="caret"></span>
                         </a>
@@ -147,11 +149,11 @@
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a href="#pageSubmenu3" data-toggle="collapse" class="dropdown-toggle nav-link">
-                            <i class="mdi mdi-animation" style="padding-right:20px;font-size:18px;"></i>
-                            <span class="menu-title">Settings</span>
+                        <a href="#setting" data-toggle="collapse" class="dropdown-toggle nav-link">
+                            <i class="mdi mdi-settings menu-icon"></i>
+                            <span class="menu-title">Setting</span>
                         </a>
-                        <ul class="collapse list-unstyled" id="pageSubmenu3">
+                        <ul class="collapse list-unstyled" id="setting">
                             <li class="nav-item">
                                 <a href="~/model/listMake">Make</a>
                             </li>
@@ -160,12 +162,7 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="~/cars/list">
-                            <i class="mdi mdi-car-sports menu-icon"></i>
-                            <span class="menu-title">Cars</span>
-                        </a>
-                    </li>
+
                     <li class="nav-item">
                         <a class="nav-link" href="~/packages/list">
                             <i class="mdi mdi-view-dashboard-outline menu-icon"></i>
@@ -177,6 +174,34 @@
                             <i class="mdi mdi-email-check menu-icon"></i>
                             <span class="menu-title">Marketing</span>
                         </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#cars" data-toggle="collapse" class="dropdown-toggle nav-link">
+                            <i class="mdi mdi-car-connected menu-icon"></i>
+                            <span class="menu-title">Cars</span>
+                        </a>
+                        <ul class="collapse list-unstyled" id="cars">
+                            <li class="nav-item">
+                                <a href="~/cars/list">Registered Cars</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="~/carDelete/list">Car Delete Request</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#reports" data-toggle="collapse" class="dropdown-toggle nav-link">
+                            <i class="mdi mdi-chart-areaspline menu-icon"></i>
+                            <span class="menu-title">Reports</span>
+                        </a>
+                        <ul class="collapse list-unstyled" id="reports">
+                            <li class="nav-item">
+                                <a href="~/report/SummaryReport">Summary Report</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="~/report/LeadDetailReport">Monthly Leads Report</a>
+                            </li>
+                        </ul>
                     </li>
                 </ul>
             </nav>

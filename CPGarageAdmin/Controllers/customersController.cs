@@ -28,7 +28,7 @@ namespace CPGarageAdmin.Controllers
         // GET: users
         public ActionResult list()
         {
-            return View(customerRepo.GetCustomers());
+            return View(customerRepo.GetAll());
         }
         [HttpGet]
         public ActionResult add(int? id)

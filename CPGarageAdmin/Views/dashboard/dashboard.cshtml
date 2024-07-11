@@ -9,34 +9,61 @@
     }
 </style>
 <div class="row">
-    <div class="col-md-6 col-lg-3 grid-margin stretch-card">
-        <div class="card bg-gradient-primary text-white text-center card-shadow-primary">
-            <div class="card-body">
-                <h6 class="font-weight-normal">Total Customers</h6>
-                <h2 class="mb-0">@Model.TotalCustomers</h2>
-            </div>
-        </div>
+    @*<div class="col-md-6 col-lg-6">
+            <h2>
+                Welcome to Garage Control Panel
+            </h2>
+            <br />
+        </div>*@
+
+    <div class="col-lg-7 col-md-6">
+        <h2 class="text-gray mt-3">Welcome to Garage Control Panel</h2>
+        <br />
     </div>
+    <div class="col-lg-2 col-md-2">
+        <input type="date" class="form-control" id="fromDate" />
+        <br />
+    </div>
+    <div class="col-lg-2 col-md-2">
+        <input type="date" class="form-control" id="toDate" />
+        <br />
+    </div>
+
+    <div class="col-lg-1 col-md-2">
+        <button type="button" class="btn btn-primary" id="filterButton" style="background: #fd8052;">Search</button>
+        <br />
+    </div>
+</div>
+
+<div class="row">
     <div class="col-md-6 col-lg-3 grid-margin stretch-card">
-        <div class="card bg-gradient-danger text-white text-center card-shadow-danger">
-            <div class="card-body">
-                <h6 class="font-weight-normal">Total Transactions</h6>
+        <div class="card bg-gradient-danger text-white text-center" style="background: #FD8052">
+            <div class="card-body" style="color:#FFFFFF">
+                <h4 class="font-weight-normal">Total Transactions</h4>
                 <h2 class="mb-0">@Model.TotalTransactions</h2>
             </div>
         </div>
     </div>
     <div class="col-md-6 col-lg-3 grid-margin stretch-card">
-        <div class="card bg-gradient-warning text-white text-center card-shadow-warning">
-            <div class="card-body">
-                <h6 class="font-weight-normal">Total Locations</h6>
+        <div class="card bg-gradient-warning text-white text-center" style="background: #D4F795 ">
+            <div class="card-body" style="color: #1E1E1E ">
+                <h4 class="font-weight-normal">Total Locations</h4>
                 <h2 class="mb-0">@Model.TotalLocations</h2>
             </div>
         </div>
     </div>
     <div class="col-md-6 col-lg-3 grid-margin stretch-card">
-        <div class="card bg-gradient-info text-white text-center card-shadow-info">
-            <div class="card-body">
-                <h6 class="font-weight-normal">Total Subusers</h6>
+        <div class="card bg-gradient-primary text-white text-center card-shadow-primary" style="background: #FD8052 ">
+            <div class="card-body" style="color: #FFFFFF">
+                <h4 class="font-weight-normal">Total Customers</h4>
+                <h2 class="mb-0">@Model.TotalCustomers</h2>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 col-lg-3 grid-margin stretch-card">
+        <div class="card bg-gradient-info text-white text-center" style="background: #D4F795 ">
+            <div class="card-body" style="color: #1E1E1E ">
+                <h4 class="font-weight-normal">Total Subusers</h4>
                 <h2 class="mb-0">@Model.TotalSubusers</h2>
             </div>
         </div>
@@ -44,33 +71,33 @@
 </div>
 <div class="row">
     <div class="col-md-6 col-lg-3 grid-margin stretch-card">
-        <div class="card bg-gradient-success text-white text-center card-shadow-primary">
-            <div class="card-body">
-                <h6 class="font-weight-normal">Total Cars</h6>
+        <div class="card bg-gradient-success text-white text-center" style="background: #D4F795 ">
+            <div class="card-body" style="color: #1E1E1E ">
+                <h4 class="font-weight-normal">Total Cars</h4>
                 <h2 class="mb-0">@Model.TotalCars</h2>
             </div>
         </div>
     </div>
     <div class="col-md-6 col-lg-3 grid-margin stretch-card">
-        <div class="card bg-gradient-secondary text-white text-center card-shadow-primary">
-            <div class="card-body">
-                <h6 class="font-weight-normal">Total Products</h6>
+        <div class="card bg-gradient-secondary text-white text-center" style="background: #FD8052 ">
+            <div class="card-body" style="color: #FFFFFF">
+                <h4 class="font-weight-normal">Total Products</h4>
                 <h2 class="mb-0">@Model.TotalProducts</h2>
             </div>
         </div>
     </div>
     <div class="col-md-6 col-lg-3 grid-margin stretch-card">
-        <div class="card bg-gradient-dark text-white text-center card-shadow-primary">
-            <div class="card-body">
-                <h6 class="font-weight-normal">Total Trial Customer</h6>
+        <div class="card bg-gradient-dark text-white text-center" style="background: #D4F795 ">
+            <div class="card-body" style="color: #1E1E1E ">
+                <h4 class="font-weight-normal">Total Trial Customer</h4>
                 <h2 class="mb-0">@Model.TotalTrialCustomer</h2>
             </div>
         </div>
     </div>
     <div class="col-md-6 col-lg-3 grid-margin stretch-card">
-        <div class="card bg-gradient-danger text-white text-center card-shadow-primary">
-            <div class="card-body">
-                <h6 class="font-weight-normal">Total Professional Customer</h6>
+        <div class="card bg-gradient-danger text-white text-center" style="background: #FD8052 ">
+            <div class="card-body" style="color: #FFFFFF">
+                <h4 class="font-weight-normal">Total Professional Customer</h4>
                 <h2 class="mb-0">@Model.TotalProfessionalCustomer</h2>
             </div>
         </div>

@@ -8706,6 +8706,10 @@ html {
   -ms-overflow-style: scrollbar;
   -webkit-tap-highlight-color: transparent;
 }
+@font-face {
+    font-family: 'spacegrotesk-regular';
+    src: url('../../fonts/spacegrosek/english primary/spacegrotesk-regular.ttf') format('truetype');
+}
 
 @-ms-viewport {
   width: device-width;
@@ -8716,14 +8720,14 @@ article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
 }
 
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-  font-size: 1rem;
-  font-weight: 400;
-  line-height: 1.5;
-  color: #222222;
-  text-align: left;
-  background-color: #fff;
+    margin: 0;
+    font-family: 'spacegrotesk-regular';
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #222222;
+    text-align: left;
+    background-color: #fff;
 }
 
 [tabindex="-1"]:focus {
@@ -9017,7 +9021,7 @@ template {
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
   margin-bottom: 0.5rem;
-  font-family: inherit;
+  font-family: spacegrotesk-regular;
   font-weight: 500;
   line-height: 1.2;
   color: inherit;
@@ -22358,9 +22362,9 @@ dl li {
 .jsgrid .jsgrid-pager .jsgrid-pager-page a, .jsgrid .jsgrid-pager .page-item:hover .jsgrid-pager-page a, .jsgrid .jsgrid-pager .jsgrid-pager-page .page-item:hover a, .jsgrid .jsgrid-pager .jsgrid-pager-page:hover a, .pagination .page-item:focus .page-link, .jsgrid .jsgrid-pager .page-item:focus .page-link, .jsgrid .jsgrid-pager .jsgrid-pager-nav-button:focus .page-link, .jsgrid .jsgrid-pager .jsgrid-pager-page:focus .page-link, .pagination .page-item:focus .jsgrid .jsgrid-pager .jsgrid-pager-nav-button a, .jsgrid .jsgrid-pager .page-item:focus .jsgrid-pager-nav-button a, .jsgrid .jsgrid-pager .jsgrid-pager-nav-button .page-item:focus a, .jsgrid .jsgrid-pager .jsgrid-pager-nav-button:focus a, .pagination .page-item:focus
 .jsgrid .jsgrid-pager .jsgrid-pager-page a, .jsgrid .jsgrid-pager .page-item:focus .jsgrid-pager-page a, .jsgrid .jsgrid-pager .jsgrid-pager-page .page-item:focus a, .jsgrid .jsgrid-pager .jsgrid-pager-page:focus a, .pagination .page-item:active .page-link, .jsgrid .jsgrid-pager .page-item:active .page-link, .jsgrid .jsgrid-pager .jsgrid-pager-nav-button:active .page-link, .jsgrid .jsgrid-pager .jsgrid-pager-page:active .page-link, .pagination .page-item:active .jsgrid .jsgrid-pager .jsgrid-pager-nav-button a, .jsgrid .jsgrid-pager .page-item:active .jsgrid-pager-nav-button a, .jsgrid .jsgrid-pager .jsgrid-pager-nav-button .page-item:active a, .jsgrid .jsgrid-pager .jsgrid-pager-nav-button:active a, .pagination .page-item:active
 .jsgrid .jsgrid-pager .jsgrid-pager-page a, .jsgrid .jsgrid-pager .page-item:active .jsgrid-pager-page a, .jsgrid .jsgrid-pager .jsgrid-pager-page .page-item:active a, .jsgrid .jsgrid-pager .jsgrid-pager-page:active a {
-  background: #ffb509;
-  border-color: #ffb509;
-  color: #ffffff;
+    background: #baaef8;
+    border-color: #baaef8;
+    color: #ffffff;
 }
 
 .pagination.flat .page-item .page-link, .jsgrid .flat.jsgrid-pager .page-item .page-link, .pagination.flat .jsgrid .jsgrid-pager .jsgrid-pager-nav-button .page-link, .jsgrid .jsgrid-pager .pagination.flat .jsgrid-pager-nav-button .page-link, .jsgrid .flat.jsgrid-pager .jsgrid-pager-nav-button .page-link, .pagination.flat
@@ -27152,7 +27156,7 @@ div.tagsinput span.tag a {
 }
 
 .content-wrapper {
-  background: #f3f3f9;
+  background: #EFEFEF;
   padding: 1.75rem 1.75rem;
   width: 100%;
   -webkit-flex-grow: 1;
@@ -27162,7 +27166,7 @@ div.tagsinput span.tag a {
 /* Sidebar */
 .sidebar {
   min-height: calc(100vh - 70px);
-  background: #ffffff;
+  background: #E5DFD2;
   font-family: "Roboto", sans-serif;
   font-weight: 400;
   padding: 0;
@@ -27268,7 +27272,8 @@ div.tagsinput span.tag a {
   font-size: 0.875rem;
   line-height: 1;
   vertical-align: middle;
-  font-weight: 400;
+  font-weight: 600;
+  font-family: spacegrotesk-regular;
 }
 
 .sidebar .nav .nav-item .nav-link .badge {
@@ -27304,7 +27309,7 @@ div.tagsinput span.tag a {
   position: absolute;
   width: 5px;
   height: 100%;
-  background: #5f6be3;
+  background: #1E1E1E;
   left: 0;
   top: 0;
 }
@@ -27443,16 +27448,16 @@ div.tagsinput span.tag a {
   /* Navbar color variations */
 }
 
-.navbar .navbar-brand-wrapper {
-  background: #ffffff;
-  border-bottom: 1px solid #f3f3f3;
-  transition: width 0.25s ease, background 0.25s ease;
-  -webkit-transition: width 0.25s ease, background 0.25s ease;
-  -moz-transition: width 0.25s ease, background 0.25s ease;
-  -ms-transition: width 0.25s ease, background 0.25s ease;
-  width: 255px;
-  height: 70px;
-}
+    .navbar .navbar-brand-wrapper {
+        background: #E5DFD2;
+        border-bottom: 1px solid #E5DFD2;
+        transition: width 0.25s ease, background 0.25s ease;
+        -webkit-transition: width 0.25s ease, background 0.25s ease;
+        -moz-transition: width 0.25s ease, background 0.25s ease;
+        -ms-transition: width 0.25s ease, background 0.25s ease;
+        width: 255px;
+        height: 70px;
+    }
 
 .sidebar-dark .navbar .navbar-brand-wrapper {
   background: #282f3a;
@@ -27494,7 +27499,7 @@ div.tagsinput span.tag a {
 }
 
 .navbar .navbar-menu-wrapper {
-  background: #ffffff;
+  background: #E5DFD2;
   border-bottom: 1px solid #f3f3f3;
   border-left: 1px solid #f3f3f3;
   transition: width 0.25s ease;
@@ -27556,11 +27561,13 @@ div.tagsinput span.tag a {
   vertical-align: middle;
 }
 
-.navbar .navbar-menu-wrapper .navbar-nav .nav-item.nav-profile img {
-  width: 30px;
-  height: 30px;
-  border-radius: 100%;
-}
+    .navbar .navbar-menu-wrapper .navbar-nav .nav-item.nav-profile img {
+        border: 1px solid #1E1E1E;
+        width: 50px;
+        height: 50px;
+        border-radius: 100%;
+        padding: 5px;
+    }
 
 .navbar .navbar-menu-wrapper .navbar-nav .nav-item.dropdown .dropdown-toggle:after {
   display: none;

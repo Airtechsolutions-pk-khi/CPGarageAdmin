@@ -34,6 +34,9 @@ namespace DAL.DBEntities
         public Nullable<bool> IsGarageGo { get; set; }
         public Nullable<System.DateTime> CreatedDate { get; set; }
         public Nullable<System.DateTime> LastUpdatedDate { get; set; }
+        public string PackageNameAr { get; set; }
+        public string PackageDetailAr { get; set; }
+        public string PackageDescriptionAr { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UserPackageDetail> UserPackageDetails { get; set; }

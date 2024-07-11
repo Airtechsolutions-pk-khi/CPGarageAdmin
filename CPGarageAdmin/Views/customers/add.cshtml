@@ -213,6 +213,22 @@
                             <label for="exampleInputPassword4">Contact</label>
                             @Html.TextBoxFor(model => model.ContactNo, new { @class = "form-control", placeholder = "" })
                         </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword4">Business Type</label>
+                            @Html.DropDownListFor(model => model.BusinessType, new List<SelectListItem>
+                             {
+                                new SelectListItem{ Text = "Oil Change", Value = "Oil Change"},
+                                new SelectListItem{ Text = "Car wash", Value = "Car wash"},
+                                new SelectListItem{ Text = "Mechanic", Value = "Mechanic"},
+                                new SelectListItem{ Text = "Protection", Value = "Protection"},
+                                new SelectListItem{ Text = "Tyres", Value = "Tyres"},
+                                new SelectListItem{ Text = "Electric", Value = "Electric"},
+                                new SelectListItem{ Text = "A/C", Value = "A/C"},
+                                new SelectListItem{ Text = "Programming", Value = "Programming"},
+                                new SelectListItem{ Text = "Painting", Value = "Painting"},
+                                new SelectListItem{ Text = "Batteries", Value = "Batteries"},
+                             }, new { @class = "form-control" })
+                        </div>
                         <button type="submit" class="btn btn-dark mr-2">Save</button>
                         <a href="~/customers/list" class="btn btn-light">Cancel</a>
                     </div>
@@ -292,8 +308,28 @@
                                     <label class="custom-control-label form-check-label" for="IsCashier" style=" padding-top: 4px !important; padding-left: 14px;">Is Cashier</label>
                                 </div>
                             </div>
+                            <div class="col-md-6">
+                                <div class="custom-control custom-switch custom-switch-md">
+                                    @Html.CheckBoxFor(model => model.IsYakeen, new { @class = "custom-control-input", placeholder = "", @for = "IsYakeen" })
+                                    <label class="custom-control-label form-check-label" for="IsYakeen" style=" padding-top: 4px !important; padding-left: 14px;">Is Yakeen</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="custom-control custom-switch custom-switch-md">
+                                    @Html.CheckBoxFor(model => model.IsMojaz, new { @class = "custom-control-input", placeholder = "", @for = "IsMojaz" })
+                                    <label class="custom-control-label form-check-label" for="IsMojaz" style=" padding-top: 4px !important; padding-left: 14px;">Is Mojaz</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="custom-control custom-switch custom-switch-md">
+                                    @Html.CheckBoxFor(model => model.IsDefaultCar, new { @class = "custom-control-input", placeholder = "", @for = "IsDefaultCar" })
+                                    <label class="custom-control-label form-check-label" for="IsDefaultCar" style=" padding-top: 4px !important; padding-left: 14px;">Is DefaultCar</label>
+                                </div>
+                            </div>
                         </div>
+
                         <div class="form-group">
+                            <br />
                             <div class="custom-control custom-switch custom-switch-md">
                                 @Html.CheckBoxFor(model => model.StatusID, new { @class = "custom-control-input", placeholder = "", @for = "StatusID", @checked = "checked" })
                                 <label class="custom-control-label form-check-label" for="StatusID" style=" padding-top: 4px !important; padding-left: 14px;"> Activation Status</label>

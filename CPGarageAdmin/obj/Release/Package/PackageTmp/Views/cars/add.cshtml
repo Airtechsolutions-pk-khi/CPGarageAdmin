@@ -5,27 +5,47 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <link href="~/assets/css/component-custom-switch.min.css" rel="stylesheet" />
+<!-- Include jQuery -->
+
 <script type="text/javascript">
-    function UserSuccess(result) {
-        if (result.success) {
-            window.location.href = "/cars/list";
-            alert("CARS ADDED SUCCESSFULLY")
-        }
-        else {
-            alert("CARS CANNOT ADDED SUCCESSFULLY")
-        }
+$(document).ready(function() {
+    $('#contact-form').submit(function(e) {
+        e.preventDefault(); // Prevent default form submission
+
+        // Serialize form data
+        var formData = $(this).serialize();
+
+        // AJAX request to save car details
+        $.ajax({
+            type: 'POST',
+            url: '@Url.Action("Save", "Cars")', // URL to your Save action in Cars controller
+            data: formData,
+            success: function(response) {
+                UserSuccess(response); // Call the success function
+            },
+            error: function(xhr, status, error) {
+                alert("An error occurred while saving car details."); // Handle error
+            }
+        });
+    });
+});
+
+function UserSuccess(result) {
+    if (result.redirectTo) {
+        window.location.href = result.redirectTo;
+        alert("CARS ADDED/UPDATED SUCCESSFULLY");
+    } else {
+        alert("CARS COULD NOT BE ADDED/UPDATED SUCCESSFULLY");
     }
+}
 </script>
 <script>
     $(document).ready(function () {
-        debugger
         var makeDropdown = $("#ddlMake");
         var modelDropdown = $("#ddlModel");
         makeDropdown.change(function () {
             var selectedMakeID = makeDropdown.val();
-            debugger
             if (selectedMakeID) {
-                debugger
                 $.ajax({
                     type: "GET",
                     url: "/cars/models?makeId=" + selectedMakeID,
@@ -48,24 +68,8 @@
 </script>
 <script>
     $(document).ready(function () {
-        $("#ddlMake").select2({
-            placeholder: "-- Search Make --",
-            width: "100%",
-            dropdownAutoWidth: true
-        });
-    });
-    $(document).ready(function () {
-        $("#ddlModel").select2({
-            placeholder: "-- Search Model --",
-            width: "100%",
-            dropdownAutoWidth: true
-        });
-    });
-</script>
-<script>
-    $(document).ready(function () {
-        debugger
         $('#ddlCustomer').select2({
+
             placeholder: "-- Select Customer --",
             allowClear: true,
             ajax: {
@@ -90,15 +94,32 @@
                 return markup;
             }
         });
+
+        $("#ddlMake").select2({
+            placeholder: "-- Search Make --",
+            width: "100%",
+            dropdownAutoWidth: true
+        });
+
+        $("#ddlModel").select2({
+            placeholder: "-- Search Model --",
+            width: "100%",
+            dropdownAutoWidth: true
+        });
     });
 </script>
 <style>
-    .select2-container--default .select2-selection--single .select2-selection__arrow {
-        height: 26px;
+    .select2-container--default .select2-selection--single .select2-selection__arrow b {
+        border-color: #888 transparent transparent transparent;
+        border-style: solid;
+        border-width: 5px 4px 0 4px;
+        height: 0;
+        left: 50%;
+        margin-left: -4px;
+        margin-top: 5px;
         position: absolute;
-        top: 9px;
-        right: 1px;
-        width: 20px;
+        top: 50%;
+        width: 0;
     }
 </style>
 
@@ -118,7 +139,11 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        @Html.DropDownListFor(model => model.CustomerID, ViewBag.Customer as SelectList, "-- Select Customer --", new { @class = "form-control col-md-12", @Name = "CustomerID", @Id = "ddlCustomer" })
+                                        @* @Html.DropDownListFor(model => model.CustomerID, ViewBag.Customer as SelectList, "-- Select Customer --", new { @class = "form-control col-md-12", @Name = "CustomerID", @id = "ddlCustomer" })*@
+                                        <select id="ddlCustomer" class="form-control" name="CustomerID">
+                                            <!-- Options will be dynamically loaded using jQuery -->
+                                        </select>
+
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -267,25 +292,25 @@
 
                             </div>
                             <div class="row">
-                                <div class="col-md-12" style="padding-bottom: 0px;">
-                                    <div class="form-group">
-                                        <label for="imgfile" style="padding-top:20px;padding-bottom:15px;">Upload Image</label>
-                                        <input type="file" class="form-control-file" name="ImagePath" id="imgfile" style="padding-bottom:15px;">
+                                @*<div class="col-md-12" style="padding-bottom: 0px;">
+                                        <div class="form-group">
+                                            <label for="imgfile" style="padding-top:20px;padding-bottom:15px;">Upload Image</label>
+                                            <input type="file" class="form-control-file" name="ImagePath" id="imgfile" style="padding-bottom:15px;">
 
-                                        @if (Model == null)
-                                        {
-                                            <img src="~/assets/images/no_image.jpg" style=" height:80px;width:80px; border-radius:10px 10px 10px 10px; " />
-                                        }
-                                        else if (Model.ImagePath == null)
-                                        {
-                                            <img src="~/assets/images/no_image.jpg" style=" height:80px;width:80px; border-radius:10px 10px 10px 10px; " />
-                                        }
-                                        else
-                                        {
-                                            <img src="@Url.Content(Model.ImagePath)" style=" height:80px;width:80px; border-radius:10px 10px 10px 10px;" />
-                                        }
-                                    </div>
-                                </div>
+                                            @if (Model == null)
+                                            {
+                                                <img src="~/assets/images/no_image.jpg" style=" height:80px;width:80px; border-radius:10px 10px 10px 10px; " />
+                                            }
+                                            else if (Model.ImagePath == null)
+                                            {
+                                                <img src="~/assets/images/no_image.jpg" style=" height:80px;width:80px; border-radius:10px 10px 10px 10px; " />
+                                            }
+                                            else
+                                            {
+                                                <img src="@Url.Content(Model.ImagePath)" style=" height:80px;width:80px; border-radius:10px 10px 10px 10px;" />
+                                            }
+                                        </div>
+                                    </div>*@
 
 
                                 <div class="col-md-3" style="padding-top:20px;">

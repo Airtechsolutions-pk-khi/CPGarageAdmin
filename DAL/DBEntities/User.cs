@@ -40,7 +40,6 @@ namespace DAL.DBEntities
         }
     
         public int UserID { get; set; }
-        public string[] UserIDs { get; set; }
         public int RowID { get; set; }
         public Nullable<int> PackageInfoID { get; set; }
         public string UserName { get; set; }
@@ -65,6 +64,7 @@ namespace DAL.DBEntities
         public string CompanyCode { get; set; }
         public Nullable<System.DateTime> CreatedDate { get; set; }
         public string States { get; set; }
+        public string RemainingDays { get; set; }
         public string Zipcode { get; set; }
         public string VATNO { get; set; }
         public Nullable<double> Tax { get; set; }
@@ -74,6 +74,11 @@ namespace DAL.DBEntities
         public Nullable<bool> IsAccountingAddons { get; set; }
         public Nullable<bool> IsGarageGo { get; set; }
         public Nullable<bool> IsCashier { get; set; }
+        public string BrandThumbnailImage { get; set; }
+        public Nullable<int> LoginSessionTime { get; set; }
+        public Nullable<bool> IsYakeen { get; set; }
+        public Nullable<bool> IsMojaz { get; set; }
+        public Nullable<bool> IsDefaultCar { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AppSource> AppSources { get; set; }
