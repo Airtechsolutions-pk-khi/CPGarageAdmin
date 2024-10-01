@@ -325,7 +325,7 @@ namespace DAL.Models
 		public string TotalTrialCustomers { get; set; }
 	}
 	public class leadReportViewModel
-	{
+    {
 		public int UserID { get; set; }
 		public string FirstName { get; set; }
 		public string LastName { get; set; }
@@ -339,6 +339,23 @@ namespace DAL.Models
 		public string PackageNameAr { get; set; }	
 		public DateTime? CreatedDate { get; set; }	
 		public DateTime? ExpiryDate { get; set; }	
+    }
+
+    public class IntegrationStatsViewModel
+    {
+        public int IntegraionStatsID { get; set; }
+        public int? IntegraionID { get; set; }
+        public int? UserID { get; set; }
+        public int? CustomerID { get; set; }
+        public DateTime? Date { get; set; }
+        public int? StatusID { get; set; }
+        public string IntegrationType { get; set; }
+        public string CustomerName { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public int? ExternalReferenceID { get; set; }
+        public string Remarks { get; set; }
+        public double? ServiceCharges { get; set; }
     }
 }
 

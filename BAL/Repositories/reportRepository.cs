@@ -66,16 +66,17 @@ namespace BAL.Repositories
                 return null;
             }
         }
-        public List<leadReportViewModel> GetLead(string fromdate, string todate)
+        public List<leadReportViewModel> GetLead(string fromdate, string todate, string statusFilter)
 
         {
             try
             {
                 var lst = new List<leadReportViewModel>();
 
-                SqlParameter[] p = new SqlParameter[2];
+                SqlParameter[] p = new SqlParameter[3];
                 p[0] = new SqlParameter("@fromdate", fromdate);
                 p[1] = new SqlParameter("@todate", todate);
+                p[2] = new SqlParameter("@statusFilter", statusFilter);
 
                 _dt = (new DBHelperGarageUAT().GetTableFromSP)("sp_GetCustomerPackageDetail_CP", p);
                 if (_dt != null)
@@ -83,6 +84,33 @@ namespace BAL.Repositories
                     if (_dt.Rows.Count > 0)
                     {
                         lst = JArray.Parse(Newtonsoft.Json.JsonConvert.SerializeObject(_dt)).ToObject<List<leadReportViewModel>>();
+                    }
+                }
+                return lst;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+        public List<IntegrationStatsViewModel> GetLog(string fromdate, string todate, string statusFilter)
+        {
+            try
+            {
+                var lst = new List<IntegrationStatsViewModel>();
+
+                SqlParameter[] p = new SqlParameter[3];
+                p[0] = new SqlParameter("@fromdate", fromdate);
+                p[1] = new SqlParameter("@todate", todate);
+                p[2] = new SqlParameter("@statusFilter", statusFilter);
+
+                _dt = (new DBHelperGarageUAT().GetTableFromSP)("sp_GetDetailLogReport_CP", p);
+                if (_dt != null)
+                {
+                    if (_dt.Rows.Count > 0)
+                    {
+                        lst = JArray.Parse(Newtonsoft.Json.JsonConvert.SerializeObject(_dt)).ToObject<List<IntegrationStatsViewModel>>();
                     }
                 }
                 return lst;

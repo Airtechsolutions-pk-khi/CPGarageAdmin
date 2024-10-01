@@ -1,0 +1,341 @@
+﻿@model DAL.Models.EmailSendViewModel
+@using System.Web.Configuration;
+@{
+    ViewBag.Title = "Marketing";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/bbbootstrap/libraries@main/choices.min.css">
+<script src="https://cdn.jsdelivr.net/gh/bbbootstrap/libraries@main/choices.min.js"></script>
+<script src="https://cdn.tiny.cloud/1/3rir8wj2omxyuofel8wtx2gfx1xyqpc8iss55mv9yrcj5yhu/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+
+<style>
+    #multipleSelect {
+        max-width: 100%;
+        width: 100%;
+    }
+
+    .choices__list--multiple .choices__item {
+        display: inline-block;
+        vertical-align: middle;
+        border-radius: 20px;
+        padding: 4px 10px;
+        font-size: 12px;
+        font-weight: 500;
+        margin-right: 3.75px;
+        margin-bottom: 3.75px;
+        background-color: #181818;
+        border: 1px solid #565656;
+        color: #fff;
+        word-break: break-all;
+    }
+</style>
+<!-- Include jQuery -->
+<script>
+    $(document).ready(function () {
+        var multipleCancelButton = new Choices('#ddlcustomers', {
+            removeItemButton: true,
+        });
+    });
+
+    $(document).ready(function () {
+        var multipleCancelButton = new Choices('#ddlusers', {
+            removeItemButton: true,
+        });
+    });
+</script>
+
+<!-- Include jQuery -->
+<script>
+    $(document).ready(function () {
+        var multipleCancelButton = new Choices('#ddlcustomers', {
+            removeItemButton: true,
+        });
+        var multipleCancelButton = new Choices('#ddlusers', {
+            removeItemButton: true,
+        });
+
+        $('#contact-form').submit(function (e) {
+            debugger
+            e.preventDefault();
+            $('#progress').show();
+
+            var formData = $(this).serialize();
+            $.ajax({
+                type: 'POST',
+                url: @Url.Action("Marketing", "marketing"),
+                data: formData,
+                success: function (response) {
+                    $('#progress').hide();
+                    if (response.success) {
+                        alert("MESSAGE SEND SUCCESSFULLY");
+                        form[0].reset();
+                        tinymce.get('txtdisplayorder').setContent('');
+                    } else {
+                        alert("MESSAGE CAN NOT BE SEND");
+                    }
+                },
+                error: function () {
+                    $('#progress').hide();
+                    alert("An error occurred. Please try again.");
+                }
+            });
+        });
+    });
+</script>
+
+
+@using (Html.BeginForm("Marketing", "marketing", FormMethod.Post, new { enctype = "multipart/form-data", @id = "contact-form" }))
+{
+    <div id="progress" class="modal" style="display:none;">
+        <div class="text-center">
+            <img src="~/assets/images/loader.gif" width="60px" height="60px" />
+        </div>
+    </div>
+
+    <form id="contact-form" role="form">
+        <div class="controls">
+            <div class="row ">
+                <div class="col-6 grid-margin stretch-card">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">Email / SMS Marketing</h4>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <div id="emailDetails" style="display: none;">
+                                            <label for="exampleInputPassword4">Select Customer</label>
+                                            <div class="form-group">
+                                                <select id="multipleSelect" multiple name="UserIDs" placeholder="-- Please Select --" data-search="true" data-silent-initial-value-set="true">
+                                                    @if (ViewBag.AllCustomers != null)
+                                                    {
+                                                        foreach (var item in ViewBag.AllCustomers)
+                                                        {
+                                                            <option value="@item.Value">
+                                                                @item.Text
+                                                            </option>
+                                                        }
+                                                    }
+                                                </select>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label for="form_email">Title</label>
+                                                        @Html.TextBoxFor(model => model.Title, new { @class = "form-control", placeholder = "", @Id = "txtname", name = "Title" })
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label for="form_need">Subject</label>
+                                                        @Html.TextBoxFor(model => model.Subject, new { @class = "form-control", placeholder = "", @Id = "txtarname", name = "Subject" })
+                                                        @Html.ValidationMessageFor(model => model.Subject, "", new { @class = "text-danger" })
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div id="whatsappDetails" style="display: none;">
+                                            <div id="whatsappCustomer" style="display: none;">
+                                                <label for="exampleInputPassword4">Select Customer</label>
+                                                <div class="form-group">
+                                                    <select id="multipleSelect" multiple name="Customers" placeholder="-- Please Select --" data-search="true" data-silent-initial-value-set="true">
+                                                        @if (ViewBag.Customers != null)
+                                                        {
+                                                            foreach (var item in ViewBag.CustomerMarketing)
+                                                            {
+                                                                <option value="@item.Value">
+                                                                    @item.Text
+                                                                </option>
+                                                            }
+                                                        }
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div id="whatsappUser" style="display: none;">
+                                                <label for="exampleInputPassword4">Select User</label>
+                                                <div class="form-group">
+                                                    <select id="multipleSelect" multiple name="Users" placeholder="-- Please Select --" data-search="true" data-silent-initial-value-set="true">
+                                                        @if (ViewBag.AllCustomers != null)
+                                                        {
+                                                            foreach (var item in ViewBag.AllCustomers)
+                                                            {
+                                                                <option value="@item.Value">
+                                                                    @item.Text
+                                                                </option>
+                                                            }
+                                                        }
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="form_need">Send To</label>
+                                                <br />
+                                                <br />
+                                                <label>
+                                                    <input type="radio" name="WhatsappType" value="User" checked> User's
+                                                </label>
+                                                <label style=" margin-left: 60px;">
+                                                    <input type="radio" name="WhatsappType" value="Customer"> Customer's
+                                                </label>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label for="form_email">Title</label>
+                                                        @Html.TextBoxFor(model => model.Title1, new { @class = "form-control", placeholder = "", @Id = "txtname", name = "Title1" })
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div id="pushNotificationDetails">
+                                            <label for="exampleInputPassword4">Select Customer</label>
+                                            <div class="form-group">
+                                                <select id="multipleSelect" multiple name="CustomerIDs" placeholder="-- Please Select --" data-search="true" data-silent-initial-value-set="true">
+                                                    @if (ViewBag.Customers != null)
+                                                    {
+                                                        foreach (var item in ViewBag.Customers)
+                                                        {
+                                                            <option value="@item.Value">
+                                                                @item.Text
+                                                            </option>
+                                                        }
+                                                    }
+                                                </select>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label for="form_email">Title</label>
+                                                        @Html.TextBoxFor(model => model.Title2, new { @class = "form-control", placeholder = "", @Id = "txtname", name = "Title2" })
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="form_need">Send Type</label>
+                                        <br />
+                                        <br />
+                                        <label>
+                                            <input type="radio" name="Type" value="Email" checked> Email
+                                        </label>
+
+                                        <label style=" margin-left: 60px;">
+                                            <input type="radio" name="Type" value="WhatsApp"> WhatsApp
+                                        </label>
+
+                                        <label style=" margin-left: 60px;">
+                                            <input type="radio" name="Type" value="PushNotification"> Push Notification
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3" style="padding-top:20px;">
+                                    <button type="submit" class="btn btn-dark mr-2" id="submitButton">Save</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 grid-margin stretch-card">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <div id="emailDescription" style="display: none;">
+                                            <label for="form_email">Description</label>
+                                            @Html.TextAreaFor(model => model.Descripiton, new { @class = "form-control", placeholder = "", @Id = "txtdisplayorder" })
+                                        </div>
+                                        <div id="whatsappDescription" style="display: none;">
+                                            <label for="form_email">Message Body</label>
+                                            <textarea class="form-control" name="WhatsappDescription" rows="20"></textarea>
+                                        </div>
+                                        <div id="pushNotificationDescription" style="display: none;">
+                                            <label for="form_email">Notification Message</label>
+                                            <textarea class="form-control" name="PushDescription" rows="20"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+}
+
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+<script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+<script type="text/javascript" src="~/assets/js/virtual-select.min.js"></script>
+
+<script type="text/javascript">
+    VirtualSelect.init({
+        ele: '#multipleSelect'
+    });
+</script>
+<script>
+    tinymce.init({
+        selector: '#txtdisplayorder',
+        plugins: 'autolink lists link image charmap print preview anchor',
+        toolbar: 'undo redo | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image'
+    });
+</script>
+<script>
+    function showDetails() {
+        var selectedType = document.querySelector('input[name="Type"]:checked').value;
+        document.getElementById('emailDetails').style.display = 'none';
+        document.getElementById('emailDescription').style.display = 'none';
+        document.getElementById('whatsappDetails').style.display = 'none';
+        document.getElementById('whatsappDescription').style.display = 'none';
+        document.getElementById('pushNotificationDetails').style.display = 'none';
+        document.getElementById('pushNotificationDescription').style.display = 'none';
+
+        if (selectedType === 'Email') {
+            document.getElementById('emailDetails').style.display = 'block';
+            document.getElementById('emailDescription').style.display = 'block';
+        }
+        else if (selectedType === 'WhatsApp') {
+            document.getElementById('whatsappDetails').style.display = 'block';
+            document.getElementById('whatsappDescription').style.display = 'block';
+        }
+        else if (selectedType === 'PushNotification') {
+            document.getElementById('pushNotificationDetails').style.display = 'block';
+            document.getElementById('pushNotificationDescription').style.display = 'block';
+        }
+    }
+    var radioButtons = document.querySelectorAll('input[name="Type"]');
+    radioButtons.forEach(function (radioButton) {
+        radioButton.addEventListener('change', showDetails);
+    });
+    showDetails();
+</script>
+
+<script>
+    function showDetails1() {
+        var selectedType = document.querySelector('input[name="WhatsappType"]:checked').value;
+        document.getElementById('whatsappCustomer').style.display = 'none';
+        document.getElementById('whatsappUser').style.display = 'none';
+
+        if (selectedType === 'User') {
+            document.getElementById('whatsappUser').style.display = 'block';
+        }
+        else if (selectedType === 'Customer') {
+            document.getElementById('whatsappCustomer').style.display = 'block';
+        }
+    }
+
+    var radioButtons = document.querySelectorAll('input[name="WhatsappType"]');
+    radioButtons.forEach(function (radioButton) {
+        radioButton.addEventListener('change', showDetails1);
+    });
+    showDetails1();
+</script>

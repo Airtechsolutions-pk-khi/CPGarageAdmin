@@ -12,7 +12,7 @@
         <div class="row">
             <div class="col-sm-12">
                 <div class="table-responsive">
-                    <table class="table" id="tblStudent">
+                    <table class="table" id="order-listing1">
                         <thead>
                             <tr>
                                 <th scope="col">Request #</th>
@@ -25,37 +25,39 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @*@foreach (DAL.Models.CarDeleteViewModel item in Model)
-                                {*@
-                            <tr>
-                                <td>1</td>
-                                <td>Mercedes</td>
-                                <td>test</td>
-                                <td>Android</td>
-                                <td>Wrong Information</td>
-                                <td><b class="badge badge-success">Accepted</b></td>
-                                @*<td>@item.RequestID</td>
+                            @foreach (DAL.Models.CarDeleteViewModel item in Model)
+                            {
+                                <tr>
+                                    @*<td>1</td>
+                                        <td>Mercedes</td>
+                                        <td>test</td>
+                                        <td>Android</td>
+                                        <td>Wrong Information</td>
+                                        <td><b class="badge badge-success">Accepted</b></td>*@
+                                    <td>@item.RequestID</td>
                                     <td>@item.CarName</td>
-                                        <td>@item.CustomerName</td>
-                                        <td>@item.RequestFrom</td>
-                                        <td>@item.Reason</td>
-                                        <td>
-                                            @if (item.RequestStatus == 1)
-                                            {
-                                                <b class="badge badge-success">Accepted</b>
-                                            }
-                                            else
-                                            {
-                                                <b class="badge badge-danger">Rejected</b>
-
-                                            }
-                                        </td>*@
-                                <td class="text-center">
-                                    <a href="~/carDelete/Update?id=2"><i class="mdi mdi-checkbox-marked" style="font-size:18px !important;" data-toggle="tooltip" data-placement="bottom" title="Accept"></i></a>
-                                    <a href="~/carDelete/Delete?id=3"><i class="mdi mdi-close-circle" style="font-size:18px !important;" data-toggle="tooltip" data-placement="top" title="Reject"></i></a>
-                                </td>
-                            </tr>
-                            @*}*@
+                                    <td>@item.CustomerName</td>
+                                    <td>@item.RequestFrom</td>
+                                    <td>@item.Reason</td>
+                                    <td>
+                                        @if (item.RequestStatus == 1)
+                                        {
+                                            <b class="badge badge-warning">Pending</b>
+                                        }
+                                        else if (item.RequestStatus == 2)
+                                        {
+                                            <b class="badge badge-success">Accepted</b>
+                                        }
+                                        else
+                                        {
+                                            <b class="badge badge-danger">Rejected</b>
+                                        }
+                                    </td>
+                                    <td class="text-center">
+                                        <a href="~/carDelete/detail?id=@item.RequestID"><i class="mdi mdi-eye-plus" style="font-size:18px !important;" data-toggle="tooltip" data-placement="bottom" title="Accept"></i></a>
+                                    </td>
+                                </tr>
+                            }
                         </tbody>
                     </table>
                 </div>
@@ -67,14 +69,4 @@
     $(document).ready(function () {
         $('#order-listing1').DataTable();
     });
-
-   function Delete(_id)
-   {
-        $.post("@Url.Action("Delete", "Model")", { id: _id}, function (data) {
-                if (data.success) {
-
-                    alert("Deleted Successfully");
-                }
-            });
-    }
 </script>

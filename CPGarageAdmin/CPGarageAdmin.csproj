@@ -1999,6 +1999,8 @@
     <Compile Include="Controllers\carDeleteController.cs" />
     <Compile Include="Controllers\carsController.cs" />
     <Compile Include="Controllers\emailSendController.cs" />
+    <Compile Include="Controllers\marketingController.cs" />
+    <Compile Include="Controllers\marketingSchedulerController.cs" />
     <Compile Include="Controllers\modelController.cs" />
     <Compile Include="Controllers\dashboardController.cs" />
     <Compile Include="Controllers\homeController.cs" />
@@ -2411,6 +2413,16 @@
     <Content Include="Views\Report\SummaryReport.cshtml" />
     <Content Include="Views\Report\LeadDetailReport.cshtml" />
     <Content Include="Views\carDelete\detail.cshtml" />
+    <Content Include="Views\marketing\marketing.cshtml" />
+    <Content Include="Views\Report\CarVisitorReport.cshtml" />
+    <Content Include="Views\marketingScheduler\list.cshtml" />
+    <Content Include="Views\marketingScheduler\add.cshtml" />
+    <Content Include="Views\marketingScheduler\whatsapp.cshtml" />
+    <Content Include="Views\marketingScheduler\notification.cshtml" />
+    <Content Include="Views\Report\DetailLogReport.cshtml" />
+    <Content Include="Views\marketing\email.cshtml" />
+    <Content Include="Views\marketing\whatsapp.cshtml" />
+    <Content Include="Views\marketing\notification.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

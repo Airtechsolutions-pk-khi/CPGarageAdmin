@@ -5,8 +5,15 @@
 <div class="card">
     <div class="card-header">
         <div class="form-row">
-            <div class="col-lg-7 col-md-6">
+            <div class="col-lg-5 col-md-4">
                 <h3 class="text-gray mt-3">Lead Detail Report</h3>
+            </div>
+            <div class="col-lg-2 col-md-2">
+                <select class="form-control" id="statusFilter">
+                    <option selected disabled>-- please select --</option>
+                    <option value="Active">Active</option>
+                    <option value="Expired">Expired</option>
+                </select>
             </div>
             <div class="col-lg-2 col-md-2">
                 <input type="date" class="form-control" id="fromDate" />
@@ -19,26 +26,26 @@
             </div>
         </div>
     </div>
-    <div class="card-body">
-        <div class="row">
-            <div class="col-sm-12">
-                <div class="table-responsive">
-                    <table class="table" id="order-listing">
-                        <thead>
-                            <tr>
-                                <th>Customer Name</th>
-                                <th>Email</th>
-                                <th>Contact</th>
-                                <th>Package</th>
-                                <th>Arabic Package</th>
-                                <th>Company Name</th>
-                                <th>Business Type</th>
-                                <th>Days Remaining</th>
-                                <th class="text-center">Package Status</th>
-                                <th class="text-center">Action</th>
-                        </thead>
-                    </table>
-                </div>
+</div>
+<div class="card-body">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="table-responsive">
+                <table class="table" id="order-listing">
+                    <thead>
+                        <tr>
+                            <th>Customer Name</th>
+                            <th>Email</th>
+                            <th>Contact</th>
+                            <th>Package</th>
+                            <th>Arabic Package</th>
+                            <th>Company Name</th>
+                            <th>Business Type</th>
+                            <th>Days Remaining</th>
+                            <th class="text-center">Package Status</th>
+                            <th class="text-center">Action</th>
+                    </thead>
+                </table>
             </div>
         </div>
     </div>
@@ -48,17 +55,20 @@
     <script>
         var datatable;
         $(document).ready(function () {
+            debugger
             bindDatatable();
             $('#filterButton').click(function () {
                 var fromDate = $('#fromDate').val();
                 var toDate = $('#toDate').val();
+                var statusFilter = $('#statusFilter').val();
                 if (datatable) {
                     datatable.destroy();
                 }
-                bindDatatable(fromDate, toDate);
+                bindDatatable(fromDate, toDate, statusFilter);
             });
         });
-        function bindDatatable(fromDate, toDate) {
+        function bindDatatable(fromDate, toDate, statusFilter) {
+            debugger
             datatable = $('#order-listing').DataTable({
                 "sAjaxSource": "/report/GetDetailReport",
                 "bServerSide": false,
@@ -111,6 +121,7 @@
                     // Pass the date filter values as parameters to the server-side action
                     aoData.push({ "name": "fromdate", "value": fromDate });
                     aoData.push({ "name": "todate", "value": toDate });
+                    aoData.push({ "name": "statusFilter", "value": statusFilter });
                 }
             });
         }

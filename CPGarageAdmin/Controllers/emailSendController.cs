@@ -36,31 +36,31 @@ namespace CPGarageAdmin.Controllers
 		}
 		public ActionResult add()
 		{
-			var AllCustomers = emailSendRepo.GetCustomers();
+			var AllCustomers = emailSendRepo.GetUsers();
 			ViewBag.AllCustomers = new SelectList(AllCustomers, "UserID", "UserName");
 
-			var Customers = emailSendRepo.GetCustomerNotification();
-			ViewBag.Customers = new SelectList(Customers, "CustomerID", "FullName");
+			//var Customers = emailSendRepo.GetCustomerNotification();
+			//ViewBag.Customers = new SelectList(Customers, "CustomerID", "FullName");
 
-			var  CustomerMarketing = emailSendRepo.GetCustomerMarketing();
-			ViewBag.CustomerMarketing = new SelectList(CustomerMarketing, "CustomerID", "FullName");
+			//var  CustomerMarketing = emailSendRepo.GetCustomerMarketing();
+			//ViewBag.CustomerMarketing = new SelectList(CustomerMarketing, "CustomerID", "FullName");
 			return View();
 		}
 		[HttpGet]
         public ActionResult sendemail()
         {
-            var AllCustomers = emailSendRepo.GetCustomers();
+            var AllCustomers = emailSendRepo.GetUsers();
             ViewBag.AllCustomers = new SelectList(AllCustomers, "UserID", "UserName");
 
-            var Customers = emailSendRepo.GetCustomerNotification();
-            ViewBag.Customers = new SelectList(Customers, "CustomerID", "FullName");
+			var Customers = emailSendRepo.GetCustomerNotification();
+			ViewBag.Customers = new SelectList(Customers, "CustomerID", "FullName");
 
-            var CustomerMarketing = emailSendRepo.GetCustomerMarketing();
-            ViewBag.CustomerMarketing = new SelectList(CustomerMarketing, "CustomerID", "FullName");
-            return View();
+			var CustomerMarketing = emailSendRepo.GetCustomerMarketing();
+			ViewBag.CustomerMarketing = new SelectList(CustomerMarketing, "CustomerID", "FullName");
+			return View();
         }
         [HttpPost]
-		public ActionResult EmailSend(EmailSendViewModel model)
+		public JsonResult EmailSend(EmailSendViewModel model)
 		{
 			try
 			{
@@ -83,10 +83,10 @@ namespace CPGarageAdmin.Controllers
 						}
 						catch (Exception ex)
 						{
-							return Json(new { success = false });
+							return Json(new { success = false }, JsonRequestBehavior.AllowGet);
 						}
 					}
-					return Json(new { success = true });
+					return Json(new { success = true }, JsonRequestBehavior.AllowGet);
 				}
 				else if (model.Type == "WhatsApp")
 				{
@@ -168,13 +168,13 @@ namespace CPGarageAdmin.Controllers
 										string responseData = streamReader.ReadToEnd();
 										
 									}
-									return Json(new { success = true });
+									return Json(new { success = true }, JsonRequestBehavior.AllowGet);
 								}
 								catch (WebException ex)
 								{
 									// Handle any exceptions here
 									Console.WriteLine(ex.Message);
-									return Json(new { success = false });
+									return Json(new { success = false }, JsonRequestBehavior.AllowGet);
 								}
 							}
 							catch (Exception ex)
@@ -293,11 +293,11 @@ namespace CPGarageAdmin.Controllers
 							baserepo.PushNotificationAndroid(token);
 
 						}
-						return Json(new { success = true });
-					}
+                        return Json(new { success = true }, JsonRequestBehavior.AllowGet);
+                    }
 					catch (Exception ex)
 					{
-						return Json(new { success = false });
+						return Json(new { success = false }, JsonRequestBehavior.AllowGet);
 					}
 				}
 			}

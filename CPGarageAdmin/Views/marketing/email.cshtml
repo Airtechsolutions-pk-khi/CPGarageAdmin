@@ -1,0 +1,182 @@
+﻿@model DAL.Models.EmailSendViewModel
+@using System.Web.Configuration;
+@{
+    ViewBag.Title = "Email Send";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/bbbootstrap/libraries@main/choices.min.css">
+<script src="https://cdn.jsdelivr.net/gh/bbbootstrap/libraries@main/choices.min.js"></script>
+<script src="https://cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
+
+<script>
+    $(document).ready(function () {
+        // Initialize Choices plugin
+        var multipleCancelButton = new Choices('#ddlcustomers', {
+            removeItemButton: true,
+        });
+
+        // Initialize CKEditor
+        CKEDITOR.replace('txtdisplayorder');
+
+        // When the form is submitted
+        $('#submitButton').on('click', function () {
+            // Disable the save button
+            $(this).prop('disabled', true);
+
+            // Show loader
+            $('#loader').show();
+
+            // Submit the form
+            $('#contact-form').submit();
+        });
+    });
+</script>
+<style>
+    #multipleSelect {
+        max-width: 100%;
+        width: 100%;
+    }
+
+    .choices__list--multiple .choices__item {
+        display: inline-block;
+        vertical-align: middle;
+        border-radius: 20px;
+        padding: 4px 10px;
+        font-size: 12px;
+        font-weight: 500;
+        margin-right: 3.75px;
+        margin-bottom: 3.75px;
+        background-color: #181818;
+        border: 1px solid #565656;
+        color: #fff;
+        word-break: break-all;
+    }
+
+    /* Loader styling */
+    #loader {
+        display: none; /* Hidden by default */
+        border: 4px solid #f3f3f3;
+        border-radius: 50%;
+        border-top: 4px solid #3498db;
+        width: 20px;
+        height: 20px;
+        animation: spin 1s linear infinite;
+        margin-left: 10px;
+        vertical-align: middle;
+    }
+
+    @@keyframes spin {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+</style>
+
+@using (Html.BeginForm("EmailSend", "marketing", FormMethod.Post, new { enctype = "multipart/form-data", @id = "contact-form" }))
+{
+    <div class="controls">
+        <div class="row ">
+            <div class="col-6 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Email / SMS Marketing</h4>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="exampleInputPassword4">Select Customer</label>
+                                    <div class="form-group">
+                                        <select id="multipleSelect" multiple name="UserIDs" placeholder="-- Please Select --" data-search="true" data-silent-initial-value-set="true">
+                                            @if (ViewBag.AllCustomers != null)
+                                            {
+                                                foreach (var item in ViewBag.AllCustomers)
+                                                {
+                                                    <option value="@item.Value">
+                                                        @item.Text
+                                                    </option>
+                                                }
+                                            }
+                                        </select>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="form_email">Title</label>
+                                                @Html.TextBoxFor(model => model.Title, new { @class = "form-control", placeholder = "", @Id = "txtname", name = "Title" })
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="form_need">Subject</label>
+                                                @Html.TextBoxFor(model => model.Subject, new { @class = "form-control", placeholder = "", @Id = "txtarname", name = "Subject" })
+                                                @Html.ValidationMessageFor(model => model.Subject, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="form_need">Send Type</label>
+                                    <br />
+                                    <br />
+                                    <label>
+                                        <a href="~/marketing/email"><input href="~/marketing/email" type="radio" name="Type" value="Email" checked> Email</a>
+                                    </label>
+
+                                    <label style=" margin-left: 60px;">
+                                        <a href="~/marketing/whatsapp"><input href="~/marketing/whatsapp" type="radio" name="Type" value="WhatsApp"> WhatsApp</a>
+                                    </label>
+
+                                    <label style=" margin-left: 60px;">
+                                        <a href="~/marketing/notification"><input href="~/marketing/notification" type="radio" name="Type" value="PushNotification">  Push Notification</a>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3" style="padding-top:20px;">
+                                <button type="submit" class="btn btn-dark mr-2" id="submitButton">Send Email</button>
+                                <div id="loader">
+                                    <div class="text-center">
+                                        <img src="~/assets/images/loader.gif" width="60px" height="60px" />
+                                    </div>
+                                </div> <!-- Loader icon -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-6 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="form_email">Description</label>
+                                    @Html.TextAreaFor(model => model.Descripiton, new { @class = "form-control", @id = "txtdisplayorder" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<script type="text/javascript" src="~/assets/js/virtual-select.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+<script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+<script type="text/javascript">
+    VirtualSelect.init({
+        ele: '#multipleSelect'
+    });
+</script>

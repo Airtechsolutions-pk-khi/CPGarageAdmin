@@ -22,7 +22,7 @@ namespace BAL.Repositories
             DBContext = contextDB;
         }
 
-        public DasboardViewModel GetDashboard()
+        public DasboardViewModel GetDashboard(string fromdate, string todate)
         {
             try
             {

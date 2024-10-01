@@ -145,6 +145,6 @@ E:\Projects\CPGarage_Admin\DAL\bin\Release\System.Web.WebPages.Deployment.xml
 E:\Projects\CPGarage_Admin\DAL\bin\Release\System.Web.WebPages.Razor.xml
 E:\Projects\CPGarage_Admin\DAL\obj\Release\DAL.csproj.AssemblyReference.cache
 E:\Projects\CPGarage_Admin\DAL\obj\Release\DAL.csproj.CoreCompileInputs.cache
-E:\Projects\CPGarage_Admin\DAL\obj\Release\DAL.csproj.CopyComplete
+E:\Projects\CPGarage_Admin\DAL\obj\Release\DAL.csproj.Up2Date
 E:\Projects\CPGarage_Admin\DAL\obj\Release\DAL.dll
 E:\Projects\CPGarage_Admin\DAL\obj\Release\DAL.pdb

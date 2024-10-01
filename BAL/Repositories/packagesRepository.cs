@@ -40,6 +40,8 @@ namespace BAL.Repositories
             : base(contextDB)
         {
             DBContext = contextDB;
+            _dt = new DataTable();
+            _ds = new DataSet();
         }
         public List<PackagesInfoViewModel> GetAll()
         {

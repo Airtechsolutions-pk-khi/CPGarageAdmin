@@ -1,0 +1,133 @@
+﻿@model DAL.Models.CustomerViewModel
+@{
+    ViewBag.Title = "list";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="card">
+    <div class="card-header">
+        <div class="form-row">
+            <div class="col-lg-5 col-md-4">
+                <h3 class="text-gray mt-3">Detail Log Report</h3>
+            </div>
+            <div class="col-lg-2 col-md-2">
+                @Html.DropDownListFor(model => model.UserID, ViewBag.userList as SelectList, "-- Select User --", new { @class = "form-control col-md-12", @Name = "CustomerID", @Id = "ddlCustomer" })
+            </div>
+            <div class="col-lg-2 col-md-2">
+                <input type="date" class="form-control" id="fromDate" />
+            </div>
+            <div class="col-lg-2 col-md-2">
+                <input type="date" class="form-control" id="toDate" />
+            </div>
+            <div class="col-lg-1 col-md-2">
+                <button type="button" class="btn btn-primary" id="filterButton">Apply Filter</button>
+            </div>
+        </div>
+    </div>
+</div>
+<br />
+<div class="card">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="table-responsive">
+                    <table class="table" id="order-listing">
+                        <thead>
+                            <tr>
+                                <th>User Name</th>
+                                <th>Customer Name</th>
+                                <th>Date</th>
+                                <th>Integration Type</th>
+                                <th>Service Charges</th>
+                                <th>Remarks</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script>
+        var datatable;
+
+        $(document).ready(function () {
+            debugger
+            // Set today’s date in the date inputs
+            let today = new Date().toISOString().slice(0, 10);
+            $('#fromDate').val(today);
+            $('#toDate').val(today);
+
+            // Initialize the data table with today's date by default
+            bindDatatable(today, today, '');
+
+            // Load customers when the page is ready
+            loadCustomerDropdown();
+
+            $('#filterButton').click(function () {
+                var fromDate = $('#fromDate').val();
+                var toDate = $('#toDate').val();
+                var customerFilter = $('#ddlCustomer').val();
+
+                if (datatable) {
+                    datatable.destroy();
+                }
+
+                bindDatatable(fromDate, toDate, customerFilter);
+            });
+        });
+
+        function bindDatatable(fromDate, toDate, customerFilter) {
+            debugger
+            datatable = $('#order-listing').DataTable({
+                "processing": true,
+                "serverSide": true,
+                "ajax": {
+                    "url": "/report/LogReport",
+                    "type": "POST",
+                    "data": function (d) {
+                        // Pass filter values as part of the data sent to the server
+                        d.fromDate = fromDate;
+                        d.toDate = toDate;
+                        d.customerFilter = customerFilter;
+                    }
+                },
+                "columns": [
+                    {
+                        "data": null, "autoWidth": false, "searchable": false,
+                        "render": function (data, type, row) {
+                            return data.FirstName + ' ' + data.LastName;
+                        }
+                    },
+                    { "data": "CustomerName", "autoWidth": false, "searchable": true },
+                    { "data": "Date", "autoWidth": false, "searchable": true },
+                    { "data": "IntegrationType", "autoWidth": false, "searchable": true },
+                    { "data": "ServiceCharges", "autoWidth": false, "searchable": true },
+                    { "data": "Remarks", "autoWidth": false, "searchable": true }
+                ],
+                "language": {
+                    "emptyTable": "No record found.",
+                    "processing": '<i class="fa fa-spinner fa-spin fa-3x fa-fw" style="color:black;"></i><span class="sr-only">Loading...</span>'
+                }
+            });
+        }
+
+        function loadCustomerDropdown() {
+            $.ajax({
+                url: '/customers/list',  // Replace with your actual endpoint
+                type: 'GET',
+                success: function (data) {
+                    var options = '<option selected disabled>-- Select Customer --</option>';
+                    $.each(data, function (index, customer) {
+                        options += '<option value="' + customer.UserID + '">' + customer.UserName + '</option>';
+                    });
+                    $('#customerFilter').html(options).prop('disabled', false);
+                },
+                error: function () {
+                    alert('Failed to load customers. Please try again.');
+                }
+            });
+        }
+    </script>
+}

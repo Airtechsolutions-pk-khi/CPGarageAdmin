@@ -1,0 +1,137 @@
+﻿
+@{
+    ViewBag.Title = "CarVisitorReport";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="card">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-7">
+                <h3 class="text-gray mt-3">Car Visitor Report</h3>
+            </div>
+            <div class="col-2">
+                <input type="text" id="fromDate" name="fromDate" class="form-control" placeholder="Select From Date">
+            </div>
+            <div class="col-2">
+                <input type="text" id="toDate" name="toDate" class="form-control" placeholder="Select To Date">
+            </div>
+            <div class="col-1">
+                <button type="button" id="searchButton" class="btn btn-primary">Search</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<br />
+<div class="row">
+    <div class="col-md-6 mb-4">
+        <div class="card shadow h-100" style="border-left:5px solid;">
+            <div class="card-body">
+                <div class="row align-items-center form-group">
+                    <div class="col-6">
+                        <div class="h4 mb-1">Make Name</div>
+                    </div>
+                    <div class="col-6 text-right">
+                        <span class="text-gray h3" style="float:inline-end" id="transid"></span>
+                    </div>
+                </div>
+                <div class="row  align-items-center form-group">
+                    <div class="col-6">
+                        <div class="h4 mb-1">Total Car's Visited</div>
+                    </div>
+                    <div class="col-6 text-right">
+                        <span class="text-gray h3" id="totalcars" style="float:inline-end"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 mb-4">
+        <div class="card shadow h-100" style="border-left:5px solid #ffd800;">
+            <div class="card-body">
+                <div class="row align-items-center form-group">
+                    <div class="col-6">
+                        <div class="h4 mb-1">Model Name</div>
+                    </div>
+                    <div class="col-6 text-right">
+                        <span class="text-gray h3" id="totalcustomer" style="float:inline-end"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        // Datepicker initialization
+        $("#fromDate").datepicker({
+            dateFormat: 'yy-mm-dd',
+            onSelect: function (selectedDate) {
+                $("#toDate").datepicker("option", "minDate", selectedDate);
+            }
+        });
+        $("#toDate").datepicker({
+            dateFormat: 'yy-mm-dd',
+            onSelect: function (selectedDate) {
+                $("#fromDate").datepicker("option", "maxDate", selectedDate);
+            }
+        });
+        getDataForCurrentMonth();
+        $("#searchButton").click(function () {
+            var fromDate = $("#fromDate").val();
+            var toDate = $("#toDate").val();
+            getData(fromDate, toDate);
+        });
+    });
+
+    function getDataForCurrentMonth() {
+        var currentDate = new Date();
+        var firstDayOfMonth = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
+        var lastDayOfMonth = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0);
+        var fromDate = formatDate(firstDayOfMonth);
+        var toDate = formatDate(lastDayOfMonth);
+        getData(fromDate, toDate);
+    }
+    function getData(fromdate, todate) {
+        var fromDateFormatted = formatDate(fromdate);
+        var toDateFormatted = formatDate(todate);
+        $.ajax({
+
+            url: '/report/CarVisitorReport',
+            type: "GET",
+            contentType: "application/json;charset=UTF-8",
+            dataType: "json",
+            data: {
+                fromdate: fromdate,
+                todate: todate
+            },
+            success: function (result) {
+                console.log('Returned data:', result);
+               // Set the text content of the elements
+                $('#transid').text(result.TotalTransaction.toString());
+                $('#location').text(result.TotalLocation.toString());
+                $('#totalcars').text(result.TotalCars.toString());
+                $('#totalcustomer').text(result.TotalCustomers);
+                $('#professioanlcustomer').text(result.TotalProfessionalCustomers);
+                $('#trialcustomer').text(result.TotalTrialCustomers);
+            },
+            error: function (errormessage) {
+                console.error('Error:', errormessage);
+            }
+        });
+        return false;
+    }
+    function formatDate(date) {
+        if (!(date instanceof Date) || isNaN(date.getTime())) {
+            // If not valid, create a new date object
+            date = new Date();
+        }
+        var year = date.getFullYear();
+        var month = ('0' + (date.getMonth() + 1)).slice(-2); // Months are zero indexed
+        var day = ('0' + date.getDate()).slice(-2);
+        return year + '-' + month + '-' + day;
+    }
+</script>
+

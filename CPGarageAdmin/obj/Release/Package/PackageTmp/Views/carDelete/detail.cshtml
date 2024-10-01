@@ -1,0 +1,104 @@
+﻿@model DAL.Models.CarDeleteViewModel
+@using System.Web.Configuration;
+@{
+    ViewBag.Title = "detail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script type="text/javascript">
+$(document).ready(function() {
+    $('#contact-form').submit(function(e) {
+        e.preventDefault(); // Prevent default form submission
+
+        // Serialize form data
+        var formData = $(this).serialize();
+
+        // AJAX request to save car details
+        $.ajax({
+            type: 'POST',
+            url: '@Url.Action("Save", "CarDelete")', // URL to your Save action in Cars controller
+            data: formData,
+            success: function(response) {
+                UserSuccess(response); // Call the success function
+            },
+            error: function(xhr, status, error) {
+                alert("An error occurred while saving car details."); // Handle error
+            }
+        });
+    });
+});
+
+    function UserSuccess(result) {
+        if (result.redirectTo) {
+            window.location.href = result.redirectTo;
+            alert("CARS ADDED/UPDATED SUCCESSFULLY");
+        } else {
+            alert("CARS COULD NOT BE ADDED/UPDATED SUCCESSFULLY");
+        }
+    }
+</script>
+
+@using (Html.BeginForm("Save", "CarDelete", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div id="carid">
+        @Html.HiddenFor(x => x.RequestID)
+    </div>
+    <form id="contact-form" role="form">
+        <div class="controls">
+            <div class="row ">
+                <div class="col-12 grid-margin stretch-card">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">Car Delete Request Detail</h4>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label for="form_need">Car Name</label>
+                                        @Html.TextBoxFor(model => model.CarName, new { @class = "form-control", @readonly = "readonly" })
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label for="form_need">Customer Name</label>
+                                        @Html.TextBoxFor(model => model.CustomerName, new { @class = "form-control", @readonly = "readonly" })
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label for="form_need">Request From</label>
+                                        @Html.TextBoxFor(model => model.RequestFrom, new { @class = "form-control", @readonly = "readonly" })
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label for="form_need">Reason</label>
+                                        @Html.TextBoxFor(model => model.Reason, new { @class = "form-control", @readonly = "readonly" })
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label for="form_need">Request Status</label>
+                                        <select class="form-control" name="RequestStatus">
+                                            <option value="1">Pending</option>
+                                            <option value="2">Accepted</option>
+                                            <option value="3">Rejected</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-9 mt-3">
+                                    <div style=" float: inline-end;">
+                                        <button type="submit" class="btn btn-dark mr-2">Update</button>
+                                        <a href="~/carDelete/list" class="btn btn-light">Cancel</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+}
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+<script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>

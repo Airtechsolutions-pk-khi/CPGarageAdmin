@@ -19,11 +19,11 @@ namespace CPGarageAdmin.Controllers
       
 
         // GET: dashboard
-        public ActionResult dashboard()
+        public ActionResult dashboard(string fromdate, string todate)
         {
             try
             {                
-                return View(dashboardRepo.GetDashboard());
+                return View(dashboardRepo.GetDashboard(fromdate, todate));
             }
             catch (Exception)
             {

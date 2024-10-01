@@ -1,0 +1,69 @@
+﻿@{
+    ViewBag.Title = "list";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="card">
+    <div class="card-body">
+        <div class="row form-group">
+            <div class="col-8">
+                <h4 class="card-title">Marketing Scheduler</h4>
+            </div>
+            <div class="col-4 text-right">
+                <a href="~/marketingScheduler/add" class="btn btn-sm btn-secondary"><i class="mdi mdi-plus-circle"></i> Add Schedule</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="table-responsive">
+                    <table class="table" id="order-listing1">
+                        <thead>
+                            <tr>
+                                <th scope="col">Schedule #</th>
+                                <th scope="col">Title</th>
+                                <th scope="col">Marketing Type</th>
+                                <th scope="col">From Date</th>
+                                <th scope="col">To Date</th>
+                                <th scope="col">Filter Type</th>
+                                <th class="text-center" scope="col">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @*@foreach (DAL.Models.CarDeleteViewModel item in Model)
+                                    {
+                                @*<tr>
+                                            <td>@item.RequestID</td>
+                                            <td>@item.CarName</td>
+                                            <td>@item.CustomerName</td>
+                                            <td>@item.RequestFrom</td>
+                                            <td>@item.Reason</td>
+                                            <td>
+                                                @if (item.RequestStatus == 1)
+                                                {
+                                                    <b class="badge badge-warning">Pending</b>
+                                                }
+                                                else if (item.RequestStatus == 2)
+                                                {
+                                                    <b class="badge badge-success">Accepted</b>
+                                                }
+                                                else
+                                                {
+                                                    <b class="badge badge-danger">Rejected</b>
+                                                }
+                                            </td>
+                                            <td class="text-center">
+                                                <a href="~/carDelete/detail?id=@item.RequestID"><i class="mdi mdi-eye-plus" style="font-size:18px !important;" data-toggle="tooltip" data-placement="bottom" title="Accept"></i></a>
+                                            </td>
+                                        </tr>
+                                    }*@
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        $('#order-listing1').DataTable();
+    });
+</script>

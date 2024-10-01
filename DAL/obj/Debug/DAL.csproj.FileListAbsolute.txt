@@ -170,6 +170,6 @@ E:\Projects\CPGarage_Admin\DAL\bin\Debug\System.Web.WebPages.Deployment.xml
 E:\Projects\CPGarage_Admin\DAL\bin\Debug\System.Web.WebPages.Razor.xml
 E:\Projects\CPGarage_Admin\DAL\obj\Debug\DAL.csproj.AssemblyReference.cache
 E:\Projects\CPGarage_Admin\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
+E:\Projects\CPGarage_Admin\DAL\obj\Debug\DAL.csproj.Up2Date
 E:\Projects\CPGarage_Admin\DAL\obj\Debug\DAL.dll
 E:\Projects\CPGarage_Admin\DAL\obj\Debug\DAL.pdb
-E:\Projects\CPGarage_Admin\DAL\obj\Debug\DAL.csproj.Up2Date

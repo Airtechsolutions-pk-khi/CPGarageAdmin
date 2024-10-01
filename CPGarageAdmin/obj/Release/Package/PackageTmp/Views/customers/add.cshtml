@@ -86,6 +86,35 @@
         height: 128px;
         width: 128px;
     }
+
+    /* Loader and modal styles */
+    .modal {
+        position: fixed;
+        z-index: 9999;
+        height: 100%;
+        width: 100%;
+        top: 0;
+        left: 0;
+        background-color: rgba(0, 0, 0, 0.5);
+        display: none;
+    }
+
+    .center {
+        z-index: 10000;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 10px;
+        background-color: white;
+        border-radius: 10px;
+        text-align: center;
+    }
+
+        .center img {
+            height: 60px;
+            width: 60px;
+        }
 </style>
 <script type="text/javascript">
     function UserSuccess(result) {
@@ -98,42 +127,58 @@
     }
 
 </script>
-@*<script type="text/javascript">
-        function GetSelectedTextValue(ddlPackage) {
 
-            var selectedText = ddlPackage.options[ddlPackage.selectedIndex].innerHTML;
-            var selectedValue = ddlPackage.value;
+<script type="text/javascript">
+    $(document).ready(function () {
+        // Show loader and disable submit button on form submit
+        $('#customerForm').on('submit', function () {
+            $('#progress').show(); // Display the loader
+            $('button[type="submit"]').attr('disabled', true); // Disable the submit button
+        });
 
-            if (selectedText == "Starter") {
-
-                var today = new Date();
-                today.setDate(today.getDate() + 15);
-
-                var dd = String(today.getDate()).padStart(2, '0');
-                var mm = String(today.getMonth() + 1).padStart(2, '0'); // January is 0!
-                var yyyy = today.getFullYear();
-
-                //var expDate = yyyy + '/' + mm + '/' + dd;
-
-                $('#expdate').val(expDate);
-                console.log(today);
-            }
-            else {
-                var today = new Date();
-                var dd = String(today.getDate()).padStart(2, '0');
-                var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-                var yyyy = today.getFullYear() + 1;
-
-                today = yyyy + '/' + mm + '/' + dd;
-
-
-                //var date = new Date();
-                //today.Date + 365;
-                $('#expdate').val(today);
-                //console.log(date);
+        // Handle success callback
+        function UserSuccess(result) {
+            if (result.success) {
+                window.location.href = "/customers/list";
+            } else {
+                alert("CUSTOMER CANNOT BE CREATED SUCCESSFULLY");
+                $('#progress').hide(); // Hide the loader
+                $('button[type="submit"]').attr('disabled', false); // Enable the submit button
             }
         }
-    </script>*@
+
+        $('#ddlPackage').on('change', function () {
+            GetSelectedTextValue(this);
+        });
+
+        function setExpiryDateValue(dateString) {
+            $('#expdate').val(dateString);
+        }
+
+        function formatDateToISO(date) {
+            var year = date.getFullYear();
+            var month = String(date.getMonth() + 1).padStart(2, '0');
+            var day = String(date.getDate()).padStart(2, '0');
+            return year + "-" + month + "-" + day;
+        }
+
+        function GetSelectedTextValue(ddlPackage) {
+            var selectedValue = $(ddlPackage).val();
+
+            if (selectedValue === "1") {
+                var today = new Date();
+                today.setDate(today.getDate() + 15);
+                setExpiryDateValue(formatDateToISO(today));
+            } else {
+                var today = new Date();
+                today.setFullYear(today.getFullYear() + 1);
+                setExpiryDateValue(formatDateToISO(today));
+            }
+        }
+
+        GetSelectedTextValue($('#ddlPackage'));
+    });
+</script>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
     $(document).ready(function () {
@@ -169,11 +214,12 @@
         GetSelectedTextValue($('#ddlPackage'));
     });
 </script>
-@using (Ajax.BeginForm("Save", "Customers", new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "ModalUser", OnSuccess = "UserSuccess", LoadingElementId = "progress" }, new { @id = "customerForm" }))
+@using (Ajax.BeginForm("Save", "Customers", new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "ModalUser", OnSuccess = "UserSuccess" }, new { @id = "customerForm" }))
 {
     <div id="progress" class="modal">
         <div class="center">
-            <img src="~/assets/images/loader.gif" width="60px" height="60px" />
+            <img src="~/assets/images/loader.gif" alt="Loading..." />
+            <p>Please wait...</p>
         </div>
     </div>
     @Html.AntiForgeryToken()

@@ -131,7 +131,7 @@
                                     </div>
                                 </div>
 
-                                <div id="whatsappDetails" style="display: none;">
+                                @*<div id="whatsappDetails" style="display: none;">
                                     <div id="whatsappCustomer" style="display: none;">
                                         <label for="exampleInputPassword4">Select Customer</label>
                                         <div class="form-group">
@@ -188,7 +188,7 @@
                                             <button type="submit" class="btn btn-dark mr-2" id="submitButton">Save</button>
                                         </div>
                                     </div>
-                                </div>
+                                </div>*@
 
                             </div>
                         </div>
@@ -296,13 +296,7 @@
     });
     showDetails();
 </script>
-<script>
-    $(document).ready(function () {
-        var multipleCancelButton = new Choices('#ddlcustomers', {
-            removeItemButton: true,
-        });
-    });
-</script>
+
 <script>
     function showDetails1() {
         var selectedType = document.querySelector('input[name="WhatsappType"]:checked').value;

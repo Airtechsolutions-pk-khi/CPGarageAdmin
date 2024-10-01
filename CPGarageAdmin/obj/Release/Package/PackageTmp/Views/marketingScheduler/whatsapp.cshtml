@@ -1,0 +1,366 @@
+﻿@model DAL.Models.CarsViewModel
+@using System.Web.Configuration;
+@{
+    ViewBag.Title = "add";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="~/assets/css/component-custom-switch.min.css" rel="stylesheet" />
+<!-- Include jQuery -->
+
+<script type="text/javascript">
+$(document).ready(function() {
+    $('#contact-form').submit(function(e) {
+        e.preventDefault(); // Prevent default form submission
+
+        // Serialize form data
+        var formData = $(this).serialize();
+
+        // AJAX request to save car details
+        $.ajax({
+            type: 'POST',
+            url: '@Url.Action("Save", "Cars")', // URL to your Save action in Cars controller
+            data: formData,
+            success: function(response) {
+                UserSuccess(response); // Call the success function
+            },
+            error: function(xhr, status, error) {
+                alert("An error occurred while saving car details."); // Handle error
+            }
+        });
+    });
+});
+
+function UserSuccess(result) {
+    if (result.redirectTo) {
+        window.location.href = result.redirectTo;
+        alert("CARS ADDED/UPDATED SUCCESSFULLY");
+    } else {
+        alert("CARS COULD NOT BE ADDED/UPDATED SUCCESSFULLY");
+    }
+}
+</script>
+<script>
+    $(document).ready(function () {
+        var makeDropdown = $("#ddlMake");
+        var modelDropdown = $("#ddlModel");
+        makeDropdown.change(function () {
+            var selectedMakeID = makeDropdown.val();
+            if (selectedMakeID) {
+                $.ajax({
+                    type: "GET",
+                    url: "/cars/models?makeId=" + selectedMakeID,
+                    success: function (data) {
+
+                        modelDropdown.empty();
+                        modelDropdown.append($('<option>').text("-- Select Model --").val(''));
+                        $.each(data, function (index, item) {
+                            modelDropdown.append($('<option>').text(item.Name).val(item.ModelID));
+                        });
+                    }
+                });
+            } else {
+                modelDropdown.empty();
+                modelDropdown.append($('<option>').text("-- Select Model --").val(''));
+            }
+        });
+    });
+
+</script>
+<script>
+    $(document).ready(function () {
+        $('#ddlCustomer').select2({
+
+            placeholder: "-- Select Customer --",
+            allowClear: true,
+            ajax: {
+                url: '/cars/GetCustomer',
+                dataType: 'json',
+                delay: 250,
+                data: function (params) {
+                    return {
+                        searchTerm: params.term,
+                        page: params.page
+                    };
+                },
+                processResults: function (data, params) {
+                    return {
+                        results: data
+                    };
+                },
+                cache: true
+            },
+            minimumInputLength: 2,
+            escapeMarkup: function (markup) {
+                return markup;
+            }
+        });
+
+        $("#ddlMake").select2({
+            placeholder: "-- Search Make --",
+            width: "100%",
+            dropdownAutoWidth: true
+        });
+
+        $("#ddlModel").select2({
+            placeholder: "-- Search Model --",
+            width: "100%",
+            dropdownAutoWidth: true
+        });
+    });
+</script>
+<style>
+    .select2-container--default .select2-selection--single .select2-selection__arrow b {
+        border-color: #888 transparent transparent transparent;
+        border-style: solid;
+        border-width: 5px 4px 0 4px;
+        height: 0;
+        left: 50%;
+        margin-left: -4px;
+        margin-top: 5px;
+        position: absolute;
+        top: 50%;
+        width: 0;
+    }
+</style>
+
+@using (Html.BeginForm("Save", "Cars", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div id="carid">
+        @Html.HiddenFor(x => x.CarID)
+    </div>
+    <form id="contact-form" role="form">
+        <div class="controls">
+            <div class="row ">
+                <div class="col-12 grid-margin stretch-card">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">Marketing Scheduler Form</h4>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="form_need">Marketing Type</label>
+                                        <br />
+                                        <br />
+                                        <label>
+                                            <a href="~/marketingScheduler/add">
+                                                <input type="radio" name="Type" value="Email"> Email
+                                            </a>
+                                        </label>
+
+                                        <label style=" margin-left: 200px;">
+                                            <a href="~/marketingScheduler/whatsapp">
+                                                <input type="radio" name="Type" value="WhatsApp" checked> WhatsApp
+                                            </a>
+                                        </label>
+
+                                        <label style=" margin-left: 200px;">
+                                            <a href="~/marketingScheduler/notification">
+                                                <input type="radio" name="Type" value="PushNotification"> Push Notification
+                                            </a>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="form_need">From Date</label>
+                                        <input type="date" class="form-control" name="FromDate" />
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="form_need">To Date</label>
+                                        <input type="date" class="form-control" name="ToDate" />
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="form_need">Time</label>
+                                        <input type="time" class="form-control" name="ToDate" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="form_need">Send To</label>
+                                        <br />
+                                        <br />
+                                        <label>
+                                            <input type="radio" name="SendTo" value="User" checked> User
+                                        </label>
+
+                                        <label style="margin-left: 200px;">
+                                            <input type="radio" name="SendTo" value="Customer"> Customer
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="UserDrp" style="display: none;">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="form_need">User</label>
+                                            <select class="form-control">
+                                                <option value="Male">Riyadh</option>
+                                                <option value="Female">Makkah</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="CustomerDrp" style="display: none;">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="form_need">Customer</label>
+                                            <select class="form-control">
+                                                <option value="Male">Riyadh</option>
+                                                <option value="Female">Makkah</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="CustomerDiv" style="display: none;">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="form_need">Filter By</label>
+                                            <br />
+                                            <br />
+                                            <label>
+                                                <input type="radio" name="FilterBy" value="Cities"> Cities
+                                            </label>
+
+                                            <label style=" margin-left: 200px;">
+                                                <input type="radio" name="FilterBy" value="Gender"> Gender
+                                            </label>
+
+                                            <label style=" margin-left: 200px;">
+                                                <input type="radio" name="FilterBy" value="Packages"> Packages
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="CitiesDrp" style="display: none;">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label for="form_need">Cities</label>
+                                                <select class="form-control">
+                                                    <option value="Male">Riyadh</option>
+                                                    <option value="Female">Makkah</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="GenderDrp" style="display: none;">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label for="form_need">Gender</label>
+                                                <select class="form-control">
+                                                    <option value="Male">Male</option>
+                                                    <option value="Female">Female</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="PackagesDrp" style="display: none;">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label for="form_need">Packages</label>
+                                                <select class="form-control">
+                                                    <option value="Male">Free Trial</option>
+                                                    <option value="Female">Profesional</option>
+                                                    <option value="Female">1 Year + 2 Yr Free</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="form_need">Title</label>
+                                        <input type="text" class="form-control" name="ToDate" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label for="form_need">Description</label>
+                                    <textarea class="form-control" rows="6"></textarea>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3" style="padding-top:20px;">
+                                    <button type="submit" class="btn btn-dark mr-2">Save</button>
+                                    <a href="~/marketingScheduler/list" class="btn btn-light">Cancel</a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+}
+
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+<script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+
+
+<script>
+    function showDropdown() {
+        var selectedType = document.querySelector('input[name="FilterBy"]:checked').value;
+        document.getElementById('CitiesDrp').style.display = 'none';
+        document.getElementById('GenderDrp').style.display = 'none';
+        document.getElementById('PackagesDrp').style.display = 'none';
+
+        if (selectedType === 'Cities') {
+            document.getElementById('CitiesDrp').style.display = 'block';
+        }
+        else if (selectedType === 'Gender') {
+            document.getElementById('GenderDrp').style.display = 'block';
+        }
+        else if (selectedType === 'Packages') {
+            document.getElementById('PackagesDrp').style.display = 'block';
+        }
+    }
+    var radioButtons = document.querySelectorAll('input[name="FilterBy"]');
+    radioButtons.forEach(function (radioButton) {
+        radioButton.addEventListener('change', showDropdown);
+    });
+    showDropdown();
+</script>
+<script>
+    function ShowSendTo() {
+        debugger
+        var selectedType = document.querySelector('input[name="SendTo"]:checked').value;
+        document.getElementById('UserDrp').style.display = 'none';
+        document.getElementById('CustomerDrp').style.display = 'none';
+        document.getElementById('CustomerDiv').style.display = 'none';
+        if (selectedType === 'User') {
+            document.getElementById('UserDrp').style.display = 'block';
+            document.getElementById('CustomerDiv').style.display = 'none';
+        }
+        else if (selectedType === 'Customer') {
+            document.getElementById('CustomerDrp').style.display = 'block';
+            document.getElementById('CustomerDiv').style.display = 'block';
+        }
+    }
+    var radioButtons = document.querySelectorAll('input[name="SendTo"]');
+    radioButtons.forEach(function (radioButton) {
+        radioButton.addEventListener('change', ShowSendTo);
+    });
+    ShowSendTo();
+</script>

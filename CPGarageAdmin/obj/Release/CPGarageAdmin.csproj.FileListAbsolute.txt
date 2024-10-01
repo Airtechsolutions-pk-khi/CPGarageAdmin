@@ -489,6 +489,6 @@ E:\Projects\CPGarage_Admin\CPGarageAdmin\bin\Microsoft.IdentityModel.Tokens.xml
 E:\Projects\CPGarage_Admin\CPGarageAdmin\obj\Release\CPGarageAdmin.csproj.App.config
 E:\Projects\CPGarage_Admin\CPGarageAdmin\obj\Release\CPGarageAdmin.csproj.AssemblyReference.cache
 E:\Projects\CPGarage_Admin\CPGarageAdmin\obj\Release\CPGarageAdmin.csproj.CoreCompileInputs.cache
-E:\Projects\CPGarage_Admin\CPGarageAdmin\obj\Release\CPGarageAdmin.csproj.CopyComplete
+E:\Projects\CPGarage_Admin\CPGarageAdmin\obj\Release\CPGarage.4ECAE743.Up2Date
 E:\Projects\CPGarage_Admin\CPGarageAdmin\obj\Release\CPGarageAdmin.dll
 E:\Projects\CPGarage_Admin\CPGarageAdmin\obj\Release\CPGarageAdmin.pdb

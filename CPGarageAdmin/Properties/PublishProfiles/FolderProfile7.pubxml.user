@@ -5,12 +5,12 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
 <Project>
   <PropertyGroup>
     <_PublishTargetUrl>E:\Projects Publish\CPGarage_Admin</_PublishTargetUrl>
-    <History>True|2024-05-06T08:17:19.2494617Z;True|2024-05-02T19:44:41.3846595+05:00;True|2024-04-30T17:13:57.7103531+05:00;True|2024-04-30T17:00:38.0706072+05:00;True|2024-04-18T16:09:15.9097448+05:00;True|2024-04-17T20:05:13.2660357+05:00;True|2024-02-28T13:20:50.3287900+05:00;True|2024-01-31T20:34:17.6193650+05:00;True|2024-01-31T18:22:29.3408476+05:00;</History>
+    <History>True|2024-09-25T10:13:44.6408097Z||;True|2024-09-18T20:24:20.7777132+05:00||;True|2024-08-19T00:02:35.3178077+05:00||;True|2024-07-19T15:17:56.8767161+05:00||;True|2024-07-18T19:15:35.0181156+05:00||;True|2024-05-06T13:17:19.2494617+05:00||;True|2024-05-02T19:44:41.3846595+05:00||;True|2024-04-30T17:13:57.7103531+05:00||;True|2024-04-30T17:00:38.0706072+05:00||;True|2024-04-18T16:09:15.9097448+05:00||;True|2024-04-17T20:05:13.2660357+05:00||;True|2024-02-28T13:20:50.3287900+05:00||;True|2024-01-31T20:34:17.6193650+05:00||;True|2024-01-31T18:22:29.3408476+05:00||;</History>
     <LastFailureDetails />
   </PropertyGroup>
   <ItemGroup>
     <File Include="assets/css/component-custom-switch.min.css">
-      <publishTime>08/07/2023 22:36:22</publishTime>
+      <publishTime>06/11/2024 12:38:19</publishTime>
     </File>
     <File Include="assets/css/font-awesome.css">
       <publishTime>08/07/2023 22:36:22</publishTime>
@@ -37,7 +37,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>08/07/2023 22:36:22</publishTime>
     </File>
     <File Include="assets/css/vertical-layout-light/style.css">
-      <publishTime>04/26/2024 20:02:11</publishTime>
+      <publishTime>09/18/2024 20:33:45</publishTime>
     </File>
     <File Include="assets/css/virtual-select.min.css">
       <publishTime>11/01/2023 11:37:54</publishTime>
@@ -6298,28 +6298,28 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>08/07/2023 22:36:23</publishTime>
     </File>
     <File Include="bin/BAL.dll">
-      <publishTime>05/02/2024 20:07:02</publishTime>
+      <publishTime>09/25/2024 15:13:23</publishTime>
     </File>
     <File Include="bin/BAL.dll.config">
-      <publishTime>08/07/2023 22:36:21</publishTime>
+      <publishTime>09/18/2024 20:33:45</publishTime>
     </File>
     <File Include="bin/BAL.pdb">
-      <publishTime>05/02/2024 20:07:02</publishTime>
+      <publishTime>09/25/2024 15:13:23</publishTime>
     </File>
     <File Include="bin/CPGarageAdmin.dll">
-      <publishTime>05/06/2024 13:17:14</publishTime>
+      <publishTime>10/01/2024 12:25:14</publishTime>
     </File>
     <File Include="bin/CPGarageAdmin.pdb">
-      <publishTime>05/06/2024 13:17:14</publishTime>
+      <publishTime>10/01/2024 12:25:14</publishTime>
     </File>
     <File Include="bin/DAL.dll">
-      <publishTime>05/02/2024 20:07:02</publishTime>
+      <publishTime>09/25/2024 15:13:22</publishTime>
     </File>
     <File Include="bin/DAL.dll.config">
-      <publishTime>04/30/2024 16:58:40</publishTime>
+      <publishTime>09/24/2024 16:26:00</publishTime>
     </File>
     <File Include="bin/DAL.pdb">
-      <publishTime>05/02/2024 20:07:02</publishTime>
+      <publishTime>09/25/2024 15:13:22</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>04/17/2020 01:38:42</publishTime>
@@ -6618,8 +6618,11 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
     <File Include="Views/Broadcast/Broadcast.cshtml">
       <publishTime>08/07/2023 22:36:22</publishTime>
     </File>
+    <File Include="Views/carDelete/detail.cshtml">
+      <publishTime>05/15/2024 20:00:50</publishTime>
+    </File>
     <File Include="Views/carDelete/list.cshtml">
-      <publishTime>12/28/2023 17:58:43</publishTime>
+      <publishTime>09/18/2024 20:33:45</publishTime>
     </File>
     <File Include="Views/cars/add.cshtml">
       <publishTime>04/27/2024 16:15:39</publishTime>
@@ -6628,25 +6631,49 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>05/02/2024 16:53:58</publishTime>
     </File>
     <File Include="Views/customers/add.cshtml">
-      <publishTime>03/27/2024 13:12:12</publishTime>
+      <publishTime>09/26/2024 12:47:19</publishTime>
     </File>
     <File Include="Views/customers/list.cshtml">
       <publishTime>05/02/2024 20:04:18</publishTime>
     </File>
     <File Include="Views/dashboard/dashboard.cshtml">
-      <publishTime>04/26/2024 19:35:35</publishTime>
+      <publishTime>09/18/2024 20:33:45</publishTime>
     </File>
     <File Include="Views/emailSend/add.cshtml">
       <publishTime>04/18/2024 16:07:46</publishTime>
     </File>
     <File Include="Views/emailSend/sendemail.cshtml">
-      <publishTime>05/02/2024 18:44:46</publishTime>
+      <publishTime>09/30/2024 14:16:17</publishTime>
     </File>
     <File Include="Views/itemmovement/Index.cshtml">
       <publishTime>08/07/2023 22:36:22</publishTime>
     </File>
     <File Include="Views/login/login.cshtml">
       <publishTime>04/26/2024 18:13:45</publishTime>
+    </File>
+    <File Include="Views/marketing/email.cshtml">
+      <publishTime>09/30/2024 17:37:13</publishTime>
+    </File>
+    <File Include="Views/marketing/marketing.cshtml">
+      <publishTime>09/30/2024 14:28:37</publishTime>
+    </File>
+    <File Include="Views/marketing/notification.cshtml">
+      <publishTime>09/30/2024 17:36:42</publishTime>
+    </File>
+    <File Include="Views/marketing/whatsapp.cshtml">
+      <publishTime>09/30/2024 17:36:59</publishTime>
+    </File>
+    <File Include="Views/marketingScheduler/add.cshtml">
+      <publishTime>08/12/2024 16:32:02</publishTime>
+    </File>
+    <File Include="Views/marketingScheduler/list.cshtml">
+      <publishTime>09/23/2024 16:50:20</publishTime>
+    </File>
+    <File Include="Views/marketingScheduler/notification.cshtml">
+      <publishTime>08/12/2024 16:32:20</publishTime>
+    </File>
+    <File Include="Views/marketingScheduler/whatsapp.cshtml">
+      <publishTime>08/12/2024 17:22:26</publishTime>
     </File>
     <File Include="Views/model/add.cshtml">
       <publishTime>10/31/2023 16:06:16</publishTime>
@@ -6655,10 +6682,10 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>10/11/2023 12:53:24</publishTime>
     </File>
     <File Include="Views/model/list.cshtml">
-      <publishTime>08/07/2023 22:36:22</publishTime>
+      <publishTime>09/18/2024 20:33:45</publishTime>
     </File>
     <File Include="Views/model/listMake.cshtml">
-      <publishTime>08/07/2023 22:36:22</publishTime>
+      <publishTime>06/11/2024 12:41:44</publishTime>
     </File>
     <File Include="Views/packages/add.cshtml">
       <publishTime>04/27/2024 16:18:19</publishTime>
@@ -6672,8 +6699,14 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
     <File Include="Views/packages/_UpdatePackage.cshtml">
       <publishTime>08/07/2023 22:36:22</publishTime>
     </File>
+    <File Include="Views/Report/CarVisitorReport.cshtml">
+      <publishTime>07/23/2024 20:24:22</publishTime>
+    </File>
+    <File Include="Views/Report/DetailLogReport.cshtml">
+      <publishTime>09/12/2024 19:27:04</publishTime>
+    </File>
     <File Include="Views/Report/LeadDetailReport.cshtml">
-      <publishTime>05/02/2024 19:42:44</publishTime>
+      <publishTime>09/18/2024 20:33:45</publishTime>
     </File>
     <File Include="Views/Report/SummaryReport.cshtml">
       <publishTime>04/18/2024 16:07:46</publishTime>
@@ -6685,7 +6718,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>08/07/2023 22:36:22</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>05/02/2024 18:44:10</publishTime>
+      <publishTime>09/30/2024 16:45:11</publishTime>
     </File>
     <File Include="Views/sms/list.cshtml">
       <publishTime>04/18/2024 16:07:46</publishTime>
@@ -6697,7 +6730,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>08/07/2023 22:36:22</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>04/30/2024 17:00:34</publishTime>
+      <publishTime>09/25/2024 15:13:41</publishTime>
     </File>
   </ItemGroup>
 </Project>
