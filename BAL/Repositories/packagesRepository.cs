@@ -67,6 +67,54 @@ namespace BAL.Repositories
                 return null;
             }
         }
+        public List<CityViewModel> GetCitiesByCountry(string countryCode)
+        {
+            try
+            {
+                var lst = new List<CityViewModel>();
+
+                SqlParameter[] p = new SqlParameter[1];
+                p[0] = new SqlParameter("@countryCode", countryCode);
+                _dt = (new DBHelperGarageUAT().GetTableFromSP)("sp_GetCitiesByCountry_UAT", p);
+                if (_dt != null)
+                {
+                    if (_dt.Rows.Count > 0)
+                    {
+                        lst = JArray.Parse(Newtonsoft.Json.JsonConvert.SerializeObject(_dt)).ToObject<List<CityViewModel>>();
+                    }
+                }
+
+                return lst;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+        public List<CityViewModel> GetDistrictsByCity()
+        {
+            try
+            {
+                var lst = new List<CityViewModel>();
+
+                SqlParameter[] p = new SqlParameter[0];
+                //p[0] = new SqlParameter("@cityID", cityID);
+                _dt = (new DBHelperGarageUAT().GetTableFromSP)("sp_GetDistricts_UAT", p);
+                if (_dt != null)
+                {
+                    if (_dt.Rows.Count > 0)
+                    {
+                        lst = JArray.Parse(Newtonsoft.Json.JsonConvert.SerializeObject(_dt)).ToObject<List<CityViewModel>>();
+                    }
+                }
+
+                return lst;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
 
         public PackagesInfoViewModel Get(int? id)
         {

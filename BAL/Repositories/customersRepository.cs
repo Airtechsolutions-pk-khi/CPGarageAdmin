@@ -16,6 +16,8 @@ using System.Data;
 using Twilio.TwiML.Messaging;
 using WebAPICode.Helpers;
 using System.Web.Razor.Tokenizer;
+using System.Web.Configuration;
+using System.Web.Mvc;
 
 namespace BAL.Repositories
 {
@@ -56,6 +58,16 @@ namespace BAL.Repositories
             {
                 return null;
             }
+        }
+        public List<SelectListItem> GetCountries()
+        {
+            return DBContext.Countries
+                .Select(c => new SelectListItem
+                {
+                    Text = c.Name,  // Display Name
+                    Value = c.Code  // Value to send
+                })
+                .ToList();
         }
         public CustomerViewModel GetCustomerbyid(int id)
         {
@@ -106,7 +118,7 @@ namespace BAL.Repositories
                         Currency = r.Locations.FirstOrDefault().Currency,
                         Tax = r.Tax,
                         PackageInfoID = r.UserPackageDetails.Count == 0 ? 0 : r.UserPackageDetails.FirstOrDefault().PackageInfoID,
-
+                        //CountryList = GetCountries(),
                         //ExpiryDate = r.UserPackageDetails.FirstOrDefault().ExpiryDate,
                     })
                   .FirstOrDefault();
@@ -233,9 +245,9 @@ namespace BAL.Repositories
                     _user.BusinessType = modal.BusinessType;
                     _user.Password = new clsCryption().EncryptDecrypt(modal.Password, "encrypt");
                     _user.Address = modal.LocationAddress;
-                    _user.CityID = 4020;
+                    _user.CityID = modal.ID;
                     _user.PackageInfoID = modal.PackageInfoID;
-                    _user.CountryID = "SA";
+                    _user.CountryID = modal.CountryID;
                     _user.Subscribe = false;
                     _user.TimeZoneID = 54;
                     _user.Tax = 0;
@@ -305,8 +317,8 @@ namespace BAL.Repositories
                             _subuser.UserName = modal.Email;
                             _subuser.Password = modal.Password;
                             _subuser.LocationID = dataLocation.LocationID;
-                            _subuser.CityID = 4020;
-                            _subuser.CountryID = "SA";
+                            _subuser.CityID = modal.ID;
+                            _subuser.CountryID = modal.CountryID;
                             _subuser.Passcode = GenerateRandomNo();
                             _subuser.TimeZoneID = 54;
                             _subuser.StatusID = 1;

@@ -32,9 +32,14 @@ namespace CPGarageAdmin.Controllers
         }
         [HttpGet]
         public ActionResult add(int? id)
+      
         {
             var packages = packageRepo.GetAll();
             ViewBag.packages = new SelectList(packages, "PackageInfoID", "PackageName");
+
+            var countries = customerRepo.GetCountries();
+            ViewBag.CountryList = new SelectList(countries, "Value", "Text");
+            
 
             try
             {
@@ -53,6 +58,20 @@ namespace CPGarageAdmin.Controllers
 
             return View();
         }
+        public JsonResult GetCitiesByCountry(string countryCode)
+        {
+            // Replace with your logic to fetch cities by country code
+            var cities = packageRepo.GetCitiesByCountry(countryCode);
+            var cityList = cities.Select(c => new { ID = c.CityID, Name = c.Name }).ToList();
+            return Json(cityList, JsonRequestBehavior.AllowGet);
+        }
+        //public JsonResult GetDistrictsByCity()
+        //{
+        //    // Replace with your logic to fetch districts by city ID
+        //    var districts = packageRepo.GetDistrictsByCity();
+        //    var districtList = districts.Select(d => new { District = d.District }).ToList();
+        //    return Json(districtList, JsonRequestBehavior.AllowGet);
+        //}
         [HttpPost]
         public JsonResult Save(CustomerViewModel modal)
         {

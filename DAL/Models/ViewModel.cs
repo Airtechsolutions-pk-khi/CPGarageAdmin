@@ -87,7 +87,8 @@ namespace DAL.Models
 		public string ContactNo { get; set; }
 		public string Address { get; set; }
 		public Nullable<int> CityID { get; set; }
-		public string CountryID { get; set; }
+        public int ID { get; set; }
+        public string CountryID { get; set; }
 		public string Website { get; set; }
 		public Nullable<bool> Subscribe { get; set; }
 		public Nullable<int> RoleID { get; set; }
@@ -122,8 +123,21 @@ namespace DAL.Models
 		public string Currency { get; set; }
 		public string RemainingDays { get; set; }
 		public Nullable<System.DateTime> PackageExpiry { get; set; }
+
+		public string SelectedCountry { get; set; } // For the selected value
+        public IEnumerable<SelectListItem> CountryList { get; set; } // For the dropdown options
 	}
-	public class RoleGroup
+
+    
+    public class CityViewModel
+    {
+        public int CityID { get; set; }
+        public string Name { get; set; }
+        public string CountryCode { get; set; }
+        public string District { get; set; }        
+        public string Population { get; set; }
+    }
+    public class RoleGroup
 	{
 		public int GroupID { get; set; }
 		public string GroupName { get; set; }

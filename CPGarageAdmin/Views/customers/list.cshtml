@@ -29,6 +29,7 @@
                                 <th>Company Name</th>
                                 @*<th>Sms Service</th>*@
                                 <th>Contact</th>
+                                <th>Last Order Date</th>
                                 <th>Remaining Days</th>
                                 @*<th>Address</th>*@
                                 <th>Status</th>
@@ -53,15 +54,16 @@
                                     }
                                     <td> @item.Company</td>
                                     @*@if (item.IsSMSCheckoutAddOn == true)
-                                        {
-                                            <td class="bg-success">Active</td>
-                                        }
-                                        else
-                                        {
-                                            <td class="bg-danger"> De Active</td>
+        {
+            <td class="bg-success">Active</td>
+        }
+        else
+        {
+            <td class="bg-danger"> De Active</td>
 
-                                        }*@
+        }*@
                                     <td> @item.ContactNo</td>
+                                    <td> @DateTime.Now</td>
                                     <td>@item.RemainingDays</td>
                                     <td>
                                         <label>
