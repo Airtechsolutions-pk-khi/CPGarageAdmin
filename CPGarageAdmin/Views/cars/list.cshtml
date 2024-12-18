@@ -38,13 +38,14 @@
         });
 
         function bindDatatable() {
+
             datatable = $('#tblStudent')
                 .DataTable({
                     "sAjaxSource": "/cars/GetData",
                     "bServerSide": true,
                     "bProcessing": true,
-                    "bSearchable": true,
-                    "sSearch": true,
+                    "Searchable": false,
+                    "Search": true,
                     "order": [[1, 'asc']],
                     "language": {
                         "emptyTable": "No record found.",
@@ -85,7 +86,7 @@
                             "autoWidth": true,
                             "searchable": false,
                             "render": function (data, type, row) {
-                                return '<a href="/cars/add?id=' + row.CarID + '&modelid=' + row.ModelID + '"><i class="mdi mdi-account-edit" data-toggle="tooltip" data-placement="bottom" title="Edit Data" style="font-size:25px !important;"></i></a>';
+                                return '<a href="/cars/add?id=' + row.CarID +'"><i class="mdi mdi-account-edit" data-toggle="tooltip" data-placement="bottom" title="Edit Data" style="font-size:25px !important;"></i></a>';
                             }
                         }
                     ]

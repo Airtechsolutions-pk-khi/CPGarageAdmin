@@ -350,7 +350,8 @@
 
                         <div class="form-group">
                             <label for="CreationDate">Creation Date</label>
-                            @Html.TextBoxFor(model => model.CreatedDate, new { @class = "form-control", placeholder = "Select Date", id = "CreationDate" })
+                            @*@Html.TextBoxFor(model => model.CreatedDate, new { @class = "form-control", placeholder = "Select Date", id = "CreationDate" })*@
+                            <input class="form-control" name="CreatedDate" type="date" />
                         </div>
 
 
