@@ -34,9 +34,9 @@ namespace CPGarageAdmin.Controllers
         {
             return View();
         }
-        public ActionResult GetData(JqueryDatatableParam param)
+        public ActionResult GetData(JqueryDatatableParam param, int? statusID)
         {
-            var cars = carsRepo.GetCars(param);
+            var cars = carsRepo.GetCars(param, statusID);
             var totalRecords = cars.TotalRecords;
             var jsonResponse = new
             {

@@ -27,11 +27,9 @@
                                 <th>Email</th>
                                 <th>Package</th>
                                 <th>Company Name</th>
-                                @*<th>Sms Service</th>*@
                                 <th>Contact</th>
                                 <th>Last Order Date</th>
                                 <th>Remaining Days</th>
-                                @*<th>Address</th>*@
                                 <th>Status</th>
                                 <th>Actions</th>
                             </tr>
@@ -53,18 +51,9 @@
                                         <td>Professional</td>
                                     }
                                     <td> @item.Company</td>
-                                    @*@if (item.IsSMSCheckoutAddOn == true)
-                                        {
-                                            <td class="bg-success">Active</td>
-                                        }
-                                        else
-                                        {
-                                            <td class="bg-danger"> De Active</td>
-
-                                        }*@
                                     <td> @item.ContactNo</td>
                                     <td> @DateTime.Now</td>
-                                    <td>@item.RemainingDays</td>
+                                    <td> @item.RemainingDays</td>
                                     <td>
                                         <label>
                                             @if (item.StatusID == 1)
@@ -78,11 +67,7 @@
                                         </label>
                                     </td>
                                     <td class="text-center">
-                                        @*<a href="~/customers/add?id=@item.UserID"><i class="mdi mdi-pencil" style="font-size:18px !important;"></i></a>*@
-                                        @*<a href="~/customers/Delete?id=@item.UserID"><i class="mdi mdi-delete" style="font-size:18px !important;"></i></a>*@
-
                                         <a href="~/customers/add?id=@item.UserID"><i class="mdi mdi-account-edit" data-toggle="tooltip" data-placement="bottom" title="Edit Data" style="font-size:25px !important;"></i></a>
-                                        @*<a href="~/customers/Status?id=@item.StatusID"><i class="mdi mdi-eye-off" style="font-size:25px !important;" data-toggle="tooltip" data-placement="bottom" title="Deactive Customer"></i></a>*@
                                     </td>
                                 </tr>
                             }

@@ -65,13 +65,6 @@ namespace CPGarageAdmin.Controllers
             var cityList = cities.Select(c => new { ID = c.CityID, Name = c.Name }).ToList();
             return Json(cityList, JsonRequestBehavior.AllowGet);
         }
-        //public JsonResult GetDistrictsByCity()
-        //{
-        //    // Replace with your logic to fetch districts by city ID
-        //    var districts = packageRepo.GetDistrictsByCity();
-        //    var districtList = districts.Select(d => new { District = d.District }).ToList();
-        //    return Json(districtList, JsonRequestBehavior.AllowGet);
-        //}
         [HttpPost]
         public JsonResult Save(CustomerViewModel modal)
         {

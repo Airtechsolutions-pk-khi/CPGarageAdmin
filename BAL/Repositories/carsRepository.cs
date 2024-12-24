@@ -34,15 +34,16 @@ namespace BAL.Repositories
         {
             DBContext = contextDB;
         }
-        public CarsPaginationResult GetCars(JqueryDatatableParam param)
+        public CarsPaginationResult GetCars(JqueryDatatableParam param, int? statusID)
         {
             try
             {
                 CarsPaginationResult result = new CarsPaginationResult();
-                SqlParameter[] p = new SqlParameter[3];
+                SqlParameter[] p = new SqlParameter[4];
                 p[0] = new SqlParameter("@start", param.iDisplayStart);
                 p[1] = new SqlParameter("@end", param.iDisplayLength);
                 p[2] = new SqlParameter("@searchTerm", param.sSearch);
+                p[3] = new SqlParameter("@statusID", statusID);
                 _ds = (new DBHelperGarageUAT().GetDatasetFromSP)("sp_GetCars_CP", p);
                 if (_ds != null && _ds.Tables.Count > 0)
                 {

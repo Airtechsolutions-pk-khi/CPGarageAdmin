@@ -179,7 +179,7 @@ namespace BAL.Repositories
                         );
                         DBContext.SaveChanges();
 
-                        if (modal.PackageInfoID == 0)
+                        if (modal.PackageInfoID == 0 || modal.PackageInfoID == null)
                         {
                             UserPackageDetail package = new UserPackageDetail();
 
@@ -192,7 +192,7 @@ namespace BAL.Repositories
                             DBContext.UserPackageDetails.Add(package);
                             DBContext.SaveChanges();
                         }
-                        if (modal.PackageInfoID != 0)
+                        else if (modal.PackageInfoID > 0)
                         {
                             UserPackageDetail _package = DBContext.UserPackageDetails.Where(x => x.PackageInfoID == modal.PackageInfoID).FirstOrDefault();
 
