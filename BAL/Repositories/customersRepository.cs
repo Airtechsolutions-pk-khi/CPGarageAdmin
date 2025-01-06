@@ -158,6 +158,7 @@ namespace BAL.Repositories
                         _user.StatusID = modal.StatusID == true ? 1 : 2;
                         _user.PackageInfoID = modal.PackageInfoID;
                         _user.IsAccountingAddons = modal.IsAccountingAddons;
+                        _user.CreatedDate = modal.CreatedDate;
                         DBContext.Entry(_user).State = EntityState.Modified;
                         DBContext.UpdateOnly<User>(_user, x =>
                        x.FirstName,
@@ -175,8 +176,20 @@ namespace BAL.Repositories
                         x => x.IsDefaultCar,
                         x => x.BusinessType,
                         x => x.StatusID,
-                        x => x.UserPackageDetails
+                        x => x.UserPackageDetails,
+                        x => x.CreatedDate
                         );
+                        Location _location = DBContext.Locations.Where(x => x.UserID == modal.UserID).FirstOrDefault();
+                        _location.Name = modal.LocationName;
+                        _location.Address = modal.LocationAddress;
+                        _location.ContactNo = modal.LocationContactNo;
+                        _location.Email = modal.LocationEmail;
+                        DBContext.Entry(_location).State = EntityState.Modified;
+                        DBContext.UpdateOnly<Location>(_location, 
+                            y => y.Name,
+                            y => y.Address,
+                            y => y.ContactNo,
+                            y => y.Email);
                         DBContext.SaveChanges();
 
                         if (modal.PackageInfoID == 0 || modal.PackageInfoID == null)
@@ -192,10 +205,12 @@ namespace BAL.Repositories
                             DBContext.UserPackageDetails.Add(package);
                             DBContext.SaveChanges();
                         }
-                        else if (modal.PackageInfoID > 0)
+                        else if (modal.PackageInfoID != null)
                         {
-                            UserPackageDetail _package = DBContext.UserPackageDetails.Where(x => x.PackageInfoID == modal.PackageInfoID).FirstOrDefault();
-
+                            //UserPackageDetail _package = DBContext.UserPackageDetails.Where(x => x.UserID = modal.UserID).FirstOrDefault();
+                            UserPackageDetail _package = DBContext.UserPackageDetails
+                                    .Where(x => x.UserID == modal.UserID)
+                                    .FirstOrDefault();
                             _package.PackageInfoID = modal.PackageInfoID;
                             _package.UserID = modal.UserID;
                             _package.StatusID = modal.StatusID == true ? 1 : 2;
@@ -203,7 +218,7 @@ namespace BAL.Repositories
                             _package.ExpiryDate = modal.ExpiryDate;
                             DBContext.Entry(_package).State = EntityState.Modified;
                             DBContext.UpdateOnly<UserPackageDetail>(_package, x =>
-                           x.PackageInfoID,
+                               x.PackageInfoID,
                             x => x.StatusID,
                             x => x.LastUpdatedDate,
                             x => x.ExpiryDate
@@ -289,13 +304,13 @@ namespace BAL.Repositories
                             store.Address = _location.Address;
                             store.LastUpdatedDate = _location.LastUpdatedDate;
                             store.LastUpdatedBy = _location.LastUpdatedBy;
-                            store.StoreLocationID =null;
+                            store.StoreLocationID = null;
                             store.Type = "Main Store";
                             store.Name = dataLocation.Name + "-mainstore";
                             DBContext.Stores.Add(store);
                             DBContext.SaveChanges();
                             //add store for location
-                             store = new Store();
+                            store = new Store();
                             store.StatusID = 1;
                             store.UserID = _location.UserID;
                             store.Contact = _location.ContactNo;
@@ -309,7 +324,7 @@ namespace BAL.Repositories
                             DBContext.SaveChanges();
                         }
                         catch (Exception e)
-                        {}
+                        { }
                         if (dataLocation.LocationID > 0)
                         {
                             _subuser.FirstName = modal.FirstName;

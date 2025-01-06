@@ -118,14 +118,17 @@
 </style>
 <script type="text/javascript">
     function UserSuccess(result) {
+        debugger
         if (result.success) {
-            window.location.href = "/customers/list";
-        }
-        else {
-            alert("CUSTOMER CANNOT CREATED SUCCESSFULLY")
+            $('#progress').hide(); // Hide the loader
+            $('button[type="submit"]').attr('disabled', false); // Enable the submit button
+            alert("CUSTOMERS UPDATED SUCCESSFULLY"); // Display success message
+            window.location.href = "/customers/list"; // Redirect to car list
+        } else {
+            $('#progress').hide(); // Hide the loader
+            $('button[type="submit"]').attr('disabled', false); // Enable the submit button
         }
     }
-
 </script>
 
 <script type="text/javascript">

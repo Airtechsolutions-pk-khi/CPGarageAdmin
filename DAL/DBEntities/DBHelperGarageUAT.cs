@@ -10,8 +10,8 @@ namespace WebAPICode.Helpers
 {
     public class DBHelperGarageUAT
     {
-        //private static readonly string connectionString = "data source=garageserver.database.windows.net;initial catalog=Garage_Live;persist security info=True;user id=garageadmin;password=Tech@963;";
-        private static readonly string connectionString = "data source=karageuatdb.database.windows.net;initial catalog=Garage_UAT;persist security info=True;user id=CloudSA99368a5a;password=Tech@963;";
+        private static readonly string connectionString = "data source=garageserver.database.windows.net;initial catalog=Garage_Live;persist security info=True;user id=garageadmin;password=Tech@963;";
+        //private static readonly string connectionString = "data source=karageuatdb.database.windows.net;initial catalog=Garage_UAT;persist security info=True;user id=CloudSA99368a5a;password=Tech@963;";
 
         public DataTable GetTableFromSP(string sp, Dictionary<string, object> parametersCollection)
         {

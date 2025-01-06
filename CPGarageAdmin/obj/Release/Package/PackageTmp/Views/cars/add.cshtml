@@ -90,28 +90,18 @@
 </style>
 
 <script type="text/javascript">
-    $(document).ready(function () {
+    function UserSuccess(result) {
         debugger
-        // Show loader and disable submit button on form submit
-        $('#contact-form').on('submit', function () {
-            $('#progress').show(); // Display the loader
-            $('button[type="submit"]').attr('disabled', true); // Disable the submit button
-        });
-        function UserSuccess(result) {
-            debugger
-            if (result.success) {
-                $('#progress').hide(); // Hide the loader
-                $('button[type="submit"]').attr('disabled', false); // Enable the submit button
-                alert("CAR UPDATED SUCCESSFULLY"); // Display success message
-                window.location.href = "/cars/list"; // Redirect to car list
-            } else {
-                $('#progress').hide(); // Hide the loader
-                $('button[type="submit"]').attr('disabled', false); // Enable the submit button
-                alert("CAR CANNOT BE UPDATED SUCCESSFULLY"); // Display error message
-            }
+        if (result.success) {
+            $('#progress').hide(); // Hide the loader
+            $('button[type="submit"]').attr('disabled', false); // Enable the submit button
+            alert("CARS UPDATED SUCCESSFULLY"); // Display success message
+            window.location.href = "/cars/list"; // Redirect to car list
+        } else {
+            $('#progress').hide(); // Hide the loader
+            $('button[type="submit"]').attr('disabled', false); // Enable the submit button
         }
-    });
-
+    }
 </script>
 
 <script type="text/javascript">
@@ -373,7 +363,7 @@
                             <div class="row">
                                 <div class="col-md-3" style="padding-top:20px;">
                                     <button type="submit" class="btn btn-dark mr-2">Save</button>
-                                    <a href="~/model/listMake" class="btn btn-light">Cancel</a>
+                                    <a href="~/cars/list" class="btn btn-light">Cancel</a>
                                 </div>
                             </div>
 
@@ -385,7 +375,5 @@
     </form>
 }
 
-<script src="~/Scripts/jquery.validate.min.js"></script>
-<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
 <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
 <script src="~/Scripts/jquery-3.4.1.min.js"></script>
