@@ -26,10 +26,32 @@ namespace CPGarageAdmin.Controllers
 
         }
         // GET: users
-        public ActionResult list()
+        //public ActionResult list()
+        //{
+        //    return View(customerRepo.GetAll());
+        //}
+
+        public ActionResult list(int? filter = 0) // Default to "All"
         {
-            return View(customerRepo.GetAll());
+            IEnumerable<DAL.DBEntities.User> customers;
+
+            switch (filter)
+            {
+                case 1: // Active
+                    customers = customerRepo.GetAll().Where(c => c.StatusID == 1);
+                    break;
+                case 2: // Deactive
+                    customers = customerRepo.GetAll().Where(c => c.StatusID != 1);
+                    break;
+                default: // All
+                    customers = customerRepo.GetAll();
+                    break;
+            }
+
+            ViewBag.Filter = filter; // Pass the selected filter value to the view
+            return View(customers);
         }
+
         [HttpGet]
         public ActionResult add(int? id)
       

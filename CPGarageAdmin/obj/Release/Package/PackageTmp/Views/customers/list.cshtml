@@ -11,7 +11,15 @@
             <div class="col-8">
                 <h4 class="card-title">Customers</h4>
             </div>
-            <div class="col-4 text-right">
+            <div class="col-2 text-right">
+                <select class="form-control" id="filterDropdown">
+                    <option disabled>--please select--</option>
+                    <option value="0" @(ViewBag.Filter != null && (int)ViewBag.Filter == 0 ? "selected" : "")>All</option>
+                    <option value="1" @(ViewBag.Filter != null && (int)ViewBag.Filter == 1 ? "selected" : "")>Active</option>
+                    <option value="2" @(ViewBag.Filter != null && (int)ViewBag.Filter == 2 ? "selected" : "")>Deactive</option>
+                </select>
+            </div>
+            <div class="col-2 text-right">
                 <a href="~/customers/add" class="btn btn-sm btn-secondary"><i class="mdi mdi-plus-circle"></i> Add Customer</a>
             </div>
         </div>
@@ -82,6 +90,15 @@
 <script>
     $(document).ready(function () {
         $('#order-listing1').DataTable();
+
+
+         // Dropdown change event
+        $('#filterDropdown').change(function () {
+            debugger
+            const selectedValue = $(this).val();
+            window.location.href = `@Url.Action("list", "customers")?filter=${selectedValue}`;
+        });
+
     });
 
     function Delete(_id)
