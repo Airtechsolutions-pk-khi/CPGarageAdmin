@@ -69,7 +69,7 @@ namespace BAL.Repositories
                 })
                 .ToList();
         }
-        public CustomerViewModel GetCustomerbyid(int id)
+        public CustomerViewModel GetCustomerbyid(int? id)
         {
             try
             {
@@ -86,7 +86,7 @@ namespace BAL.Repositories
                         BusinessType = r.BusinessType,
                         Email = r.Email,
                         ContactNo = r.ContactNo,
-                        CityID = r.CityID,
+                        ID = r.CityID,
                         CountryID = r.CountryID,
                         Website = r.Website,
                         Subscribe = r.Subscribe,
@@ -130,17 +130,31 @@ namespace BAL.Repositories
                 return new CustomerViewModel();
             }
         }
-
         public int edit(CustomerViewModel modal)
         {
             using (var dbContextTransaction = DBContext.Database.BeginTransaction())
             {
-
                 try
                 {
+                    modal.ID = modal.CityID;
+
                     if (modal.UserID > 0)
                     {
+                        // Check if email already exists for another user
+                        bool emailExists = DBContext.Users.Any(x => x.Email == modal.Email && x.UserID != modal.UserID);
+                        if (emailExists)
+                        {
+                            return -1; // Indicate that email is already taken
+                        }
+
+                        // Fetch user details
                         User _user = DBContext.Users.Where(x => x.UserID == modal.UserID).FirstOrDefault();
+                        if (_user == null)
+                        {
+                            return -2; // Indicate that user not found
+                        }
+
+                        // Update user fields
                         _user.FirstName = modal.FirstName;
                         _user.LastName = modal.LastName;
                         _user.Email = modal.Email;
@@ -159,6 +173,10 @@ namespace BAL.Repositories
                         _user.PackageInfoID = modal.PackageInfoID;
                         _user.IsAccountingAddons = modal.IsAccountingAddons;
                         _user.CreatedDate = modal.CreatedDate;
+                        _user.CountryID = modal.CountryID;
+                        _user.CityID = modal.CityID;
+
+                        // Mark entity as modified
                         DBContext.Entry(_user).State = EntityState.Modified;
                         DBContext.UpdateOnly<User>(_user, x =>
                        x.FirstName,
@@ -177,194 +195,346 @@ namespace BAL.Repositories
                         x => x.BusinessType,
                         x => x.StatusID,
                         x => x.UserPackageDetails,
-                        x => x.CreatedDate
+                        x => x.CreatedDate,
+                        x => x.CountryID,
+                        x => x.CityID
                         );
+
+                        // Update Location details
                         Location _location = DBContext.Locations.Where(x => x.UserID == modal.UserID).FirstOrDefault();
                         _location.Name = modal.LocationName;
                         _location.Address = modal.LocationAddress;
                         _location.ContactNo = modal.LocationContactNo;
                         _location.Email = modal.LocationEmail;
+                        _location.CountryID = modal.CountryID;
+                        _location.CityID = modal.CityID;
                         DBContext.Entry(_location).State = EntityState.Modified;
-                        DBContext.UpdateOnly<Location>(_location, 
+                        DBContext.UpdateOnly<Location>(_location,
                             y => y.Name,
                             y => y.Address,
                             y => y.ContactNo,
                             y => y.Email);
                         DBContext.SaveChanges();
 
+                        // Handle package details
                         if (modal.PackageInfoID == 0 || modal.PackageInfoID == null)
                         {
-                            UserPackageDetail package = new UserPackageDetail();
+                            UserPackageDetail package = new UserPackageDetail
+                            {
+                                UserID = modal.UserID,
+                                PackageInfoID = modal.PackageInfoID,
+                                StatusID = 1,
+                                CreatedDate = DateTime.UtcNow.AddMinutes(180),
+                                LastUpdatedDate = DateTime.UtcNow.AddMinutes(180),
+                                ExpiryDate = modal.ExpiryDate
+                            };
 
-                            package.UserID = modal.UserID;
-                            package.PackageInfoID = modal.PackageInfoID;
-                            package.StatusID = 1;
-                            package.CreatedDate = DateTime.UtcNow.AddMinutes(180);
-                            package.LastUpdatedDate = DateTime.UtcNow.AddMinutes(180);
-                            package.ExpiryDate = modal.ExpiryDate;
                             DBContext.UserPackageDetails.Add(package);
                             DBContext.SaveChanges();
                         }
-                        else if (modal.PackageInfoID != null)
+                        else
                         {
-                            //UserPackageDetail _package = DBContext.UserPackageDetails.Where(x => x.UserID = modal.UserID).FirstOrDefault();
                             UserPackageDetail _package = DBContext.UserPackageDetails
-                                    .Where(x => x.UserID == modal.UserID)
-                                    .FirstOrDefault();
-                            _package.PackageInfoID = modal.PackageInfoID;
-                            _package.UserID = modal.UserID;
-                            _package.StatusID = modal.StatusID == true ? 1 : 2;
-                            _package.LastUpdatedDate = DateTime.UtcNow.AddMinutes(180);
-                            _package.ExpiryDate = modal.ExpiryDate;
-                            DBContext.Entry(_package).State = EntityState.Modified;
-                            DBContext.UpdateOnly<UserPackageDetail>(_package, x =>
-                               x.PackageInfoID,
-                            x => x.StatusID,
-                            x => x.LastUpdatedDate,
-                            x => x.ExpiryDate
-                            );
-                            DBContext.SaveChanges();
+                                .Where(x => x.UserID == modal.UserID)
+                                .FirstOrDefault();
+
+                            if (_package != null)
+                            {
+                                _package.PackageInfoID = modal.PackageInfoID;
+                                _package.StatusID = modal.StatusID == true ? 1 : 2;
+                                _package.LastUpdatedDate = DateTime.UtcNow.AddMinutes(180);
+                                _package.ExpiryDate = modal.ExpiryDate;
+
+                                DBContext.Entry(_package).State = EntityState.Modified;
+                                DBContext.UpdateOnly<UserPackageDetail>(_package,
+                                    x => x.PackageInfoID, x => x.StatusID, x => x.LastUpdatedDate, x => x.ExpiryDate);
+                                DBContext.SaveChanges();
+                            }
                         }
                     }
 
                     dbContextTransaction.Commit();
-                    return 1;
+                    return 1; // Success
                 }
                 catch (Exception ex)
                 {
                     dbContextTransaction.Rollback();
+                    return 0; // Indicate error
                 }
             }
-            return 0;
         }
+
+        //public int edit(CustomerViewModel modal)
+        //{
+        //    using (var dbContextTransaction = DBContext.Database.BeginTransaction())
+        //    {
+
+        //        try
+        //        {
+        //            modal.ID = modal.CityID;
+        //            if (modal.UserID > 0)
+        //            {
+
+        //                // Check if email already exists for another user
+        //                bool emailExists = DBContext.Users.Any(x => x.Email == modal.Email && x.UserID != modal.UserID);
+        //                if (emailExists)
+        //                {
+        //                    return -1; // Indicate that email is already taken
+        //                }
+
+        //                // Fetch user details
+        //                User _user = DBContext.Users.Where(x => x.UserID == modal.UserID).FirstOrDefault();
+        //                if (_user == null)
+        //                {
+        //                    return -2; // Indicate that user not found
+        //                }
+
+        //                //User _user = DBContext.Users.Where(x => x.UserID == modal.UserID).FirstOrDefault();
+        //                _user.FirstName = modal.FirstName;
+        //                _user.LastName = modal.LastName;
+        //                _user.Email = modal.Email;
+        //                _user.ContactNo = modal.ContactNo;
+        //                _user.UserName = modal.Email;
+        //                _user.Company = modal.Company;
+        //                _user.IsCashier = modal.IsCashier;
+        //                _user.IsGarageGo = modal.IsGarageGo;
+        //                _user.IsYakeen = modal.IsYakeen;
+        //                _user.IsMojaz = modal.IsMojaz;
+        //                _user.IsDefaultCar = modal.IsDefaultCar;
+        //                _user.BusinessType = modal.BusinessType;
+        //                _user.Password = new clsCryption().EncryptDecrypt(modal.Password, "encrypt");
+        //                _user.IsSMSCheckoutAddOn = modal.IsSMSActivate;
+        //                _user.StatusID = modal.StatusID == true ? 1 : 2;
+        //                _user.PackageInfoID = modal.PackageInfoID;
+        //                _user.IsAccountingAddons = modal.IsAccountingAddons;
+        //                _user.CreatedDate = modal.CreatedDate;
+        //                _user.CountryID = modal.CountryID;
+        //                _user.CityID = modal.CityID;
+        //                DBContext.Entry(_user).State = EntityState.Modified;
+        //                DBContext.UpdateOnly<User>(_user, x =>
+        //               x.FirstName,
+        //                x => x.LastName,
+        //                x => x.Email,
+        //                x => x.Company,
+        //                x => x.Password,
+        //                x => x.UserName,
+        //                x => x.ContactNo,
+        //                x => x.IsSMSCheckoutAddOn,
+        //                x => x.IsGarageGo,
+        //                x => x.IsCashier,
+        //                x => x.IsYakeen,
+        //                x => x.IsMojaz,
+        //                x => x.IsDefaultCar,
+        //                x => x.BusinessType,
+        //                x => x.StatusID,
+        //                x => x.UserPackageDetails,
+        //                x => x.CreatedDate,
+        //                x => x.CountryID,
+        //                x => x.CityID
+        //                );
+        //                Location _location = DBContext.Locations.Where(x => x.UserID == modal.UserID).FirstOrDefault();
+        //                _location.Name = modal.LocationName;
+        //                _location.Address = modal.LocationAddress;
+        //                _location.ContactNo = modal.LocationContactNo;
+        //                _location.Email = modal.LocationEmail;
+        //                _location.CountryID = modal.CountryID;
+        //                _location.CityID = modal.CityID;
+        //                DBContext.Entry(_location).State = EntityState.Modified;
+        //                DBContext.UpdateOnly<Location>(_location, 
+        //                    y => y.Name,
+        //                    y => y.Address,
+        //                    y => y.ContactNo,
+        //                    y => y.Email);
+        //                DBContext.SaveChanges();
+
+        //                if (modal.PackageInfoID == 0 || modal.PackageInfoID == null)
+        //                {
+        //                    UserPackageDetail package = new UserPackageDetail();
+
+        //                    package.UserID = modal.UserID;
+        //                    package.PackageInfoID = modal.PackageInfoID;
+        //                    package.StatusID = 1;
+        //                    package.CreatedDate = DateTime.UtcNow.AddMinutes(180);
+        //                    package.LastUpdatedDate = DateTime.UtcNow.AddMinutes(180);
+        //                    package.ExpiryDate = modal.ExpiryDate;
+        //                    DBContext.UserPackageDetails.Add(package);
+        //                    DBContext.SaveChanges();
+        //                }
+        //                else if (modal.PackageInfoID != null)
+        //                {
+        //                    //UserPackageDetail _package = DBContext.UserPackageDetails.Where(x => x.UserID = modal.UserID).FirstOrDefault();
+        //                    UserPackageDetail _package = DBContext.UserPackageDetails
+        //                            .Where(x => x.UserID == modal.UserID)
+        //                            .FirstOrDefault();
+        //                    _package.PackageInfoID = modal.PackageInfoID;
+        //                    _package.UserID = modal.UserID;
+        //                    _package.StatusID = modal.StatusID == true ? 1 : 2;
+        //                    _package.LastUpdatedDate = DateTime.UtcNow.AddMinutes(180);
+        //                    _package.ExpiryDate = modal.ExpiryDate;
+        //                    DBContext.Entry(_package).State = EntityState.Modified;
+        //                    DBContext.UpdateOnly<UserPackageDetail>(_package, x =>
+        //                       x.PackageInfoID,
+        //                    x => x.StatusID,
+        //                    x => x.LastUpdatedDate,
+        //                    x => x.ExpiryDate
+        //                    );
+        //                    DBContext.SaveChanges();
+        //                }
+        //            }
+
+        //            dbContextTransaction.Commit();
+        //            return 1;
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            dbContextTransaction.Rollback();
+        //        }
+        //    }
+        //    return 0;
+        //}
         public int add(CustomerViewModel modal)
         {
             using (var dbContextTransaction = DBContext.Database.BeginTransaction())
             {
                 try
                 {
+
+                    bool emailExists = DBContext.Users.Any(x => x.Email == modal.Email && x.UserID != modal.UserID);
+                    if (emailExists)
+                    {
+                        return -1; // Indicate that email is already taken
+                    }
                     User _user = new User();
                     Location _location = new Location();
                     SubUser _subuser = new SubUser();
                     Receipt _receipt = new Receipt();
-
-                    UserPackageDetail _package = new UserPackageDetail();
-
-                    _user.FirstName = modal.FirstName;
-                    _user.LastName = modal.LastName;
-                    _user.Company = modal.Company;
-                    _user.UserName = modal.Email;
-                    _user.Email = modal.Email;
-                    _user.ContactNo = modal.ContactNo;
-                    _user.Password = new clsCryption().EncryptDecrypt(modal.Password, "encrypt");
-                    _user.BusinessType = modal.BusinessType;
-                    _user.Password = new clsCryption().EncryptDecrypt(modal.Password, "encrypt");
-                    _user.Address = modal.LocationAddress;
-                    _user.CityID = modal.ID;
-                    _user.PackageInfoID = modal.PackageInfoID;
-                    _user.CountryID = modal.CountryID;
-                    _user.Subscribe = false;
-                    _user.TimeZoneID = 54;
-                    _user.Tax = 0;
-                    _user.IsGarageGo = modal.IsGarageGo;
-                    _user.IsCashier = modal.IsCashier;
-                    _user.IsYakeen = modal.IsYakeen;
-                    _user.IsMojaz = modal.IsMojaz;
-                    _user.IsDefaultCar = modal.IsDefaultCar;
-                    _user.StatusID = modal.StatusID == true ? 1 : 2;
-                    _user.CompanyCode = "POS-" + randomstring(6);
-                    _user.Address = modal.LocationAddress;
-                    _user.LastUpdatedDate = DateTime.UtcNow.AddMinutes(180);
-                    User data = DBContext.Users.Add(_user);
-                    DBContext.SaveChanges();
-                    if (data.UserID > 0)
+                    // Fetch user details
+                    User _useremail = DBContext.Users.Where(x => x.Email == modal.Email).FirstOrDefault();
+                    if (_useremail == null)
                     {
-                        _location.Name = modal.LocationName;
-                        _location.Address = modal.LocationAddress;
-                        _location.ContactNo = modal.LocationContactNo;
-                        _location.Email = modal.LocationEmail;
-                        _location.Name = modal.LocationName;
-                        _location.TimeZoneID = 54;
-                        _location.UserID = data.UserID;
-                        _location.Open_Time = TimeSpan.Parse("09:00:00");
-                        _location.Close_Time = TimeSpan.Parse("21:00:00");
-                        _location.StatusID = 1;
-                        _location.CompanyCode = _user.CompanyCode;
-                        _location.Currency = modal.Currency;
-                        Location dataLocation = DBContext.Locations.Add(_location);
+
+
+                        UserPackageDetail _package = new UserPackageDetail();
+
+                        _user.FirstName = modal.FirstName;
+                        _user.LastName = modal.LastName;
+                        _user.Company = modal.Company;
+                        _user.UserName = modal.Email;
+                        _user.Email = modal.Email;
+                        _user.ContactNo = modal.ContactNo;
+                        _user.Password = new clsCryption().EncryptDecrypt(modal.Password, "encrypt");
+                        _user.BusinessType = modal.BusinessType;
+                        _user.Password = new clsCryption().EncryptDecrypt(modal.Password, "encrypt");
+                        _user.Address = modal.LocationAddress;
+                        _user.CityID = modal.ID;
+                        _user.PackageInfoID = modal.PackageInfoID;
+                        _user.CountryID = modal.CountryID;
+                        _user.Subscribe = false;
+                        _user.TimeZoneID = 54;
+                        _user.Tax = 0;
+                        _user.IsGarageGo = modal.IsGarageGo;
+                        _user.IsCashier = modal.IsCashier;
+                        _user.IsYakeen = modal.IsYakeen;
+                        _user.IsMojaz = modal.IsMojaz;
+                        _user.IsDefaultCar = modal.IsDefaultCar;
+                        _user.StatusID = modal.StatusID == true ? 1 : 2;
+                        _user.CompanyCode = "POS-" + randomstring(6);
+                        _user.Address = modal.LocationAddress;
+                        _user.LastUpdatedDate = DateTime.UtcNow.AddMinutes(180);
+                        User data = DBContext.Users.Add(_user);
                         DBContext.SaveChanges();
 
-                        try
+                        if (data.UserID > 0)
                         {
-                            //add main store for location
-                            var store = new Store();
-                            store.StatusID = 1;
-                            store.UserID = _location.UserID;
-                            store.Contact = _location.ContactNo;
-                            store.Address = _location.Address;
-                            store.LastUpdatedDate = _location.LastUpdatedDate;
-                            store.LastUpdatedBy = _location.LastUpdatedBy;
-                            store.StoreLocationID = null;
-                            store.Type = "Main Store";
-                            store.Name = dataLocation.Name + "-mainstore";
-                            DBContext.Stores.Add(store);
+                            _location.Name = modal.LocationName;
+                            _location.Address = modal.LocationAddress;
+                            _location.ContactNo = modal.LocationContactNo;
+                            _location.Email = modal.LocationEmail;
+                            _location.Name = modal.LocationName;
+                            _location.TimeZoneID = 54;
+                            _location.UserID = data.UserID;
+                            _location.Open_Time = TimeSpan.Parse("09:00:00");
+                            _location.Close_Time = TimeSpan.Parse("21:00:00");
+                            _location.StatusID = 1;
+                            _location.CompanyCode = _user.CompanyCode;
+                            _location.Currency = modal.Currency;
+                            _location.CountryID = modal.CountryID;
+                            _location.CityID = modal.ID;
+                            Location dataLocation = DBContext.Locations.Add(_location);
                             DBContext.SaveChanges();
-                            //add store for location
-                            store = new Store();
-                            store.StatusID = 1;
-                            store.UserID = _location.UserID;
-                            store.Contact = _location.ContactNo;
-                            store.Address = _location.Address;
-                            store.LastUpdatedDate = _location.LastUpdatedDate;
-                            store.LastUpdatedBy = _location.LastUpdatedBy;
-                            store.StoreLocationID = dataLocation.LocationID;
-                            store.Type = "Location Store";
-                            store.Name = _location.Name + "-store";
-                            DBContext.Stores.Add(store);
-                            DBContext.SaveChanges();
-                        }
-                        catch (Exception e)
-                        { }
-                        if (dataLocation.LocationID > 0)
-                        {
-                            _subuser.FirstName = modal.FirstName;
-                            _subuser.LastName = modal.LastName;
-                            _subuser.UserName = modal.Email;
-                            _subuser.Password = modal.Password;
-                            _subuser.LocationID = dataLocation.LocationID;
-                            _subuser.CityID = modal.ID;
-                            _subuser.CountryID = modal.CountryID;
-                            _subuser.Passcode = GenerateRandomNo();
-                            _subuser.TimeZoneID = 54;
-                            _subuser.StatusID = 1;
-                            _subuser.LastUpdatedDate = DateTime.UtcNow.AddMinutes(180);
-                            _subuser.CompanyCode = _user.CompanyCode;
-                            _subuser.UserID = _user.UserID;
-                            SubUser dataSubuser = DBContext.SubUsers.Add(_subuser);
-                            DBContext.SaveChanges();
-                        }
-                        if (dataLocation.LocationID > 0)
-                        {
-                            _receipt.CompanyTitle = modal.Company;
-                            _receipt.CompanyAddress = modal.Address;
-                            _receipt.CompanyPhones = modal.ContactNo;
-                            _receipt.LocationID = dataLocation.LocationID;
-                            _receipt.StatusID = 1;
-                            _receipt.IsActive = true;
-                            _receipt.LastUpdatedDate = DateTime.UtcNow.AddMinutes(180);
-                            Receipt dataSubuser = DBContext.Receipts.Add(_receipt);
-                            DBContext.SaveChanges();
-                        }
-                        if (data.UserID != 0)
-                        {
-                            _package.UserID = data.UserID;
-                            _package.PackageInfoID = modal.PackageInfoID;
-                            _package.StatusID = 1;
-                            _package.CreatedDate = DateTime.UtcNow.AddMinutes(180);
-                            _package.LastUpdatedDate = DateTime.UtcNow.AddMinutes(180);
-                            _package.ExpiryDate = modal.ExpiryDate;
-                            UserPackageDetail datauser = DBContext.UserPackageDetails.Add(_package);
-                            DBContext.SaveChanges();
+
+                            try
+                            {
+                                //add main store for location
+                                var store = new Store();
+                                store.StatusID = 1;
+                                store.UserID = _location.UserID;
+                                store.Contact = _location.ContactNo;
+                                store.Address = _location.Address;
+                                store.LastUpdatedDate = _location.LastUpdatedDate;
+                                store.LastUpdatedBy = _location.LastUpdatedBy;
+                                store.StoreLocationID = null;
+                                store.Type = "Main Store";
+                                store.Name = dataLocation.Name + "-mainstore";
+                                DBContext.Stores.Add(store);
+                                DBContext.SaveChanges();
+                                //add store for location
+                                store = new Store();
+                                store.StatusID = 1;
+                                store.UserID = _location.UserID;
+                                store.Contact = _location.ContactNo;
+                                store.Address = _location.Address;
+                                store.LastUpdatedDate = _location.LastUpdatedDate;
+                                store.LastUpdatedBy = _location.LastUpdatedBy;
+                                store.StoreLocationID = dataLocation.LocationID;
+                                store.Type = "Location Store";
+                                store.Name = _location.Name + "-store";
+                                DBContext.Stores.Add(store);
+                                DBContext.SaveChanges();
+                            }
+                            catch (Exception e)
+                            { }
+                            if (dataLocation.LocationID > 0)
+                            {
+                                _subuser.FirstName = modal.FirstName;
+                                _subuser.LastName = modal.LastName;
+                                _subuser.UserName = modal.Email;
+                                _subuser.Password = modal.Password;
+                                _subuser.LocationID = dataLocation.LocationID;
+                                _subuser.CityID = modal.ID;
+                                _subuser.CountryID = modal.CountryID;
+                                _subuser.Passcode = GenerateRandomNo();
+                                _subuser.TimeZoneID = 54;
+                                _subuser.StatusID = 1;
+                                _subuser.LastUpdatedDate = DateTime.UtcNow.AddMinutes(180);
+                                _subuser.CompanyCode = _user.CompanyCode;
+                                _subuser.UserID = _user.UserID;
+                                SubUser dataSubuser = DBContext.SubUsers.Add(_subuser);
+                                DBContext.SaveChanges();
+                            }
+                            if (dataLocation.LocationID > 0)
+                            {
+                                _receipt.CompanyTitle = modal.Company;
+                                _receipt.CompanyAddress = modal.Address;
+                                _receipt.CompanyPhones = modal.ContactNo;
+                                _receipt.LocationID = dataLocation.LocationID;
+                                _receipt.StatusID = 1;
+                                _receipt.IsActive = true;
+                                _receipt.LastUpdatedDate = DateTime.UtcNow.AddMinutes(180);
+                                Receipt dataSubuser = DBContext.Receipts.Add(_receipt);
+                                DBContext.SaveChanges();
+                            }
+                            if (data.UserID != 0)
+                            {
+                                _package.UserID = data.UserID;
+                                _package.PackageInfoID = modal.PackageInfoID;
+                                _package.StatusID = 1;
+                                _package.CreatedDate = DateTime.UtcNow.AddMinutes(180);
+                                _package.LastUpdatedDate = DateTime.UtcNow.AddMinutes(180);
+                                _package.ExpiryDate = modal.ExpiryDate;
+                                UserPackageDetail datauser = DBContext.UserPackageDetails.Add(_package);
+                                DBContext.SaveChanges();
+                            }
                         }
 
                         dbContextTransaction.Commit();
@@ -417,6 +587,7 @@ namespace BAL.Repositories
             }
             return 0;
         }
+
         public string randomstring(int length)
         {
             var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789";

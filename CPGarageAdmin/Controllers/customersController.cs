@@ -61,8 +61,7 @@ namespace CPGarageAdmin.Controllers
 
             var countries = customerRepo.GetCountries();
             ViewBag.CountryList = new SelectList(countries, "Value", "Text");
-            
-
+            ViewBag.CityList = new SelectList(new List<SelectListItem>(), "Value", "Text");
             try
             {
                 if (id != 0 || id != null)
@@ -70,6 +69,10 @@ namespace CPGarageAdmin.Controllers
                     //var data = customerRepo.GetCustomerbyid(id);
                     //return View(data);
                     var data = customerRepo.GetCustomerbyid(int.Parse(id.ToString()));
+                    // Fetch cities based on the customer's saved country
+                    var cities = packageRepo.GetCitiesByCountry(data.CountryID);
+                    ViewBag.CityList = new SelectList(cities, "ID", "Name", data.ID);
+
                     return View(data);
                 }
             }
@@ -84,7 +87,7 @@ namespace CPGarageAdmin.Controllers
         {
             // Replace with your logic to fetch cities by country code
             var cities = packageRepo.GetCitiesByCountry(countryCode);
-            var cityList = cities.Select(c => new { ID = c.CityID, Name = c.Name }).ToList();
+            var cityList = cities.Select(c => new { ID = c.ID, Name = c.Name }).ToList();
             return Json(cityList, JsonRequestBehavior.AllowGet);
         }
         [HttpPost]
@@ -97,6 +100,13 @@ namespace CPGarageAdmin.Controllers
                 if (modal.UserID > 0)
                 {
                     var data = customerRepo.edit(modal);
+
+                    if (data == -1)
+                    {
+                        return Json(new { success = false, message = "This email is already taken." });
+                    }
+
+
                     if (modal.PackageInfoID != 1)
                     {
                         try
@@ -152,6 +162,11 @@ namespace CPGarageAdmin.Controllers
                 else
                 {
                     var data = customerRepo.add(modal);
+                    if (data == -1)
+                    {
+                        return Json(new { success = false, message = "This email is already taken." });
+                    }
+
                     if (modal.PackageInfoID == 1)
                     {
                         try

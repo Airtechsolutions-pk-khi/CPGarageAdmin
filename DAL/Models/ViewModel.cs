@@ -86,8 +86,8 @@ namespace DAL.Models
 		public string Email { get; set; }
 		public string ContactNo { get; set; }
 		public string Address { get; set; }
-		public Nullable<int> CityID { get; set; }
-        public int ID { get; set; }
+		public int? CityID { get; set; }
+        public int? ID { get; set; }
         public string CountryID { get; set; }
 		public string Website { get; set; }
 		public Nullable<bool> Subscribe { get; set; }
@@ -131,6 +131,7 @@ namespace DAL.Models
     
     public class CityViewModel
     {
+        public int ID { get; set; }
         public int CityID { get; set; }
         public string Name { get; set; }
         public string CountryCode { get; set; }
