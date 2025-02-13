@@ -2008,7 +2008,7 @@
     <Compile Include="Controllers\packagesController.cs" />
     <Compile Include="Controllers\reportController.cs" />
     <Compile Include="Controllers\smsController.cs" />
-    <Compile Include="Controllers\itemmovementController.cs" />
+    <Compile Include="Controllers\itemTransferController.cs" />
     <Compile Include="Controllers\loginController.cs" />
     <Compile Include="Controllers\customersController.cs" />
     <Compile Include="Global.asax.cs">
@@ -2394,7 +2394,7 @@
     <Content Include="Views\customers\list.cshtml" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
-    <Content Include="Views\itemmovement\Index.cshtml" />
+    <Content Include="Views\itemTransfer\list.cshtml" />
     <Content Include="Views\sms\list.cshtml" />
     <Content Include="Views\Broadcast\Broadcast.cshtml" />
     <Content Include="Views\model\add.cshtml" />
@@ -2423,6 +2423,7 @@
     <Content Include="Views\marketing\email.cshtml" />
     <Content Include="Views\marketing\whatsapp.cshtml" />
     <Content Include="Views\marketing\notification.cshtml" />
+    <Content Include="Views\itemTransfer\add.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

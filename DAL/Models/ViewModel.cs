@@ -128,6 +128,15 @@ namespace DAL.Models
         public IEnumerable<SelectListItem> CountryList { get; set; } // For the dropdown options
 	}
 
+    public class ItemTransferViewModel
+    {
+        public int? FromUserID { get; set; }
+        public int? ToUserID { get; set; }
+        public int? FromLocationID { get; set; }
+        public int? ToLocationID { get; set; }
+        public bool IsOpenItem { get; set; }
+    }
+
     
     public class CityViewModel
     {
