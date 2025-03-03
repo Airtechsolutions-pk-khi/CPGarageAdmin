@@ -80,6 +80,9 @@
                                         <a href="~/customers/add?id=@item.UserID">
                                             <i class="mdi mdi-account-edit" data-toggle="tooltip" data-placement="bottom" title="Edit Data" style="font-size:25px !important;"></i>
                                         </a>
+                                        <a href="javascript:void(0);" onclick="sendWhatsApp('@item.UserID')">
+                                            <i class="mdi mdi-whatsapp" data-toggle="tooltip" data-placement="bottom" title="Send WhatsApp Message" style="font-size:25px !important; color: green;"></i>
+                                        </a>
                                     </td>
                                 </tr>
                             }
@@ -126,4 +129,13 @@
             }
         });
     });
+    function sendWhatsApp(userId) {
+        $.get("@Url.Action("SendWhatsAppMessage", "customers")", { userId: userId }, function (data) {
+            if (data.success) {
+                alert("Message Send Successfully");
+            } else {
+                alert(data.message); // Show error message if any
+            }
+        });
+    }
 </script>

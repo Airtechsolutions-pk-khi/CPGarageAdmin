@@ -4,10 +4,13 @@ using DAL.Models;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Net.Mail;
 using System.Reflection;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Text.Json.Nodes;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Services.Description;
@@ -54,35 +57,72 @@ namespace CPGarageAdmin.Controllers
 
         [HttpGet]
         public ActionResult add(int? id)
-      
         {
             var packages = packageRepo.GetAll();
-            ViewBag.packages = new SelectList(packages, "PackageInfoID", "PackageName");
+            ViewBag.Packages = new SelectList(packages, "PackageInfoID", "PackageName");
 
             var countries = customerRepo.GetCountries();
             ViewBag.CountryList = new SelectList(countries, "Value", "Text");
-            ViewBag.CityList = new SelectList(new List<SelectListItem>(), "Value", "Text");
+            ViewBag.CityList = new SelectList(new List<SelectListItem>(), "Value", "Text"); // Empty initially
+
+            CustomerViewModel data = new CustomerViewModel(); // Create an empty model
+
             try
             {
-                if (id != 0 || id != null)
+                if (id.HasValue && id.Value != 0) // Only fetch data if id is valid
                 {
-                    //var data = customerRepo.GetCustomerbyid(id);
-                    //return View(data);
-                    var data = customerRepo.GetCustomerbyid(int.Parse(id.ToString()));
-                    // Fetch cities based on the customer's saved country
-                    var cities = packageRepo.GetCitiesByCountry(data.CountryID);
-                    ViewBag.CityList = new SelectList(cities, "ID", "Name", data.ID);
+                    data = customerRepo.GetCustomerbyid(id.Value);
 
-                    return View(data);
+                    if (data != null)
+                    {
+                        // Fetch cities based on the customer's saved country
+                        var cities = packageRepo.GetCitiesByCountry(data.CountryID);
+                        ViewBag.CityList = new SelectList(cities, "ID", "Name", data.CityID); // Bind selected city
+                    }
                 }
             }
             catch (Exception ex)
             {
-
+                // Log exception if needed
+                ViewBag.ErrorMessage = "An error occurred while fetching customer data.";
             }
 
-            return View();
+            return View(data); // Always return a model
         }
+
+
+
+        //[HttpGet]
+        //public ActionResult add(int? id)
+
+        //{
+        //    var packages = packageRepo.GetAll();
+        //    ViewBag.packages = new SelectList(packages, "PackageInfoID", "PackageName");
+
+        //    var countries = customerRepo.GetCountries();
+        //    ViewBag.CountryList = new SelectList(countries, "Value", "Text");
+        //    ViewBag.CityList = new SelectList(new List<SelectListItem>(), "Value", "Text");
+        //    try
+        //    {
+        //        if (id != 0 || id != null)
+        //        {
+        //            //var data = customerRepo.GetCustomerbyid(id);
+        //            //return View(data);
+        //            var data = customerRepo.GetCustomerbyid(int.Parse(id.ToString()));
+        //            // Fetch cities based on the customer's saved country
+        //            var cities = packageRepo.GetCitiesByCountry(data.CountryID);
+        //            ViewBag.CityList = new SelectList(cities, "ID", "Name", data.ID);
+
+        //            return View(data);
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+
+        //    }
+
+        //    return View();
+        //}
         public JsonResult GetCitiesByCountry(string countryCode)
         {
             // Replace with your logic to fetch cities by country code
@@ -303,6 +343,194 @@ namespace CPGarageAdmin.Controllers
             //rafi
             //SendEmail(SubJect, BodyEmail, ToEmail);
             return View(data);
+        }
+        //public JsonResult SendWhatsAppMessage(int userId)
+        //{
+        //    var user = customerRepo.GetCustomerbyid(userId);
+        //    if (user != null && !string.IsNullOrEmpty(user.ContactNo))
+        //    {
+        //        string message = $@"‏
+        //             *عملينا العزيز، شكراً لاختيارك نظام كراج. أدناه بيانات حسابكم:*
+
+        //             👤 *اسم العميل:* {user.FirstName} {user.LastName}  
+        //             🏢 *المركز:* {user.Company}  
+
+        //             🔹 *بيانات حسابكم في كراج:*  
+
+        //             🌐 *للدخول إلى لوحة التحكم من خلال الرابط:*  
+        //             https://admin.garage.sa/  
+
+        //             *بعد دخولكم الى لوحة التحكم يمكنكم الدخول باستخدام:*
+
+        //             📧 *الإيميل:* {user.Email}  
+        //             🔑 *كلمة المرور:* {user.Password}  
+
+        //             🎥 *فيديو شرح لوحة التحكم:*  
+        //             https://youtu.be/EXCEQMy6RPQ  
+
+        //             📚 *مكتبة المساعدة:*  
+        //             https://garagelibrary.notion.site/5cd30a5bc7474380928471949e4735fe?pvs=4  
+
+        //             📲 *تحميل تطبيق كراج:*  
+
+        //             🛒 *نسخة الاي او اس (ايباد):*  
+        //             https://apps.apple.com/sa/app/garage-pos/id1454372626  
+
+        //             🤖 *نسخة الاندرويد:*  
+        //             https://play.google.com/store/apps/details?id=sa.garage  
+
+        //             *بعد تحميل التطبيق يمكنكم الدخول باستخدام:*  
+        //             \u200E
+        //             🏷️ *رمز المنشأة:* {user.CompanyCode}  
+        //             🏷️ *الكود:* {user.Passcode} ";
+
+        //        string whatsappUrl = $"https://api.whatsapp.com/send?phone={user.ContactNo}&text={Uri.EscapeDataString(message)}";
+        //        return Json(new { success = true, url = whatsappUrl }, JsonRequestBehavior.AllowGet);
+        //    }
+
+        //    return Json(new { success = false, message = "المستخدم غير موجود أو لا يحتوي على رقم هاتف." }, JsonRequestBehavior.AllowGet);
+        //}
+        public JsonResult SendWhatsAppMessage(int userId)
+        {
+            var user = customerRepo.GetCustomerbyid(userId);
+            if (user != null && !string.IsNullOrEmpty(user.ContactNo))
+            {
+                try
+                {
+                    var company = user.Company;
+                    var name = user.FirstName + user.LastName;
+                    var companycode = user.CompanyCode;
+                    var passcode = user.Passcode;
+                    var username = user.Email;
+                    var password = user.Password;
+
+                    string apiUrl = "https://graph.facebook.com/v16.0/104897916024556/messages";
+                    string accessToken = "Bearer EAADqZBje1EysBO3Ylo9hXm74a0utJr9K3MxTziNVlgkrmSVO6fvtQzF06RoogNSa8YBGfZANaXZAkiQUHIPrIbroONJtYg53nSSPDMoNeJEgEroZArJJnI7zVVPCxiRlz8B51E2TXZCPS5QKLZBSYZACkz93Aur0hssH7K82n4KX9RuO9NcFFjtJnilR3ZCf5saernwGxlZCXHZAEH2EjYzroZAQv97CXuROwfDInZCbiZBZATbBh9IJF5WOVaGhHutmSP";
+
+                    //string jsonBody = $@"‏
+                    //             *عملينا العزيز، شكراً لاختيارك نظام كراج. أدناه بيانات حسابكم:*
+
+                    //             👤 *اسم العميل:* {user.FirstName} {user.LastName}  
+                    //             🏢 *المركز:* {user.Company}  
+
+                    //             🔹 *بيانات حسابكم في كراج:*  
+
+                    //             🌐 *للدخول إلى لوحة التحكم من خلال الرابط:*  
+                    //             https://admin.garage.sa/  
+
+                    //             *بعد دخولكم الى لوحة التحكم يمكنكم الدخول باستخدام:*
+
+                    //             📧 *الإيميل:* {user.Email}  
+                    //             🔑 *كلمة المرور:* {user.Password}  
+
+                    //             🎥 *فيديو شرح لوحة التحكم:*  
+                    //             https://youtu.be/EXCEQMy6RPQ  
+
+                    //             📚 *مكتبة المساعدة:*  
+                    //             https://garagelibrary.notion.site/5cd30a5bc7474380928471949e4735fe?pvs=4  
+
+                    //             📲 *تحميل تطبيق كراج:*  
+
+                    //             🛒 *نسخة الاي او اس (ايباد):*  
+                    //             https://apps.apple.com/sa/app/garage-pos/id1454372626  
+
+                    //             🤖 *نسخة الاندرويد:*  
+                    //             https://play.google.com/store/apps/details?id=sa.garage  
+
+                    //             *بعد تحميل التطبيق يمكنكم الدخول باستخدام:*  
+                    //             \u200E
+                    //             🏷️ *رمز المنشأة:* {user.CompanyCode}  
+                    //             🏷️ *الكود:* {user.Passcode} ";
+
+
+                    string jsonBody = "{" +
+                        "\"messaging_product\": \"whatsapp\"," +
+                        "\"recipient_type\": \"individual\"," +
+                        "\"to\": \"" + user.ContactNo + "\"," +
+                        "\"type\": \"template\"," +
+                        "\"template\": {" +
+                        "    \"name\": \"customer_account\"," +
+                        "    \"language\": {" +
+                        "        \"code\": \"ar\"" +
+                        "    }," +
+                        "    \"components\": [" +
+                        "        {" +
+                        "            \"type\": \"header\"," +
+                        "            \"parameters\": [" +
+                        "                {" +
+                        "                    \"type\": \"text\"," +
+                        "                    \"text\": \"👤 *اسم العميل:* " + user.FirstName + " " + user.LastName + "\"" +
+                        "                }" +
+                        "            ]" +
+                        "        }," +
+                        "        {" +
+                        "            \"type\": \"body\"," +
+                        "            \"parameters\": [" +
+                        "                {" +
+                        "                    \"type\": \"text\"," +
+                        "                    \"text\": " +
+                        "                     \"🏢 *المركز:* " + user.Company + "\\n\\n" +
+                        "                     🔹 *بيانات حسابكم في كراج:* \\n\\n" +
+                        "                     🌐 *للدخول إلى لوحة التحكم:* \\nhttps://admin.garage.sa/ \\n\\n" +
+                        "                     📧 *الإيميل:* " + user.Email + "\\n" +
+                        "                     🔑 *كلمة المرور:* " + user.Password + "\\n\\n" +
+                        "                     🎥 *فيديو شرح لوحة التحكم:* \\nhttps://youtu.be/EXCEQMy6RPQ \\n\\n" +
+                        "                     📚 *مكتبة المساعدة:* \\nhttps://garagelibrary.notion.site/5cd30a5bc7474380928471949e4735fe?pvs=4 \\n\\n" +
+                        "                     📲 *تحميل تطبيق كراج:* \\n\\n" +
+                        "                     🛒 *نسخة الاي او اس:* \\nhttps://apps.apple.com/sa/app/garage-pos/id1454372626 \\n\\n" +
+                        "                     🤖 *نسخة الاندرويد:* \\nhttps://play.google.com/store/apps/details?id=sa.garage \\n\\n" +
+                        "                     🏷️ *رمز المنشأة:* " + user.CompanyCode + "\\n" +
+                        "                     🏷️ *الكود:* " + user.Passcode + "\"" +
+                        "                }" +
+                        "            ]" +
+                        "        }," +
+                        "        {" +
+                        "            \"type\": \"button\"," +
+                        "            \"sub_type\": \"url\"," +
+                        "            \"index\": \"0\"," +
+                        "            \"parameters\": [" +
+                        "                {" +
+                        "                    \"type\": \"text\"," +
+                        "                    \"text\": \"home\"" +
+                        "                }" +
+                        "            ]" +
+                        "        }" +
+                        "    ]" +
+                        "}}";
+                    try
+                    {
+                        HttpWebRequest request = (HttpWebRequest)WebRequest.Create(apiUrl);
+                        request.Method = "POST";
+                        request.ContentType = "application/json";
+                        request.Headers.Add("Authorization", accessToken);
+
+                        using (var streamWriter = new StreamWriter(request.GetRequestStream()))
+                        {
+                            streamWriter.Write(jsonBody);
+                            streamWriter.Flush();
+                            streamWriter.Close();
+                        }
+
+                        HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+                        using (var streamReader = new StreamReader(response.GetResponseStream()))
+                        {
+                            string responseData = streamReader.ReadToEnd();
+                        }
+                      
+                    }
+                    catch (WebException ex)
+                    {
+                        // Handle any exceptions here
+                        Console.WriteLine(ex.Message);
+                        return Json(new { success = false }, JsonRequestBehavior.AllowGet);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    return Json(new { success = false }, JsonRequestBehavior.AllowGet);
+                }
+            }
+            return Json(new { success = true }, JsonRequestBehavior.AllowGet);
         }
     }
 }

@@ -123,8 +123,8 @@ namespace DAL.Models
 		public string Currency { get; set; }
 		public string RemainingDays { get; set; }
 		public Nullable<System.DateTime> PackageExpiry { get; set; }
-
-		public string SelectedCountry { get; set; } // For the selected value
+        public Nullable<int> Passcode { get; set; }
+        public string SelectedCountry { get; set; } // For the selected value
         public IEnumerable<SelectListItem> CountryList { get; set; } // For the dropdown options
 	}
 

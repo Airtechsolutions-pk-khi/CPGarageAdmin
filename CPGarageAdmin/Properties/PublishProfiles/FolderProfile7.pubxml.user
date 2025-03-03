@@ -5,7 +5,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
 <Project>
   <PropertyGroup>
     <_PublishTargetUrl>E:\Projects Publish\CPGarage_Admin</_PublishTargetUrl>
-    <History>True|2025-02-13T09:52:10.7175717Z||;True|2025-01-30T17:58:02.8110970+05:00||;True|2025-01-17T19:56:31.3372670+05:00||;True|2025-01-06T17:06:48.5787127+05:00||;True|2025-01-06T17:00:20.9938385+05:00||;True|2024-12-24T13:29:39.0220343+05:00||;True|2024-12-18T19:01:20.4037854+05:00||;True|2024-12-02T17:17:00.1213456+05:00||;True|2024-09-25T15:13:44.6408097+05:00||;True|2024-09-18T20:24:20.7777132+05:00||;True|2024-08-19T00:02:35.3178077+05:00||;True|2024-07-19T15:17:56.8767161+05:00||;True|2024-07-18T19:15:35.0181156+05:00||;True|2024-05-06T13:17:19.2494617+05:00||;True|2024-05-02T19:44:41.3846595+05:00||;True|2024-04-30T17:13:57.7103531+05:00||;True|2024-04-30T17:00:38.0706072+05:00||;True|2024-04-18T16:09:15.9097448+05:00||;True|2024-04-17T20:05:13.2660357+05:00||;True|2024-02-28T13:20:50.3287900+05:00||;True|2024-01-31T20:34:17.6193650+05:00||;True|2024-01-31T18:22:29.3408476+05:00||;</History>
+    <History>True|2025-03-03T10:22:30.8846037Z||;True|2025-02-26T16:29:10.3549435+05:00||;True|2025-02-25T14:56:04.1559306+05:00||;True|2025-02-14T12:21:29.4058797+05:00||;True|2025-02-13T14:52:10.7175717+05:00||;True|2025-01-30T17:58:02.8110970+05:00||;True|2025-01-17T19:56:31.3372670+05:00||;True|2025-01-06T17:06:48.5787127+05:00||;True|2025-01-06T17:00:20.9938385+05:00||;True|2024-12-24T13:29:39.0220343+05:00||;True|2024-12-18T19:01:20.4037854+05:00||;True|2024-12-02T17:17:00.1213456+05:00||;True|2024-09-25T15:13:44.6408097+05:00||;True|2024-09-18T20:24:20.7777132+05:00||;True|2024-08-19T00:02:35.3178077+05:00||;True|2024-07-19T15:17:56.8767161+05:00||;True|2024-07-18T19:15:35.0181156+05:00||;True|2024-05-06T13:17:19.2494617+05:00||;True|2024-05-02T19:44:41.3846595+05:00||;True|2024-04-30T17:13:57.7103531+05:00||;True|2024-04-30T17:00:38.0706072+05:00||;True|2024-04-18T16:09:15.9097448+05:00||;True|2024-04-17T20:05:13.2660357+05:00||;True|2024-02-28T13:20:50.3287900+05:00||;True|2024-01-31T20:34:17.6193650+05:00||;True|2024-01-31T18:22:29.3408476+05:00||;</History>
     <LastFailureDetails />
   </PropertyGroup>
   <ItemGroup>
@@ -6298,34 +6298,46 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>12/02/2024 13:23:41</publishTime>
     </File>
     <File Include="bin/BAL.dll">
-      <publishTime>02/13/2025 20:01:01</publishTime>
+      <publishTime>03/03/2025 15:22:16</publishTime>
     </File>
     <File Include="bin/BAL.dll.config">
       <publishTime>12/02/2024 13:23:41</publishTime>
     </File>
     <File Include="bin/BAL.pdb">
-      <publishTime>02/13/2025 20:01:01</publishTime>
+      <publishTime>03/03/2025 15:22:16</publishTime>
     </File>
     <File Include="bin/CPGarageAdmin.dll">
-      <publishTime>02/13/2025 20:01:07</publishTime>
+      <publishTime>03/03/2025 15:22:23</publishTime>
     </File>
     <File Include="bin/CPGarageAdmin.pdb">
-      <publishTime>02/13/2025 20:01:07</publishTime>
+      <publishTime>03/03/2025 15:22:23</publishTime>
     </File>
     <File Include="bin/DAL.dll">
-      <publishTime>02/13/2025 20:01:00</publishTime>
+      <publishTime>03/03/2025 15:22:15</publishTime>
     </File>
     <File Include="bin/DAL.dll.config">
-      <publishTime>02/13/2025 20:00:16</publishTime>
+      <publishTime>03/03/2025 15:21:28</publishTime>
     </File>
     <File Include="bin/DAL.pdb">
-      <publishTime>02/13/2025 20:01:00</publishTime>
+      <publishTime>03/03/2025 15:22:15</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>12/02/2024 13:23:43</publishTime>
     </File>
     <File Include="bin/EntityFramework.SqlServer.dll">
       <publishTime>12/02/2024 13:23:43</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AspNetCore.Http.Abstractions.dll">
+      <publishTime>01/15/2025 03:00:50</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AspNetCore.Http.Features.dll">
+      <publishTime>01/15/2025 03:00:48</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AspNetCore.Mvc.Abstractions.dll">
+      <publishTime>01/15/2025 03:01:28</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AspNetCore.Routing.Abstractions.dll">
+      <publishTime>01/15/2025 03:00:50</publishTime>
     </File>
     <File Include="bin/Microsoft.Bcl.AsyncInterfaces.dll">
       <publishTime>12/02/2024 13:23:43</publishTime>
@@ -6358,13 +6370,16 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>12/02/2024 13:23:44</publishTime>
     </File>
     <File Include="bin/Microsoft.Extensions.Primitives.dll">
-      <publishTime>12/02/2024 13:23:44</publishTime>
+      <publishTime>10/31/2023 20:00:32</publishTime>
     </File>
     <File Include="bin/Microsoft.IdentityModel.Logging.dll">
       <publishTime>12/02/2024 13:23:44</publishTime>
     </File>
     <File Include="bin/Microsoft.IdentityModel.Tokens.dll">
       <publishTime>12/02/2024 13:23:44</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Net.Http.Headers.dll">
+      <publishTime>01/15/2025 03:00:52</publishTime>
     </File>
     <File Include="bin/Microsoft.Web.Infrastructure.dll">
       <publishTime>12/02/2024 13:23:45</publishTime>
@@ -6466,7 +6481,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>12/02/2024 13:23:43</publishTime>
     </File>
     <File Include="bin/System.Buffers.dll">
-      <publishTime>12/02/2024 13:23:46</publishTime>
+      <publishTime>11/13/2024 02:47:04</publishTime>
     </File>
     <File Include="bin/System.Configuration.ConfigurationManager.dll">
       <publishTime>12/02/2024 13:23:46</publishTime>
@@ -6502,7 +6517,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>12/02/2024 13:24:00</publishTime>
     </File>
     <File Include="bin/System.Text.Encodings.Web.dll">
-      <publishTime>12/02/2024 13:24:03</publishTime>
+      <publishTime>10/31/2023 20:00:28</publishTime>
     </File>
     <File Include="bin/System.Text.Json.dll">
       <publishTime>12/02/2024 13:24:05</publishTime>
@@ -6631,10 +6646,10 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>12/24/2024 12:54:34</publishTime>
     </File>
     <File Include="Views/customers/add.cshtml">
-      <publishTime>01/30/2025 17:44:43</publishTime>
+      <publishTime>02/26/2025 15:24:36</publishTime>
     </File>
     <File Include="Views/customers/list.cshtml">
-      <publishTime>01/30/2025 11:32:07</publishTime>
+      <publishTime>02/25/2025 15:35:34</publishTime>
     </File>
     <File Include="Views/dashboard/dashboard.cshtml">
       <publishTime>12/02/2024 13:23:38</publishTime>
@@ -6736,7 +6751,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>12/02/2024 13:23:40</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>02/13/2025 20:01:09</publishTime>
+      <publishTime>03/03/2025 15:22:25</publishTime>
     </File>
   </ItemGroup>
 </Project>

@@ -73,6 +73,14 @@ namespace BAL.Repositories
         {
             try
             {
+                var subdata = DBContext.SubUsers.Where(y => y.UserID == id)
+                    .AsEnumerable().Select(s => new SubUser
+                    {
+                        UserID = s.UserID,
+                        SubUserID = s.SubUserID,
+                        Passcode = s.Passcode,
+                        Password = s.Password
+                    });
                 var data = DBContext.Users.Where(x => x.UserID == id)
                     .AsEnumerable().Select(r => new CustomerViewModel
                     {
@@ -118,6 +126,7 @@ namespace BAL.Repositories
                         Currency = r.Locations.FirstOrDefault().Currency,
                         Tax = r.Tax,
                         PackageInfoID = r.UserPackageDetails.Count == 0 ? 0 : r.UserPackageDetails.FirstOrDefault().PackageInfoID,
+                        Passcode = subdata.FirstOrDefault().Passcode,
                         //CountryList = GetCountries(),
                         //ExpiryDate = r.UserPackageDetails.FirstOrDefault().ExpiryDate,
                     })
@@ -382,7 +391,7 @@ namespace BAL.Repositories
                             { }
                             if (dataLocation.LocationID > 0)
                             {
-                                _receipt.ReceiptName = modal.FirstName + modal.LastName;
+                                _receipt.ReceiptName = "فاتورة 1";
                                 _receipt.CompanyTitle = modal.Company;
                                 _receipt.CompanyAddress = modal.Address;
                                 _receipt.CompanyPhones = modal.ContactNo;
@@ -464,6 +473,7 @@ namespace BAL.Repositories
                                     _subuser.LastUpdatedDate = DateTime.UtcNow.AddMinutes(180);
                                     _subuser.CompanyCode = _user.CompanyCode;
                                     _subuser.UserID = _user.UserID;
+                                    _subuser.UserType = "Technician";
 
                                     // Set only the managerGroupID to SubUser
                                     _subuser.GroupID = managerGroupID;
