@@ -5,7 +5,7 @@
 <div class="card">
     <div class="card-header">
         <div class="form-row">
-            <div class="col-lg-5 col-md-4">
+            <div class="col-lg-3 col-md-3">
                 <h3 class="text-gray mt-3">Lead Detail Report</h3>
             </div>
             <div class="col-lg-2 col-md-2">
@@ -21,9 +21,18 @@
             <div class="col-lg-2 col-md-2">
                 <input type="date" class="form-control" id="toDate" />
             </div>
-            <div class="col-lg-1 col-md-2">
+
+            <div class="col-md-3" style="text-align:right;">
                 <button type="button" class="btn btn-primary" id="filterButton">Apply Filter</button>
+                <button type="button" class="btn btn-primary" id="exportButton"><i class="mdi mdi-file-export"></i>&nbsp;Export</button>
             </div>
+
+            @*<div class="col-lg-1 col-md-1">
+                    <button type="button" class="btn btn-primary" id="filterButton">Apply Filter</button>
+                </div>
+                <div class="col-lg-1 col-md-1">
+                    <button type="button" class="btn btn-primary" id="filterButton">Apply Filter</button>
+                </div>*@
         </div>
     </div>
 </div>
@@ -52,9 +61,23 @@
 </div>
 
 @section scripts{
+    <script src="~/assets/js/excelexport.js"></script>
+
+    @*<script src="https://cdn.datatables.net/buttons/2.4.1/js/dataTables.buttons.min.js"></script>
+
+    <script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.html5.min.js"></script>*@
+
+    <script src="~/assets/js/dataTables.buttons.min.js"></script>
+    <script src="~/assets/js/buttons.html5.min.js"></script>
+
     <script>
         var datatable;
         $(document).ready(function () {
+
+            $('#exportButton').click(function () {
+                datatable.button('.buttons-excel').trigger();
+            });
+
             debugger
             bindDatatable();
             $('#filterButton').click(function () {
@@ -75,6 +98,19 @@
                 "bProcessing": true,
                 "bSearchable": true,
                 "order": [[1, 'asc']],
+
+                "dom": 'Bfrtip',
+                "buttons": [
+                    {
+                        extend: 'excelHtml5',
+                        text: 'Export',
+                        title: 'MonthlyLead_Rpt',
+                        exportOptions: {
+                            columns: ':visible' // exports only visible columns
+                        }
+                    }
+                ],
+
                 "language": {
                     "emptyTable": "No record found.",
                     "processing":
@@ -124,6 +160,7 @@
                     aoData.push({ "name": "statusFilter", "value": statusFilter });
                 }
             });
+            $('.dt-buttons').hide();
         }
     </script>
 }

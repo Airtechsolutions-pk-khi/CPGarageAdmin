@@ -330,6 +330,10 @@
     <Content Include="assets\images\sprites\red.png" />
     <Content Include="assets\images\sprites\yellow.png" />
     <Content Include="assets\jquery.richtext.js" />
+    <Content Include="assets\js\buttons.html5.min.js" />
+    <Content Include="assets\js\dataTables.buttons.min.js" />
+    <Content Include="assets\js\exportbuttons.js" />
+    <Content Include="assets\js\excelexport.js" />
     <Content Include="assets\js\ace.js" />
     <Content Include="assets\js\alerts.js" />
     <Content Include="assets\js\avgrund.js" />
