@@ -492,3 +492,13 @@ E:\Projects\CPGarage_Admin\CPGarageAdmin\obj\Release\CPGarageAdmin.csproj.CoreCo
 E:\Projects\CPGarage_Admin\CPGarageAdmin\obj\Release\CPGarage.4ECAE743.Up2Date
 E:\Projects\CPGarage_Admin\CPGarageAdmin\obj\Release\CPGarageAdmin.dll
 E:\Projects\CPGarage_Admin\CPGarageAdmin\obj\Release\CPGarageAdmin.pdb
+E:\Projects\CPGarage_Admin\CPGarageAdmin\bin\Microsoft.AspNetCore.Http.Abstractions.dll
+E:\Projects\CPGarage_Admin\CPGarageAdmin\bin\Microsoft.AspNetCore.Http.Features.dll
+E:\Projects\CPGarage_Admin\CPGarageAdmin\bin\Microsoft.AspNetCore.Mvc.Abstractions.dll
+E:\Projects\CPGarage_Admin\CPGarageAdmin\bin\Microsoft.AspNetCore.Routing.Abstractions.dll
+E:\Projects\CPGarage_Admin\CPGarageAdmin\bin\Microsoft.Net.Http.Headers.dll
+E:\Projects\CPGarage_Admin\CPGarageAdmin\bin\Microsoft.AspNetCore.Http.Abstractions.xml
+E:\Projects\CPGarage_Admin\CPGarageAdmin\bin\Microsoft.AspNetCore.Http.Features.xml
+E:\Projects\CPGarage_Admin\CPGarageAdmin\bin\Microsoft.AspNetCore.Mvc.Abstractions.xml
+E:\Projects\CPGarage_Admin\CPGarageAdmin\bin\Microsoft.AspNetCore.Routing.Abstractions.xml
+E:\Projects\CPGarage_Admin\CPGarageAdmin\bin\Microsoft.Net.Http.Headers.xml

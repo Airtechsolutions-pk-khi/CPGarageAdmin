@@ -19,21 +19,24 @@ namespace CPGarageAdmin.Controllers
     {
 
         carsRepository carsRepo;
+        modelRepository modelRepo;
+        customersRepository custRepo;
         private object totalRecordCount;
         private object filteredRecordCount;
 
         public carsController()
         {
             carsRepo = new carsRepository(new Garage_LiveEntities());
-
+            modelRepo = new modelRepository(new Garage_LiveEntities());
+            custRepo = new customersRepository(new Garage_LiveEntities());
         }
         public ActionResult List()
         {
             return View();
         }
-        public ActionResult GetData(JqueryDatatableParam param)
+        public ActionResult GetData(JqueryDatatableParam param, int? statusID)
         {
-            var cars = carsRepo.GetCars(param);
+            var cars = carsRepo.GetCars(param, statusID);
             var totalRecords = cars.TotalRecords;
             var jsonResponse = new
             {
@@ -61,24 +64,24 @@ namespace CPGarageAdmin.Controllers
         //}
 
         [HttpGet]
-        public ActionResult add(int? id, int? ModelID)
+        public ActionResult add(int? id)
         {
             var Make = carsRepo.GetMake();
             ViewBag.Make = new SelectList(Make, "MakeID", "Name");
-
-            //var Customer = carsRepo.GetCustomer();
-            //ViewBag.Customer = new SelectList(Customer, "CustomerID", "FullName");
             try
             {
                 if (id != 0 || id != null)
                 {
                     var data = carsRepo.GetCarByID(id);
+                    var Model = modelRepo.DBContext.Models.Where(x => x.MakeID == data.MakeID).ToList();
+                    ViewBag.Model = new SelectList(Model, "ModelID", "Name");
                     return View(data);
                 }
             }
             catch (Exception ex)
             {
-
+                //carid = 245624
+                //180433
             }
             return View();
         }
@@ -106,20 +109,43 @@ namespace CPGarageAdmin.Controllers
         [HttpPost]
         public JsonResult Save(CarsViewModel data)
         {
-            if (data.CarID == 0 || data.CarID == null)
+            try
             {
-                data.CreatedOn = DateTime.Now;
-                int rtn = carsRepo.add(data);
-                return Json(new { data = rtn }, JsonRequestBehavior.AllowGet);
+                if (data.CarID == 0 || data.CarID == null)
+                {
+                    data.CreatedOn = DateTime.Now;
+                    int rtn = carsRepo.add(data);
+                    return Json(new { success = true, data = rtn, redirectUrl = Url.Action("List", "Cars") }, JsonRequestBehavior.AllowGet);
+                }
+                else
+                {
+                    data.LastUpdateDate = DateTime.Now.ToString();
+                    int rtn = carsRepo.edit(data);
+                    return Json(new { success = true, redirectUrl = Url.Action("List", "Cars") }, JsonRequestBehavior.AllowGet);
+                }
             }
-            else
+            catch (Exception ex)
             {
-                data.LastUpdateDate = DateTime.Now.ToString();
-                int rtn = carsRepo.edit(data);
-                //return Json(new { data = rtn }, JsonRequestBehavior.AllowGet);
-                return Json(new { redirectTo = Url.Action("list") }, JsonRequestBehavior.AllowGet);
+                return Json(new { success = false, message = "An error occurred: " + ex.Message });
             }
         }
+
+        //public JsonResult Save(CarsViewModel data)
+        //{
+        //    if (data.CarID == 0 || data.CarID == null)
+        //    {
+        //        data.CreatedOn = DateTime.Now;
+        //        int rtn = carsRepo.add(data);
+        //        return Json(new { success = true, data = rtn, redirectUrl = Url.Action("List", "Cars") }, JsonRequestBehavior.AllowGet);
+        //    }
+        //    else
+        //    {
+        //        data.LastUpdateDate = DateTime.Now.ToString();
+        //        int rtn = carsRepo.edit(data);
+        //        return Json(new { success = true}, JsonRequestBehavior.AllowGet);
+        //    }
+        //}
+
         [HttpPost]
         public ActionResult Delete(int id)
         {

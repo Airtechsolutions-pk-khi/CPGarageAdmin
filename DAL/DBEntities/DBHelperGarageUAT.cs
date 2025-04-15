@@ -10,10 +10,8 @@ namespace WebAPICode.Helpers
 {
     public class DBHelperGarageUAT
     {
-        //private static readonly string connectionString = "data source=85.25.214.10;initial catalog=Garage_UAT;persist security info=True;user id=garage;password=garage;";
-        //private static readonly string connectionString = "data source=85.25.214.10;initial catalog=Garage_Live; persist security info=True; user id=garage; password=garage;";
-         //static readonly string connectionString = "data source=garageserver.database.windows.net;initial catalog=Garage_Live;persist security info=True;user id=garageadmin;password=Tech@963;";
-        private static readonly string connectionString = "data source=karageuatdb.database.windows.net;initial catalog=Garage_UAT;persist security info=True;user id=CloudSA99368a5a;password=Tech@963;";
+        private static readonly string connectionString = "data source=garageserver.database.windows.net;initial catalog=Garage_Live;persist security info=True;user id=garageadmin;password=Tech@963;";
+        //private static readonly string connectionString = "data source=karageuatdb.database.windows.net;initial catalog=Garage_UAT;persist security info=True;user id=CloudSA99368a5a;password=Tech@963;";
 
         public DataTable GetTableFromSP(string sp, Dictionary<string, object> parametersCollection)
         {
@@ -358,27 +356,27 @@ namespace WebAPICode.Helpers
 
 
         }
-		public DataTable GetTableFromSPWithPagination(string storedProcedureName, int skip, int take)
-		{
-			using (SqlConnection connection = new SqlConnection(connectionString))
-			{
-				connection.Open();
+        public DataTable GetTableFromSPWithPagination(string storedProcedureName, int skip, int take)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
 
-				using (SqlCommand command = new SqlCommand(storedProcedureName, connection))
-				{
-					command.CommandType = CommandType.StoredProcedure;
-					command.Parameters.AddWithValue("@Skip", skip); // Parameter for skipping records
-					command.Parameters.AddWithValue("@Take", take); // Parameter for taking records
+                using (SqlCommand command = new SqlCommand(storedProcedureName, connection))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("@Skip", skip); // Parameter for skipping records
+                    command.Parameters.AddWithValue("@Take", take); // Parameter for taking records
 
-					using (SqlDataAdapter adapter = new SqlDataAdapter(command))
-					{
-						DataTable dataTable = new DataTable();
-						adapter.Fill(dataTable);
-						return dataTable;
-					}
-				}
-			}
-		}
+                    using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+                    {
+                        DataTable dataTable = new DataTable();
+                        adapter.Fill(dataTable);
+                        return dataTable;
+                    }
+                }
+            }
+        }
 
-	}
+    }
 }

@@ -53,10 +53,6 @@
         background-color: rgba(78, 115, 223, 0.5);
     }
 
-    .formdiv#loading {
-        display: none;
-    }
-
     .modal {
         position: fixed;
         z-index: 999;
@@ -66,48 +62,18 @@
         background-color: Black;
         filter: alpha(opacity=60);
         opacity: 0.6;
-        -moz-opacity: 0.8;
         display: none;
+        align-content: center;
     }
 
     .center {
         z-index: 1000;
-        margin: 50pxauto;
+        margin: 50px auto;
         padding: 10px;
         width: 130px;
         background-color: White;
         border-radius: 10px;
-        filter: alpha(opacity=100);
         opacity: 1;
-        -moz-opacity: 1;
-    }
-
-    .centerimg {
-        height: 128px;
-        width: 128px;
-    }
-
-    /* Loader and modal styles */
-    .modal {
-        position: fixed;
-        z-index: 9999;
-        height: 100%;
-        width: 100%;
-        top: 0;
-        left: 0;
-        background-color: rgba(0, 0, 0, 0.5);
-        display: none;
-    }
-
-    .center {
-        z-index: 10000;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        padding: 10px;
-        background-color: white;
-        border-radius: 10px;
         text-align: center;
     }
 
@@ -116,37 +82,32 @@
             width: 60px;
         }
 </style>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
     function UserSuccess(result) {
         if (result.success) {
-            window.location.href = "/customers/list";
-        }
-        else {
-            alert("CUSTOMER CANNOT CREATED SUCCESSFULLY")
+            $('#progress').hide(); // Hide the loader
+            $('button[type="submit"]').attr('disabled', false); // Enable the submit button
+            $("#emailError").hide();
+            alert("CUSTOMERS SAVED SUCCESSFULLY"); // Display success message
+            window.location.href = "/customers/list"; // Redirect to car list
+
+        } else {
+            $('#progress').hide(); // Hide the loader
+            if (result.message) {  // If there is an error message
+                $("#emailError").text(result.message).show(); // Show error message
+            }
+            $('button[type="submit"]').attr('disabled', false); // Enable the submit button
         }
     }
 
-</script>
-
-<script type="text/javascript">
     $(document).ready(function () {
         // Show loader and disable submit button on form submit
         $('#customerForm').on('submit', function () {
             $('#progress').show(); // Display the loader
             $('button[type="submit"]').attr('disabled', true); // Disable the submit button
         });
-
         // Handle success callback
-        function UserSuccess(result) {
-            if (result.success) {
-                window.location.href = "/customers/list";
-            } else {
-                alert("CUSTOMER CANNOT BE CREATED SUCCESSFULLY");
-                $('#progress').hide(); // Hide the loader
-                $('button[type="submit"]').attr('disabled', false); // Enable the submit button
-            }
-        }
-
         $('#ddlPackage').on('change', function () {
             GetSelectedTextValue(this);
         });
@@ -164,118 +125,11 @@
 
         function GetSelectedTextValue(ddlPackage) {
             var selectedValue = $(ddlPackage).val();
-
             if (selectedValue === "1") {
                 var today = new Date();
                 today.setDate(today.getDate() + 15);
                 setExpiryDateValue(formatDateToISO(today));
-            } else {
-                var today = new Date();
-                today.setFullYear(today.getFullYear() + 1);
-                setExpiryDateValue(formatDateToISO(today));
-            }
-        }
 
-        GetSelectedTextValue($('#ddlPackage'));
-    });
-</script>
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script type="text/javascript">
-    $(document).ready(function () {
-        // Update cities when country changes
-        $('#CountryDropdown').change(function () {
-            debugger
-            var selectedCountry = $(this).val();
-            if (selectedCountry) {
-                $.ajax({
-                    url: '@Url.Action("GetCitiesByCountry", "customers")',
-                    type: 'GET',
-                    data: { countryCode: selectedCountry },
-                    success: function (data) {
-                        var cityDropdown = $('#CityDropdown');
-                        cityDropdown.empty(); // Clear existing options
-                        cityDropdown.append($('<option>').text('-- Select City --').attr('value', ''));
-                        $.each(data, function (index, item) {
-                            cityDropdown.append($('<option>').text(item.Name).attr('value', item.ID));
-                        });
-                        $('#DistrictDropdown').empty().append($('<option>').text('-- Select District --').attr('value', ''));
-                    },
-                    error: function () {
-                        alert('Error retrieving cities. Please try again.');
-                    }
-                });
-            }
-        });
-
-        // Update districts when city changes
-        @*$('#CityDropdown').change(function () {
-            debugger
-            var selectedCityId = $(this).val();
-            if (selectedCityId) {
-                $.ajax({
-                    url: '@Url.Action("GetDistrictsByCity", "customers")',
-                    type: 'GET',
-                    data: { cityId: selectedCityId },
-                    success: function (data) {
-                        var districtDropdown = $('#DistrictDropdown');
-                        districtDropdown.empty(); // Clear existing options
-                        districtDropdown.append($('<option>').text('-- Select District --').attr('value', ''));
-                        $.each(data, function (index, item) {
-                            districtDropdown.append($('<option>').text(item.District).attr('value', item.District));
-                        });
-                    },
-                    error: function () {
-                        alert('Error retrieving districts. Please try again.');
-                    }
-                });
-            }
-        });*@
-    });
-
-    $(document).ready(function () {
-        // Initialize the datepicker with day-month-year format
-        $('#CreationDate').datepicker({
-            dateFormat: 'dd-mm-yy',  // Set the format as day-month-year
-            changeMonth: true,
-            changeYear: true,
-            yearRange: '1900:2100',  // Set the year range (optional)
-        });
-
-        // Set today's date as the default value in dd-mm-yyyy format
-        var today = new Date();
-        var day = today.getDate().toString().padStart(2, '0');  // Add leading zero to day
-        var month = (today.getMonth() + 1).toString().padStart(2, '0');  // Add leading zero to month
-        var year = today.getFullYear();
-
-        // Set the value of the input field to today's date in the format dd-mm-yyyy
-        $('#CreationDate').val(day + '-' + month + '-' + year);
-    });
-
-
-    $(document).ready(function () {
-
-        $('#ddlPackage').on('change', function () {
-            GetSelectedTextValue(this);
-        });
-
-        function setExpiryDateValue(dateString) {
-            $('#expdate').val(dateString);
-        }
-        function formatDateToISO(date) {
-            var year = date.getFullYear();
-            var month = String(date.getMonth() + 1).padStart(2, '0');
-            var day = String(date.getDate()).padStart(2, '0');
-            return year + "-" + month + "-" + day;
-        }
-
-        function GetSelectedTextValue(ddlPackage) {
-
-            var selectedValue = $(ddlPackage).val();
-
-            if (selectedValue === "1") {
-                var today = new Date();
-                today.setDate(today.getDate() + 15);
-                setExpiryDateValue(formatDateToISO(today));
             } else {
                 var today = new Date();
                 today.setFullYear(today.getFullYear() + 1);
@@ -283,8 +137,48 @@
             }
         }
         GetSelectedTextValue($('#ddlPackage'));
+
+var selectedCountry = '@(Model.CountryID ?? "SA")'; // Default to "SA" if null
+var selectedCity = '@(Model.ID ?? null)'; // Default to empty string if null
+        debugger
+    // Set Country dropdown based on DB value
+    if (selectedCountry) {
+        $("#ddlCountry").val(selectedCountry);
+    } else {
+        $("#ddlCountry").val("SA"); // Default to SA if no value
+    }
+
+    // Function to populate cities based on selected country
+    function loadCities(countryCode, selectedCity) {
+        if (countryCode) {
+            $.getJSON('@Url.Action("GetCitiesByCountry", "customers")', { countryCode: countryCode }, function (data) {
+                var items = '<option value="">Select City</option>';
+                $.each(data, function (i, city) {
+                    items += `<option value="${city.ID}">${city.Name}</option>`;
+                });
+                $("#ddlCity").html(items);
+
+                // Set City dropdown based on DB value
+                if (selectedCity) {
+                    $("#ddlCity").val(selectedCity);
+                }
+            });
+        } else {
+            $("#ddlCity").html('<option value="">Select City</option>');
+        }
+    }
+
+    // Load cities on page load based on selected country
+    loadCities($("#ddlCountry").val(), selectedCity);
+
+    // When Country dropdown changes, reload cities
+    $("#ddlCountry").change(function () {
+        loadCities($(this).val(), null); // Reset city selection when country changes
     });
+});
+
 </script>
+
 @using (Ajax.BeginForm("Save", "Customers", new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "ModalUser", OnSuccess = "UserSuccess" }, new { @id = "customerForm" }))
 {
     <div id="progress" class="modal">
@@ -300,7 +194,6 @@
             <div class="card">
                 <div class="card-body">
                     <h4 class="card-title">Customer Details</h4>
-
                     <div class="forms-sample">
                         <div class="form-group">
                             <label for="exampleInputName1">First name</label>
@@ -316,6 +209,7 @@
                             <label for="exampleInputPassword4">Email</label>
                             @Html.TextBoxFor(model => model.Email, new { @class = "form-control", placeholder = "" })
                             @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                            <span id="emailError" class="text-danger"></span>
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword4">Password</label>
@@ -346,14 +240,12 @@
                                 new SelectListItem{ Text = "Batteries", Value = "Batteries"},
                              }, new { @class = "form-control" })
                         </div>
-
-
                         <div class="form-group">
                             <label for="CreationDate">Creation Date</label>
-                            @Html.TextBoxFor(model => model.CreatedDate, new { @class = "form-control", placeholder = "Select Date", id = "CreationDate" })
+                            @Html.TextBoxFor(model => model.CreatedDate, "{0:yyyy-MM-dd}", new { @class = "form-control", type = "date", id = "CreationDate" })
+
+                            @*<input class="form-control" name="CreatedDate" type="date" id="CreationDate" />*@
                         </div>
-
-
                         <button type="submit" class="btn btn-dark mr-2">Save</button>
                         <a href="~/customers/list" class="btn btn-light">Cancel</a>
                     </div>
@@ -365,140 +257,93 @@
                 <div class="card-body">
                     <h4 class="card-title">Location Details</h4>
                     @Html.HiddenFor(model => model.UserID, new Dictionary<string, object> { { "data-val", false } })
-                <div class="forms-sample">
-                    <div class="form-group">
-                        <label for="exampleInputName1">Location Name</label>
-                        @Html.TextBoxFor(model => model.LocationName, new { @class = "form-control", placeholder = "" })
-                        @Html.ValidationMessageFor(model => model.LocationName, "", new { @class = "text-danger" })
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputEmail3">Location Email</label>
-                        @Html.TextBoxFor(model => model.LocationEmail, new { @class = "form-control", placeholder = "" })
-                        @Html.ValidationMessageFor(model => model.LocationEmail, "", new { @class = "text-danger" })
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputPassword4">Location Contact</label>
-                        @Html.TextBoxFor(model => model.LocationContactNo, new { @class = "form-control", placeholder = "" })
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputPassword4">Location Address</label>
-                        @Html.TextBoxFor(model => model.LocationAddress, new { @class = "form-control", placeholder = "" })
-                    </div>
-                    
-                    
-                    <div class="form-group">
-                        <label for="CountryDropdown">Country</label>
-                        @Html.DropDownList(
-                            "CountryID",                                  // Name of the property to bind
-                            ViewBag.CountryList as IEnumerable<SelectListItem>, // Dropdown options from ViewBag
-                            "Select a Country",                           // Placeholder text
-                            new { @class = "form-control", @id = "CountryDropdown" } // HTML attributes
-                        )
-                    </div>
-                    
-                    
-                    
-                    @*<div class="form-group">
-                        <label for="exampleInputPassword4">Country</label>
-                        @Html.DropDownListFor(model => model.Currency, new List<SelectListItem>
-                                                             {
-                            new SelectListItem{ Text = "Saudi", Value = "SA"},
-                            new SelectListItem{ Text = "Bahrain", Value = "BHR"},
-                            new SelectListItem{ Text = "Kuwait", Value = "KWT"},
-                            new SelectListItem{ Text = "Oman", Value = "OMN"},
-                            new SelectListItem{ Text = "Qatar", Value = "QAT"},
-                            new SelectListItem{ Text = "UAE", Value = "ARE"},
-                            new SelectListItem{ Text = "Yemen", Value = "YEM"}
-                   }, new { @class = "form-control", @id = "CountryDropdown" })
-                    </div>*@
-
-                    <div class="form-group">
-                        <label for="exampleInputPassword4">City</label>
-                        <div class="form-group">
-                            @Html.DropDownListFor(model => model.CityID,
-                                new SelectList(Enumerable.Empty<SelectListItem>()), // Initially empty
-                                "-- Select City --",
-                                new { @class = "form-control", @id = "CityDropdown" })
-                        </div>
-                    </div>
-
-                    @*<div class="form-group">
-                        <label for="exampleInputPassword4">District</label>
-                        <div class="form-group">
-                            @Html.DropDownListFor(model => model.ID,
-                                new SelectList(Enumerable.Empty<SelectListItem>()), // Initially empty
-                                "-- Select District --",
-                                new { @class = "form-control", @id = "DistrictDropdown" })
-                        </div>
-                    </div>*@
-
-                  
-                </div>
                     <div class="forms-sample">
                         <div class="form-group">
-                            <label for="exampleInputPassword4">Select Package</label>
-                            <div class="form-group">
-                                @Html.DropDownListFor(model => model.PackageInfoID, ViewBag.packages as SelectList, new { @class = "form-control col-md-12", @Name = "PackageInfoID", @Id = "ddlPackage", @onchange = "GetSelectedTextValue(this)" })
-                            </div>
+                            <label for="exampleInputName1">Location Name</label>
+                            @Html.TextBoxFor(model => model.LocationName, new { @class = "form-control", placeholder = "" })
+                            @Html.ValidationMessageFor(model => model.LocationName, "", new { @class = "text-danger" })
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputPassword4">Expiry Date</label>
+                            <label for="exampleInputEmail3">Location Email</label>
+                            @Html.TextBoxFor(model => model.LocationEmail, new { @class = "form-control", placeholder = "" })
+                            @Html.ValidationMessageFor(model => model.LocationEmail, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword4">Location Contact</label>
+                            @Html.TextBoxFor(model => model.LocationContactNo, new { @class = "form-control", placeholder = "" })
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword4">Location Address</label>
+                            @Html.TextBoxFor(model => model.LocationAddress, new { @class = "form-control", placeholder = "" })
+                        </div>
+                        <div class="form-group">
+                            <label for="CountryDropdown">Country</label>
+                            @Html.DropDownListFor(model => model.CountryID, ViewBag.CountryList as SelectList, "Select Country", new { @class = "form-control", id = "ddlCountry" })
+                        </div>
+                        <div class="form-group">
+                            <label for="CityDropdown">City</label>
+                            @* @Html.DropDownListFor(model => model.CityID, ViewBag.CityList as SelectList, "Select City", new { @class = "form-control", id = "ddlCity" })*@
+                            @Html.DropDownListFor(model => model.CityID, ViewBag.CityList as SelectList ?? new SelectList(new List<SelectListItem>(), "Value", "Text"), "Please Select", new { @class = "form-control", id = "ddlCity" })
+                        </div>
+                    </div>
+                    <div class="forms-sample">
+                        <div class="form-group">
+                            <label for="PackageInfoID">Select Package</label>
+                            @Html.DropDownListFor(model => model.PackageInfoID, ViewBag.packages as SelectList, new { @class = "form-control col-md-12", @Name = "PackageInfoID", @Id = "ddlPackage", @onchange = "GetSelectedTextValue(this)" })
+                        </div>
+                        <div class="form-group">
+                            <label for="expdate">Expiry Date</label>
                             <input class="form-control" name="ExpiryDate" type="date" id="expdate" />
                         </div>
                         <div class="form-row">
                             <div class="col-md-6">
                                 <div class="custom-control custom-switch custom-switch-md">
-                                    @Html.CheckBoxFor(model => model.IsSMSActivate, new { @class = "custom-control-input", placeholder = "", @for = "IsSMSActivate" })
-                                    <label class="custom-control-label form-check-label" for="IsSMSActivate" style=" padding-top: 4px !important; padding-left: 14px;">SMS Activation</label>
+                                    @Html.CheckBoxFor(model => model.IsSMSActivate, new { @class = "custom-control-input", @for = "IsSMSActivate" })
+                                    <label class="custom-control-label form-check-label" for="IsSMSActivate">SMS Activation</label>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="custom-control custom-switch custom-switch-md">
-                                    @Html.CheckBoxFor(model => model.IsAccountingAddons, new { @class = "custom-control-input", placeholder = "", @for = "IsAccountingAddons" })
-                                    <label class="custom-control-label form-check-label" for="IsAccountingAddons" style=" padding-top: 4px !important; padding-left: 14px;">Is Accounting Addons</label>
+                                    @Html.CheckBoxFor(model => model.IsAccountingAddons, new { @class = "custom-control-input", @for = "IsAccountingAddons" })
+                                    <label class="custom-control-label form-check-label" for="IsAccountingAddons">Is Accounting Addons</label>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="custom-control custom-switch custom-switch-md">
-                                    @Html.CheckBoxFor(model => model.IsGarageGo, new { @class = "custom-control-input", placeholder = "", @for = "IsGarageGo" })
-                                    <label class="custom-control-label form-check-label" for="IsGarageGo" style=" padding-top: 4px !important; padding-left: 14px;">Is Garage GO</label>
+                                    @Html.CheckBoxFor(model => model.IsGarageGo, new { @class = "custom-control-input", @for = "IsGarageGo" })
+                                    <label class="custom-control-label form-check-label" for="IsGarageGo">Is Garage GO</label>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="custom-control custom-switch custom-switch-md">
-                                    @Html.CheckBoxFor(model => model.IsCashier, new { @class = "custom-control-input", placeholder = "", @for = "IsCashier" })
-                                    <label class="custom-control-label form-check-label" for="IsCashier" style=" padding-top: 4px !important; padding-left: 14px;">Is Cashier</label>
+                                    @Html.CheckBoxFor(model => model.IsCashier, new { @class = "custom-control-input", @for = "IsCashier" })
+                                    <label class="custom-control-label form-check-label" for="IsCashier">Is Cashier</label>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="custom-control custom-switch custom-switch-md">
-                                    @Html.CheckBoxFor(model => model.IsYakeen, new { @class = "custom-control-input", placeholder = "", @for = "IsYakeen" })
-                                    <label class="custom-control-label form-check-label" for="IsYakeen" style=" padding-top: 4px !important; padding-left: 14px;">Is Yakeen</label>
+                                    @Html.CheckBoxFor(model => model.IsYakeen, new { @class = "custom-control-input", @for = "IsYakeen" })
+                                    <label class="custom-control-label form-check-label" for="IsYakeen">Is Yakeen</label>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="custom-control custom-switch custom-switch-md">
-                                    @Html.CheckBoxFor(model => model.IsMojaz, new { @class = "custom-control-input", placeholder = "", @for = "IsMojaz" })
-                                    <label class="custom-control-label form-check-label" for="IsMojaz" style=" padding-top: 4px !important; padding-left: 14px;">Is Mojaz</label>
+                                    @Html.CheckBoxFor(model => model.IsMojaz, new { @class = "custom-control-input", @for = "IsMojaz" })
+                                    <label class="custom-control-label form-check-label" for="IsMojaz">Is Mojaz</label>
                                 </div>
                             </div>
-                            @*<div class="col-md-6">
+                            <div class="col-md-6">
                                 <div class="custom-control custom-switch custom-switch-md">
-                                    @Html.CheckBoxFor(model => model.IsDefaultCar, new { @class = "custom-control-input", placeholder = "", @for = "IsDefaultCar" })
-                                    <label class="custom-control-label form-check-label" for="IsDefaultCar" style=" padding-top: 4px !important; padding-left: 14px;">Is DefaultCar</label>
+                                    @Html.CheckBoxFor(model => model.IsDefaultCar, new { @class = "custom-control-input", @for = "IsDefaultCar" })
+                                    <label class="custom-control-label form-check-label" for="IsDefaultCar">Is Check Litre Mandatory</label>
                                 </div>
-                            </div>*@
+                            </div>
                         </div>
-
                         <div class="form-group">
                             <br />
                             <div class="custom-control custom-switch custom-switch-md">
-                                @Html.CheckBoxFor(model => model.StatusID, new { @class = "custom-control-input", placeholder = "", @for = "StatusID", @checked = "checked" })
-                                <label class="custom-control-label form-check-label" for="StatusID" style=" padding-top: 4px !important; padding-left: 14px;"> Activation Status</label>
-                            </div>
-                            <div class="custom-control custom-switch custom-switch-md" hidden>
-                                @Html.TextBoxFor(model => model.LastUpdatedDate, new { @class = "custom-control-input", placeholder = "", @for = "LastUpdatedDate", id = "enddate" })
-                                @Html.TextBoxFor(model => model.CreatedDate, new { @class = "custom-control-input", placeholder = "", @for = "CreatedDate", id = "startdate" })
+                                @Html.CheckBoxFor(model => model.StatusID, new { @class = "custom-control-input", @for = "StatusID", @checked = "checked" })
+                                <label class="custom-control-label form-check-label" for="StatusID"> Activation Status</label>
                             </div>
                         </div>
                     </div>
@@ -510,4 +355,3 @@
 <script src="~/Scripts/jquery.validate.min.js"></script>
 <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
 <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
-

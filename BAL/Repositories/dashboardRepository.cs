@@ -33,8 +33,9 @@ namespace BAL.Repositories
                 obj.TotalTransactions = DBContext.OrderCheckouts.Where(x => x.OrderStatus == 103).Count().ToString();
                 obj.TotalCars = DBContext.Cars.Where(x => x.StatusID == 1).Count().ToString();
                 obj.TotalProducts = DBContext.Items.Where(x => x.StatusID == 1).Count().ToString();
-                obj.TotalTrialCustomer = DBContext.Users.Where(x => x.PackageInfoID == 1).Count().ToString();
-                obj.TotalProfessionalCustomer = DBContext.Users.Where(x => x.PackageInfoID == 2).Count().ToString();
+                obj.TotalTrialCustomer = DBContext.Users.Where(x => x.PackageInfoID == 1 && x.StatusID == 1).Count().ToString();
+                obj.TotalProfessionalCustomer = DBContext.Users.Where(x => x.PackageInfoID == 2 && x.StatusID == 1).Count().ToString();
+               // obj.TotalProfessionalCustomer = DBContext.Users.Where(x => x.PackageInfoID == 2 , x.StatusID == 1).Count().ToString();
                 return obj;
             }
             catch (Exception ex)

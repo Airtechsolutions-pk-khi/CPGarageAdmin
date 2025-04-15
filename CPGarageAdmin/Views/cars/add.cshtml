@@ -5,42 +5,109 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <link href="~/assets/css/component-custom-switch.min.css" rel="stylesheet" />
-<!-- Include jQuery -->
+
+<style>
+    .select2-container--default .select2-selection--single .select2-selection__arrow b {
+        border-color: #888 transparent transparent transparent;
+        border-style: solid;
+        border-width: 5px 4px 0 4px;
+        height: 0;
+        left: 50%;
+        margin-left: -4px;
+        margin-top: 5px;
+        position: absolute;
+        top: 50%;
+        width: 0;
+    }
+
+    #progress {
+        display: none;
+    }
+
+    /* Styles for the modal */
+    .formdiv#loading {
+        display: none;
+    }
+
+    .modal {
+        position: fixed;
+        z-index: 999;
+        height: 100%;
+        width: 100%;
+        top: 0;
+        background-color: Black;
+        filter: alpha(opacity=60);
+        opacity: 0.6;
+        -moz-opacity: 0.8;
+        display: none;
+    }
+
+    .center {
+        z-index: 1000;
+        margin: 50pxauto;
+        padding: 10px;
+        width: 130px;
+        background-color: White;
+        border-radius: 10px;
+        filter: alpha(opacity=100);
+        opacity: 1;
+        -moz-opacity: 1;
+    }
+
+    .centerimg {
+        height: 128px;
+        width: 128px;
+    }
+
+    /* Loader and modal styles */
+    .modal {
+        position: fixed;
+        z-index: 9999;
+        height: 100%;
+        width: 100%;
+        top: 0;
+        left: 0;
+        background-color: rgba(0, 0, 0, 0.5);
+        display: none;
+    }
+
+    .center {
+        z-index: 10000;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 10px;
+        background-color: white;
+        border-radius: 10px;
+        text-align: center;
+    }
+
+        .center img {
+            height: 60px;
+            width: 60px;
+        }
+</style>
 
 <script type="text/javascript">
-$(document).ready(function() {
-    $('#contact-form').submit(function(e) {
-        e.preventDefault(); // Prevent default form submission
-
-        // Serialize form data
-        var formData = $(this).serialize();
-
-        // AJAX request to save car details
-        $.ajax({
-            type: 'POST',
-            url: '@Url.Action("Save", "Cars")', // URL to your Save action in Cars controller
-            data: formData,
-            success: function(response) {
-                UserSuccess(response); // Call the success function
-            },
-            error: function(xhr, status, error) {
-                alert("An error occurred while saving car details."); // Handle error
-            }
-        });
-    });
-});
-
-function UserSuccess(result) {
-    if (result.redirectTo) {
-        window.location.href = result.redirectTo;
-        alert("CARS ADDED/UPDATED SUCCESSFULLY");
-    } else {
-        alert("CARS COULD NOT BE ADDED/UPDATED SUCCESSFULLY");
+    function UserSuccess(result) {
+        debugger
+        if (result.success) {
+            $('#progress').hide(); // Hide the loader
+            $('button[type="submit"]').attr('disabled', false); // Enable the submit button
+            alert("CARS UPDATED SUCCESSFULLY"); // Display success message
+            window.location.href = "/cars/list"; // Redirect to car list
+        } else {
+            $('#progress').hide(); // Hide the loader
+            $('button[type="submit"]').attr('disabled', false); // Enable the submit button
+        }
     }
-}
 </script>
-<script>
+
+<script type="text/javascript">
     $(document).ready(function () {
+
+        // Handle model dropdown update based on make selection
         var makeDropdown = $("#ddlMake");
         var modelDropdown = $("#ddlModel");
         makeDropdown.change(function () {
@@ -50,7 +117,6 @@ function UserSuccess(result) {
                     type: "GET",
                     url: "/cars/models?makeId=" + selectedMakeID,
                     success: function (data) {
-
                         modelDropdown.empty();
                         modelDropdown.append($('<option>').text("-- Select Model --").val(''));
                         $.each(data, function (index, item) {
@@ -63,13 +129,9 @@ function UserSuccess(result) {
                 modelDropdown.append($('<option>').text("-- Select Model --").val(''));
             }
         });
-    });
 
-</script>
-<script>
-    $(document).ready(function () {
+        // Initialize Select2 for dropdowns
         $('#ddlCustomer').select2({
-
             placeholder: "-- Select Customer --",
             allowClear: true,
             ajax: {
@@ -108,23 +170,22 @@ function UserSuccess(result) {
         });
     });
 </script>
-<style>
-    .select2-container--default .select2-selection--single .select2-selection__arrow b {
-        border-color: #888 transparent transparent transparent;
-        border-style: solid;
-        border-width: 5px 4px 0 4px;
-        height: 0;
-        left: 50%;
-        margin-left: -4px;
-        margin-top: 5px;
-        position: absolute;
-        top: 50%;
-        width: 0;
-    }
-</style>
 
-@using (Html.BeginForm("Save", "Cars", FormMethod.Post, new { enctype = "multipart/form-data" }))
+@*@using (Ajax.BeginForm("Save", "Cars", new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "ModalUser", OnSuccess = "UserSuccess" }, new { @id = "contact-form" }))*@
+@using (Ajax.BeginForm("Save", "Cars", new AjaxOptions
 {
+    HttpMethod = "POST",
+    UpdateTargetId = "ModalUser",
+    OnSuccess = "UserSuccess",
+    OnFailure = "UserError" // Optional failure callback
+}, new { @id = "contact-form" }))
+{
+    <div id="progress" class="modal">
+        <div class="center">
+            <img src="~/assets/images/loader.gif" alt="Loading..." />
+            <p>Please wait...</p>
+        </div>
+    </div>
     <div id="carid">
         @Html.HiddenFor(x => x.CarID)
     </div>
@@ -191,7 +252,8 @@ function UserSuccess(result) {
                                     <div class="form-group">
                                         <label for="exampleInputPassword4">Select Model</label>
                                         <div class="form-group">
-                                            @Html.DropDownListFor(model => model.ModelID, new SelectList(Enumerable.Empty<SelectListItem>(), "ModelID", "Name"), "-- Select Model --", new { @class = "form-control col-md-12", @Name = "ModelID", @Id = "ddlModel" })
+                                            @Html.DropDownListFor(model => model.ModelID, ViewBag.Model as SelectList, "-- Select Model --", new { @class = "form-control col-md-12", @Name = "ModelID", @Id = "ddlModel" })
+                                            @*@Html.DropDownListFor(model => model.ModelID, new SelectList(Enumerable.Empty<SelectListItem>(), "ModelID", "Name"), "-- Select Model --", new { @class = "form-control col-md-12", @Name = "ModelID", @Id = "ddlModel" })*@
                                         </div>
                                     </div>
                                 </div>
@@ -212,23 +274,23 @@ function UserSuccess(result) {
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="form_need">Engine Type</label>
-                                        <select type="time" class="form-control" id=EngineType placeholder="" name="EngineType" , required="required">
+                                        <select type="time" class="form-control" id="EngineType" placeholder="" name="EngineType" , required="required">
                                             <option selected disabled> -- Please Select -- </option>
-                                            <option>Inline Engine Layout</option>
-                                            <option>Flat Engine</option>
-                                            <option>V-Engine</option>
-                                            <option>Twin Cylinder</option>
-                                            <option>Three Cylinder</option>
-                                            <option>Four Cylinder</option>
-                                            <option>Five Cylinder</option>
-                                            <option>Six Cylinder</option>
-                                            <option>Seven Cylinder</option>
-                                            <option>Eight Cylinders</option>
-                                            <option>Nine Cylinders</option>
-                                            <option>Ten Cylinders</option>
-                                            <option>Eleven Cylinders</option>
-                                            <option>Twelve Cylinders</option>
-                                            <option>Other</option>
+                                            <option @(Model.EngineType == "Inline Engine Layout" ? "selected" : "")>Inline Engine Layout</option>
+                                            <option @(Model.EngineType == "Flat Engine" ? "selected" : "")>Flat Engine</option>
+                                            <option @(Model.EngineType == "V-Engine" ? "selected" : "")>V-Engine</option>
+                                            <option @(Model.EngineType == "Twin Cylinder" ? "selected" : "")>Twin Cylinder</option>
+                                            <option @(Model.EngineType == "Three Cylinder" ? "selected" : "")>Three Cylinder</option>
+                                            <option @(Model.EngineType == "Four Cylinder" ? "selected" : "")>Four Cylinder</option>
+                                            <option @(Model.EngineType == "Five Cylinder" ? "selected" : "")>Five Cylinder</option>
+                                            <option @(Model.EngineType == "Six Cylinder" ? "selected" : "")>Six Cylinder</option>
+                                            <option @(Model.EngineType == "Seven Cylinder" ? "selected" : "")>Seven Cylinder</option>
+                                            <option @(Model.EngineType == "Eight Cylinders" ? "selected" : "")>Eight Cylinders</option>
+                                            <option @(Model.EngineType == "Nine Cylinders" ? "selected" : "")>Nine Cylinders</option>
+                                            <option @(Model.EngineType == "Ten Cylinders" ? "selected" : "")>Ten Cylinders</option>
+                                            <option @(Model.EngineType == "Eleven Cylinders" ? "selected" : "")>Eleven Cylinders</option>
+                                            <option @(Model.EngineType == "Twelve Cylinders" ? "selected" : "")>Twelve Cylinders</option>
+                                            <option @(Model.EngineType == "Other" ? "selected" : "")>Other</option>
                                         </select>
                                     </div>
                                 </div>
@@ -243,13 +305,20 @@ function UserSuccess(result) {
                                     <div class="form-group">
                                         <label for="exampleInputPassword4">Car Type</label>
                                         <div class="form-group">
-                                            <select type="time" class="form-control" id=EngineType placeholder="" name="CarType" , required="required">
-                                                <option selected disabled> -- Please Select -- </option>
-                                                <option value="1"> Public  </option>
-                                                <option value="2"> Private </option>
-                                                <option value="3"> Commercial </option>
-                                                <option value="4"> Diplomat </option>
+                                            <select class="form-control" id="CarType" name="CarType" required>
+                                                <option disabled> -- Please Select -- </option>
+                                                <option value="1" @(Model.CarType == 1 ? "selected" : "")> Public </option>
+                                                <option value="2" @(Model.CarType == 2 ? "selected" : "")> Private </option>
+                                                <option value="3" @(Model.CarType == 3 ? "selected" : "")> Commercial </option>
+                                                <option value="4" @(Model.CarType == 4 ? "selected" : "")> Diplomat </option>
                                             </select>
+                                            @*<select type="time" class="form-control" id="CarType" placeholder="" name="CarType" , required="required">
+                                                    <option selected disabled> -- Please Select -- </option>
+                                                    <option value="1"> Public  </option>
+                                                    <option value="2"> Private </option>
+                                                    <option value="3"> Commercial </option>
+                                                    <option value="4"> Diplomat </option>
+                                                </select>*@
                                         </div>
                                     </div>
                                 </div>
@@ -292,30 +361,9 @@ function UserSuccess(result) {
 
                             </div>
                             <div class="row">
-                                @*<div class="col-md-12" style="padding-bottom: 0px;">
-                                        <div class="form-group">
-                                            <label for="imgfile" style="padding-top:20px;padding-bottom:15px;">Upload Image</label>
-                                            <input type="file" class="form-control-file" name="ImagePath" id="imgfile" style="padding-bottom:15px;">
-
-                                            @if (Model == null)
-                                            {
-                                                <img src="~/assets/images/no_image.jpg" style=" height:80px;width:80px; border-radius:10px 10px 10px 10px; " />
-                                            }
-                                            else if (Model.ImagePath == null)
-                                            {
-                                                <img src="~/assets/images/no_image.jpg" style=" height:80px;width:80px; border-radius:10px 10px 10px 10px; " />
-                                            }
-                                            else
-                                            {
-                                                <img src="@Url.Content(Model.ImagePath)" style=" height:80px;width:80px; border-radius:10px 10px 10px 10px;" />
-                                            }
-                                        </div>
-                                    </div>*@
-
-
                                 <div class="col-md-3" style="padding-top:20px;">
                                     <button type="submit" class="btn btn-dark mr-2">Save</button>
-                                    <a href="~/model/listMake" class="btn btn-light">Cancel</a>
+                                    <a href="~/cars/list" class="btn btn-light">Cancel</a>
                                 </div>
                             </div>
 
@@ -327,6 +375,5 @@ function UserSuccess(result) {
     </form>
 }
 
-<script src="~/Scripts/jquery.validate.min.js"></script>
-<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
 <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>

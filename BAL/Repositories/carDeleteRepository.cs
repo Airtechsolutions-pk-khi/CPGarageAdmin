@@ -63,7 +63,7 @@ namespace BAL.Repositories
                 SqlParameter[] p = new SqlParameter[1];
                 p[0] = new SqlParameter("@id", id);
 
-                _dt = (new DBHelperGarageUAT().GetTableFromSP)("sp_GetDeleteCarsbyID_Admin", p);
+                _dt = (new DBHelperGarageUAT().GetTableFromSP)("sp_GetRequestCarsbyID_CP", p);
                 if (_dt != null)
                 {
                     if (_dt.Rows.Count > 0)

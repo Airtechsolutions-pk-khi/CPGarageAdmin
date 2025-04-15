@@ -1,0 +1,288 @@
+﻿@model DAL.Models.ItemTransferViewModel
+@using System.Web.Configuration;
+@{
+    ViewBag.Title = "Item Transfer Request";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .custom-radio .custom-control-label::before {
+        border-radius: 50%;
+    }
+
+    .custom-radio .custom-control-input:checked ~ .custom-control-label::after {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%23fff'/%3e%3c/svg%3e");
+    }
+
+    .custom-radio .custom-control-input:disabled:checked ~ .custom-control-label::before {
+        background-color: rgba(78, 115, 223, 0.5);
+    }
+
+    .custom-switch {
+        padding-left: 2.25rem;
+    }
+
+        .custom-switch .custom-control-label::before {
+            left: -2.25rem;
+            width: 1.75rem;
+            pointer-events: all;
+            border-radius: 0.5rem;
+        }
+
+        .custom-switch .custom-control-label::after {
+            top: calc(0.25rem + 2px);
+            left: calc(-2.25rem + 2px);
+            width: calc(1rem - 4px);
+            height: calc(1rem - 4px);
+            background-color: #b7b9cc;
+            border-radius: 0.5rem;
+            transition: transform 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+        }
+
+    @@media (prefers-reduced-motion: reduce) {
+        .custom-switch .custom-control-label::after {
+            transition: none;
+        }
+    }
+
+    .custom-switch .custom-control-input:checked ~ .custom-control-label::after {
+        background-color: #fff;
+        transform: translateX(0.75rem);
+    }
+
+    .custom-switch .custom-control-input:disabled:checked ~ .custom-control-label::before {
+        background-color: rgba(78, 115, 223, 0.5);
+    }
+
+    .modal {
+        position: fixed;
+        z-index: 999;
+        height: 100%;
+        width: 100%;
+        top: 0;
+        background-color: Black;
+        filter: alpha(opacity=60);
+        opacity: 0.6;
+        display: none;
+        align-content: center;
+    }
+
+    .center {
+        z-index: 1000;
+        margin: 50px auto;
+        padding: 10px;
+        width: 130px;
+        background-color: White;
+        border-radius: 10px;
+        opacity: 1;
+        text-align: center;
+    }
+
+        .center img {
+            height: 60px;
+            width: 60px;
+        }
+
+    .select2-container--default .select2-selection--single .select2-selection__arrow b {
+        border-color: #888 transparent transparent transparent;
+        border-style: solid;
+        border-width: 5px 4px 0 4px;
+        height: 0;
+        left: 50%;
+        margin-left: -4px;
+        margin-top: 5px;
+        position: absolute;
+        top: 50%;
+        width: 0;
+    }
+</style>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // Show loader and disable submit button on form submit
+        $('#requestForm').on('submit', function () {
+            $('#progress').show();
+            $('button[type="submit"]').attr('disabled', true);
+        });
+
+        // Attach change event to all fields for validation
+        $('#ddlUser, #ddlLocation, #ddlUser2, #ddlLocation2, #IsOpenItem').on('change keyup', function () {
+            validateForm();
+        });
+
+        function validateForm() {
+            var fromUser = $('#ddlUser').val();
+            var fromLocation = $('#ddlLocation').val();
+            var toUser = $('#ddlUser2').val();
+            var toLocation = $('#ddlLocation2').val();
+
+            // Enable the save button only if all fields are selected
+            if (fromUser && fromLocation && toUser && toLocation) {
+                $('button[type="submit"]').attr('disabled', false);
+            } else {
+                $('button[type="submit"]').attr('disabled', true);
+            }
+        }
+
+        validateForm(); // Initial call
+    });
+
+    function getLocations() {
+        var userId = $('#ddlUser').val();
+        if (userId) {
+            $.ajax({
+                url: '@Url.Action("GetLocationsByUser", "ItemTransfer")',
+                type: 'GET',
+                data: { userId: userId },
+                success: function (data) {
+                    var ddlLocation = $('#ddlLocation');
+                    ddlLocation.empty().append('<option value="">-- Select Location --</option>');
+                    $.each(data, function (index, item) {
+                        ddlLocation.append($('<option>', { value: item.Value, text: item.Text }));
+                    });
+                    validateForm();
+                },
+                error: function () {
+                    alert('Error retrieving locations.');
+                }
+            });
+        } else {
+            $('#ddlLocation').empty().append('<option value="">-- Select Location --</option>');
+            validateForm();
+        }
+    }
+
+    function gettransferLocations() {
+        var userId = $('#ddlUser2').val();
+        if (userId) {
+            $.ajax({
+                url: '@Url.Action("GetLocationsByUser", "ItemTransfer")',
+                type: 'GET',
+                data: { userId: userId },
+                success: function (data) {
+                    var ddlLocation = $('#ddlLocation2');
+                    ddlLocation.empty().append('<option value="">-- Select Location --</option>');
+                    $.each(data, function (index, item) {
+                        ddlLocation.append($('<option>', { value: item.Value, text: item.Text }));
+                    });
+                    validateForm();
+                },
+                error: function () {
+                    alert('Error retrieving locations.');
+                }
+            });
+        } else {
+            $('#ddlLocation2').empty().append('<option value="">-- Select Location --</option>');
+            validateForm();
+        }
+    }
+
+    function UserSuccess(result) {
+        if (result.success) {
+            $('#progress').hide();
+            $('button[type="submit"]').attr('disabled', false);
+            alert("ITEMS TRANSFER SUCCESSFULLY");
+            window.location.href = "/itemTransfer/add";
+        } else {
+            $('#progress').hide();
+            $('button[type="submit"]').attr('disabled', false);
+        }
+    }
+</script>
+<script>
+    $(document).ready(function () {
+        $('#ddlUser').select2({
+            placeholder: "-- Select User --",
+            allowClear: true
+        });
+
+        $('#ddlUser2').select2({
+            placeholder: "-- Select User --",
+            allowClear: true
+        });
+
+        $('#ddlLocation').select2({
+            placeholder: "-- Select User --",
+            allowClear: true
+        });
+
+        $('#ddlLocation2').select2({
+            placeholder: "-- Select User --",
+            allowClear: true
+        });
+    });
+</script>
+
+@using (Ajax.BeginForm("Save", "itemTransfer", new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "ModalUser", OnSuccess = "UserSuccess" }, new { @id = "requestForm" }))
+{
+    <div id="progress" class="modal">
+        <div class="center">
+            <img src="~/assets/images/loader.gif" alt="Loading..." />
+            <p>Please wait...</p>
+        </div>
+    </div>
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="row">
+        <div class="col-6 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Transfer From Request</h4>
+                    <div class="forms-sample">
+                        <div class="col-md-12">
+                            <label for="ddlUser">User</label>
+                            <div class="form-group">
+                                @Html.DropDownListFor(model => model.FromUserID, ViewBag.userList as SelectList, "-- Select User --", new { @class = "form-control col-md-12", @Name = "FromUserID", @Id = "ddlUser", @onchange = "getLocations()" })
+                            </div>
+
+                            @*<label for="ddlUser">User</label>
+                                <div class="form-group">
+                                    @Html.DropDownListFor(model => model.FromUserID, ViewBag.userList as SelectList, "-- Select User --", new { @class = "form-control col-md-12", @Name = "FromUserID", @Id = "ddlUser", @onchange = "getLocations()" })
+                                </div>*@
+                        </div>
+                        <div class="col-md-12">
+                            <label for="ddlLocation">Location</label>
+                            <div class="form-group">
+                                @Html.DropDownList("LocationID", new SelectList(Enumerable.Empty<SelectListItem>()), "-- Select Location --", new { @class = "form-control col-md-12", @Name = "FromLocationID", @Id = "ddlLocation" })
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <button type="submit" class="btn btn-dark mr-2">Save</button>
+                            <a href="~/itemTransfer/list" class="btn btn-light">Cancel</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-6 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Transfer To Request</h4>
+
+                    <div class="forms-sample">
+                        <div class="col-md-12">
+                            <label for="ddlUser">User</label>
+                            <div class="form-group">
+                                @Html.DropDownListFor(model => model.ToUserID, ViewBag.userList as SelectList, "-- Select User --", new { @class = "form-control col-md-12", @Name = "ToUserID", @Id = "ddlUser2", @onchange = "gettransferLocations()" })
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <label for="ddlLocation">Location</label>
+                            <div class="form-group">
+                                @Html.DropDownList("LocationID", new SelectList(Enumerable.Empty<SelectListItem>()), "-- Select Location --", new { @class = "form-control col-md-12", @Name = "ToLocationID", @Id = "ddlLocation2" })
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="custom-control custom-switch custom-switch-md">
+                                @Html.CheckBoxFor(model => model.IsOpenItem, new { @class = "custom-control-input", @for = "IsOpenItem" })
+                                <label class="custom-control-label form-check-label" for="IsOpenItem">Is Open Item</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+<script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>

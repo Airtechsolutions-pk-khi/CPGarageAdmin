@@ -34,15 +34,16 @@ namespace BAL.Repositories
         {
             DBContext = contextDB;
         }
-        public CarsPaginationResult GetCars(JqueryDatatableParam param)
+        public CarsPaginationResult GetCars(JqueryDatatableParam param, int? statusID)
         {
             try
             {
                 CarsPaginationResult result = new CarsPaginationResult();
-                SqlParameter[] p = new SqlParameter[3];
+                SqlParameter[] p = new SqlParameter[4];
                 p[0] = new SqlParameter("@start", param.iDisplayStart);
                 p[1] = new SqlParameter("@end", param.iDisplayLength);
                 p[2] = new SqlParameter("@searchTerm", param.sSearch);
+                p[3] = new SqlParameter("@statusID", statusID);
                 _ds = (new DBHelperGarageUAT().GetDatasetFromSP)("sp_GetCars_CP", p);
                 if (_ds != null && _ds.Tables.Count > 0)
                 {
@@ -179,25 +180,26 @@ namespace BAL.Repositories
             try
             {
                 int rtn = 0;
-                SqlParameter[] p = new SqlParameter[17];
+                SqlParameter[] p = new SqlParameter[18];
 
                 p[0] = new SqlParameter("@CustomerID", modal.CustomerID);
                 p[1] = new SqlParameter("@MakeID", modal.MakeID);
                 p[2] = new SqlParameter("@Name", modal.Name);
                 p[3] = new SqlParameter("@ModelID", modal.ModelID);
                 p[4] = new SqlParameter("@Description", modal.Description);
-                p[5] = new SqlParameter("@Year", modal.Year);
-                p[6] = new SqlParameter("@RegistrationNo", modal.RegistrationNo);
-                p[7] = new SqlParameter("@ImagePath", modal.ImagePath);
-                p[8] = new SqlParameter("@StatusID", modal.StatusID);
-                p[9] = new SqlParameter("@Color", modal.Color);
-                p[10] = new SqlParameter("@RecommendedAmount", modal.RecommendedAmount);
-                p[11] = new SqlParameter("@CheckLitres", modal.CheckLitre);
-                p[12] = new SqlParameter("@CarType", modal.CarType);
-                p[13] = new SqlParameter("@EngineType", modal.EngineType);
-                p[14] = new SqlParameter("@CarID", modal.CarID);
-                p[15] = new SqlParameter("@LastUpdateDate", modal.LastUpdateDate);
-                p[16] = new SqlParameter("@LastUpdateBy", "Admin");
+                p[5] = new SqlParameter("@VinNo", modal.VinNo);
+                p[6] = new SqlParameter("@Year", modal.Year);
+                p[7] = new SqlParameter("@RegistrationNo", modal.RegistrationNo);
+                p[8] = new SqlParameter("@ImagePath", modal.ImagePath);
+                p[9] = new SqlParameter("@StatusID", modal.StatusID);
+                p[10] = new SqlParameter("@Color", modal.Color);
+                p[11] = new SqlParameter("@RecommendedAmount", modal.RecommendedAmount);
+                p[12] = new SqlParameter("@CheckLitres", modal.CheckLitre);
+                p[13] = new SqlParameter("@CarType", modal.CarType);
+                p[14] = new SqlParameter("@EngineType", modal.EngineType);
+                p[15] = new SqlParameter("@CarID", modal.CarID);
+                p[16] = new SqlParameter("@LastUpdateDate", modal.LastUpdateDate);
+                p[17] = new SqlParameter("@LastUpdateBy", "Admin");
 
                 rtn = (new DBHelperGarageUAT().ExecuteNonQueryReturn)("sp_UpdateCars_CP", p);
 
@@ -213,24 +215,25 @@ namespace BAL.Repositories
             try
             {
                 int rtn = 0;
-                SqlParameter[] p = new SqlParameter[16];
+                SqlParameter[] p = new SqlParameter[17];
 
                 p[0] = new SqlParameter("@CustomerID", modal.CustomerID);
                 p[1] = new SqlParameter("@MakeID", modal.MakeID);
                 p[2] = new SqlParameter("@Name", modal.Name);
                 p[3] = new SqlParameter("@ModelID", modal.ModelID);
                 p[4] = new SqlParameter("@Description", modal.Description);
-                p[5] = new SqlParameter("@Year", modal.Year);
-                p[6] = new SqlParameter("@RegistrationNo", modal.RegistrationNo);
-                p[7] = new SqlParameter("@ImagePath", modal.ImagePath);
-                p[8] = new SqlParameter("@StatusID", modal.StatusID);
-                p[9] = new SqlParameter("@Color", modal.Color);
-                p[10] = new SqlParameter("@RecommendedAmount", modal.RecommendedAmount);
-                p[11] = new SqlParameter("@CheckLitres", modal.CheckLitre);
-                p[12] = new SqlParameter("@CarType", modal.CarType);
-                p[13] = new SqlParameter("@EngineType", modal.EngineType);
-                p[14] = new SqlParameter("@CreatedOn", modal.CreatedOn);
-                p[15] = new SqlParameter("@CreatedBy", "Admin");
+                p[5] = new SqlParameter("@VinNo", modal.VinNo);
+                p[6] = new SqlParameter("@Year", modal.Year);
+                p[7] = new SqlParameter("@RegistrationNo", modal.RegistrationNo);
+                p[8] = new SqlParameter("@ImagePath", modal.ImagePath);
+                p[9] = new SqlParameter("@StatusID", modal.StatusID);
+                p[10] = new SqlParameter("@Color", modal.Color);
+                p[11] = new SqlParameter("@RecommendedAmount", modal.RecommendedAmount);
+                p[12] = new SqlParameter("@CheckLitres", modal.CheckLitre);
+                p[13] = new SqlParameter("@CarType", modal.CarType);
+                p[14] = new SqlParameter("@EngineType", modal.EngineType);
+                p[15] = new SqlParameter("@CreatedOn", modal.CreatedOn);
+                p[16] = new SqlParameter("@CreatedBy", "Admin");
 
                 rtn = (new DBHelperGarageUAT().ExecuteNonQueryReturn)("sp_InsertCars_CP", p);
 

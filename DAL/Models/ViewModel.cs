@@ -86,8 +86,8 @@ namespace DAL.Models
 		public string Email { get; set; }
 		public string ContactNo { get; set; }
 		public string Address { get; set; }
-		public Nullable<int> CityID { get; set; }
-        public int ID { get; set; }
+		public int? CityID { get; set; }
+        public int? ID { get; set; }
         public string CountryID { get; set; }
 		public string Website { get; set; }
 		public Nullable<bool> Subscribe { get; set; }
@@ -123,14 +123,24 @@ namespace DAL.Models
 		public string Currency { get; set; }
 		public string RemainingDays { get; set; }
 		public Nullable<System.DateTime> PackageExpiry { get; set; }
-
-		public string SelectedCountry { get; set; } // For the selected value
+        public Nullable<int> Passcode { get; set; }
+        public string SelectedCountry { get; set; } // For the selected value
         public IEnumerable<SelectListItem> CountryList { get; set; } // For the dropdown options
 	}
+
+    public class ItemTransferViewModel
+    {
+        public int? FromUserID { get; set; }
+        public int? ToUserID { get; set; }
+        public int? FromLocationID { get; set; }
+        public int? ToLocationID { get; set; }
+        public bool IsOpenItem { get; set; }
+    }
 
     
     public class CityViewModel
     {
+        public int ID { get; set; }
         public int CityID { get; set; }
         public string Name { get; set; }
         public string CountryCode { get; set; }
